@@ -32,25 +32,45 @@ namespace Muzicki_festival.Forme
         {
             try
             {
-                ISession s = DataLayer.GetSession();
                 using (var session = DataLayer.GetSession())
                 {
                     using (var transaction = session.BeginTransaction())
                     {
-                        var visednevna = session.QueryOver<Visednevna>().List();
+                        // Učitaj visednevne ulaznice zajedno sa danima
+                        var visednevna = session.QueryOver<Visednevna>()
+                           .Fetch(SelectMode.Fetch, x => x.Dani)
+                           .List();
+
                         if (visednevna.Count == 0)
                         {
                             MessageBox.Show("Nema visednevnih karata u bazi.");
                             return;
                         }
+
                         StringBuilder sb = new StringBuilder();
-                        foreach (var ao in visednevna)
+                        var grupisanoPoId = visednevna
+                           .GroupBy(x => x.ID_ULAZNICE);
+                        foreach (var ulaznica in grupisanoPoId)
                         {
-                            sb.AppendLine($"ID: {ao.ID_ULAZNICE}");
-                            sb.AppendLine($"Broj dana: {ao.BROJ_DANA}");
+                            sb.AppendLine($"ID ulaznice: {ulaznica.Key}");
+                            sb.AppendLine("Broj dana: " + ulaznica.First().BROJ_DANA);
+                            sb.AppendLine("Dani:");
+
+                            var sviDani = ulaznica
+                            .SelectMany(x => x.Dani)
+                            .Select(p => p.DAN_VAZENJA)
+                            .Distinct();
+
+                            foreach (var dani in sviDani)
+                            {
+                                sb.AppendLine($" - {dani}");
+                            }
+
                             sb.AppendLine(new string('-', 40));
                         }
+
                         MessageBox.Show(sb.ToString(), $"Lista visednevnih karata: {visednevna.Count}");
+
                         transaction.Commit();
                     }
                 }

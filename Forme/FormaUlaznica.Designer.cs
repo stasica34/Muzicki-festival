@@ -30,11 +30,12 @@
         {
             this.cmd_Nazad = new System.Windows.Forms.Button();
             this.cmd_Ucitavanje = new System.Windows.Forms.Button();
+            this.cmd_Dodavanje = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmd_Nazad
             // 
-            this.cmd_Nazad.Location = new System.Drawing.Point(32, 115);
+            this.cmd_Nazad.Location = new System.Drawing.Point(25, 194);
             this.cmd_Nazad.Name = "cmd_Nazad";
             this.cmd_Nazad.Size = new System.Drawing.Size(149, 64);
             this.cmd_Nazad.TabIndex = 4;
@@ -44,7 +45,7 @@
             // 
             // cmd_Ucitavanje
             // 
-            this.cmd_Ucitavanje.Location = new System.Drawing.Point(32, 12);
+            this.cmd_Ucitavanje.Location = new System.Drawing.Point(25, 12);
             this.cmd_Ucitavanje.Name = "cmd_Ucitavanje";
             this.cmd_Ucitavanje.Size = new System.Drawing.Size(149, 64);
             this.cmd_Ucitavanje.TabIndex = 3;
@@ -52,11 +53,22 @@
             this.cmd_Ucitavanje.UseVisualStyleBackColor = true;
             this.cmd_Ucitavanje.Click += new System.EventHandler(this.cmd_Ucitavanje_Click);
             // 
+            // cmd_Dodavanje
+            // 
+            this.cmd_Dodavanje.Location = new System.Drawing.Point(25, 107);
+            this.cmd_Dodavanje.Name = "cmd_Dodavanje";
+            this.cmd_Dodavanje.Size = new System.Drawing.Size(149, 64);
+            this.cmd_Dodavanje.TabIndex = 5;
+            this.cmd_Dodavanje.Text = "Dodavanje";
+            this.cmd_Dodavanje.UseVisualStyleBackColor = true;
+            this.cmd_Dodavanje.Click += new System.EventHandler(this.cmd_Dodavanje_Click);
+            // 
             // FormaUlaznica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmd_Dodavanje);
             this.Controls.Add(this.cmd_Nazad);
             this.Controls.Add(this.cmd_Ucitavanje);
             this.Name = "FormaUlaznica";
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Button cmd_Nazad;
         private System.Windows.Forms.Button cmd_Ucitavanje;
+        private System.Windows.Forms.Button cmd_Dodavanje;
     }
 }

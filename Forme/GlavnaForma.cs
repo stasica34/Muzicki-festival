@@ -223,5 +223,39 @@ namespace Muzicki_festival
             this.Hide();
 
         }
+        private void cmd_JedanNaVise_Click(object sender, EventArgs e)
+        {
+            //izmedju posetioca i ulaznice
+            try
+            {
+                ISession session = DataLayer.GetSession();
+                Muzicki_festival.Entiteti.Posetilac p = session.Get<Muzicki_festival.Entiteti.Posetilac>(1);
+                foreach (var ulaznica in p.Ulaznice)
+                {
+                    MessageBox.Show("Ulaznica: " + ulaznica.NAZIV);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+        //rezultat treba da ide, bez obzira da li se ide 1:n ili n:1
+
+        private void cmd_ViseNaJedan_Click(object sender, EventArgs e)
+        {
+            //ulaznica i posetilac
+            try
+            {
+                ISession session = DataLayer.GetSession();
+                Ulaznica u = session.Load<Ulaznica>(1);
+                MessageBox.Show($"Ulaznica: {u.NAZIV},\nKupac: {u.KUPAC_ID.IME} {u.KUPAC_ID.PREZIME}", "Detalji");
+                session.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
     }
 }

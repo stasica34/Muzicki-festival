@@ -13,8 +13,8 @@ namespace Muzicki_festival.Mapiranje
         {
             Table("VISEDNEVNA_DANI");
             CompositeId()
-             .KeyProperty(x => x.ID_ULAZNICE, "ID_ULAZNICE")
+             .KeyReference(x => x.Visednevna, "ID_ULAZNICE")
              .KeyProperty(x => x.DAN_VAZENJA, "DAN_VAZENJA");
-        }
+         }
     }
 }

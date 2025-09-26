@@ -54,6 +54,8 @@
             this.cmd_VisednevnaDani = new System.Windows.Forms.Button();
             this.cmd_ZatvorenaLokacija = new System.Windows.Forms.Button();
             this.cmd_Dogadjaji = new System.Windows.Forms.Button();
+            this.cmd_ViseNaJedan = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdBend
@@ -88,7 +90,7 @@
             // 
             // cmd_Akreditacija
             // 
-            this.cmd_Akreditacija.Location = new System.Drawing.Point(128, 329);
+            this.cmd_Akreditacija.Location = new System.Drawing.Point(828, 479);
             this.cmd_Akreditacija.Name = "cmd_Akreditacija";
             this.cmd_Akreditacija.Size = new System.Drawing.Size(169, 56);
             this.cmd_Akreditacija.TabIndex = 5;
@@ -98,7 +100,7 @@
             // 
             // cmd_Posetilac
             // 
-            this.cmd_Posetilac.Location = new System.Drawing.Point(128, 405);
+            this.cmd_Posetilac.Location = new System.Drawing.Point(312, 329);
             this.cmd_Posetilac.Name = "cmd_Posetilac";
             this.cmd_Posetilac.Size = new System.Drawing.Size(169, 56);
             this.cmd_Posetilac.TabIndex = 6;
@@ -138,7 +140,7 @@
             // 
             // cmd_Ulaznica
             // 
-            this.cmd_Ulaznica.Location = new System.Drawing.Point(303, 329);
+            this.cmd_Ulaznica.Location = new System.Drawing.Point(128, 329);
             this.cmd_Ulaznica.Name = "cmd_Ulaznica";
             this.cmd_Ulaznica.Size = new System.Drawing.Size(169, 56);
             this.cmd_Ulaznica.TabIndex = 10;
@@ -188,7 +190,7 @@
             // 
             // cmd_Lokacija
             // 
-            this.cmd_Lokacija.Location = new System.Drawing.Point(487, 329);
+            this.cmd_Lokacija.Location = new System.Drawing.Point(128, 405);
             this.cmd_Lokacija.Name = "cmd_Lokacija";
             this.cmd_Lokacija.Size = new System.Drawing.Size(160, 56);
             this.cmd_Lokacija.TabIndex = 15;
@@ -238,7 +240,7 @@
             // 
             // cmd_TelefonIzvodjac
             // 
-            this.cmd_TelefonIzvodjac.Location = new System.Drawing.Point(653, 329);
+            this.cmd_TelefonIzvodjac.Location = new System.Drawing.Point(828, 405);
             this.cmd_TelefonIzvodjac.Name = "cmd_TelefonIzvodjac";
             this.cmd_TelefonIzvodjac.Size = new System.Drawing.Size(169, 56);
             this.cmd_TelefonIzvodjac.TabIndex = 20;
@@ -306,11 +308,32 @@
             this.cmd_Dogadjaji.UseVisualStyleBackColor = true;
             this.cmd_Dogadjaji.Click += new System.EventHandler(this.cmd_Dogadjaji_Click);
             // 
+            // cmd_ViseNaJedan
+            // 
+            this.cmd_ViseNaJedan.Location = new System.Drawing.Point(487, 329);
+            this.cmd_ViseNaJedan.Name = "cmd_ViseNaJedan";
+            this.cmd_ViseNaJedan.Size = new System.Drawing.Size(169, 56);
+            this.cmd_ViseNaJedan.TabIndex = 28;
+            this.cmd_ViseNaJedan.Text = "ViseNaJedan";
+            this.cmd_ViseNaJedan.UseVisualStyleBackColor = true;
+            this.cmd_ViseNaJedan.Click += new System.EventHandler(this.cmd_ViseNaJedan_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(662, 329);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(169, 56);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "JedanNaVise";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // GlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1030, 561);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cmd_ViseNaJedan);
             this.Controls.Add(this.cmd_Dogadjaji);
             this.Controls.Add(this.cmd_ZatvorenaLokacija);
             this.Controls.Add(this.cmd_VisednevnaDani);
@@ -371,6 +394,8 @@
         private System.Windows.Forms.Button cmd_VisednevnaDani;
         private System.Windows.Forms.Button cmd_ZatvorenaLokacija;
         private System.Windows.Forms.Button cmd_Dogadjaji;
+        private System.Windows.Forms.Button cmd_ViseNaJedan;
+        private System.Windows.Forms.Button button1;
     }
 }
 

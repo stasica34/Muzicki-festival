@@ -13,6 +13,20 @@ namespace Muzicki_festival.Mapiranje
         {
             Table("VIP");
             Id(x => x.ID_ULAZNICE, "ID_ULAZNICE").GeneratedBy.TriggerIdentity();
+
+
+            //mapiranje sa ulaznicom:
+            References(x => x.Ulaznica)
+            .Column("ID_ULAZNICE")
+            .Not.Insert()
+            .Not.Update();
+
+            //mapiranje sa vip pogodnostima:
+            HasMany(x => x.Pogodnosti)
+                .KeyColumn("ID_ULAZNICE")
+                .Cascade.AllDeleteOrphan()
+                .Inverse()
+                .Table("VIP_POGODNOSTI");
         }
     }
 }

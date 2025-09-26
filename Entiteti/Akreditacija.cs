@@ -10,6 +10,8 @@ namespace Muzicki_festival.Entiteti
     {
         public virtual int ID_ULAZNICE { get; protected set; }
         public virtual string TIP { get; set; }
+        //fk ka Ulaznica
+        public virtual Ulaznica Ulaznica { get; set; }
         public Akreditacija() { }
     }
 }

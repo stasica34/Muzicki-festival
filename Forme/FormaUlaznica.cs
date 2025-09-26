@@ -79,5 +79,39 @@ namespace Muzicki_festival.Forme
             parentForm.Show();
             this.Close();
         }
+
+        private void cmd_Dodavanje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                //ubacujemo i novog posetioca i novu ulaznicu za tog posetioca
+                Posetilac p = new Posetilac
+                {
+                    IME = "Nikola",
+                    PREZIME = "Jovanović",
+                    EMAIL = "nikola.jovanovic@example.com"
+                };
+                Ulaznica u = new Ulaznica
+                {
+                    DATUM_KUPOVINE = DateTime.Now,
+                    OSNOVNA_CENA = 2000,
+                    KUPAC_ID = p, // veza ka novom posetiocu
+                    NACIN_PLACANJA = "Kartica",
+                    NAZIV = "Jednodnevna"
+                };
+                p.Ulaznice.Add(u); // dodajemo ulaznicu u kolekciju posetioca
+                MessageBox.Show("Uspešno dodat posetilac i njegova ulaznica.");
+
+                s.Save(p); // čuvamo posetioca, što će automatski sačuvati i ulaznicu zbog kaskadnog čuvanja
+                s.Flush(); // forsiramo sinhronizaciju sa bazom, preporuka da se koristi
+                s.Close();
+            }
+            catch (
+            Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

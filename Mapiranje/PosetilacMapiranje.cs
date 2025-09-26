@@ -18,9 +18,18 @@ namespace Muzicki_festival.Mapiranje
             Map(x => x.PREZIME, "PREZIME").Not.Nullable();
             Map(x => x.EMAIL, "EMAIL").Not.Nullable();
             HasMany(x => x.Ulaznice)
-                .KeyColumn("KUPAC_ID")        // FK kolona u tabeli ULAZNICA
+                .KeyColumn("KUPAC_ID")// FK kolona u tabeli ULAZNICA
                 .Inverse()
-                .Cascade.AllDeleteOrphan();
+                .Cascade.All();
+
+            //mogu da budu i veze kao:
+            //HasMany(x => x.Ulaznice)
+            //lista odeljenja i strani kljuc
+            //   .KeyColumn("KUPAC_ID"); 
+            //HasMany(x => x.Ulaznice)
+            //   .KeyColumn("KUPAC_ID")
+            //   .Cascade.All();
+
         }
     }
 }

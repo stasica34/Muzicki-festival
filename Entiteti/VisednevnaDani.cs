@@ -8,14 +8,15 @@ namespace Muzicki_festival.Entiteti
 {
     public class VisednevnaDani
     {
-        public virtual int ID_ULAZNICE { get; protected set; }
         public virtual DateTime DAN_VAZENJA { get; set; }
+        //fk sa Visednevna
+        public virtual Visednevna Visednevna { get; set; }
         public override bool Equals(object obj)
         {
             var other = obj as VisednevnaDani;
             if (other == null) return false;
 
-            return this.ID_ULAZNICE == other.ID_ULAZNICE &&
+            return this.Visednevna.ID_ULAZNICE == other.Visednevna.ID_ULAZNICE &&
                    this.DAN_VAZENJA == other.DAN_VAZENJA;
         }
 
@@ -24,7 +25,7 @@ namespace Muzicki_festival.Entiteti
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + ID_ULAZNICE.GetHashCode();
+                hash = hash * 23 + Visednevna.ID_ULAZNICE.GetHashCode();
                 hash = hash * 23 + DAN_VAZENJA.GetHashCode();
                 return hash;
             }

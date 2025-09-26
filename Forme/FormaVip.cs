@@ -33,33 +33,55 @@ namespace Muzicki_festival.Forme
         {
             try
             {
-                ISession s = DataLayer.GetSession();
                 using (var session = DataLayer.GetSession())
                 {
                     using (var transaction = session.BeginTransaction())
                     {
-                        var listavVip = session.QueryOver<Vip>().List();
+                        var listavVip = session.QueryOver<Vip>()
+                            .Fetch(SelectMode.Fetch, x => x.Pogodnosti)
+                            .List();
+
                         if (listavVip.Count == 0)
                         {
                             MessageBox.Show("Nema Vip ulaznica u bazi.");
                             return;
                         }
+
                         StringBuilder sb = new StringBuilder();
-                        foreach (var b in listavVip)
+
+                        // Grupisanje po ID ulaznice
+                        var grupisanoPoId = listavVip
+                            .GroupBy(x => x.ID_ULAZNICE);
+
+                        foreach (var grupa in grupisanoPoId)
                         {
-                            sb.AppendLine($"ID ulaznice: {b.ID_ULAZNICE}");
+                            sb.AppendLine($"ID ulaznice: {grupa.Key}");
+                            sb.AppendLine("Pogodnosti:");
+
+                            // Spajanje svih pogodnosti iz grupe i uklanjanje duplikata
+                            var svePogodnosti = grupa
+                                .SelectMany(x => x.Pogodnosti)
+                                .Select(p => p.POGODNOST)
+                                .Distinct();
+
+                            foreach (var pogodnost in svePogodnosti)
+                            {
+                                sb.AppendLine($" - {pogodnost}");
+                            }
+
                             sb.AppendLine(new string('-', 40));
                         }
-                        MessageBox.Show(sb.ToString(), $"Lista Vip ulaznica: {listavVip.Count}");
+
+                        MessageBox.Show(sb.ToString(), $"Lista Vip ulaznica: {grupisanoPoId.Count()}");
                         transaction.Commit();
                     }
                 }
-                s.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void FormaVip_Load(object sender, EventArgs e)

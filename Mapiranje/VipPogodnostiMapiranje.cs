@@ -12,8 +12,10 @@ namespace Muzicki_festival.Mapiranje
         public VipPogodnostiMapiranje()
         {
             Table("VIP_POGODNOSTI");
-            Id(x => x.ID_ULAZNICE, "ID_ULAZNICE").GeneratedBy.TriggerIdentity();
-            Map(x => x.POGODNOST, "POGODNOST").Not.Nullable();
+
+            CompositeId()
+                .KeyReference(x => x.Vip, "ID_ULAZNICE")
+                .KeyProperty(x => x.POGODNOST, "POGODNOST");
         }
     }
 }

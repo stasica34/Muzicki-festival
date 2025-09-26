@@ -64,7 +64,7 @@ namespace Muzicki_festival.Forme
                         StringBuilder sb = new StringBuilder();
                         foreach (var ao in visednevnadani)
                         {
-                            sb.AppendLine($"ID: {ao.ID_ULAZNICE}");
+                            sb.AppendLine($"ID: {ao.Visednevna.ID_ULAZNICE}");
                             sb.AppendLine($"Dan vazenja: {ao.DAN_VAZENJA}");
                             sb.AppendLine(new string('-', 40));
                         }

@@ -47,7 +47,7 @@ namespace Muzicki_festival.Forme
                         StringBuilder sb = new StringBuilder();
                         foreach (var ao in vIpPogodnosti)
                         {
-                            sb.AppendLine($"ID ulaznica: {ao.ID_ULAZNICE}");
+                            sb.AppendLine($"ID ulaznica: {ao.Vip.ID_ULAZNICE}");
                             sb.AppendLine($"Pogodnosti: {ao.POGODNOST}");
                             sb.AppendLine(new string('-', 40));
                         }
