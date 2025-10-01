@@ -14,6 +14,15 @@ namespace Muzicki_festival.Mapiranje
         {
             Table("JE_CLAN");
             Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
+            References(x => x.Posetilac)
+               .Column("POSETILAC_ID")
+               .Not.Nullable()
+               .Cascade.None();
+
+            References(x => x.Grupa)
+                .Column("ID_GRUPE")
+                .Not.Nullable()
+                .Cascade.None();
         }
     }
 }

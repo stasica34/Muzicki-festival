@@ -48,6 +48,8 @@ namespace Muzicki_festival.Forme
                         foreach (var ao in listaJeCLan)
                         {
                             sb.AppendLine($"ID: {ao.ID}");
+                            sb.AppendLine($"ID_Grupe: {ao.Grupa.ID_GRUPE}");
+                            sb.AppendLine($"ID Posetilac: {ao.Posetilac.ID}");
                             sb.AppendLine(new string('-', 40));
                         }
                         MessageBox.Show(sb.ToString(), $"Lista agencija organizatora: {listaJeCLan.Count}");

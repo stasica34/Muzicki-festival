@@ -8,27 +8,26 @@ namespace Muzicki_festival.Entiteti
 {
     public class VisednevnaDani
     {
-        public virtual DateTime DAN_VAZENJA { get; set; }
-        //fk sa Visednevna
-        public virtual Visednevna Visednevna { get; set; }
-        public override bool Equals(object obj)
-        {
-            var other = obj as VisednevnaDani;
-            if (other == null) return false;
+        public virtual VisednevnaDaniID ID { get; set; }
 
-            return this.Visednevna.ID_ULAZNICE == other.Visednevna.ID_ULAZNICE &&
-                   this.DAN_VAZENJA == other.DAN_VAZENJA;
+        public virtual int ID_ULAZNICE
+        {
+            get => ID.ID_ULAZNICE;
+            set => ID.ID_ULAZNICE = value;
         }
 
-        public override int GetHashCode()
+        public virtual DateTime DAN_VAZENJA
         {
-            unchecked
-            {
-                int hash = 17;
-                hash = hash * 23 + Visednevna.ID_ULAZNICE.GetHashCode();
-                hash = hash * 23 + DAN_VAZENJA.GetHashCode();
-                return hash;
-            }
+            get => ID.DAN_VAZENJA;
+            set => ID.DAN_VAZENJA = value;
+        }
+
+        // FK ka Visednevna
+        public virtual Visednevna Visednevna { get; set; }
+
+        public VisednevnaDani()
+        {
+            ID = new VisednevnaDaniID();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
+using Muzicki_festival.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,13 @@ namespace Muzicki_festival.Mapiranje
         public VipPogodnostiMapiranje()
         {
             Table("VIP_POGODNOSTI");
-
-            CompositeId()
-                .KeyReference(x => x.Vip, "ID_ULAZNICE")
+            CompositeId<VipPogodnostiID>(x => x.ID)
+               .KeyProperty(x => x.ID_ULAZNICE, "ID_ULAZNICE")
                 .KeyProperty(x => x.POGODNOST, "POGODNOST");
+            References(x => x.Vip)
+                .Column("ID_ULAZNICE")
+                .Not.Insert()
+                .Not.Update();
         }
     }
 }

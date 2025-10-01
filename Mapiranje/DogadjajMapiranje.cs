@@ -36,8 +36,13 @@ namespace Muzicki_festival.Mapiranje
             Map(x => x.OPIS, "OPIS").Nullable();
             Map(x => x.DATUM_VREME_POCETKA, "DATUM_VREME_POCETKA").Not.Nullable();
             Map(x => x.DATUM_VREME_KRAJA, "DATUM_VREME_KRAJA").Not.Nullable();
-            Map(x => x.GPS_KOORDINATNE, "GPS_KOORDINATE").Not.Nullable();
-            Map(x => x.LOKACIJA_NAZIV, "LOKACIJA_NAZIV").Not.Nullable();
+
+            //mapiranje 1:n veze sa lokacijom
+            //kompozitni ključ
+            References(x => x.Lokacija_ID)
+                .Columns("GPS_KOORDINATE", "LOKACIJA_NAZIV")
+                .Not.Nullable()
+                .Cascade.None();
 
         }
     }

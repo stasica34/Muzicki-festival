@@ -9,6 +9,11 @@ namespace Muzicki_festival.Entiteti
     public class JeClan
     {
         public virtual int ID { get; protected set; }
+        // FK: veza ka entitetu Posetilac
+        public virtual Posetilac Posetilac { get; set; }
+
+        // FK: veza ka entitetu Grupa
+        public virtual Grupa Grupa { get; set; }
         public JeClan() { }
     }
 }

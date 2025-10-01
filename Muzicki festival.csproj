@@ -118,9 +118,12 @@
     <Compile Include="Entiteti\Jednodnevna.cs" />
     <Compile Include="Entiteti\KombinovanaLokacija.cs" />
     <Compile Include="Entiteti\Lokacija.cs" />
+    <Compile Include="Entiteti\LokacijaID.cs" />
     <Compile Include="Entiteti\MenadzerskaAgencija.cs" />
     <Compile Include="Entiteti\Nastupa.cs" />
+    <Compile Include="Entiteti\NastupaID.cs" />
     <Compile Include="Entiteti\OmogucavaUlazNa.cs" />
+    <Compile Include="Entiteti\OmogucavaUlazNaID.cs" />
     <Compile Include="Entiteti\OtvorenaLokacija.cs" />
     <Compile Include="Entiteti\Posetilac.cs" />
     <Compile Include="Entiteti\Solo_Umetnik.cs" />
@@ -129,8 +132,10 @@
     <Compile Include="Entiteti\Ulaznica.cs" />
     <Compile Include="Entiteti\Vip.cs" />
     <Compile Include="Entiteti\VIpPogodnosti.cs" />
+    <Compile Include="Entiteti\VipPogodnostiID.cs" />
     <Compile Include="Entiteti\Visednevna.cs" />
     <Compile Include="Entiteti\VisednevnaDani.cs" />
+    <Compile Include="Entiteti\VisednevnaDaniID.cs" />
     <Compile Include="Entiteti\ZatvorenaLokacija.cs" />
     <Compile Include="Forme\FormaAgencijaOrganizator.cs">
       <SubType>Form</SubType>

@@ -13,11 +13,11 @@ namespace Muzicki_festival.Entiteti
         public virtual string DRZAVA_POREKLA { get; set; }
 
         public virtual string EMAIL { get; set; }
-        public virtual MenadzerskaAgencija MenadzerskaAgencija { get; set; }
 
         public virtual string KONTAKT_OSOBA { get; set; }
 
         public virtual string TELEFON { get; set; }
+        public virtual MenadzerskaAgencija MenadzerskaAgencija { get; set; }
 
         public Izvodjac() { }
     }

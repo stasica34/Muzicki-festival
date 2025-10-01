@@ -113,8 +113,8 @@ namespace Muzicki_festival.Forme
                             sb.AppendLine($"Opis: {d.OPIS}");
                             sb.AppendLine($"Datum početka: {d.DATUM_VREME_POCETKA}");
                             sb.AppendLine($"Datum kraja: {d.DATUM_VREME_KRAJA}");
-                            sb.AppendLine($"GPS: {d.GPS_KOORDINATNE}");
-                            sb.AppendLine($"Lokacija: {d.LOKACIJA_NAZIV}");
+                            sb.AppendLine($"GPS: {d.Lokacija_ID.Lokacija_ID.GPS_KOORDINATE}");
+                            sb.AppendLine($"Lokacija Naziv: {d.Lokacija_ID.Lokacija_ID.NAZIV}");
                             sb.AppendLine(new string('-', 40)); // separator
                         }
 

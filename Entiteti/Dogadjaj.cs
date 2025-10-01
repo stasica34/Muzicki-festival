@@ -16,10 +16,11 @@ namespace Muzicki_festival.Entiteti
         public virtual string OPIS { get; set; }
         public virtual DateTime DATUM_VREME_POCETKA { get; set; }
         public virtual DateTime DATUM_VREME_KRAJA  {get;set;}
-        public virtual string GPS_KOORDINATNE { get; set; }
-        public virtual string LOKACIJA_NAZIV { get; set; }
+
         //virtual properti - mogu da se overriduju, mora da budu virtual zbog mapiranja
         //konstructor
+        //veza 1:n ka lokaciji
+        public virtual Lokacija Lokacija_ID { get; set; }
         public Dogadjaj() { }
 
 

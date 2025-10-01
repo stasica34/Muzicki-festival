@@ -57,7 +57,7 @@ namespace Muzicki_festival.Forme
                         {
                             sb.AppendLine($"ID grupe: {a.ID_GRUPE}");
                             sb.AppendLine($"Naziv: {a.NAZIV}");
-                            sb.AppendLine($"Agencije organizatori: {a.AgencijaID}");
+                            sb.AppendLine($"Agencije organizatori: {a.AgencijaID.NAZIV}");
                             sb.AppendLine(new string('-', 40));
                         }
                         MessageBox.Show(sb.ToString(), $"Lista grupa: {listaGrupa.Count}");

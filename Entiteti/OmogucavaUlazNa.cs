@@ -8,24 +8,23 @@ namespace Muzicki_festival.Entiteti
 {
     public class OmogucavaUlazNa
     {
-        public virtual int ID_ULAZNICE { get; protected set; }
-        public virtual int DOGADJAJ_ID { get; set; }
-        public override bool Equals(object obj)
+        public virtual OmogucavaUlazNaID ID { get; set; }
+
+        public virtual int ID_ULAZNICE
         {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-            var other = (OmogucavaUlazNa)obj;
-            return ID_ULAZNICE == other.ID_ULAZNICE && DOGADJAJ_ID == other.DOGADJAJ_ID;
+            get => ID.ID_ULAZNICE;
+            set => ID.ID_ULAZNICE = value;
         }
-        public override int GetHashCode()
+
+        public virtual int DOGADJAJ_ID
         {
-            unchecked // Overflow is fine
-            {
-                int hash = 17;
-                hash = hash * 23 + ID_ULAZNICE.GetHashCode();
-                hash = hash * 23 + DOGADJAJ_ID.GetHashCode();
-                return hash;
-            }
+            get => ID.DOGADJAJ_ID;
+            set => ID.DOGADJAJ_ID = value;
+        }
+
+        public OmogucavaUlazNa()
+        {
+            ID = new OmogucavaUlazNaID();
         }
     }
 }

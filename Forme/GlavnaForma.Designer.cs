@@ -60,13 +60,17 @@
             this.cmdJedanNaVise = new System.Windows.Forms.Button();
             this.cmdVisenaJedan3 = new System.Windows.Forms.Button();
             this.cmdJedanNaVise3 = new System.Windows.Forms.Button();
+            this.cmdViseNaJedan4 = new System.Windows.Forms.Button();
+            this.cmdJedanNaVise4 = new System.Windows.Forms.Button();
+            this.cmdViseNaJedan5 = new System.Windows.Forms.Button();
+            this.cmdJedanNaVise5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdBend
             // 
-            this.cmdBend.Location = new System.Drawing.Point(898, 375);
+            this.cmdBend.Location = new System.Drawing.Point(712, 327);
             this.cmdBend.Name = "cmdBend";
-            this.cmdBend.Size = new System.Drawing.Size(169, 56);
+            this.cmdBend.Size = new System.Drawing.Size(169, 55);
             this.cmdBend.TabIndex = 2;
             this.cmdBend.Text = "Bend";
             this.cmdBend.UseVisualStyleBackColor = true;
@@ -74,7 +78,7 @@
             // 
             // cmd_SoloUmetnik
             // 
-            this.cmd_SoloUmetnik.Location = new System.Drawing.Point(128, 178);
+            this.cmd_SoloUmetnik.Location = new System.Drawing.Point(362, 448);
             this.cmd_SoloUmetnik.Name = "cmd_SoloUmetnik";
             this.cmd_SoloUmetnik.Size = new System.Drawing.Size(169, 56);
             this.cmd_SoloUmetnik.TabIndex = 3;
@@ -84,7 +88,7 @@
             // 
             // cmd_AgencijaOrganizator
             // 
-            this.cmd_AgencijaOrganizator.Location = new System.Drawing.Point(702, 21);
+            this.cmd_AgencijaOrganizator.Location = new System.Drawing.Point(537, 21);
             this.cmd_AgencijaOrganizator.Name = "cmd_AgencijaOrganizator";
             this.cmd_AgencijaOrganizator.Size = new System.Drawing.Size(169, 56);
             this.cmd_AgencijaOrganizator.TabIndex = 4;
@@ -94,7 +98,7 @@
             // 
             // cmd_Akreditacija
             // 
-            this.cmd_Akreditacija.Location = new System.Drawing.Point(478, 332);
+            this.cmd_Akreditacija.Location = new System.Drawing.Point(12, 21);
             this.cmd_Akreditacija.Name = "cmd_Akreditacija";
             this.cmd_Akreditacija.Size = new System.Drawing.Size(169, 56);
             this.cmd_Akreditacija.TabIndex = 5;
@@ -104,9 +108,9 @@
             // 
             // cmd_Posetilac
             // 
-            this.cmd_Posetilac.Location = new System.Drawing.Point(898, 93);
+            this.cmd_Posetilac.Location = new System.Drawing.Point(712, 82);
             this.cmd_Posetilac.Name = "cmd_Posetilac";
-            this.cmd_Posetilac.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Posetilac.Size = new System.Drawing.Size(169, 54);
             this.cmd_Posetilac.TabIndex = 6;
             this.cmd_Posetilac.Text = "Posetilac";
             this.cmd_Posetilac.UseVisualStyleBackColor = true;
@@ -114,7 +118,7 @@
             // 
             // cmd_Grupa
             // 
-            this.cmd_Grupa.Location = new System.Drawing.Point(702, 93);
+            this.cmd_Grupa.Location = new System.Drawing.Point(537, 80);
             this.cmd_Grupa.Name = "cmd_Grupa";
             this.cmd_Grupa.Size = new System.Drawing.Size(169, 56);
             this.cmd_Grupa.TabIndex = 7;
@@ -124,7 +128,7 @@
             // 
             // cmd_TelefonPosetilac
             // 
-            this.cmd_TelefonPosetilac.Location = new System.Drawing.Point(303, 178);
+            this.cmd_TelefonPosetilac.Location = new System.Drawing.Point(187, 206);
             this.cmd_TelefonPosetilac.Name = "cmd_TelefonPosetilac";
             this.cmd_TelefonPosetilac.Size = new System.Drawing.Size(169, 55);
             this.cmd_TelefonPosetilac.TabIndex = 8;
@@ -134,7 +138,7 @@
             // 
             // cmd_JeClan
             // 
-            this.cmd_JeClan.Location = new System.Drawing.Point(303, 257);
+            this.cmd_JeClan.Location = new System.Drawing.Point(362, 327);
             this.cmd_JeClan.Name = "cmd_JeClan";
             this.cmd_JeClan.Size = new System.Drawing.Size(169, 55);
             this.cmd_JeClan.TabIndex = 9;
@@ -144,9 +148,9 @@
             // 
             // cmd_Ulaznica
             // 
-            this.cmd_Ulaznica.Location = new System.Drawing.Point(898, 21);
+            this.cmd_Ulaznica.Location = new System.Drawing.Point(712, 21);
             this.cmd_Ulaznica.Name = "cmd_Ulaznica";
-            this.cmd_Ulaznica.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Ulaznica.Size = new System.Drawing.Size(169, 55);
             this.cmd_Ulaznica.TabIndex = 10;
             this.cmd_Ulaznica.Text = "Ulaznica";
             this.cmd_Ulaznica.UseVisualStyleBackColor = true;
@@ -154,9 +158,9 @@
             // 
             // cmd_Bend
             // 
-            this.cmd_Bend.Location = new System.Drawing.Point(898, 304);
+            this.cmd_Bend.Location = new System.Drawing.Point(712, 268);
             this.cmd_Bend.Name = "cmd_Bend";
-            this.cmd_Bend.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Bend.Size = new System.Drawing.Size(169, 53);
             this.cmd_Bend.TabIndex = 11;
             this.cmd_Bend.Text = "Clan";
             this.cmd_Bend.UseVisualStyleBackColor = true;
@@ -164,9 +168,9 @@
             // 
             // cmd_Izvodjac
             // 
-            this.cmd_Izvodjac.Location = new System.Drawing.Point(303, 107);
+            this.cmd_Izvodjac.Location = new System.Drawing.Point(537, 268);
             this.cmd_Izvodjac.Name = "cmd_Izvodjac";
-            this.cmd_Izvodjac.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Izvodjac.Size = new System.Drawing.Size(169, 53);
             this.cmd_Izvodjac.TabIndex = 12;
             this.cmd_Izvodjac.Text = "Izvodjac";
             this.cmd_Izvodjac.UseVisualStyleBackColor = true;
@@ -174,7 +178,7 @@
             // 
             // cnd_Jednodnevna
             // 
-            this.cnd_Jednodnevna.Location = new System.Drawing.Point(478, 108);
+            this.cnd_Jednodnevna.Location = new System.Drawing.Point(12, 82);
             this.cnd_Jednodnevna.Name = "cnd_Jednodnevna";
             this.cnd_Jednodnevna.Size = new System.Drawing.Size(169, 55);
             this.cnd_Jednodnevna.TabIndex = 13;
@@ -184,7 +188,7 @@
             // 
             // cmd_Kobinovana
             // 
-            this.cmd_Kobinovana.Location = new System.Drawing.Point(478, 257);
+            this.cmd_Kobinovana.Location = new System.Drawing.Point(187, 82);
             this.cmd_Kobinovana.Name = "cmd_Kobinovana";
             this.cmd_Kobinovana.Size = new System.Drawing.Size(169, 55);
             this.cmd_Kobinovana.TabIndex = 14;
@@ -194,9 +198,9 @@
             // 
             // cmd_Lokacija
             // 
-            this.cmd_Lokacija.Location = new System.Drawing.Point(137, 405);
+            this.cmd_Lokacija.Location = new System.Drawing.Point(362, 80);
             this.cmd_Lokacija.Name = "cmd_Lokacija";
-            this.cmd_Lokacija.Size = new System.Drawing.Size(160, 56);
+            this.cmd_Lokacija.Size = new System.Drawing.Size(169, 56);
             this.cmd_Lokacija.TabIndex = 15;
             this.cmd_Lokacija.Text = "Lokacija";
             this.cmd_Lokacija.UseVisualStyleBackColor = true;
@@ -204,9 +208,9 @@
             // 
             // cmd_MenadzerskaAgencija
             // 
-            this.cmd_MenadzerskaAgencija.Location = new System.Drawing.Point(478, 405);
+            this.cmd_MenadzerskaAgencija.Location = new System.Drawing.Point(537, 327);
             this.cmd_MenadzerskaAgencija.Name = "cmd_MenadzerskaAgencija";
-            this.cmd_MenadzerskaAgencija.Size = new System.Drawing.Size(169, 56);
+            this.cmd_MenadzerskaAgencija.Size = new System.Drawing.Size(169, 55);
             this.cmd_MenadzerskaAgencija.TabIndex = 16;
             this.cmd_MenadzerskaAgencija.Text = "Menadzerska agencija";
             this.cmd_MenadzerskaAgencija.UseVisualStyleBackColor = true;
@@ -214,7 +218,7 @@
             // 
             // cmd_Nastupa
             // 
-            this.cmd_Nastupa.Location = new System.Drawing.Point(128, 257);
+            this.cmd_Nastupa.Location = new System.Drawing.Point(362, 266);
             this.cmd_Nastupa.Name = "cmd_Nastupa";
             this.cmd_Nastupa.Size = new System.Drawing.Size(169, 55);
             this.cmd_Nastupa.TabIndex = 17;
@@ -224,7 +228,7 @@
             // 
             // cmd_Omogucava_Ulaz_na
             // 
-            this.cmd_Omogucava_Ulaz_na.Location = new System.Drawing.Point(303, 332);
+            this.cmd_Omogucava_Ulaz_na.Location = new System.Drawing.Point(362, 388);
             this.cmd_Omogucava_Ulaz_na.Name = "cmd_Omogucava_Ulaz_na";
             this.cmd_Omogucava_Ulaz_na.Size = new System.Drawing.Size(169, 54);
             this.cmd_Omogucava_Ulaz_na.TabIndex = 18;
@@ -234,7 +238,7 @@
             // 
             // cmd_OtvorenaLokacija
             // 
-            this.cmd_OtvorenaLokacija.Location = new System.Drawing.Point(128, 333);
+            this.cmd_OtvorenaLokacija.Location = new System.Drawing.Point(187, 21);
             this.cmd_OtvorenaLokacija.Name = "cmd_OtvorenaLokacija";
             this.cmd_OtvorenaLokacija.Size = new System.Drawing.Size(169, 55);
             this.cmd_OtvorenaLokacija.TabIndex = 19;
@@ -244,7 +248,7 @@
             // 
             // cmd_TelefonIzvodjac
             // 
-            this.cmd_TelefonIzvodjac.Location = new System.Drawing.Point(478, 178);
+            this.cmd_TelefonIzvodjac.Location = new System.Drawing.Point(187, 267);
             this.cmd_TelefonIzvodjac.Name = "cmd_TelefonIzvodjac";
             this.cmd_TelefonIzvodjac.Size = new System.Drawing.Size(169, 56);
             this.cmd_TelefonIzvodjac.TabIndex = 20;
@@ -254,7 +258,7 @@
             // 
             // cmd_Vip
             // 
-            this.cmd_Vip.Location = new System.Drawing.Point(303, 41);
+            this.cmd_Vip.Location = new System.Drawing.Point(12, 143);
             this.cmd_Vip.Name = "cmd_Vip";
             this.cmd_Vip.Size = new System.Drawing.Size(169, 56);
             this.cmd_Vip.TabIndex = 21;
@@ -264,7 +268,7 @@
             // 
             // cmd_VipPogodnosti
             // 
-            this.cmd_VipPogodnosti.Location = new System.Drawing.Point(478, 479);
+            this.cmd_VipPogodnosti.Location = new System.Drawing.Point(12, 206);
             this.cmd_VipPogodnosti.Name = "cmd_VipPogodnosti";
             this.cmd_VipPogodnosti.Size = new System.Drawing.Size(169, 56);
             this.cmd_VipPogodnosti.TabIndex = 22;
@@ -274,7 +278,7 @@
             // 
             // cmd_Visednevna
             // 
-            this.cmd_Visednevna.Location = new System.Drawing.Point(303, 479);
+            this.cmd_Visednevna.Location = new System.Drawing.Point(12, 268);
             this.cmd_Visednevna.Name = "cmd_Visednevna";
             this.cmd_Visednevna.Size = new System.Drawing.Size(169, 56);
             this.cmd_Visednevna.TabIndex = 23;
@@ -284,7 +288,7 @@
             // 
             // cmd_VisednevnaDani
             // 
-            this.cmd_VisednevnaDani.Location = new System.Drawing.Point(128, 479);
+            this.cmd_VisednevnaDani.Location = new System.Drawing.Point(12, 330);
             this.cmd_VisednevnaDani.Name = "cmd_VisednevnaDani";
             this.cmd_VisednevnaDani.Size = new System.Drawing.Size(169, 56);
             this.cmd_VisednevnaDani.TabIndex = 24;
@@ -294,7 +298,7 @@
             // 
             // cmd_ZatvorenaLokacija
             // 
-            this.cmd_ZatvorenaLokacija.Location = new System.Drawing.Point(303, 405);
+            this.cmd_ZatvorenaLokacija.Location = new System.Drawing.Point(187, 143);
             this.cmd_ZatvorenaLokacija.Name = "cmd_ZatvorenaLokacija";
             this.cmd_ZatvorenaLokacija.Size = new System.Drawing.Size(169, 56);
             this.cmd_ZatvorenaLokacija.TabIndex = 25;
@@ -304,9 +308,9 @@
             // 
             // cmd_Dogadjaji
             // 
-            this.cmd_Dogadjaji.Location = new System.Drawing.Point(128, 41);
+            this.cmd_Dogadjaji.Location = new System.Drawing.Point(362, 21);
             this.cmd_Dogadjaji.Name = "cmd_Dogadjaji";
-            this.cmd_Dogadjaji.Size = new System.Drawing.Size(169, 60);
+            this.cmd_Dogadjaji.Size = new System.Drawing.Size(169, 56);
             this.cmd_Dogadjaji.TabIndex = 26;
             this.cmd_Dogadjaji.Text = "Dogadjaji";
             this.cmd_Dogadjaji.UseVisualStyleBackColor = true;
@@ -314,7 +318,7 @@
             // 
             // cmd_ViseNaJedan
             // 
-            this.cmd_ViseNaJedan.Location = new System.Drawing.Point(898, 166);
+            this.cmd_ViseNaJedan.Location = new System.Drawing.Point(712, 142);
             this.cmd_ViseNaJedan.Name = "cmd_ViseNaJedan";
             this.cmd_ViseNaJedan.Size = new System.Drawing.Size(169, 56);
             this.cmd_ViseNaJedan.TabIndex = 28;
@@ -324,7 +328,7 @@
             // 
             // cmdViseNaJedan2
             // 
-            this.cmdViseNaJedan2.Location = new System.Drawing.Point(702, 166);
+            this.cmdViseNaJedan2.Location = new System.Drawing.Point(537, 142);
             this.cmdViseNaJedan2.Name = "cmdViseNaJedan2";
             this.cmdViseNaJedan2.Size = new System.Drawing.Size(169, 56);
             this.cmdViseNaJedan2.TabIndex = 30;
@@ -334,9 +338,9 @@
             // 
             // cmd_JedanNaVise
             // 
-            this.cmd_JedanNaVise.Location = new System.Drawing.Point(898, 228);
+            this.cmd_JedanNaVise.Location = new System.Drawing.Point(712, 206);
             this.cmd_JedanNaVise.Name = "cmd_JedanNaVise";
-            this.cmd_JedanNaVise.Size = new System.Drawing.Size(169, 56);
+            this.cmd_JedanNaVise.Size = new System.Drawing.Size(169, 55);
             this.cmd_JedanNaVise.TabIndex = 29;
             this.cmd_JedanNaVise.Text = "JedanNaVise";
             this.cmd_JedanNaVise.UseVisualStyleBackColor = true;
@@ -344,7 +348,7 @@
             // 
             // cmdJedanNaVise
             // 
-            this.cmdJedanNaVise.Location = new System.Drawing.Point(702, 228);
+            this.cmdJedanNaVise.Location = new System.Drawing.Point(537, 206);
             this.cmdJedanNaVise.Name = "cmdJedanNaVise";
             this.cmdJedanNaVise.Size = new System.Drawing.Size(169, 56);
             this.cmdJedanNaVise.TabIndex = 31;
@@ -354,7 +358,7 @@
             // 
             // cmdVisenaJedan3
             // 
-            this.cmdVisenaJedan3.Location = new System.Drawing.Point(898, 446);
+            this.cmdVisenaJedan3.Location = new System.Drawing.Point(712, 386);
             this.cmdVisenaJedan3.Name = "cmdVisenaJedan3";
             this.cmdVisenaJedan3.Size = new System.Drawing.Size(169, 56);
             this.cmdVisenaJedan3.TabIndex = 32;
@@ -364,7 +368,7 @@
             // 
             // cmdJedanNaVise3
             // 
-            this.cmdJedanNaVise3.Location = new System.Drawing.Point(898, 508);
+            this.cmdJedanNaVise3.Location = new System.Drawing.Point(712, 448);
             this.cmdJedanNaVise3.Name = "cmdJedanNaVise3";
             this.cmdJedanNaVise3.Size = new System.Drawing.Size(169, 56);
             this.cmdJedanNaVise3.TabIndex = 33;
@@ -372,11 +376,55 @@
             this.cmdJedanNaVise3.UseVisualStyleBackColor = true;
             this.cmdJedanNaVise3.Click += new System.EventHandler(this.cmdJedanNaVise3_Click);
             // 
+            // cmdViseNaJedan4
+            // 
+            this.cmdViseNaJedan4.Location = new System.Drawing.Point(537, 386);
+            this.cmdViseNaJedan4.Name = "cmdViseNaJedan4";
+            this.cmdViseNaJedan4.Size = new System.Drawing.Size(169, 56);
+            this.cmdViseNaJedan4.TabIndex = 34;
+            this.cmdViseNaJedan4.Text = "ViseNaJedan";
+            this.cmdViseNaJedan4.UseVisualStyleBackColor = true;
+            this.cmdViseNaJedan4.Click += new System.EventHandler(this.cmdViseNaJedan4_Click);
+            // 
+            // cmdJedanNaVise4
+            // 
+            this.cmdJedanNaVise4.Location = new System.Drawing.Point(537, 448);
+            this.cmdJedanNaVise4.Name = "cmdJedanNaVise4";
+            this.cmdJedanNaVise4.Size = new System.Drawing.Size(169, 56);
+            this.cmdJedanNaVise4.TabIndex = 35;
+            this.cmdJedanNaVise4.Text = "JedanNaVise";
+            this.cmdJedanNaVise4.UseVisualStyleBackColor = true;
+            this.cmdJedanNaVise4.Click += new System.EventHandler(this.cmdJedanNaVise4_Click);
+            // 
+            // cmdViseNaJedan5
+            // 
+            this.cmdViseNaJedan5.Location = new System.Drawing.Point(362, 143);
+            this.cmdViseNaJedan5.Name = "cmdViseNaJedan5";
+            this.cmdViseNaJedan5.Size = new System.Drawing.Size(169, 56);
+            this.cmdViseNaJedan5.TabIndex = 36;
+            this.cmdViseNaJedan5.Text = "ViseNaJedan";
+            this.cmdViseNaJedan5.UseVisualStyleBackColor = true;
+            this.cmdViseNaJedan5.Click += new System.EventHandler(this.cmdViseNaJedan5_Click);
+            // 
+            // cmdJedanNaVise5
+            // 
+            this.cmdJedanNaVise5.Location = new System.Drawing.Point(362, 205);
+            this.cmdJedanNaVise5.Name = "cmdJedanNaVise5";
+            this.cmdJedanNaVise5.Size = new System.Drawing.Size(169, 56);
+            this.cmdJedanNaVise5.TabIndex = 37;
+            this.cmdJedanNaVise5.Text = "JedanNaVise";
+            this.cmdJedanNaVise5.UseVisualStyleBackColor = true;
+            this.cmdJedanNaVise5.Click += new System.EventHandler(this.cmdJedanNaVise5_Click);
+            // 
             // GlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 561);
+            this.ClientSize = new System.Drawing.Size(907, 536);
+            this.Controls.Add(this.cmdJedanNaVise5);
+            this.Controls.Add(this.cmdViseNaJedan5);
+            this.Controls.Add(this.cmdJedanNaVise4);
+            this.Controls.Add(this.cmdViseNaJedan4);
             this.Controls.Add(this.cmdJedanNaVise3);
             this.Controls.Add(this.cmdVisenaJedan3);
             this.Controls.Add(this.cmdJedanNaVise);
@@ -449,6 +497,10 @@
         private System.Windows.Forms.Button cmdJedanNaVise;
         private System.Windows.Forms.Button cmdVisenaJedan3;
         private System.Windows.Forms.Button cmdJedanNaVise3;
+        private System.Windows.Forms.Button cmdViseNaJedan4;
+        private System.Windows.Forms.Button cmdJedanNaVise4;
+        private System.Windows.Forms.Button cmdViseNaJedan5;
+        private System.Windows.Forms.Button cmdJedanNaVise5;
     }
 }
 

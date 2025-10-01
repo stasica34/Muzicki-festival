@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
+using Muzicki_festival.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace Muzicki_festival.Mapiranje
         public NastupaMapiranje()
         {
             Table("NASTUPA");
-            CompositeId()
-                .KeyProperty(x => x.DOGADJAJ_ID, "DOGADJAJ_ID")
-                .KeyProperty(x => x.IZVODJAC_ID, "IZVODJAC_ID");
+            CompositeId<NastupaID>(x => x.ID)
+              .KeyProperty(x => x.DOGADJAJ_ID, "DOGADJAJ_ID")
+              .KeyProperty(x => x.IZVODJAC_ID, "IZVODJAC_ID");
         }
     }
 }

@@ -8,27 +8,22 @@ namespace Muzicki_festival.Entiteti
 {
     public class Nastupa
     {
-        public virtual int DOGADJAJ_ID { get; set; }
-        public virtual int IZVODJAC_ID { get; set; }
-
-        public override bool Equals(object obj)
+        public virtual NastupaID ID { get; set; }
+        public virtual int DOGADJAJ_ID
         {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-
-            var other = (Nastupa)obj;
-            return DOGADJAJ_ID == other.DOGADJAJ_ID && IZVODJAC_ID == other.IZVODJAC_ID;
+            get => ID.DOGADJAJ_ID;
+            set => ID.DOGADJAJ_ID = value;
         }
 
-        public override int GetHashCode()
+        public virtual int IZVODJAC_ID
         {
-            unchecked // Overflow is fine
-            {
-                int hash = 17;
-                hash = hash * 23 + DOGADJAJ_ID.GetHashCode();
-                hash = hash * 23 + IZVODJAC_ID.GetHashCode();
-                return hash;
-            }
+            get => ID.IZVODJAC_ID;
+            set => ID.IZVODJAC_ID = value;
+        }
+
+        public Nastupa()
+        {
+            ID = new NastupaID();
         }
     }
 }

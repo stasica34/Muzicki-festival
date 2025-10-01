@@ -8,31 +8,26 @@ namespace Muzicki_festival.Entiteti
 {
     public class Lokacija
     {
-        public virtual string GPS_KOORDINATE { get; set; }
-        public virtual string NAZIV { get; set; }
         public virtual string OPIS { get; set; }
         public virtual int? MAX_KAPACITET { get; set; } 
 
-        public Lokacija() { }
-
-        public override bool Equals(object obj)
+        public virtual LokacijaID Lokacija_ID { get; set; }
+        public virtual string NAZIV
         {
-            if (obj == null || !(obj is Lokacija))
-                return false;
-
-            Lokacija other = obj as Lokacija;
-            return GPS_KOORDINATE == other.GPS_KOORDINATE && NAZIV == other.NAZIV;
+            get => Lokacija_ID.NAZIV;
+            set => Lokacija_ID.NAZIV = value;
         }
 
-        public override int GetHashCode()
+        public virtual string GPS_KOORDINATE
         {
-            unchecked
-            {
-                int hash = 17;
-                hash = hash * 23 + (GPS_KOORDINATE != null ? GPS_KOORDINATE.GetHashCode() : 0);
-                hash = hash * 23 + (NAZIV != null ? NAZIV.GetHashCode() : 0);
-                return hash;
-            }
+            get => Lokacija_ID.GPS_KOORDINATE;
+            set => Lokacija_ID.GPS_KOORDINATE = value;
+        }
+        public virtual IList<Dogadjaj> Dogadjaji { get; set; }
+        public Lokacija() 
+        {
+            Dogadjaji = new List<Dogadjaj>();
+            Lokacija_ID = new LokacijaID();
         }
     }
 

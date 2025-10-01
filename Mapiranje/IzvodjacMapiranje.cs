@@ -20,7 +20,8 @@ namespace Muzicki_festival.Mapiranje
             Map(x => x.EMAIL, "EMAIL").Not.Nullable();
             Map(x => x.KONTAKT_OSOBA, "KONTAKT_OSOBA").Nullable();
             Map(x => x.TELEFON, "TELEFON").Nullable();
-            References(x => x.MenadzerskaAgencija).Column("MENADZERSKA_AGENCIJA_ID").Not.Nullable().Cascade.None();
+            //mapiranje 1:n sa menadzerskom agencijom
+            References(x => x.MenadzerskaAgencija).Column("MENADZERSKA_AGENCIJA_ID").LazyLoad().Cascade.None();
 
         }
     }

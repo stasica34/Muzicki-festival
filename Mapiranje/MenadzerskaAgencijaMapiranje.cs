@@ -16,6 +16,10 @@ namespace Muzicki_festival.Mapiranje
             Map(x => x.NAZIV, "NAZIV").Not.Nullable();
             Map(x => x.ADRESA, "ADRESA").Not.Nullable();
             Map(x => x.KONTAKT_OSOBA, "KONTAKT_OSOBA").Not.Nullable();
+            HasMany(x => x.Izvodjaci)
+                .KeyColumn("MENADZERSKA_AGENCIJA_ID")//FK kolona u tabeli Izvodjac
+                .Inverse()
+                .Cascade.All();
         }
     }
 }

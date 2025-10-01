@@ -314,7 +314,7 @@ namespace Muzicki_festival
 
                 if (clan != null)
                 {
-                    MessageBox.Show($"Ime: {clan.IME},\nBend: {clan.BEND_ID.BROJ_CLANOVA}", "Detalji");
+                    MessageBox.Show($"Ime: {clan.IME},\nBend broj clanova: {clan.BEND_ID.BROJ_CLANOVA}", "Detalji");
                 }
                 else
                 {
@@ -334,12 +334,141 @@ namespace Muzicki_festival
             //izmedju benda i clana
             try
             {
-                ISession session = DataLayer.GetSession();
-                Muzicki_festival.Entiteti.Bend bend = session.Get<Muzicki_festival.Entiteti.Bend>(6);
-                foreach (var clan in bend.Clanovi)
+                using (ISession session = DataLayer.GetSession())
                 {
-                    MessageBox.Show("Clanovi: " + clan.IME);
+                    // Učitaj bend
+                    Bend bend = session.Get<Bend>(6);
+
+                    if (bend != null)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine($"Broj članova: {bend.BROJ_CLANOVA}");
+                        sb.AppendLine("Članovi:");
+
+                        if (bend.Clanovi != null && bend.Clanovi.Count > 0)
+                        {
+                            foreach (var clan in bend.Clanovi)
+                            {
+                                sb.AppendLine($"- {clan.IME} ({clan.INSTRUMENT})");
+                            }
+                        }
+                        else
+                        {
+                            sb.AppendLine("Nema članova.");
+                        }
+
+                        MessageBox.Show(sb.ToString(), "Bend i članovi");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bend nije pronađen.");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void cmdViseNaJedan4_Click(object sender, EventArgs e)
+        {
+            //izvodjaca i menadzerske
+            try
+            {
+                ISession session = DataLayer.GetSession();
+                Izvodjac i = session.Load<Izvodjac>(1);
+                MessageBox.Show($"Izvodjac: {i.IME},\nAgencija: {i.MenadzerskaAgencija.NAZIV}", "Detalji");
+                session.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void cmdJedanNaVise4_Click(object sender, EventArgs e)
+        {
+            // Izvodjac i njegova menadzerska agencija
+            try
+            {
+                using (ISession session = DataLayer.GetSession())
+                {
+                    int izvodjacId = 1;
+
+                    Izvodjac izvodjac = session.Get<Izvodjac>(izvodjacId);
+
+                    if (izvodjac != null && izvodjac.MenadzerskaAgencija != null)
+                    {
+                        MessageBox.Show($"Izvođač: {izvodjac.IME}\n", "Detalji");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Izvođač nije pronađen ili nema agenciju.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void cmdViseNaJedan5_Click(object sender, EventArgs e)
+        {
+            //dogadjaj i lokacija
+            try
+            {
+                using (ISession session = DataLayer.GetSession())
+                {
+                    LokacijaID lokacijaId = new LokacijaID
+                    {
+                        GPS_KOORDINATE = "43.335,21.910",
+                        NAZIV = "Trg Republike"
+                    };
+
+                    Muzicki_festival.Entiteti.Lokacija lokacija = session.Get<Muzicki_festival.Entiteti.Lokacija>(lokacijaId);
+
+                    if (lokacija != null)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine($"Lokacija: {lokacija.Lokacija_ID.NAZIV} ({lokacija.Lokacija_ID.GPS_KOORDINATE})");
+                        sb.AppendLine("Događaji:");
+
+                        // HashSet za izbacivanje duplikata po NAZIV-u
+                        HashSet<string> jedinstveniDogadjaji = new HashSet<string>();
+
+                        foreach (var dogadjaj in lokacija.Dogadjaji)
+                        {
+                            if (jedinstveniDogadjaji.Add(dogadjaj.NAZIV)) // dodaje samo ako nije već tu
+                            {
+                                sb.AppendLine($"- {dogadjaj.NAZIV}");
+                            }
+                        }
+
+                        MessageBox.Show(sb.ToString(), "Lokacija i njeni dogadjaji");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lokacija nije pronađena.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void cmdJedanNaVise5_Click(object sender, EventArgs e)
+        {
+            //lokacija i dogadjaj
+            try
+            {
+                ISession session = DataLayer.GetSession();
+                Dogadjaj d = session.Load<Dogadjaj>(25);
+                MessageBox.Show($"Dogadjaj: {d.NAZIV},\nLokacija: {d.Lokacija_ID.NAZIV} {d.Lokacija_ID.Lokacija_ID.GPS_KOORDINATE}", "Detalji");
+                session.Close();
             }
             catch (Exception ex)
             {

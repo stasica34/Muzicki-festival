@@ -60,6 +60,7 @@ namespace Muzicki_festival.Forme
                             sb.AppendLine($"IME: {a.IME}");
                             sb.AppendLine($"DRZAVA_POREKLA: {a.DRZAVA_POREKLA}");
                             sb.AppendLine($"EMAIL: {a.EMAIL}");
+                            sb.AppendLine($"MENADZERSKA_AGENCIJA_ID: {a.MenadzerskaAgencija.ID}");
                             sb.AppendLine($"KONTAKT_OSOBA: {a.KONTAKT_OSOBA}");
                             sb.AppendLine($"TELEFON: {a.TELEFON}");
                             sb.AppendLine(new string('-', 40));
