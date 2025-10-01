@@ -49,7 +49,7 @@ namespace Muzicki_festival.Forme
                         var listaGrupa = session.QueryOver<Grupa>().List();
                         if (listaGrupa.Count == 0)
                         {
-                            MessageBox.Show("Nema gr uupe bazi.");
+                            MessageBox.Show("Nema grupe u bazi.");
                             return;
                         }
                         StringBuilder sb = new StringBuilder();
@@ -57,6 +57,7 @@ namespace Muzicki_festival.Forme
                         {
                             sb.AppendLine($"ID grupe: {a.ID_GRUPE}");
                             sb.AppendLine($"Naziv: {a.NAZIV}");
+                            sb.AppendLine($"Agencije organizatori: {a.AgencijaID}");
                             sb.AppendLine(new string('-', 40));
                         }
                         MessageBox.Show(sb.ToString(), $"Lista grupa: {listaGrupa.Count}");

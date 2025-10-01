@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
+using Muzicki_festival.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,10 @@ namespace Muzicki_festival.Mapiranje
         public ClanMapiranje()
         {
             Table("CLAN");
-            Id(x => x.IME, "IME").GeneratedBy.TriggerIdentity();
-            Map(x => x.INSTRUMENT, "INSTRUMENT").Not.Nullable();
+            CompositeId<ClanID>(x => x.Id)
+             .KeyProperty(x => x.IME, "IME")
+             .KeyProperty(x => x.INSTRUMENT, "INSTRUMENT")
+             .KeyReference(x => x.BEND_ID, "BEND_ID");
         }
     }
 }

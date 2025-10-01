@@ -17,6 +17,8 @@ namespace Muzicki_festival.Mapiranje
             Table("GRUPA");
             Id(x => x.ID_GRUPE, "ID_GRUPE").GeneratedBy.TriggerIdentity();
             Map(x => x.NAZIV, "NAZIV");
+            //mapiranje  1:N sa AgencijaOrganizator
+            References(x => x.AgencijaID, "AGENCIJA_ORGANIZATOR_ID").LazyLoad().Cascade.All();
         }
     }
 }

@@ -10,9 +10,11 @@ namespace Muzicki_festival.Entiteti
     {
         public virtual int ID { get; protected set; }
         public virtual int BROJ_CLANOVA { get; set; }
-        public virtual IList<Clan> Clanovovi { get; set; }
+
+        //povezivanje 1:n clanovi
+        public virtual IList<Clan> Clanovi { get; set; }
         public Bend() {
-            Clanovovi = new List<Clan>();
+            Clanovi = new List<Clan>();
         }
 
     }

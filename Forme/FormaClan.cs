@@ -49,14 +49,15 @@ namespace Muzicki_festival.Forme
                         var listaClanova = session.QueryOver<Clan>().List();
                         if (listaClanova.Count == 0)
                         {
-                            MessageBox.Show("Nema akreditacija u bazi.");
+                            MessageBox.Show("Nema clanova u bazi.");
                             return;
                         }
                         StringBuilder sb = new StringBuilder();
                         foreach (var a in listaClanova)
                         {
                             sb.AppendLine($"ID: {a.IME}");
-                            sb.AppendLine($"Tip: {a.INSTRUMENT}");
+                            sb.AppendLine($"INstrument: {a.INSTRUMENT}");
+                            sb.AppendLine($"Bend_ID: {a.BEND_ID.ID}");
                             sb.AppendLine(new string('-', 40));
                         }
                         MessageBox.Show(sb.ToString(), $"Lista akreditacija: {listaClanova.Count}");

@@ -110,6 +110,7 @@
     <Compile Include="Entiteti\Akreditacija.cs" />
     <Compile Include="Entiteti\Bend.cs" />
     <Compile Include="Entiteti\Clan.cs" />
+    <Compile Include="Entiteti\ClanID.cs" />
     <Compile Include="Entiteti\Dogadjaj.cs" />
     <Compile Include="Entiteti\Grupa.cs" />
     <Compile Include="Entiteti\Izvodjac.cs" />
@@ -422,6 +423,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

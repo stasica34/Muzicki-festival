@@ -223,7 +223,7 @@ namespace Muzicki_festival
             this.Hide();
 
         }
-        private void cmd_JedanNaVise_Click(object sender, EventArgs e)
+        private void cmd_JedanNaVise_Click_1(object sender, EventArgs e)
         {
             //izmedju posetioca i ulaznice
             try
@@ -251,6 +251,95 @@ namespace Muzicki_festival
                 Ulaznica u = session.Load<Ulaznica>(1);
                 MessageBox.Show($"Ulaznica: {u.NAZIV},\nKupac: {u.KUPAC_ID.IME} {u.KUPAC_ID.PREZIME}", "Detalji");
                 session.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+        private void cmdViseNaJedan2_Click(object sender, EventArgs e)
+        {
+            //grupa i agencijaorganizator
+            try
+            {
+                ISession session = DataLayer.GetSession();
+                Grupa g = session.Load<Grupa>(1);
+                MessageBox.Show($"Grupa: {g.NAZIV},\nAgencija: {g.AgencijaID.NAZIV},\nAdresa: {g.AgencijaID.ADRESA}", "Detalji");
+                session.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+        private void cmdJedanNaVise_Click_1(object sender, EventArgs e)
+        {
+            //izmedju agencije i grupe
+            try
+            {
+                ISession session = DataLayer.GetSession();
+                Muzicki_festival.Entiteti.AgencijaOrganizator ag = session.Get<Muzicki_festival.Entiteti.AgencijaOrganizator>(1);
+                foreach (var agencija in ag.Grupe)
+                {
+                    MessageBox.Show("Grupe: " + agencija.NAZIV);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void cmdVisenaJedan3_Click(object sender, EventArgs e)
+        {
+            //clan i grupa
+            //ovde je komplikovano  jer je kompozitni kljuc u pitanju
+            try
+            {
+                ISession session = DataLayer.GetSession();
+
+                // 1. Učitaj bend koji je deo kompozitnog ključa
+                Bend bend = session.Load<Bend>(6);
+
+                // 2. Napravi ClanID (kompozitni ključ)
+                ClanID clanId = new ClanID
+                {
+                    IME = "Marko Jovanović",            
+                    INSTRUMENT = "Gitara",    
+                    BEND_ID = bend
+                };
+
+                // 3. Učitaj Clan po kompozitnom ključu
+                Clan clan = session.Get<Clan>(clanId);
+
+                if (clan != null)
+                {
+                    MessageBox.Show($"Ime: {clan.IME},\nBend: {clan.BEND_ID.BROJ_CLANOVA}", "Detalji");
+                }
+                else
+                {
+                    MessageBox.Show("Clan nije pronađen.");
+                }
+
+                session.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void cmdJedanNaVise3_Click(object sender, EventArgs e)
+        {
+            //izmedju benda i clana
+            try
+            {
+                ISession session = DataLayer.GetSession();
+                Muzicki_festival.Entiteti.Bend bend = session.Get<Muzicki_festival.Entiteti.Bend>(6);
+                foreach (var clan in bend.Clanovi)
+                {
+                    MessageBox.Show("Clanovi: " + clan.IME);
+                }
             }
             catch (Exception ex)
             {

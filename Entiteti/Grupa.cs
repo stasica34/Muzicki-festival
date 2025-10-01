@@ -10,6 +10,9 @@ namespace Muzicki_festival.Entiteti
     {
         public virtual int ID_GRUPE { get; protected set; }
         public virtual string NAZIV { get; set; }
-        public Grupa() { }
+        //1:n veza sa AgencijaOrganizator
+        public virtual AgencijaOrganizator AgencijaID { get; set; }
+        public Grupa() {
+        }
     }
 }

@@ -16,6 +16,10 @@ namespace Muzicki_festival.Mapiranje
             Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
             Map(x => x.NAZIV, "NAZIV").Not.Nullable();
             Map(x => x.ADRESA, "ADRESA").Not.Nullable();
+            HasMany(x => x.Grupe)
+                .KeyColumn("AGENCIJA_ORGANIZATOR_ID")//fk kolona u tabeli Grupa
+                .Inverse()
+                .Cascade.All();
         }
     }
 
