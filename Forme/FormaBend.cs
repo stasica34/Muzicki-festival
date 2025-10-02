@@ -74,5 +74,31 @@ namespace Muzicki_festival.Forme
             parentForm.Show();
             this.Close();
         }
+
+        private void cmdDodavanje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Entiteti.Bend b = new Entiteti.Bend();
+                b = s.Load<Entiteti.Bend>(9);
+                b.BROJ_CLANOVA = 4;
+                s.Save(b);
+                s.Flush();
+                MessageBox.Show(
+                   $"Uspesno je izvresno dodavanje podataka.\n\n" +
+                   $"Broj clanova: {b.BROJ_CLANOVA}\n",
+                   "Uspeh",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information
+                   );
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

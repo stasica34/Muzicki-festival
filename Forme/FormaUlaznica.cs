@@ -82,29 +82,72 @@ namespace Muzicki_festival.Forme
 
         private void cmd_Dodavanje_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    ISession s = DataLayer.GetSession();
+            //    //ubacujemo i novog posetioca i novu ulaznicu za tog posetioca
+            //    Posetilac p = new Posetilac
+            //    {
+            //        IME = "Stasa",
+            //        PREZIME = "Kostic",
+            //        EMAIL = "stasa.kostic@example.com"
+            //    };
+            //    s.Save(p);
+            //    s.Flush();
+            //    Ulaznica u = new Ulaznica
+            //    {
+            //        DATUM_KUPOVINE = DateTime.Now,
+            //        OSNOVNA_CENA = 2000,
+            //        KUPAC_ID = p, // veza ka novom posetiocu
+            //        NACIN_PLACANJA = "Kartica",
+            //        NAZIV = "Jednodnevna"
+            //    };
+
+            //    //ove varijente indu kada nije ukljuceno cascade all i inverse
+            //    //u.KUPAC_ID = p; // radi i bez ovog
+            //    // s.Save(u);
+            //    //s.Flush(); 
+            //    dodavanje preko posetioca
+            //    p.Ulaznice.Add(u); // dodajemo ulaznicu u kolekciju posetioca
+            //    s.Save(u); // cuvamo posetioca, sto ce automatski sacuvati i ulaznicu zbog kaskadnog cuvanja
+            //    s.Flush(); // forsiramo sinhronizaciju sa bazom, preporuka da se koristi
+            //    MessageBox.Show("Uspešno dodat posetilac i njegova ulaznica.");
+
+            //    s.Close();
+            //}
+            //catch (
+            //Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //drugi nacin:
             try
             {
                 ISession s = DataLayer.GetSession();
-                //ubacujemo i novog posetioca i novu ulaznicu za tog posetioca
                 Posetilac p = new Posetilac
                 {
-                    IME = "Nikola",
-                    PREZIME = "Jovanović",
-                    EMAIL = "nikola.jovanovic@example.com"
+                    IME = "Dimitrije",
+                    PREZIME = "Jovic",
+                    EMAIL = "dimitrije.jovic@example.com"
                 };
+
                 Ulaznica u = new Ulaznica
                 {
                     DATUM_KUPOVINE = DateTime.Now,
-                    OSNOVNA_CENA = 2000,
+                    OSNOVNA_CENA = 3400,
                     KUPAC_ID = p, // veza ka novom posetiocu
-                    NACIN_PLACANJA = "Kartica",
+                    NACIN_PLACANJA = "Gotovina",
                     NAZIV = "Jednodnevna"
                 };
-                p.Ulaznice.Add(u); // dodajemo ulaznicu u kolekciju posetioca
+                s.Save(p);
+                //dodavanje preko ulaznice
+                u.KUPAC_ID = p;
+                s.Save(u);
+                p.Ulaznice.Add(u);
+                s.Save(u); //ovo je cisto po potrebi
+                s.Flush(); 
                 MessageBox.Show("Uspešno dodat posetilac i njegova ulaznica.");
 
-                s.Save(p); // čuvamo posetioca, što će automatski sačuvati i ulaznicu zbog kaskadnog čuvanja
-                s.Flush(); // forsiramo sinhronizaciju sa bazom, preporuka da se koristi
                 s.Close();
             }
             catch (

@@ -36,16 +36,27 @@ namespace Muzicki_festival.Forme
                             MessageBox.Show("Nema agencija organizatora u bazi.");
                             return;
                         }
-                        StringBuilder sb = new StringBuilder();
-                        foreach(var ao in listaAgencijaOrganizatora)
+
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("ID");
+                        dt.Columns.Add("Naziv");
+                        dt.Columns.Add("Adresa");
+
+                        foreach (var ao in listaAgencijaOrganizatora)
                         {
-                            sb.AppendLine($"ID: {ao.ID}");
-                            sb.AppendLine($"Naziv: {ao.NAZIV}");
-                            sb.AppendLine($"Adresa: {ao.ADRESA}");
-                            sb.AppendLine(new string('-', 40));
+                            dt.Rows.Add(ao.ID, ao.NAZIV, ao.ADRESA);
                         }
-                        MessageBox.Show(sb.ToString(), $"Lista agencija organizatora: {listaAgencijaOrganizatora.Count}");
-                        transaction.Commit();
+                        dataGridView1.DataSource = dt;
+                        //StringBuilder sb = new StringBuilder();
+                        //foreach(var ao in listaAgencijaOrganizatora)
+                        //{
+                        //    sb.AppendLine($"ID: {ao.ID}");
+                        //    sb.AppendLine($"Naziv: {ao.NAZIV}");
+                        //    sb.AppendLine($"Adresa: {ao.ADRESA}");
+                        //    sb.AppendLine(new string('-', 40));
+                        //}
+                        //MessageBox.Show(sb.ToString(), $"Lista agencija organizatora: {listaAgencijaOrganizatora.Count}");
+                        //transaction.Commit();
                     }
                 }
 
@@ -70,10 +81,41 @@ namespace Muzicki_festival.Forme
                 {
                     MessageBox.Show("Forma uspešno otvorena!");
                 }
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView1.ReadOnly = true;
+                dataGridView1.AllowUserToAddRows = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void cmdDodavanje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Entiteti.AgencijaOrganizator ag = new Entiteti.AgencijaOrganizator();
+                ag = s.Load<Entiteti.AgencijaOrganizator>(4);
+                ag.NAZIV = "Niski festival";
+                s.Save(ag);
+                s.Flush();
+                MessageBox.Show(
+                   $"Uspesno je izvresno dodavanje podataka.\n\n" +
+                   $"Naziv: {ag.NAZIV}\n",
+                   "Uspeh",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information
+                   );
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

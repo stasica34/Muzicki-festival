@@ -79,5 +79,31 @@ namespace Muzicki_festival.Forme
                 MessageBox.Show("Greška: " + ex.Message);
             }
         }
+
+        private void cmdDodavanje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Entiteti.Posetilac p = new Entiteti.Posetilac();
+                p = s.Load<Entiteti.Posetilac>(4);
+                p.IME = "Nikolina";
+                s.Save(p);
+                s.Flush();
+                MessageBox.Show(
+                   $"Uspesno je izvresno dodavanje podataka.\n\n" +
+                   $"Ime: {p.IME}\n",
+                   "Uspeh",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information
+                   );
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

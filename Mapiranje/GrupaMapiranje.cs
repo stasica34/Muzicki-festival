@@ -15,10 +15,19 @@ namespace Muzicki_festival.Mapiranje
         public GrupaMapiranje()
         {
             Table("GRUPA");
-            Id(x => x.ID_GRUPE, "ID_GRUPE").GeneratedBy.TriggerIdentity();
+            Id(x => x.ID_GRUPE, "ID_GRUPE").GeneratedBy.SequenceIdentity("GRUPA_PK");
             Map(x => x.NAZIV, "NAZIV");
             //mapiranje  1:N sa AgencijaOrganizator
             References(x => x.AgencijaID, "AGENCIJA_ORGANIZATOR_ID").LazyLoad().Cascade.All();
+
+            //mapirajne n:m sa Posetiocem
+
+            HasManyToMany(x => x.Posetilac)
+                .Table("JE_CLAN")
+                .ParentKeyColumn("ID_GRUPE")//grupa
+                .ChildKeyColumn("POSETILAC_ID")//posetilac
+                .Cascade.All();
+           
         }
     }
 }

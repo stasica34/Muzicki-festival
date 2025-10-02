@@ -75,5 +75,31 @@ namespace Muzicki_festival.Forme
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void cmd_Dodavanje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Entiteti.Solo_Umetnik su = new Entiteti.Solo_Umetnik();
+                su = s.Load<Entiteti.Solo_Umetnik>(4);
+                su.SVIRA_INSTRUMENT = "NE";
+                s.Save(su);
+                s.Flush();
+                MessageBox.Show(
+                   $"Uspesno je izvresno dodavanje podataka.\n\n" +
+                   $"Svira instrument: {su.SVIRA_INSTRUMENT}\n",
+                   "Uspeh",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information
+                   );
+
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

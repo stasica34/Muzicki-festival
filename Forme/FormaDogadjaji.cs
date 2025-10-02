@@ -41,7 +41,7 @@ namespace Muzicki_festival.Forme
                 //kada hocemo nesto da dodamo/ ili izmenimo ono sto nemamo, samo pozivamo to sto hocemo da menjamo
                 //drugi iteracija
                 d = s.Load<Entiteti.Dogadjaj>(22);
-                d.OPIS = "Borba ritmova pod svetlima bine";
+                d.OPIS = "Ritmovi Ritmovi";
                 s.Save(d);
                 //s.SaveOrUpdate() // ukoliko postoji pk!=0 onda se radi azuriranje tog objekta (npr id !=0)
                 //ali save ili saveorupdate na istu foru funkcionisu, nije bitno sta koristimo

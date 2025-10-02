@@ -475,5 +475,28 @@ namespace Muzicki_festival
                 MessageBox.Show("Greška: " + ex.Message);
             }
         }
+
+        private void cmdViseNaVise_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Grupa g = s.Get<Grupa>(2);
+                foreach(Entiteti.Posetilac p in g.Posetilac)
+                {
+                    MessageBox.Show(p.IME);
+                }
+                Entiteti.Posetilac p1 = s.Load<Entiteti.Posetilac>(5);
+                foreach(Grupa g1 in p1.Grupa)
+                {
+                    MessageBox.Show(p1.IME + " " + p1.PREZIME);
+                }
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
     }
 }

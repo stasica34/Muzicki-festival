@@ -30,6 +30,7 @@
         {
             this.cmd_Ucitavanje = new System.Windows.Forms.Button();
             this.cmd_Nazad = new System.Windows.Forms.Button();
+            this.cmd_Dodavanje = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmd_Ucitavanje
@@ -44,7 +45,7 @@
             // 
             // cmd_Nazad
             // 
-            this.cmd_Nazad.Location = new System.Drawing.Point(12, 112);
+            this.cmd_Nazad.Location = new System.Drawing.Point(12, 178);
             this.cmd_Nazad.Name = "cmd_Nazad";
             this.cmd_Nazad.Size = new System.Drawing.Size(149, 64);
             this.cmd_Nazad.TabIndex = 2;
@@ -52,11 +53,22 @@
             this.cmd_Nazad.UseVisualStyleBackColor = true;
             this.cmd_Nazad.Click += new System.EventHandler(this.cmd_Nazad_Click);
             // 
+            // cmd_Dodavanje
+            // 
+            this.cmd_Dodavanje.Location = new System.Drawing.Point(12, 104);
+            this.cmd_Dodavanje.Name = "cmd_Dodavanje";
+            this.cmd_Dodavanje.Size = new System.Drawing.Size(169, 57);
+            this.cmd_Dodavanje.TabIndex = 5;
+            this.cmd_Dodavanje.Text = "Dodavanje";
+            this.cmd_Dodavanje.UseVisualStyleBackColor = true;
+            this.cmd_Dodavanje.Click += new System.EventHandler(this.cmd_Dodavanje_Click);
+            // 
             // FormaSoloUmetnik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmd_Dodavanje);
             this.Controls.Add(this.cmd_Nazad);
             this.Controls.Add(this.cmd_Ucitavanje);
             this.Name = "FormaSoloUmetnik";
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Button cmd_Ucitavanje;
         private System.Windows.Forms.Button cmd_Nazad;
+        private System.Windows.Forms.Button cmd_Dodavanje;
     }
 }
