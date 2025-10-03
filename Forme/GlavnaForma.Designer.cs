@@ -38,14 +38,12 @@
             this.cmd_TelefonPosetilac = new System.Windows.Forms.Button();
             this.cmd_JeClan = new System.Windows.Forms.Button();
             this.cmd_Ulaznica = new System.Windows.Forms.Button();
-            this.cmd_Bend = new System.Windows.Forms.Button();
+            this.cmd_Clan = new System.Windows.Forms.Button();
             this.cmd_Izvodjac = new System.Windows.Forms.Button();
             this.cnd_Jednodnevna = new System.Windows.Forms.Button();
             this.cmd_Kobinovana = new System.Windows.Forms.Button();
             this.cmd_Lokacija = new System.Windows.Forms.Button();
             this.cmd_MenadzerskaAgencija = new System.Windows.Forms.Button();
-            this.cmd_Nastupa = new System.Windows.Forms.Button();
-            this.cmd_Omogucava_Ulaz_na = new System.Windows.Forms.Button();
             this.cmd_OtvorenaLokacija = new System.Windows.Forms.Button();
             this.cmd_TelefonIzvodjac = new System.Windows.Forms.Button();
             this.cmd_Vip = new System.Windows.Forms.Button();
@@ -65,6 +63,7 @@
             this.cmdViseNaJedan5 = new System.Windows.Forms.Button();
             this.cmdJedanNaVise5 = new System.Windows.Forms.Button();
             this.cmdViseNaVise = new System.Windows.Forms.Button();
+            this.cmdVisenaVise2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdBend
@@ -79,7 +78,7 @@
             // 
             // cmd_SoloUmetnik
             // 
-            this.cmd_SoloUmetnik.Location = new System.Drawing.Point(362, 448);
+            this.cmd_SoloUmetnik.Location = new System.Drawing.Point(362, 330);
             this.cmd_SoloUmetnik.Name = "cmd_SoloUmetnik";
             this.cmd_SoloUmetnik.Size = new System.Drawing.Size(169, 56);
             this.cmd_SoloUmetnik.TabIndex = 3;
@@ -139,7 +138,7 @@
             // 
             // cmd_JeClan
             // 
-            this.cmd_JeClan.Location = new System.Drawing.Point(362, 327);
+            this.cmd_JeClan.Location = new System.Drawing.Point(362, 266);
             this.cmd_JeClan.Name = "cmd_JeClan";
             this.cmd_JeClan.Size = new System.Drawing.Size(169, 55);
             this.cmd_JeClan.TabIndex = 9;
@@ -157,15 +156,15 @@
             this.cmd_Ulaznica.UseVisualStyleBackColor = true;
             this.cmd_Ulaznica.Click += new System.EventHandler(this.cmd_Ulaznica_Click);
             // 
-            // cmd_Bend
+            // cmd_Clan
             // 
-            this.cmd_Bend.Location = new System.Drawing.Point(712, 268);
-            this.cmd_Bend.Name = "cmd_Bend";
-            this.cmd_Bend.Size = new System.Drawing.Size(169, 53);
-            this.cmd_Bend.TabIndex = 11;
-            this.cmd_Bend.Text = "Clan";
-            this.cmd_Bend.UseVisualStyleBackColor = true;
-            this.cmd_Bend.Click += new System.EventHandler(this.cmd_Bend_Click);
+            this.cmd_Clan.Location = new System.Drawing.Point(712, 268);
+            this.cmd_Clan.Name = "cmd_Clan";
+            this.cmd_Clan.Size = new System.Drawing.Size(169, 53);
+            this.cmd_Clan.TabIndex = 11;
+            this.cmd_Clan.Text = "Clan";
+            this.cmd_Clan.UseVisualStyleBackColor = true;
+            this.cmd_Clan.Click += new System.EventHandler(this.cmd_Clan_Click);
             // 
             // cmd_Izvodjac
             // 
@@ -216,26 +215,6 @@
             this.cmd_MenadzerskaAgencija.Text = "Menadzerska agencija";
             this.cmd_MenadzerskaAgencija.UseVisualStyleBackColor = true;
             this.cmd_MenadzerskaAgencija.Click += new System.EventHandler(this.cmd_MenadzerskaAgencija_Click);
-            // 
-            // cmd_Nastupa
-            // 
-            this.cmd_Nastupa.Location = new System.Drawing.Point(362, 266);
-            this.cmd_Nastupa.Name = "cmd_Nastupa";
-            this.cmd_Nastupa.Size = new System.Drawing.Size(169, 55);
-            this.cmd_Nastupa.TabIndex = 17;
-            this.cmd_Nastupa.Text = "Nastupa";
-            this.cmd_Nastupa.UseVisualStyleBackColor = true;
-            this.cmd_Nastupa.Click += new System.EventHandler(this.cmd_Nastupa_Click);
-            // 
-            // cmd_Omogucava_Ulaz_na
-            // 
-            this.cmd_Omogucava_Ulaz_na.Location = new System.Drawing.Point(362, 388);
-            this.cmd_Omogucava_Ulaz_na.Name = "cmd_Omogucava_Ulaz_na";
-            this.cmd_Omogucava_Ulaz_na.Size = new System.Drawing.Size(169, 54);
-            this.cmd_Omogucava_Ulaz_na.TabIndex = 18;
-            this.cmd_Omogucava_Ulaz_na.Text = "Omogucava Ulaz Na";
-            this.cmd_Omogucava_Ulaz_na.UseVisualStyleBackColor = true;
-            this.cmd_Omogucava_Ulaz_na.Click += new System.EventHandler(this.cmd_Omogucava_Ulaz_na_Click);
             // 
             // cmd_OtvorenaLokacija
             // 
@@ -427,11 +406,22 @@
             this.cmdViseNaVise.UseVisualStyleBackColor = true;
             this.cmdViseNaVise.Click += new System.EventHandler(this.cmdViseNaVise_Click);
             // 
+            // cmdVisenaVise2
+            // 
+            this.cmdVisenaVise2.Location = new System.Drawing.Point(187, 386);
+            this.cmdVisenaVise2.Name = "cmdVisenaVise2";
+            this.cmdVisenaVise2.Size = new System.Drawing.Size(169, 56);
+            this.cmdVisenaVise2.TabIndex = 39;
+            this.cmdVisenaVise2.Text = "ViseNaVise";
+            this.cmdVisenaVise2.UseVisualStyleBackColor = true;
+            this.cmdVisenaVise2.Click += new System.EventHandler(this.cmdVisenaVise2_Click);
+            // 
             // GlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 536);
+            this.Controls.Add(this.cmdVisenaVise2);
             this.Controls.Add(this.cmdViseNaVise);
             this.Controls.Add(this.cmdJedanNaVise5);
             this.Controls.Add(this.cmdViseNaJedan5);
@@ -451,14 +441,12 @@
             this.Controls.Add(this.cmd_Vip);
             this.Controls.Add(this.cmd_TelefonIzvodjac);
             this.Controls.Add(this.cmd_OtvorenaLokacija);
-            this.Controls.Add(this.cmd_Omogucava_Ulaz_na);
-            this.Controls.Add(this.cmd_Nastupa);
             this.Controls.Add(this.cmd_MenadzerskaAgencija);
             this.Controls.Add(this.cmd_Lokacija);
             this.Controls.Add(this.cmd_Kobinovana);
             this.Controls.Add(this.cnd_Jednodnevna);
             this.Controls.Add(this.cmd_Izvodjac);
-            this.Controls.Add(this.cmd_Bend);
+            this.Controls.Add(this.cmd_Clan);
             this.Controls.Add(this.cmd_Ulaznica);
             this.Controls.Add(this.cmd_JeClan);
             this.Controls.Add(this.cmd_TelefonPosetilac);
@@ -469,7 +457,7 @@
             this.Controls.Add(this.cmd_SoloUmetnik);
             this.Controls.Add(this.cmdBend);
             this.Name = "GlavnaForma";
-            this.Text = "Form1";
+            this.Text = "S";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
@@ -487,14 +475,12 @@
         private System.Windows.Forms.Button cmd_TelefonPosetilac;
         private System.Windows.Forms.Button cmd_JeClan;
         private System.Windows.Forms.Button cmd_Ulaznica;
-        private System.Windows.Forms.Button cmd_Bend;
+        private System.Windows.Forms.Button cmd_Clan;
         private System.Windows.Forms.Button cmd_Izvodjac;
         private System.Windows.Forms.Button cnd_Jednodnevna;
         private System.Windows.Forms.Button cmd_Kobinovana;
         private System.Windows.Forms.Button cmd_Lokacija;
         private System.Windows.Forms.Button cmd_MenadzerskaAgencija;
-        private System.Windows.Forms.Button cmd_Nastupa;
-        private System.Windows.Forms.Button cmd_Omogucava_Ulaz_na;
         private System.Windows.Forms.Button cmd_OtvorenaLokacija;
         private System.Windows.Forms.Button cmd_TelefonIzvodjac;
         private System.Windows.Forms.Button cmd_Vip;
@@ -514,6 +500,7 @@
         private System.Windows.Forms.Button cmdViseNaJedan5;
         private System.Windows.Forms.Button cmdJedanNaVise5;
         private System.Windows.Forms.Button cmdViseNaVise;
+        private System.Windows.Forms.Button cmdVisenaVise2;
     }
 }
 

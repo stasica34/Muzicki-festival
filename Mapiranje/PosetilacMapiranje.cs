@@ -29,19 +29,10 @@ namespace Muzicki_festival.Mapiranje
             //   .KeyColumn("KUPAC_ID"); 
             //HasMany(x => x.Ulaznice)
             //   .KeyColumn("KUPAC_ID")
-            //   .Cascade.All();
+            //   .Cascade.All()
 
-            //mapiramo smer
-            HasManyToMany(x => x.Grupa)
-                .Table("JE_CLAN")
-                .ParentKeyColumn("POSETILAC_ID")
-                .ChildKeyColumn("ID_GRUPE")
-                .Cascade.All()
-                .Inverse();
-
-            //inverzija moze da bude na obe strane
-            //ali biramo tamo inverziju gde nam vise odgovara
-
+            //mapiranje sa n:m
+            HasMany(x => x.JeClan).KeyColumn("POSETILAC_ID").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

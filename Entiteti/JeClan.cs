@@ -8,12 +8,28 @@ namespace Muzicki_festival.Entiteti
 {
     public class JeClan
     {
-        public virtual int ID { get; protected set; }
-        // FK: veza ka entitetu Posetilac
-        public virtual Posetilac Posetilac { get; set; }
+        public virtual JeClanID ID { get; set; }
 
-        // FK: veza ka entitetu Grupa
-        public virtual Grupa Grupa { get; set; }
-        public JeClan() { }
+        public virtual DateTime? Datum_od { get; set; }
+        public virtual DateTime? Datum_do { get; set; }
+        public virtual string Status { get; set; }
+
+        public JeClan()
+        {
+            //eksplicitno Id mora da bude inicajalizovan na neku vrednost
+            ID = new JeClanID();
+        }
+
+        public virtual Posetilac Posetilac
+        {
+            get => ID.Posetilac;
+            set => ID.Posetilac = value;
+        }
+
+        public virtual Grupa Grupa
+        {
+            get => ID.Grupa;
+            set => ID.Grupa = value;
+        }
     }
 }

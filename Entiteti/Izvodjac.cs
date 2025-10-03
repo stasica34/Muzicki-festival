@@ -1,8 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Muzicki_festival.Entiteti
 {
@@ -18,7 +15,12 @@ namespace Muzicki_festival.Entiteti
 
         public virtual string TELEFON { get; set; }
         public virtual MenadzerskaAgencija MenadzerskaAgencija { get; set; }
+        //veza n:m sa dogadjem
+        public virtual IList<Dogadjaj> Dogadjaji { get; set; }
 
-        public Izvodjac() { }
+        public Izvodjac()
+        {
+            Dogadjaji = new List<Dogadjaj>();
+        }
     }
 }

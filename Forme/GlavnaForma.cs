@@ -41,12 +41,6 @@ namespace Muzicki_festival
                 MessageBox.Show("Greška: " + ex.Message);
             }
         }
-
-        private void cmdDodavanje_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void cmdBend_Click(object sender, EventArgs e)
         {
             FormaBend formaBend = new FormaBend(this);
@@ -111,7 +105,7 @@ namespace Muzicki_festival
             this.Hide();
         }
 
-        private void cmd_Bend_Click(object sender, EventArgs e)
+        private void cmd_Clan_Click(object sender, EventArgs e)
         {
             FormaClan formaClan = new FormaClan(this);
             formaClan.Show();
@@ -152,21 +146,6 @@ namespace Muzicki_festival
             formaMenaderskaAgencija.Show();
             this.Hide();
         }
-
-        private void cmd_Nastupa_Click(object sender, EventArgs e)
-        {
-            FormaNastupa formaNastupa = new FormaNastupa(this);
-            formaNastupa.Show();
-            this.Hide();
-        }
-
-        private void cmd_Omogucava_Ulaz_na_Click(object sender, EventArgs e)
-        {
-            FormaOmogucavaUlazNa formaomogucavaUlazNa = new FormaOmogucavaUlazNa(this);
-            formaomogucavaUlazNa.Show();
-            this.Hide();
-        }
-
         private void cmd_OtvorenaLokacija_Click(object sender, EventArgs e)
         {
             FormaOtvorenaLokacija formaotvorenaLokacija = new FormaOtvorenaLokacija(this);
@@ -297,19 +276,13 @@ namespace Muzicki_festival
             try
             {
                 ISession session = DataLayer.GetSession();
-
-                // 1. Učitaj bend koji je deo kompozitnog ključa
                 Bend bend = session.Load<Bend>(6);
-
-                // 2. Napravi ClanID (kompozitni ključ)
                 ClanID clanId = new ClanID
                 {
                     IME = "Marko Jovanović",            
                     INSTRUMENT = "Gitara",    
                     BEND_ID = bend
                 };
-
-                // 3. Učitaj Clan po kompozitnom ključu
                 Clan clan = session.Get<Clan>(clanId);
 
                 if (clan != null)
@@ -481,19 +454,89 @@ namespace Muzicki_festival
             try
             {
                 ISession s = DataLayer.GetSession();
-                Grupa g = s.Get<Grupa>(2);
-                foreach(Entiteti.Posetilac p in g.Posetilac)
+                Dogadjaj d = s.Get<Dogadjaj>(25);
+                //foreach(Entiteti.Izvodjac i in d.Izvodjaci)
+                //{
+                //    MessageBox.Show("Dogadjaj: " + d.NAZIV + "\nBroj izvođača: " + d.Izvodjaci.Count);
+                //}
+                //Entiteti.Izvodjac i1 = s.Load<Entiteti.Izvodjac>(1);
+                //foreach(Dogadjaj g1 in i1.Dogadjaji)
+                //{
+                //    StringBuilder sb = new StringBuilder();
+                //    sb.AppendLine($"- {i1.IME} ({i1.DRZAVA_POREKLA})");
+                //}
+                if (d != null)
                 {
-                    MessageBox.Show(p.IME);
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine($"Događaj: {d.NAZIV}");
+                    sb.AppendLine($"Broj izvođača: {d.Izvodjaci.Count}");
+                    sb.AppendLine("Izvođači:");
+
+                    foreach (Izvodjac i in d.Izvodjaci)
+                    {
+                        sb.AppendLine($"- {i.IME} ({i.DRZAVA_POREKLA})");
+                    }
+
+                    MessageBox.Show(sb.ToString(), "Događaj i izvođači");
                 }
-                Entiteti.Posetilac p1 = s.Load<Entiteti.Posetilac>(5);
-                foreach(Grupa g1 in p1.Grupa)
+                Izvodjac i1 = s.Load<Izvodjac>(1);
+                if (i1 != null)
                 {
-                    MessageBox.Show(p1.IME + " " + p1.PREZIME);
+                    StringBuilder sb2 = new StringBuilder();
+                    sb2.AppendLine($"Izvođač: {i1.IME} ({i1.DRZAVA_POREKLA})");
+                    sb2.AppendLine("Nastupa na događajima:");
+
+                    foreach (Dogadjaj g1 in i1.Dogadjaji)
+                    {
+                        sb2.AppendLine($"- {g1.NAZIV}");
+                    }
+
+                    MessageBox.Show(sb2.ToString(), "Izvođač i njegovi događaji");
                 }
                 s.Close();
             }
             catch(Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void cmdVisenaVise2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Dogadjaj d = s.Get<Dogadjaj>(25);
+                if (d != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine($"Događaj: {d.NAZIV}");
+                    sb.AppendLine($"Broj izvođača: {d.Izvodjaci.Count}");
+                    sb.AppendLine("Izvođači:");
+
+                    foreach (Izvodjac i in d.Izvodjaci)
+                    {
+                        sb.AppendLine($"- {i.IME} ({i.DRZAVA_POREKLA})");
+                    }
+
+                    MessageBox.Show(sb.ToString(), "Događaj i izvođači");
+                }
+                Ulaznica u = s.Load<Ulaznica>(1);
+                if (u != null)
+                {
+                    StringBuilder sb2 = new StringBuilder();
+                    sb2.AppendLine($"Ulaznica: {u.DATUM_KUPOVINE} ({u.NACIN_PLACANJA})");
+
+                    foreach (Dogadjaj g1 in u.Dogadjaji)
+                    {
+                        sb2.AppendLine($"- {g1.NAZIV}");
+                    }
+
+                    MessageBox.Show(sb2.ToString(), "Ulaznica i njegovi događaji");
+                }
+                s.Close();
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Greška: " + ex.Message);
             }

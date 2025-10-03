@@ -13,16 +13,14 @@ namespace Muzicki_festival.Mapiranje
         public JeCLanMapiranje()
         {
             Table("JE_CLAN");
-            Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
-            References(x => x.Posetilac)
-               .Column("POSETILAC_ID")
-               .Not.Nullable()
-               .Cascade.None();
 
-            References(x => x.Grupa)
-                .Column("ID_GRUPE")
-                .Not.Nullable()
-                .Cascade.None();
+            CompositeId<JeClanID>(x => x.ID)
+                .KeyReference(x => x.Posetilac, "POSETILAC_ID")
+                .KeyReference(x => x.Grupa, "ID_GRUPE");
+
+            Map(x => x.Datum_od, "DATUM_OD");
+            Map(x => x.Datum_do, "DATUM_DO");
+            Map(x => x.Status, "STATUS");
         }
     }
 }

@@ -152,5 +152,57 @@ namespace Muzicki_festival.Forme
             parentForm.Show();
             this.Close();
         }
+
+        private void cmdDodavanje2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s= DataLayer.GetSession();
+                Lokacija lokacija = s.QueryOver<Lokacija>()
+                .Where(x => x.Lokacija_ID.NAZIV == "Kalemegdan")
+                .And(x => x.Lokacija_ID.GPS_KOORDINATE == "43.340,21.915")
+                .SingleOrDefault();
+                if (lokacija == null)
+                {
+                    MessageBox.Show("Greška: Nema zadate lokacije u bazi. Dodaj lokaciju pre unosa događaja.");
+                    return;
+                }
+                Dogadjaj d = new Dogadjaj()
+                {
+                    NAZIV = "Nesto novo pt2",
+                    TIP = "Radionica",
+                    OPIS = "Proba nova",
+                    DATUM_VREME_POCETKA = DateTime.Now,
+                    DATUM_VREME_KRAJA = new DateTime(2025, 10, 5),
+                    Lokacija_ID = lokacija
+                };
+                s.Save(d);
+                s.Flush();
+                MessageBox.Show("Uspesno je dodato");
+                Posetilac posetilac = s.Get<Posetilac>(5);
+                if (posetilac == null)
+                {
+                    MessageBox.Show("Posetilac sa ID = 5 ne postoji.");
+                    return;
+                }
+                Ulaznica u = new Ulaznica()
+                {
+                    DATUM_KUPOVINE = DateTime.Now,
+                    OSNOVNA_CENA = 3500,
+                    KUPAC_ID = posetilac,
+                    NACIN_PLACANJA = "Kartica",
+                    NAZIV = "VIP"
+                };
+                s.Save(u);
+                d.Ulaznica.Add(u);
+                s.Flush();
+                MessageBox.Show("Uspesno je dodato");
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message); 
+            }
+        }
     }
 }

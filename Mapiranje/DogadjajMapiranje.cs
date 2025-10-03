@@ -44,6 +44,18 @@ namespace Muzicki_festival.Mapiranje
                 .Not.Nullable()
                 .Cascade.None();
 
+            //mapiranje n:m sa izvodjacem
+            HasManyToMany(x => x.Izvodjaci)
+                .Table("NASTUPA")
+                .ParentKeyColumn("DOGADJAJ_ID")//grupa
+                .ChildKeyColumn("IZVODJAC_ID")//posetilac
+                .Cascade.All();
+            //mapiranje n:m sa ulaznicom
+            HasManyToMany(x => x.Ulaznica)
+                .Table("OMOGUCAVA_ULAZ_NA")
+                .ParentKeyColumn("DOGADJAJ_ID")
+                .ChildKeyColumn("ID_ULAZNICE")
+                .Cascade.All();
         }
     }
 }

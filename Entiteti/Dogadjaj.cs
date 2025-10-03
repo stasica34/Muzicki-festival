@@ -21,8 +21,15 @@ namespace Muzicki_festival.Entiteti
         //konstructor
         //veza 1:n ka lokaciji
         public virtual Lokacija Lokacija_ID { get; set; }
-        public Dogadjaj() { }
 
-
+        //veza n:m sa izvodjacem
+        public virtual IList<Izvodjac> Izvodjaci { get; set; }
+        //vwza n:m sa ulaznicom
+        public virtual IList<Ulaznica> Ulaznica { get; set; }
+        public Dogadjaj() 
+        {
+            Izvodjaci = new List<Izvodjac>();
+            Ulaznica = new List<Ulaznica>();
+        }
     }
 }

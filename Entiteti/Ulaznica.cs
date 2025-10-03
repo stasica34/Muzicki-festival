@@ -15,6 +15,12 @@ namespace Muzicki_festival.Entiteti
         public virtual DateTime DATUM_KUPOVINE { get; set; }
         //veza 1:N sa posetiocem
         public virtual Posetilac KUPAC_ID { get; set; }
-        public Ulaznica() { }
+
+        //veza n:m sa dogadjem
+        public virtual IList<Dogadjaj> Dogadjaji { get; set; }
+        public Ulaznica()
+        {
+            Dogadjaji = new List<Dogadjaj>();
+        }
     }
 }

@@ -19,15 +19,13 @@ namespace Muzicki_festival.Entiteti
         //jer on prevodi u interfejs, na osnovu interfejsa kreira svoju listu
         //korise se interfejsi koji se mapiraju u listu
         public virtual IList<Ulaznica> Ulaznice { get; set; }
-
-        //mapiranje n:m sa grupom
-        public virtual IList<Grupa> Grupa { get; set; }
+        //veza n:m
+        public virtual IList<JeClan> JeClan { get; set; } 
         public Posetilac()
         {
             //inicijalizacija liste ulaznica
             Ulaznice = new List<Ulaznica>();
-
-            Grupa = new List<Grupa>();
+            JeClan  = new List<JeClan>();
         }
 
     }

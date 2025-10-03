@@ -22,6 +22,15 @@ namespace Muzicki_festival.Mapiranje
             Map(x => x.TELEFON, "TELEFON").Nullable();
             //mapiranje 1:n sa menadzerskom agencijom
             References(x => x.MenadzerskaAgencija).Column("MENADZERSKA_AGENCIJA_ID").LazyLoad().Cascade.None();
+            //mapiranje n:m
+            HasManyToMany(x => x.Dogadjaji)
+              .Table("NASTUPA")
+              .ParentKeyColumn("IZVODJAC_ID")
+              .ChildKeyColumn("DOGADJAJ_ID")
+              .Cascade.All()
+              .Inverse();
+            //inverzija moze da bude na obe strane
+            //ali biramo tamo inverziju gde nam vise odgovara
 
         }
     }

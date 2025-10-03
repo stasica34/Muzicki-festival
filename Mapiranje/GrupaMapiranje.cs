@@ -20,14 +20,8 @@ namespace Muzicki_festival.Mapiranje
             //mapiranje  1:N sa AgencijaOrganizator
             References(x => x.AgencijaID, "AGENCIJA_ORGANIZATOR_ID").LazyLoad().Cascade.All();
 
-            //mapirajne n:m sa Posetiocem
-
-            HasManyToMany(x => x.Posetilac)
-                .Table("JE_CLAN")
-                .ParentKeyColumn("ID_GRUPE")//grupa
-                .ChildKeyColumn("POSETILAC_ID")//posetilac
-                .Cascade.All();
-           
+            //mapiranje
+            HasMany(x=> x.JeClan).KeyColumn("ID_GRUPE").LazyLoad().Cascade.All();
         }
     }
 }

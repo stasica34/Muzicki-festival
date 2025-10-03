@@ -26,6 +26,14 @@ namespace Muzicki_festival.Mapiranje
             //kada radimo sa referencama i vezama da radimo sa lazyloadom
 
             References(x => x.KUPAC_ID, "KUPAC_ID").LazyLoad().Cascade.All();
+
+            //n:m veza sa dogadjejm
+            HasManyToMany(x => x.Dogadjaji)
+              .Table("OMOGUCAVA_ULAZ_NA")
+              .ParentKeyColumn("ID_ULAZNICE")
+              .ChildKeyColumn("DOGADJAJ_ID")
+              .Cascade.All()
+              .Inverse();
         }
     }
 }

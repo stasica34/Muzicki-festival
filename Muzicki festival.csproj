@@ -115,15 +115,12 @@
     <Compile Include="Entiteti\Grupa.cs" />
     <Compile Include="Entiteti\Izvodjac.cs" />
     <Compile Include="Entiteti\JeClan.cs" />
+    <Compile Include="Entiteti\JeClanID.cs" />
     <Compile Include="Entiteti\Jednodnevna.cs" />
     <Compile Include="Entiteti\KombinovanaLokacija.cs" />
     <Compile Include="Entiteti\Lokacija.cs" />
     <Compile Include="Entiteti\LokacijaID.cs" />
     <Compile Include="Entiteti\MenadzerskaAgencija.cs" />
-    <Compile Include="Entiteti\Nastupa.cs" />
-    <Compile Include="Entiteti\NastupaID.cs" />
-    <Compile Include="Entiteti\OmogucavaUlazNa.cs" />
-    <Compile Include="Entiteti\OmogucavaUlazNaID.cs" />
     <Compile Include="Entiteti\OtvorenaLokacija.cs" />
     <Compile Include="Entiteti\Posetilac.cs" />
     <Compile Include="Entiteti\Solo_Umetnik.cs" />
@@ -215,18 +212,6 @@
     <Compile Include="Forme\FormaMenaderskaAgencija.Designer.cs">
       <DependentUpon>FormaMenaderskaAgencija.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\FormaNastupa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaNastupa.Designer.cs">
-      <DependentUpon>FormaNastupa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaOmogucavaUlazNa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaOmogucavaUlazNa.Designer.cs">
-      <DependentUpon>FormaOmogucavaUlazNa.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forme\FormaOtvorenaLokacija.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,8 +290,6 @@
     <Compile Include="Mapiranje\KombinovanaLokacijaMapiranje.cs" />
     <Compile Include="Mapiranje\LokacijaMapiranja.cs" />
     <Compile Include="Mapiranje\MenadzerskaAgencijaMapiranje.cs" />
-    <Compile Include="Mapiranje\NastupaMapiranje.cs" />
-    <Compile Include="Mapiranje\OmogucavaUlazNaMapiranje.cs" />
     <Compile Include="Mapiranje\OtvorenaLokacijaMapiranje.cs" />
     <Compile Include="Mapiranje\PosetilacMapiranje.cs" />
     <Compile Include="Mapiranje\SoloUmetnikMapiranje.cs" />
@@ -358,12 +341,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaMenaderskaAgencija.resx">
       <DependentUpon>FormaMenaderskaAgencija.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaNastupa.resx">
-      <DependentUpon>FormaNastupa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaOmogucavaUlazNa.resx">
-      <DependentUpon>FormaOmogucavaUlazNa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaOtvorenaLokacija.resx">
       <DependentUpon>FormaOtvorenaLokacija.cs</DependentUpon>

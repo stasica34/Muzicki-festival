@@ -47,9 +47,11 @@ namespace Muzicki_festival.Forme
                         StringBuilder sb = new StringBuilder();
                         foreach (var ao in listaJeCLan)
                         {
-                            sb.AppendLine($"ID: {ao.ID}");
-                            sb.AppendLine($"ID_Grupe: {ao.Grupa.ID_GRUPE}");
-                            sb.AppendLine($"ID Posetilac: {ao.Posetilac.ID}");
+                            sb.AppendLine($"ID_Grupe: {ao.ID.Grupa.ID_GRUPE}");
+                            sb.AppendLine($"ID Posetilac: {ao.ID.Posetilac.ID}");
+                            sb.AppendLine($"Datum od: {ao.Datum_do}");
+                            sb.AppendLine($"Datum do: {ao.Datum_do}");
+                            sb.AppendLine($"Status: {ao.Status}");
                             sb.AppendLine(new string('-', 40));
                         }
                         MessageBox.Show(sb.ToString(), $"Lista agencija organizatora: {listaJeCLan.Count}");
@@ -76,6 +78,28 @@ namespace Muzicki_festival.Forme
             catch (Exception ex)
             {
                 MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void cmdDodavanje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Grupa g = s.Load<Grupa>(11);
+                Entiteti.Posetilac p = s.Load<Entiteti.Posetilac>(18);
+                JeClan jeClan = new JeClan();
+                jeClan.ID.Grupa = g;
+                jeClan.ID.Posetilac = p;
+                jeClan.Datum_od = DateTime.Now;
+                s.Save(jeClan);
+                s.Flush();
+                MessageBox.Show("Uspesno je sve dodato u bazi");
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

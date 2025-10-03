@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Entiteti
 {
-    public class Jednodnevna
+    //izvede iz klase ulaznica- specijalizacija
+    public class Jednodnevna: Ulaznica
     {
-        public virtual int ID_ULAZNICE { get; set; }
         public virtual DateTime DAN_VAZENJA { get; set; }
-        public virtual Ulaznica Ulaznica { get; set; }
 
         public Jednodnevna() { }
     }

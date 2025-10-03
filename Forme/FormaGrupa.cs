@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Muzicki_festival.Entiteti;
 using NHibernate;
-using Muzicki_festival.Entiteti;
+using System;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Muzicki_festival.Forme
 {
@@ -79,56 +73,25 @@ namespace Muzicki_festival.Forme
 
         private void cmdDodavanje_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    ISession s = DataLayer.GetSession();
-            //    Entiteti.Grupa g = new Entiteti.Grupa();
-            //    g = s.Load<Entiteti.Grupa>(4);
-            //    g.NAZIV = "Niski jazzveri";
-            //    s.Save(g);
-            //    s.Flush();
-            //    MessageBox.Show(
-            //       $"Uspesno je izvresno dodavanje podataka.\n\n" +
-            //       $"Naziv: {g.NAZIV}\n",
-            //       "Uspeh",
-            //       MessageBoxButtons.OK,
-            //       MessageBoxIcon.Information
-            //       );
-
-            //    s.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            //ovakva pristup se koristi kada kod n:m veze nemamo nijedan atribut
             try
             {
                 ISession s = DataLayer.GetSession();
-                var agencija = s.Load<AgencijaOrganizator>(1);
-                Grupa g = new Grupa()
-                {
-                    NAZIV = "Domci2",
-                    AgencijaID = agencija
-                };
+                Entiteti.Grupa g = new Entiteti.Grupa();
+                g = s.Load<Entiteti.Grupa>(4);
+                g.NAZIV = "Niski jazzveri";
                 s.Save(g);
                 s.Flush();
-                MessageBox.Show("Uspesno je dodato");
+                MessageBox.Show(
+                   $"Uspesno je izvresno dodavanje podataka.\n\n" +
+                   $"Naziv: {g.NAZIV}\n",
+                   "Uspeh",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information
+                   );
 
-                Entiteti.Posetilac p = new Entiteti.Posetilac()
-                {
-                    IME = "Jovan",
-                    PREZIME = "Djordjevic",
-                    EMAIL = "jovan@example.com"
-                };
-                s.Save(p);
-                g.Posetilac.Add(p);
-                s.Update(g);
-                s.Flush();
-                MessageBox.Show("Uspesno je dodato");
                 s.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

@@ -12,12 +12,9 @@ namespace Muzicki_festival.Entiteti
         public virtual string NAZIV { get; set; }
         //1:n veza sa AgencijaOrganizator
         public virtual AgencijaOrganizator AgencijaID { get; set; }
-
-        //n:m
-
-        public virtual IList<Posetilac> Posetilac { get; set; }
+        public virtual IList<JeClan> JeClan { get; set; }
         public Grupa() {
-            Posetilac = new List<Posetilac>();
+            JeClan = new List<JeClan>();
         }
     }
 }
