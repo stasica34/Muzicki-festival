@@ -105,10 +105,22 @@ namespace Muzicki_festival.Forme
             try
             {
                 ISession s = DataLayer.GetSession();
+                Posetilac posetilac = s.Get<Posetilac>(1);
+                if (posetilac == null)
+                {
+                    MessageBox.Show("Posetilac sa ID = 1 ne postoji.");
+                    return;
+                }
                 Jednodnevna j = new Jednodnevna();
+                j.DATUM_KUPOVINE = DateTime.Now;
+                j.OSNOVNA_CENA = 300;
+                j.KUPAC_ID = posetilac;
+                j.NACIN_PLACANJA = "Kartica";
+                j.NAZIV = "jednodnevna za danas";
                 j.DAN_VAZENJA = DateTime.Now;
                 s.Save(j);
                 s.Flush();
+                MessageBox.Show($"Uspesno je sve dodato u bazi {j.DAN_VAZENJA}");
                 s.Close();
             }
             catch(Exception ex)

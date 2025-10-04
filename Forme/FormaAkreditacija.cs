@@ -57,7 +57,9 @@ namespace Muzicki_festival.Forme
                         foreach (var a in listaAkreditacija)
                         {
                             sb.AppendLine($"ID: {a.ID_ULAZNICE}");
-                            sb.AppendLine($"Tip: {a.TIP}");
+                            sb.AppendLine($"Spoznor: {a.SPONZOR}");
+                            sb.AppendLine($"Press: {a.PRESS}");
+                            sb.AppendLine($"Parner: {a.PARTNER}");
                             sb.AppendLine(new string('-', 40));
                         }
                         MessageBox.Show(sb.ToString(), $"Lista akreditacija: {listaAkreditacija.Count}");

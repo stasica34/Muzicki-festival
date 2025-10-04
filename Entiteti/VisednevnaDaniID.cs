@@ -22,13 +22,7 @@ namespace Muzicki_festival.Entiteti
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                int hash = 17;
-                hash = hash * 23 + ID_ULAZNICE.GetHashCode();
-                hash = hash * 23 + DAN_VAZENJA.GetHashCode();
-                return hash;
-            }
+            return base.GetHashCode();
         }
     }
 }

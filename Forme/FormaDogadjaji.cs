@@ -113,8 +113,8 @@ namespace Muzicki_festival.Forme
                             sb.AppendLine($"Opis: {d.OPIS}");
                             sb.AppendLine($"Datum početka: {d.DATUM_VREME_POCETKA}");
                             sb.AppendLine($"Datum kraja: {d.DATUM_VREME_KRAJA}");
-                            sb.AppendLine($"GPS: {d.Lokacija_ID.Lokacija_ID.GPS_KOORDINATE}");
-                            sb.AppendLine($"Lokacija Naziv: {d.Lokacija_ID.Lokacija_ID.NAZIV}");
+                            sb.AppendLine($"GPS: {d.Lokacija.Lokacija_ID.GPS_KOORDINATE}");
+                            sb.AppendLine($"Lokacija Naziv: {d.Lokacija.Lokacija_ID.NAZIV}");
                             sb.AppendLine(new string('-', 40)); // separator
                         }
 
@@ -174,7 +174,7 @@ namespace Muzicki_festival.Forme
                     OPIS = "Proba nova",
                     DATUM_VREME_POCETKA = DateTime.Now,
                     DATUM_VREME_KRAJA = new DateTime(2025, 10, 5),
-                    Lokacija_ID = lokacija
+                    Lokacija = lokacija
                 };
                 s.Save(d);
                 s.Flush();

@@ -61,9 +61,9 @@
             this.cmdViseNaJedan4 = new System.Windows.Forms.Button();
             this.cmdJedanNaVise4 = new System.Windows.Forms.Button();
             this.cmdViseNaJedan5 = new System.Windows.Forms.Button();
-            this.cmdJedanNaVise5 = new System.Windows.Forms.Button();
             this.cmdViseNaVise = new System.Windows.Forms.Button();
             this.cmdVisenaVise2 = new System.Windows.Forms.Button();
+            this.cmdJedanNaVise5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdBend
@@ -386,16 +386,6 @@
             this.cmdViseNaJedan5.UseVisualStyleBackColor = true;
             this.cmdViseNaJedan5.Click += new System.EventHandler(this.cmdViseNaJedan5_Click);
             // 
-            // cmdJedanNaVise5
-            // 
-            this.cmdJedanNaVise5.Location = new System.Drawing.Point(362, 205);
-            this.cmdJedanNaVise5.Name = "cmdJedanNaVise5";
-            this.cmdJedanNaVise5.Size = new System.Drawing.Size(169, 56);
-            this.cmdJedanNaVise5.TabIndex = 37;
-            this.cmdJedanNaVise5.Text = "JedanNaVise";
-            this.cmdJedanNaVise5.UseVisualStyleBackColor = true;
-            this.cmdJedanNaVise5.Click += new System.EventHandler(this.cmdJedanNaVise5_Click);
-            // 
             // cmdViseNaVise
             // 
             this.cmdViseNaVise.Location = new System.Drawing.Point(187, 330);
@@ -416,14 +406,24 @@
             this.cmdVisenaVise2.UseVisualStyleBackColor = true;
             this.cmdVisenaVise2.Click += new System.EventHandler(this.cmdVisenaVise2_Click);
             // 
+            // cmdJedanNaVise5
+            // 
+            this.cmdJedanNaVise5.Location = new System.Drawing.Point(362, 204);
+            this.cmdJedanNaVise5.Name = "cmdJedanNaVise5";
+            this.cmdJedanNaVise5.Size = new System.Drawing.Size(169, 56);
+            this.cmdJedanNaVise5.TabIndex = 40;
+            this.cmdJedanNaVise5.Text = "JedanNaVise";
+            this.cmdJedanNaVise5.UseVisualStyleBackColor = true;
+            this.cmdJedanNaVise5.Click += new System.EventHandler(this.cmdJedanNaVise5_Click);
+            // 
             // GlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 536);
+            this.Controls.Add(this.cmdJedanNaVise5);
             this.Controls.Add(this.cmdVisenaVise2);
             this.Controls.Add(this.cmdViseNaVise);
-            this.Controls.Add(this.cmdJedanNaVise5);
             this.Controls.Add(this.cmdViseNaJedan5);
             this.Controls.Add(this.cmdJedanNaVise4);
             this.Controls.Add(this.cmdViseNaJedan4);
@@ -498,9 +498,9 @@
         private System.Windows.Forms.Button cmdViseNaJedan4;
         private System.Windows.Forms.Button cmdJedanNaVise4;
         private System.Windows.Forms.Button cmdViseNaJedan5;
-        private System.Windows.Forms.Button cmdJedanNaVise5;
         private System.Windows.Forms.Button cmdViseNaVise;
         private System.Windows.Forms.Button cmdVisenaVise2;
+        private System.Windows.Forms.Button cmdJedanNaVise5;
     }
 }
 

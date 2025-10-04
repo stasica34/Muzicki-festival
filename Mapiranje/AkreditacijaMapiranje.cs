@@ -8,13 +8,16 @@ using Muzicki_festival.Entiteti;
 using FluentNHibernate.Mapping;
 namespace Muzicki_festival.Mapiranje
 {
-    public class AkreditacijaMapiranje:ClassMap<Muzicki_festival.Entiteti.Akreditacija>
+    public class AkreditacijaMapiranje:SubclassMap<Muzicki_festival.Entiteti.Akreditacija>
     {
         public AkreditacijaMapiranje()
         {
             Table("AKREDITACIJA");
-            Id(x => x.ID_ULAZNICE, "ID_ULAZNICE").GeneratedBy.TriggerIdentity();
-            Map(x => x.TIP, "TIP");
+            KeyColumn("ID_ULAZNICE");
+
+            Map(x => x.SPONZOR, "SPONZOR");
+            Map(x=>x.PRESS, "PRESS");
+            Map(x=>x.PARTNER, "PARTNER");
         }
     }
 }

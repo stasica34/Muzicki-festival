@@ -105,7 +105,7 @@ namespace Muzicki_festival.Forme
                     OPIS = "Fenomene u muzickom takmicenju",
                     DATUM_VREME_POCETKA = DateTime.Now,
                     DATUM_VREME_KRAJA = new DateTime(2025, 10, 5),
-                    Lokacija_ID = lokacija
+                    Lokacija = lokacija
                 };
                 s.Save(d);
                 s.Flush();

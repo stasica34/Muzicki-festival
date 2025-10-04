@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Entiteti
 {
-    public class Visednevna
+    public class Visednevna:Ulaznica
     {
-        public virtual int ID_ULAZNICE { get; protected set; }
         public virtual int BROJ_DANA { get; set; }
-        public virtual Ulaznica Ulaznica { get; set; }
         //visevrednsoti atributi - lista dana
         public virtual IList<VisednevnaDani> Dani { get; set; }
         public Visednevna()

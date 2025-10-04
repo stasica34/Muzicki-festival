@@ -20,7 +20,7 @@ namespace Muzicki_festival.Entiteti
         //virtual properti - mogu da se overriduju, mora da budu virtual zbog mapiranja
         //konstructor
         //veza 1:n ka lokaciji
-        public virtual Lokacija Lokacija_ID { get; set; }
+        public virtual Lokacija Lokacija { get; set; }
 
         //veza n:m sa izvodjacem
         public virtual IList<Izvodjac> Izvodjaci { get; set; }

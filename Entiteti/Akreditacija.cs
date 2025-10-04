@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Entiteti
 {
-    public class Akreditacija
+    public class Akreditacija:Ulaznica
     {
-        public virtual int ID_ULAZNICE { get; protected set; }
-        public virtual string TIP { get; set; }
+        public virtual string SPONZOR { get; set; }
+        public virtual string PRESS { get; set; }
+        public virtual string PARTNER { get; set; }
         //fk ka Ulaznica
-        public virtual Ulaznica Ulaznica { get; set; }
         public Akreditacija() { }
     }
 }

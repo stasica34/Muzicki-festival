@@ -8,7 +8,7 @@ using Muzicki_festival.Entiteti;
 
 namespace Muzicki_festival.Mapiranje
 {
-    public class DogadjajMapiranje:ClassMap<Muzicki_festival.Entiteti.Dogadjaj>
+    public class DogadjajMapiranje : ClassMap<Muzicki_festival.Entiteti.Dogadjaj>
     {
         public DogadjajMapiranje()
         {
@@ -39,7 +39,7 @@ namespace Muzicki_festival.Mapiranje
 
             //mapiranje 1:n veze sa lokacijom
             //kompozitni ključ
-            References(x => x.Lokacija_ID)
+            References(x => x.Lokacija)
                 .Columns("GPS_KOORDINATE", "LOKACIJA_NAZIV")
                 .Not.Nullable()
                 .Cascade.None();

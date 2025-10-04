@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Entiteti
 {
-    public class Bend
+    public class Bend:Izvodjac
     {
-        public virtual int ID { get; protected set; }
         public virtual int BROJ_CLANOVA { get; set; }
 
         //povezivanje 1:n clanovi

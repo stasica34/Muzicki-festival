@@ -20,13 +20,7 @@ namespace Muzicki_festival.Entiteti
 
         public override int GetHashCode()
         {
-            unchecked // da izbegnemo overflow
-            {
-                int hash = 17;
-                hash = hash * 23 + ID_ULAZNICE.GetHashCode();
-                hash = hash * 23 + (POGODNOST != null ? POGODNOST.GetHashCode() : 0);
-                return hash;
-            }
+            return base.GetHashCode();
         }
     }
 }

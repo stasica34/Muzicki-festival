@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
 using Muzicki_festival.Entiteti;
+using NHibernate.Linq;
 using Muzicki_festival.Forme;
 namespace Muzicki_festival
 {
@@ -279,8 +280,8 @@ namespace Muzicki_festival
                 Bend bend = session.Load<Bend>(6);
                 ClanID clanId = new ClanID
                 {
-                    IME = "Marko Jovanović",            
-                    INSTRUMENT = "Gitara",    
+                    IME = "Marko Jovanović",
+                    INSTRUMENT = "Gitara",
                     BEND_ID = bend
                 };
                 Clan clan = session.Get<Clan>(clanId);
@@ -392,55 +393,9 @@ namespace Muzicki_festival
             //dogadjaj i lokacija
             try
             {
-                using (ISession session = DataLayer.GetSession())
-                {
-                    LokacijaID lokacijaId = new LokacijaID
-                    {
-                        GPS_KOORDINATE = "43.335,21.910",
-                        NAZIV = "Trg Republike"
-                    };
-
-                    Muzicki_festival.Entiteti.Lokacija lokacija = session.Get<Muzicki_festival.Entiteti.Lokacija>(lokacijaId);
-
-                    if (lokacija != null)
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.AppendLine($"Lokacija: {lokacija.Lokacija_ID.NAZIV} ({lokacija.Lokacija_ID.GPS_KOORDINATE})");
-                        sb.AppendLine("Događaji:");
-
-                        // HashSet za izbacivanje duplikata po NAZIV-u
-                        HashSet<string> jedinstveniDogadjaji = new HashSet<string>();
-
-                        foreach (var dogadjaj in lokacija.Dogadjaji)
-                        {
-                            if (jedinstveniDogadjaji.Add(dogadjaj.NAZIV)) // dodaje samo ako nije već tu
-                            {
-                                sb.AppendLine($"- {dogadjaj.NAZIV}");
-                            }
-                        }
-
-                        MessageBox.Show(sb.ToString(), "Lokacija i njeni dogadjaji");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Lokacija nije pronađena.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška: " + ex.Message);
-            }
-        }
-
-        private void cmdJedanNaVise5_Click(object sender, EventArgs e)
-        {
-            //lokacija i dogadjaj
-            try
-            {
                 ISession session = DataLayer.GetSession();
                 Dogadjaj d = session.Load<Dogadjaj>(25);
-                MessageBox.Show($"Dogadjaj: {d.NAZIV},\nLokacija: {d.Lokacija_ID.NAZIV} {d.Lokacija_ID.Lokacija_ID.GPS_KOORDINATE}", "Detalji");
+                MessageBox.Show($"Dogadjaj: {d.NAZIV},\nLokacija: {d.Lokacija.NAZIV} {d.Lokacija.GPS_KOORDINATE}", "Detalji");
                 session.Close();
             }
             catch (Exception ex)
@@ -495,7 +450,7 @@ namespace Muzicki_festival
                 }
                 s.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Greška: " + ex.Message);
             }
@@ -541,5 +496,51 @@ namespace Muzicki_festival
                 MessageBox.Show("Greška: " + ex.Message);
             }
         }
+
+        private void cmdJedanNaVise5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ISession session = DataLayer.GetSession())
+                {
+                    Lokacija lokacija = session.Query<Lokacija>()
+                        .Fetch(l => l.Dogadjaji)
+                        .Where(l => l.Lokacija_ID.GPS_KOORDINATE == "43.335,21.910" && l.Lokacija_ID.NAZIV == "Trg Republike")
+                        .SingleOrDefault();
+
+                    if (lokacija != null)
+                    {
+                        NHibernateUtil.Initialize(lokacija.Dogadjaji);
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine($"Lokacija: {lokacija.NAZIV}");
+                        sb.AppendLine($"Koordinate: {lokacija.GPS_KOORDINATE}");
+                        sb.AppendLine("Događaji:");
+
+                        if (lokacija.Dogadjaji != null && lokacija.Dogadjaji.Count > 0)
+                        {
+                            foreach (var dogadjaj in lokacija.Dogadjaji)
+                            {
+                                sb.AppendLine($"- {dogadjaj.NAZIV} ({dogadjaj.TIP})");
+                            }
+                        }
+                        else
+                        {
+                            sb.AppendLine("Nema događaja na ovoj lokaciji.");
+                        }
+
+                        MessageBox.Show(sb.ToString(), "Lokacija i događaji");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lokacija nije pronađena.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
     }
 }

@@ -21,7 +21,8 @@ namespace Muzicki_festival.Mapiranje
             HasMany(x => x.Dogadjaji)
                 .KeyColumns.Add("GPS_KOORDINATE", "LOKACIJA_NAZIV")
                 .Inverse()
-                .Cascade.All();
+                .Cascade.All()
+                .LazyLoad();
 
         }
     }
