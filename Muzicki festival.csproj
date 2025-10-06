@@ -158,6 +158,12 @@
     <Compile Include="Forme\FormaClan.Designer.cs">
       <DependentUpon>FormaClan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\FormaDogadjajDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\FormaDogadjajDodaj.Designer.cs">
+      <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\FormaDogadjaji.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +284,12 @@
     <Compile Include="Forme\FormaZatvorenaLokacija.Designer.cs">
       <DependentUpon>FormaZatvorenaLokacija.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\GlavnaStranica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\GlavnaStranica.Designer.cs">
+      <DependentUpon>GlavnaStranica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mapiranje\AgencijaOrganizatorMapiranje.cs" />
     <Compile Include="Mapiranje\AkreditacijaMapiranje.cs" />
     <Compile Include="Mapiranje\BendMapiranja.cs" />
@@ -314,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaClan.resx">
       <DependentUpon>FormaClan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\FormaDogadjajDodaj.resx">
+      <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaDogadjaji.resx">
       <DependentUpon>FormaDogadjaji.cs</DependentUpon>
@@ -374,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaZatvorenaLokacija.resx">
       <DependentUpon>FormaZatvorenaLokacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\GlavnaStranica.resx">
+      <DependentUpon>GlavnaStranica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

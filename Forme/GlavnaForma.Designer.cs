@@ -64,6 +64,7 @@
             this.cmdViseNaVise = new System.Windows.Forms.Button();
             this.cmdVisenaVise2 = new System.Windows.Forms.Button();
             this.cmdJedanNaVise5 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdBend
@@ -416,11 +417,22 @@
             this.cmdJedanNaVise5.UseVisualStyleBackColor = true;
             this.cmdJedanNaVise5.Click += new System.EventHandler(this.cmdJedanNaVise5_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(171, 468);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(169, 56);
+            this.button1.TabIndex = 41;
+            this.button1.Text = "GlavnaStranica";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // GlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 536);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cmdJedanNaVise5);
             this.Controls.Add(this.cmdVisenaVise2);
             this.Controls.Add(this.cmdViseNaVise);
@@ -501,6 +513,7 @@
         private System.Windows.Forms.Button cmdViseNaVise;
         private System.Windows.Forms.Button cmdVisenaVise2;
         private System.Windows.Forms.Button cmdJedanNaVise5;
+        private System.Windows.Forms.Button button1;
     }
 }
 

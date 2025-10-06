@@ -22,25 +22,7 @@ namespace Muzicki_festival
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            try
-            {
-                using (var session = DataLayer.GetSession())
-                {
-                    MessageBox.Show("Sesija uspešno otvorena!");
-
-                    using (var transaction = session.BeginTransaction())
-                    {
-                        var rezultat = session.CreateSQLQuery("SELECT 'NHibernate OK' AS status FROM dual")
-                                              .UniqueResult();
-                        MessageBox.Show("SQL test uspešan: " + rezultat.ToString());
-                        transaction.Commit();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška: " + ex.Message);
-            }
+          
         }
         private void cmdBend_Click(object sender, EventArgs e)
         {
@@ -542,5 +524,11 @@ namespace Muzicki_festival
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GlavnaStranica glavna = new GlavnaStranica(this);
+            glavna.Show();
+            this.Hide();
+        }
     }
 }
