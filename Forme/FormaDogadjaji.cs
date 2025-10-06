@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Muzicki_festival.Forme;
 using NHibernate;
 namespace Muzicki_festival.Forme
 {
@@ -38,7 +39,7 @@ namespace Muzicki_festival.Forme
             //    //format - godina, mesec, dan, sat, minut, sekunde
             //    //d.DATUM_VREME_POCETKA = new DateTime(2025, 8, 5, 18, 30, 0);
             //    //d.DATUM_VREME_KRAJA = new DateTime(2025, 8, 15, 11, 0, 0);
-            //    //d.GPS_KOORDINATNE = "44.8176N,20.4569E";
+            //    //d.GPS_KOORDINATNE = "44.8176N,20.4569EF
             //    //d.LOKACIJA_NAZIV = "Arena Beograd";
             //    //alternativa kao kroz save:
             //    //kada hocemo nesto da dodamo/ ili izmenimo ono sto nemamo, samo pozivamo to sto hocemo da menjamo
@@ -313,6 +314,41 @@ namespace Muzicki_festival.Forme
                 catch (Exception ex)
                 {
                     MessageBox.Show("Greška prilikom brisanja: " + ex.Message);
+                }
+            }
+
+        }
+
+        private void cmdIzmeni_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Odaberite događaj za izmenu.");
+                return;
+            }
+
+            int dogadjajId;
+            if (!int.TryParse(dataGridView1.SelectedRows[0].Cells["ID"].Value.ToString(), out dogadjajId))
+            {
+                MessageBox.Show("Greška pri čitanju ID-a događaja.");
+                return;
+            }
+
+            using (ISession s = DataLayer.GetSession())
+            {
+                Dogadjaj d = s.Get<Dogadjaj>(dogadjajId);
+
+                if (d != null)
+                {
+                    FormaDogadjajIzmeni forma = new FormaDogadjajIzmeni(this, d);
+                    this.Hide();
+                    forma.ShowDialog();
+                    this.Show();
+                    cmdUcitavanjeDogadjaja_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Greška: Događaj nije pronađen.");
                 }
             }
 

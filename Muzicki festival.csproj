@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
+    <Compile Include="Elementi\ComboBoxItem.cs" />
     <Compile Include="Entiteti\AgencijaOrganizator.cs" />
     <Compile Include="Entiteti\Akreditacija.cs" />
     <Compile Include="Entiteti\Bend.cs" />
@@ -158,10 +159,10 @@
     <Compile Include="Forme\FormaClan.Designer.cs">
       <DependentUpon>FormaClan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\FormaDogadjajDodaj.cs">
+    <Compile Include="FormeDodatne\FormaDogadjajDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forme\FormaDogadjajDodaj.Designer.cs">
+    <Compile Include="FormeDodatne\FormaDogadjajDodaj.Designer.cs">
       <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\FormaDogadjaji.cs">
@@ -169,6 +170,12 @@
     </Compile>
     <Compile Include="Forme\FormaDogadjaji.Designer.cs">
       <DependentUpon>FormaDogadjaji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaDogadjajIzmeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaDogadjajIzmeni.Designer.cs">
+      <DependentUpon>FormaDogadjajIzmeni.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\GlavnaForma.cs">
       <SubType>Form</SubType>
@@ -327,11 +334,14 @@
     <EmbeddedResource Include="Forme\FormaClan.resx">
       <DependentUpon>FormaClan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaDogadjajDodaj.resx">
+    <EmbeddedResource Include="FormeDodatne\FormaDogadjajDodaj.resx">
       <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaDogadjaji.resx">
       <DependentUpon>FormaDogadjaji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaDogadjajIzmeni.resx">
+      <DependentUpon>FormaDogadjajIzmeni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\GlavnaForma.resx">
       <DependentUpon>GlavnaForma.cs</DependentUpon>

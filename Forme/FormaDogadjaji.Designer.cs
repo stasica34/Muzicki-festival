@@ -35,6 +35,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnObrisi = new System.Windows.Forms.Button();
+            this.cmdIzmeni = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +93,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cmdIzmeni);
             this.panel1.Controls.Add(this.btnObrisi);
             this.panel1.Controls.Add(this.cmd_Nazad);
             this.panel1.Controls.Add(this.cmdDodavanje2);
@@ -104,13 +106,23 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(417, 12);
+            this.btnObrisi.Location = new System.Drawing.Point(602, 12);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(169, 57);
             this.btnObrisi.TabIndex = 8;
             this.btnObrisi.Text = "Obrisi\r\n";
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            // 
+            // cmdIzmeni
+            // 
+            this.cmdIzmeni.Location = new System.Drawing.Point(417, 12);
+            this.cmdIzmeni.Name = "cmdIzmeni";
+            this.cmdIzmeni.Size = new System.Drawing.Size(169, 57);
+            this.cmdIzmeni.TabIndex = 8;
+            this.cmdIzmeni.Text = "Izmeni";
+            this.cmdIzmeni.UseVisualStyleBackColor = true;
+            this.cmdIzmeni.Click += new System.EventHandler(this.cmdIzmeni_Click);
             // 
             // FormaDogadjaji
             // 
@@ -139,5 +151,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnObrisi;
+        private System.Windows.Forms.Button cmdIzmeni;
     }
 }

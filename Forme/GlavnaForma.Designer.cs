@@ -51,7 +51,6 @@
             this.cmd_Visednevna = new System.Windows.Forms.Button();
             this.cmd_VisednevnaDani = new System.Windows.Forms.Button();
             this.cmd_ZatvorenaLokacija = new System.Windows.Forms.Button();
-            this.cmd_Dogadjaji = new System.Windows.Forms.Button();
             this.cmd_ViseNaJedan = new System.Windows.Forms.Button();
             this.cmdViseNaJedan2 = new System.Windows.Forms.Button();
             this.cmd_JedanNaVise = new System.Windows.Forms.Button();
@@ -79,7 +78,7 @@
             // 
             // cmd_SoloUmetnik
             // 
-            this.cmd_SoloUmetnik.Location = new System.Drawing.Point(362, 330);
+            this.cmd_SoloUmetnik.Location = new System.Drawing.Point(362, 282);
             this.cmd_SoloUmetnik.Name = "cmd_SoloUmetnik";
             this.cmd_SoloUmetnik.Size = new System.Drawing.Size(169, 56);
             this.cmd_SoloUmetnik.TabIndex = 3;
@@ -139,7 +138,7 @@
             // 
             // cmd_JeClan
             // 
-            this.cmd_JeClan.Location = new System.Drawing.Point(362, 266);
+            this.cmd_JeClan.Location = new System.Drawing.Point(362, 218);
             this.cmd_JeClan.Name = "cmd_JeClan";
             this.cmd_JeClan.Size = new System.Drawing.Size(169, 55);
             this.cmd_JeClan.TabIndex = 9;
@@ -199,7 +198,7 @@
             // 
             // cmd_Lokacija
             // 
-            this.cmd_Lokacija.Location = new System.Drawing.Point(362, 80);
+            this.cmd_Lokacija.Location = new System.Drawing.Point(362, 32);
             this.cmd_Lokacija.Name = "cmd_Lokacija";
             this.cmd_Lokacija.Size = new System.Drawing.Size(169, 56);
             this.cmd_Lokacija.TabIndex = 15;
@@ -287,16 +286,6 @@
             this.cmd_ZatvorenaLokacija.UseVisualStyleBackColor = true;
             this.cmd_ZatvorenaLokacija.Click += new System.EventHandler(this.cmd_ZatvorenaLokacija_Click);
             // 
-            // cmd_Dogadjaji
-            // 
-            this.cmd_Dogadjaji.Location = new System.Drawing.Point(362, 21);
-            this.cmd_Dogadjaji.Name = "cmd_Dogadjaji";
-            this.cmd_Dogadjaji.Size = new System.Drawing.Size(169, 56);
-            this.cmd_Dogadjaji.TabIndex = 26;
-            this.cmd_Dogadjaji.Text = "Dogadjaji";
-            this.cmd_Dogadjaji.UseVisualStyleBackColor = true;
-            this.cmd_Dogadjaji.Click += new System.EventHandler(this.cmd_Dogadjaji_Click);
-            // 
             // cmd_ViseNaJedan
             // 
             this.cmd_ViseNaJedan.Location = new System.Drawing.Point(712, 142);
@@ -379,7 +368,7 @@
             // 
             // cmdViseNaJedan5
             // 
-            this.cmdViseNaJedan5.Location = new System.Drawing.Point(362, 143);
+            this.cmdViseNaJedan5.Location = new System.Drawing.Point(362, 95);
             this.cmdViseNaJedan5.Name = "cmdViseNaJedan5";
             this.cmdViseNaJedan5.Size = new System.Drawing.Size(169, 56);
             this.cmdViseNaJedan5.TabIndex = 36;
@@ -409,7 +398,7 @@
             // 
             // cmdJedanNaVise5
             // 
-            this.cmdJedanNaVise5.Location = new System.Drawing.Point(362, 204);
+            this.cmdJedanNaVise5.Location = new System.Drawing.Point(362, 156);
             this.cmdJedanNaVise5.Name = "cmdJedanNaVise5";
             this.cmdJedanNaVise5.Size = new System.Drawing.Size(169, 56);
             this.cmdJedanNaVise5.TabIndex = 40;
@@ -445,7 +434,6 @@
             this.Controls.Add(this.cmdViseNaJedan2);
             this.Controls.Add(this.cmd_JedanNaVise);
             this.Controls.Add(this.cmd_ViseNaJedan);
-            this.Controls.Add(this.cmd_Dogadjaji);
             this.Controls.Add(this.cmd_ZatvorenaLokacija);
             this.Controls.Add(this.cmd_VisednevnaDani);
             this.Controls.Add(this.cmd_Visednevna);
@@ -500,7 +488,6 @@
         private System.Windows.Forms.Button cmd_Visednevna;
         private System.Windows.Forms.Button cmd_VisednevnaDani;
         private System.Windows.Forms.Button cmd_ZatvorenaLokacija;
-        private System.Windows.Forms.Button cmd_Dogadjaji;
         private System.Windows.Forms.Button cmd_ViseNaJedan;
         private System.Windows.Forms.Button cmdViseNaJedan2;
         private System.Windows.Forms.Button cmd_JedanNaVise;

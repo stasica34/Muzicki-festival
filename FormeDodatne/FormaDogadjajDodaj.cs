@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
+using Muzicki_festival.Elementi;
 
 namespace Muzicki_festival.Forme
 {
@@ -154,15 +155,5 @@ namespace Muzicki_festival.Forme
             }
         }
 
-    }
-
-    public class ComboBoxItem
-    {
-        public string Text { get; set; }
-        public object Value { get; set; }
-        public override string ToString()
-        {
-            return Text;
-        }
     }
 }
