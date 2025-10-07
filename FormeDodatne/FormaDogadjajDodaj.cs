@@ -9,17 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
-using Muzicki_festival.Elementi;
 
 namespace Muzicki_festival.Forme
 {
     public partial class FormaDogadjajDodaj : Form
     {
+        private Dogadjaj dogadjajzaDodavanje;
+
         private Form parentform;
-        public FormaDogadjajDodaj(Form caller)
+        public FormaDogadjajDodaj(Form caller,Dogadjaj dogadjaj)
         {
             InitializeComponent();
-            parentform = caller;
+            this.parentform = caller;
+            this.dogadjajzaDodavanje = dogadjaj;
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -80,7 +82,7 @@ namespace Muzicki_festival.Forme
                     s.Close();
                     return;
                 }
-                Lokacija lokacija = ((ComboBoxItem)cmbLokacija.SelectedItem).Value as Lokacija;
+                Lokacija lokacija = cmbLokacija.SelectedItem as Lokacija;
                 if (lokacija == null)
                 {
                     MessageBox.Show("Lokacija ne postoji u bazi. Dodajte lokaciju pre unosa događaja.");
@@ -137,11 +139,7 @@ namespace Muzicki_festival.Forme
 
                 foreach (var lok in lokacije)
                 {
-                    cmbLokacija.Items.Add(new ComboBoxItem
-                    {
-                        Text = $"{lok.Lokacija_ID.NAZIV} - {lok.Lokacija_ID.GPS_KOORDINATE}",
-                        Value = lok
-                    });
+                    cmbLokacija.Items.Add(lok);
                 }
 
                 if (cmbLokacija.Items.Count > 0)

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Muzicki_festival.Forme;
 using NHibernate;
+using Muzicki_festival.FormeDodatne;
 namespace Muzicki_festival.Forme
 {
     public partial class FormaDogadjaji : Form
@@ -25,9 +26,11 @@ namespace Muzicki_festival.Forme
 
         private void cmdDodavanje_Click(object sender, EventArgs e)
         {
-            FormaDogadjajDodaj formadodaj = new FormaDogadjajDodaj(this);
+            FormaDogadjajDodaj formaDodaj = new FormaDogadjajDodaj(this, null);
             this.Hide();
-            formadodaj.ShowDialog();
+            formaDodaj.ShowDialog();
+            this.Show();
+            cmdUcitavanjeDogadjaja_Click(null, null);
             //try
             //{
             //    ISession s = DataLayer.GetSession();
@@ -139,33 +142,31 @@ namespace Muzicki_festival.Forme
                 ISession s = DataLayer.GetSession();
                 using (var session = DataLayer.GetSession())
                 {
-                    using (var transaction = session.BeginTransaction())
+                    var listadogajdaja = session.QueryOver<Dogadjaj>().List();
+                    if (listadogajdaja.Count == 0)
                     {
-                        var listadogajdaja = session.QueryOver<Dogadjaj>().List();
-                        if (listadogajdaja.Count == 0)
-                        {
-                            MessageBox.Show("Nema agencija organizatora u bazi.");
-                            return;
-                        }
-
-                        DataTable dt = new DataTable();
-                        dt.Columns.Add("ID");
-                        dt.Columns.Add("NAZIV");
-                        dt.Columns.Add("TIP");
-                        dt.Columns.Add("OPIS");
-                        dt.Columns.Add("DATUM I VREME POCETKA");
-                        dt.Columns.Add("DATUM I VREME KRAJA");
-                        dt.Columns.Add("GPS_KOORDINATE");
-                        dt.Columns.Add("LOKACIJA-NAZIV");
-
-                        foreach (var d in listadogajdaja)
-                        {
-                            dt.Rows.Add(d.ID, d.NAZIV, d.TIP, d.OPIS, d.DATUM_VREME_POCETKA, d.DATUM_VREME_KRAJA, d.Lokacija.Lokacija_ID.GPS_KOORDINATE, d.Lokacija.Lokacija_ID.NAZIV);
-                        }
-                        dataGridView1.DataSource = dt;
-                        dataGridView1.Columns["ID"].Visible = false;
-
+                        MessageBox.Show("Nema agencija organizatora u bazi.");
+                        return;
                     }
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ID");
+                    dt.Columns.Add("NAZIV");
+                    dt.Columns.Add("TIP");
+                    dt.Columns.Add("OPIS");
+                    dt.Columns.Add("DATUM I VREME POCETKA");
+                    dt.Columns.Add("DATUM I VREME KRAJA");
+                    dt.Columns.Add("GPS_KOORDINATE");
+                    dt.Columns.Add("LOKACIJA-NAZIV");
+
+                    foreach (var d in listadogajdaja)
+                    {
+                        dt.Rows.Add(d.ID, d.NAZIV, d.TIP, d.OPIS, d.DATUM_VREME_POCETKA, d.DATUM_VREME_KRAJA, d.Lokacija.Lokacija_ID.GPS_KOORDINATE, d.Lokacija.Lokacija_ID.NAZIV);
+                    }
+                    dataGridView1.DataSource = dt;
+                    dataGridView1.Columns["ID"].Visible = false;
+
+
                 }
 
             }
@@ -217,53 +218,75 @@ namespace Muzicki_festival.Forme
 
         private void cmdDodavanje2_Click(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+            //    ISession s = DataLayer.GetSession();
+            //    Lokacija lokacija = s.QueryOver<Lokacija>()
+            //    .Where(x => x.Lokacija_ID.NAZIV == "Kalemegdan")
+            //    .And(x => x.Lokacija_ID.GPS_KOORDINATE == "43.340,21.915")
+            //    .SingleOrDefault();
+            //    if (lokacija == null)
+            //    {
+            //        MessageBox.Show("Greška: Nema zadate lokacije u bazi. Dodaj lokaciju pre unosa događaja.");
+            //        return;
+            //    }
+            //    Dogadjaj d = new Dogadjaj()
+            //    {
+            //        NAZIV = "Nesto novo pt2",
+            //        TIP = "Radionica",
+            //        OPIS = "Proba nova",
+            //        DATUM_VREME_POCETKA = DateTime.Now,
+            //        DATUM_VREME_KRAJA = new DateTime(2025, 10, 5),
+            //        Lokacija = lokacija
+            //    };
+            //    s.Save(d);
+            //    s.Flush();
+            //    MessageBox.Show("Uspesno je dodato");
+            //    Posetilac posetilac = s.Get<Posetilac>(5);
+            //    if (posetilac == null)
+            //    {
+            //        MessageBox.Show("Posetilac sa ID = 5 ne postoji.");
+            //        return;
+            //    }
+            //    Ulaznica u = new Ulaznica()
+            //    {
+            //        DATUM_KUPOVINE = DateTime.Now,
+            //        OSNOVNA_CENA = 3500,
+            //        KUPAC_ID = posetilac,
+            //        NACIN_PLACANJA = "Kartica",
+            //        NAZIV = "VIP"
+            //    };
+            //    s.Save(u);
+            //    d.Ulaznica.Add(u);
+            //    s.Flush();
+            //    MessageBox.Show("Uspesno je dodato");
+            //    s.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+
+            if (dataGridView1.SelectedRows.Count == 0)
             {
-                ISession s = DataLayer.GetSession();
-                Lokacija lokacija = s.QueryOver<Lokacija>()
-                .Where(x => x.Lokacija_ID.NAZIV == "Kalemegdan")
-                .And(x => x.Lokacija_ID.GPS_KOORDINATE == "43.340,21.915")
-                .SingleOrDefault();
-                if (lokacija == null)
-                {
-                    MessageBox.Show("Greška: Nema zadate lokacije u bazi. Dodaj lokaciju pre unosa događaja.");
-                    return;
-                }
-                Dogadjaj d = new Dogadjaj()
-                {
-                    NAZIV = "Nesto novo pt2",
-                    TIP = "Radionica",
-                    OPIS = "Proba nova",
-                    DATUM_VREME_POCETKA = DateTime.Now,
-                    DATUM_VREME_KRAJA = new DateTime(2025, 10, 5),
-                    Lokacija = lokacija
-                };
-                s.Save(d);
-                s.Flush();
-                MessageBox.Show("Uspesno je dodato");
-                Posetilac posetilac = s.Get<Posetilac>(5);
-                if (posetilac == null)
-                {
-                    MessageBox.Show("Posetilac sa ID = 5 ne postoji.");
-                    return;
-                }
-                Ulaznica u = new Ulaznica()
-                {
-                    DATUM_KUPOVINE = DateTime.Now,
-                    OSNOVNA_CENA = 3500,
-                    KUPAC_ID = posetilac,
-                    NACIN_PLACANJA = "Kartica",
-                    NAZIV = "VIP"
-                };
-                s.Save(u);
-                d.Ulaznica.Add(u);
-                s.Flush();
-                MessageBox.Show("Uspesno je dodato");
-                s.Close();
+                MessageBox.Show("Odaberite događaj za koji želite da kupite ulaznicu.");
+                return;
             }
-            catch (Exception ex)
+            int dogadjajId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
+
+            using (ISession s = DataLayer.GetSession())
             {
-                MessageBox.Show(ex.Message);
+                Dogadjaj d = s.Get<Dogadjaj>(dogadjajId);
+                if (d == null)
+                {
+                    MessageBox.Show("Greška: događaj nije pronađen.");
+                    return;
+                }
+
+                FormaUlaznica forma = new FormaUlaznica(this, d);
+                this.Hide();
+                forma.ShowDialog();
+                this.Show();
             }
         }
 
@@ -351,7 +374,30 @@ namespace Muzicki_festival.Forme
                     MessageBox.Show("Greška: Događaj nije pronađen.");
                 }
             }
+        }
+        private void btnIzvodjac_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Odaberite događaj za koji želite da dodate izvodjaca.");
+                return;
+            }
+            int dogadjajId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
 
+            using (ISession s = DataLayer.GetSession())
+            {
+                Dogadjaj d = s.Get<Dogadjaj>(dogadjajId);
+                if (d == null)
+                {
+                    MessageBox.Show("Greška: događaj nije pronađen.");
+                    return;
+                }
+
+                FormaIzvodjacDodaj formaIzvodjac = new FormaIzvodjacDodaj(this, d);
+                this.Hide();
+                formaIzvodjac.ShowDialog();
+                this.Show();
+            }
         }
     }
 }

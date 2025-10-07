@@ -22,5 +22,9 @@ namespace Muzicki_festival.Entiteti
         {
             Dogadjaji = new List<Dogadjaj>();
         }
+        public override string ToString()
+        {
+            return $"{IME} ({DRZAVA_POREKLA})";
+        }
     }
 }

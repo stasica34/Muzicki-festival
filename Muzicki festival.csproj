@@ -106,7 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
-    <Compile Include="Elementi\ComboBoxItem.cs" />
     <Compile Include="Entiteti\AgencijaOrganizator.cs" />
     <Compile Include="Entiteti\Akreditacija.cs" />
     <Compile Include="Entiteti\Bend.cs" />
@@ -135,6 +134,30 @@
     <Compile Include="Entiteti\VisednevnaDani.cs" />
     <Compile Include="Entiteti\VisednevnaDaniID.cs" />
     <Compile Include="Entiteti\ZatvorenaLokacija.cs" />
+    <Compile Include="FormeDodatne\FormaIzvodjacDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaIzvodjacDodaj.Designer.cs">
+      <DependentUpon>FormaIzvodjacDodaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaIzvodjacIzmeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaIzvodjacIzmeni.Designer.cs">
+      <DependentUpon>FormaIzvodjacIzmeni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaUlazniceDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaUlazniceDodaj.Designer.cs">
+      <DependentUpon>FormaUlazniceDodaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaUlazniceIzmeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaUlazniceIzmeni.Designer.cs">
+      <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\FormaAgencijaOrganizator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +345,18 @@
     <Compile Include="Mapiranje\ZatvorenaLokacijaMapiranje.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormeDodatne\FormaIzvodjacDodaj.resx">
+      <DependentUpon>FormaIzvodjacDodaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaIzvodjacIzmeni.resx">
+      <DependentUpon>FormaIzvodjacIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaUlazniceDodaj.resx">
+      <DependentUpon>FormaUlazniceDodaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaUlazniceIzmeni.resx">
+      <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaAgencijaOrganizator.resx">
       <DependentUpon>FormaAgencijaOrganizator.cs</DependentUpon>
     </EmbeddedResource>

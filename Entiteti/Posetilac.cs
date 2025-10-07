@@ -27,6 +27,9 @@ namespace Muzicki_festival.Entiteti
             Ulaznice = new List<Ulaznica>();
             JeClan  = new List<JeClan>();
         }
-
+        public override string ToString()
+        {
+            return IME + " " + PREZIME;
+        }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDodajLokacija = new System.Windows.Forms.Button();
             this.labelNaziv = new System.Windows.Forms.Label();
             this.labelTip = new System.Windows.Forms.Label();
             this.labelOpis = new System.Windows.Forms.Label();
@@ -44,14 +45,12 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnOtkazi = new System.Windows.Forms.Button();
             this.btnSacuvaj = new System.Windows.Forms.Button();
-            this.btnDodajLokacija = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -68,6 +67,7 @@
             this.tableLayoutPanel1.Controls.Add(this.dtpKraj, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.cmbTip, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.cmbLokacija, 1, 5);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 7;
@@ -81,6 +81,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1033, 559);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // btnDodajLokacija
+            // 
+            this.btnDodajLokacija.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDodajLokacija.Location = new System.Drawing.Point(585, 484);
+            this.btnDodajLokacija.Name = "btnDodajLokacija";
+            this.btnDodajLokacija.Size = new System.Drawing.Size(172, 64);
+            this.btnDodajLokacija.TabIndex = 2;
+            this.btnDodajLokacija.Text = "Dodaj Lokaciju";
+            this.btnDodajLokacija.UseVisualStyleBackColor = true;
+            this.btnDodajLokacija.Click += new System.EventHandler(this.btnDodajLokacija_Click);
             // 
             // labelNaziv
             // 
@@ -194,12 +205,12 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.btnOtkazi, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSacuvaj, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 561);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -229,17 +240,6 @@
             this.btnSacuvaj.Text = "Sacuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
             this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
-            // 
-            // btnDodajLokacija
-            // 
-            this.btnDodajLokacija.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDodajLokacija.Location = new System.Drawing.Point(585, 484);
-            this.btnDodajLokacija.Name = "btnDodajLokacija";
-            this.btnDodajLokacija.Size = new System.Drawing.Size(172, 64);
-            this.btnDodajLokacija.TabIndex = 2;
-            this.btnDodajLokacija.Text = "Dodaj Lokaciju";
-            this.btnDodajLokacija.UseVisualStyleBackColor = true;
-            this.btnDodajLokacija.Click += new System.EventHandler(this.btnDodajLokacija_Click);
             // 
             // FormaDogadjajDodaj
             // 

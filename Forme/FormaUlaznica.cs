@@ -9,69 +9,58 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
+using Muzicki_festival.FormeDodatne;
 
 namespace Muzicki_festival.Forme
 {
     public partial class FormaUlaznica : Form
     {
         private Form parentForm;
-        public FormaUlaznica(Form caller)
+        private Dogadjaj dogadjaj;
+        public FormaUlaznica(Form caller, Dogadjaj dogadjaj)
         {
             InitializeComponent();
             parentForm = caller;
+            this.dogadjaj = dogadjaj;
         }
 
         private void FormaUlaznica_Load(object sender, EventArgs e)
         {
             try
             {
-                using (var session = DataLayer.GetSession())
-                {
-                    MessageBox.Show("Forma uspešno otvorena!");
-                }
+                this.Text = $"Ulaznice za događaj: {dogadjaj.NAZIV}";
+                UcitajUlaznice();
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView1.ReadOnly = true;
+                dataGridView1.AllowUserToAddRows = false;
+                dataGridView1.RowHeadersVisible = false;
+                dataGridView1.BorderStyle = BorderStyle.None;
+                dataGridView1.BackgroundColor = Color.WhiteSmoke;
+                dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                dataGridView1.GridColor = Color.LightGray;
+
+                dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+
+                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+                dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+                dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
+                dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dataGridView1.EnableHeadersVisualStyles = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greška: " + ex.Message);
+                MessageBox.Show("Greška prilikom učitavanja forme: " + ex.Message);
             }
         }
 
         private void cmd_Ucitavanje_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-                using (var session = DataLayer.GetSession())
-                {
-                    using (var transaction = session.BeginTransaction())
-                    {
-                        var listaUlaznica = session.QueryOver<Ulaznica>().List();
-                        if (listaUlaznica.Count == 0)
-                        {
-                            MessageBox.Show("Nema ulaznica organizatora u bazi.");
-                            return;
-                        }
-                        StringBuilder sb = new StringBuilder();
-                        foreach (var ao in listaUlaznica)
-                        {
-                            sb.AppendLine($"ID ulaznice: {ao.ID_ULAZNICE}");
-                            sb.AppendLine($"DATUM KUPOVINE: {ao.DATUM_KUPOVINE}");
-                            sb.AppendLine($"OSNOVNA_CENA: {ao.OSNOVNA_CENA}");
-                            sb.AppendLine($"KUPAC_ID: {ao.KUPAC_ID.IME} | {ao.KUPAC_ID.PREZIME} | {ao.KUPAC_ID.EMAIL}");
-                            sb.AppendLine($"NAČIN PLAĆANJA: {ao.NACIN_PLACANJA}");
-                            sb.AppendLine($"NAZIV: {ao.NAZIV}");
-                            sb.AppendLine(new string('-', 40));
-                        }
-                        MessageBox.Show(sb.ToString(), $"Lista agencija organizatora: {listaUlaznica.Count}");
-                        transaction.Commit();
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+           
         }
 
         private void cmd_Nazad_Click(object sender, EventArgs e)
@@ -121,39 +110,122 @@ namespace Muzicki_festival.Forme
             //    MessageBox.Show(ex.Message);
             //}
             //drugi nacin:
+            //try
+            //{
+            //    ISession s = DataLayer.GetSession();
+            //    Posetilac p = new Posetilac
+            //    {
+            //        IME = "Dimitrije",
+            //        PREZIME = "Jovic",
+            //        EMAIL = "dimitrije.jovic@example.com"
+            //    };
+
+            //    Ulaznica u = new Ulaznica
+            //    {
+            //        DATUM_KUPOVINE = DateTime.Now,
+            //        OSNOVNA_CENA = 3400,
+            //        KUPAC_ID = p, // veza ka novom posetiocu
+            //        NACIN_PLACANJA = "Gotovina",
+            //        NAZIV = "Jednodnevna"
+            //    };
+            //    s.Save(p);
+            //    //dodavanje preko ulaznice
+            //    u.KUPAC_ID = p;
+            //    s.Save(u);
+            //    p.Ulaznice.Add(u);
+            //    s.Save(u); //ovo je cisto po potrebi
+            //    s.Flush(); 
+            //    MessageBox.Show("Uspešno dodat posetilac i njegova ulaznica.");
+
+            //    s.Close();
+            //}
+            //catch (
+            //Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            FormaUlazniceDodaj formaDodaj = new FormaUlazniceDodaj(this, dogadjaj);
+            this.Hide();
+            formaDodaj.ShowDialog();
+            this.Show();
+             UcitajUlaznice();
+
+        }
+        private void UcitajUlaznice()
+        {
             try
             {
-                ISession s = DataLayer.GetSession();
-                Posetilac p = new Posetilac
+                using (ISession s = DataLayer.GetSession())
                 {
-                    IME = "Dimitrije",
-                    PREZIME = "Jovic",
-                    EMAIL = "dimitrije.jovic@example.com"
-                };
+                    var listaulaznice = s.Query<Ulaznica>()
+                                    .Where(u => u.Dogadjaji.Any(d => d.ID == dogadjaj.ID))
+                                    .ToList();
 
-                Ulaznica u = new Ulaznica
-                {
-                    DATUM_KUPOVINE = DateTime.Now,
-                    OSNOVNA_CENA = 3400,
-                    KUPAC_ID = p, // veza ka novom posetiocu
-                    NACIN_PLACANJA = "Gotovina",
-                    NAZIV = "Jednodnevna"
-                };
-                s.Save(p);
-                //dodavanje preko ulaznice
-                u.KUPAC_ID = p;
-                s.Save(u);
-                p.Ulaznice.Add(u);
-                s.Save(u); //ovo je cisto po potrebi
-                s.Flush(); 
-                MessageBox.Show("Uspešno dodat posetilac i njegova ulaznica.");
+                    if (listaulaznice.Count == 0)
+                    {
+                        MessageBox.Show("Trenutno nema ulaznica za ovaj događaj.");
+                        FormaDogadjaji formaDogadjaji = new FormaDogadjaji(parentForm);
+                        this.Hide();
+                        formaDogadjaji.ShowDialog();
+                        this.Close();
+                    }
 
-                s.Close();
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ID_ULAZNICE");
+                    dt.Columns.Add("DATUM_KUPOVINE");
+                    dt.Columns.Add("OSNOVNA_CENA");
+                    dt.Columns.Add("KUPAC_ID");
+                    dt.Columns.Add("NACIN_PLACANJA");
+                    dt.Columns.Add("NAZIV");
+
+                    foreach (var d in listaulaznice)
+                    {
+                        dt.Rows.Add(d.ID_ULAZNICE, d.DATUM_KUPOVINE, d.OSNOVNA_CENA, d.KUPAC_ID.IME, d.NACIN_PLACANJA, d.NAZIV);
+                    }
+                    dataGridView1.DataSource = dt;
+                    dataGridView1.Columns["ID_ULAZNICE"].Visible = false;
+
+                    dataGridView1.DataSource = dt;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
             }
-            catch (
-            Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Greška pri učitavanju ulaznica: " + ex.Message);
+            }
+        }
+
+        private void cmdIzmeni_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Odaberite ulaznicu za izmenu.");
+                return;
+            }
+
+            int ulaznicaId;
+            if (!int.TryParse(dataGridView1.SelectedRows[0].Cells["ID_ULAZNICE"].Value.ToString(), out ulaznicaId))
+            {
+                MessageBox.Show("Greška pri čitanju ID-a ulaznice.");
+                return;
+            }
+
+            using (ISession s = DataLayer.GetSession())
+            {
+                Ulaznica u = s.Get<Ulaznica>(ulaznicaId);
+
+                if (u != null)
+                {
+                    FormaUlazniceIzmeni forma = new FormaUlazniceIzmeni(this, u);
+                    this.Hide();
+                    forma.ShowDialog();
+                    this.Show();
+                    UcitajUlaznice();
+                }
+                else
+                {
+                    MessageBox.Show("Greška: Ulaznica nije pronađena.");
+                }
             }
         }
     }

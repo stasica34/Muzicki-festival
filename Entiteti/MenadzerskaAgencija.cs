@@ -18,5 +18,9 @@ namespace Muzicki_festival.Entiteti
         {
             Izvodjaci = new List<Izvodjac>();
         }
+        public override string ToString()
+        {
+            return NAZIV;
+        }
     }
 }

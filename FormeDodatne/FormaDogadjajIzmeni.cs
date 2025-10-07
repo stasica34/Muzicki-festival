@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
-using Muzicki_festival.Elementi;
 
 namespace Muzicki_festival.Forme
 {
@@ -29,29 +28,20 @@ namespace Muzicki_festival.Forme
         {
             try
             {
-                // 1. Učitaj sve lokacije iz baze
                 using (ISession s = DataLayer.GetSession())
                 {
                     var sveLokacije = s.QueryOver<Lokacija>().List();
-
                     foreach (var lokacija in sveLokacije)
                     {
-                        ComboBoxItem item = new ComboBoxItem
-                        {
-                            Text = $"{lokacija.Lokacija_ID.NAZIV} ({lokacija.Lokacija_ID.GPS_KOORDINATE})",
-                            Value = lokacija
-                        };
-                        cmbLokacija.Items.Add(item);
+                        cmbLokacija.Items.Add(lokacija); 
                     }
                 }
-
-                // 2. Postavi vrednosti iz dogadjaja
                 cmbTip.Items.AddRange(new string[]
                 {
-            "Muzicki nastup",
-            "Radionica",
-            "Interaktivni sadrzaj",
-            "Drugi"
+                   "Muzicki nastup",
+                    "Radionica",
+                    "Interaktivni sadrzaj",
+                    "Drugi"
                 });
 
                 cmbTip.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -61,16 +51,15 @@ namespace Muzicki_festival.Forme
                 dtpPocetak.Value = dogadjajzaIzmenu.DATUM_VREME_POCETKA;
                 dtpKraj.Value = dogadjajzaIzmenu.DATUM_VREME_KRAJA;
 
-                // 3. Selektuj trenutnu lokaciju
-                foreach (ComboBoxItem item in cmbLokacija.Items)
+                foreach (Lokacija lok in cmbLokacija.Items)
                 {
-                    Lokacija lok = item.Value as Lokacija;
-                    if (lok != null && lok.Lokacija_ID.Equals(dogadjajzaIzmenu.Lokacija.Lokacija_ID))
+                    if (lok.Lokacija_ID.Equals(dogadjajzaIzmenu.Lokacija.Lokacija_ID))
                     {
-                        cmbLokacija.SelectedItem = item;
+                        cmbLokacija.SelectedItem = lok;
                         break;
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -99,7 +88,7 @@ namespace Muzicki_festival.Forme
                     d.OPIS = txtOpis.Text.Trim();
                     d.DATUM_VREME_POCETKA = dtpPocetak.Value;
                     d.DATUM_VREME_KRAJA = dtpKraj.Value;
-                    d.Lokacija = ((ComboBoxItem)cmbLokacija.SelectedItem).Value as Lokacija;
+                    d.Lokacija = cmbLokacija.SelectedItem as Lokacija;
 
                     s.Update(d);
                     s.Flush();

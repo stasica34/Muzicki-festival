@@ -27,11 +27,7 @@ namespace Muzicki_festival.Mapiranje
               .Table("NASTUPA")
               .ParentKeyColumn("IZVODJAC_ID")
               .ChildKeyColumn("DOGADJAJ_ID")
-              .Cascade.All()
-              .Inverse();
-            //inverzija moze da bude na obe strane
-            //ali biramo tamo inverziju gde nam vise odgovara
-
+              .Cascade.All();
         }
     }
 }

@@ -42,7 +42,6 @@
             this.cmd_Izvodjac = new System.Windows.Forms.Button();
             this.cnd_Jednodnevna = new System.Windows.Forms.Button();
             this.cmd_Kobinovana = new System.Windows.Forms.Button();
-            this.cmd_Lokacija = new System.Windows.Forms.Button();
             this.cmd_MenadzerskaAgencija = new System.Windows.Forms.Button();
             this.cmd_OtvorenaLokacija = new System.Windows.Forms.Button();
             this.cmd_TelefonIzvodjac = new System.Windows.Forms.Button();
@@ -64,6 +63,7 @@
             this.cmdVisenaVise2 = new System.Windows.Forms.Button();
             this.cmdJedanNaVise5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.cmd_Lokacija = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdBend
@@ -195,16 +195,6 @@
             this.cmd_Kobinovana.Text = "Kombinovana Lokacija";
             this.cmd_Kobinovana.UseVisualStyleBackColor = true;
             this.cmd_Kobinovana.Click += new System.EventHandler(this.cmd_Kobinovana_Click);
-            // 
-            // cmd_Lokacija
-            // 
-            this.cmd_Lokacija.Location = new System.Drawing.Point(362, 32);
-            this.cmd_Lokacija.Name = "cmd_Lokacija";
-            this.cmd_Lokacija.Size = new System.Drawing.Size(169, 56);
-            this.cmd_Lokacija.TabIndex = 15;
-            this.cmd_Lokacija.Text = "Lokacija";
-            this.cmd_Lokacija.UseVisualStyleBackColor = true;
-            this.cmd_Lokacija.Click += new System.EventHandler(this.cmd_Lokacija_Click);
             // 
             // cmd_MenadzerskaAgencija
             // 
@@ -416,6 +406,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // cmd_Lokacija
+            // 
+            this.cmd_Lokacija.Location = new System.Drawing.Point(362, 32);
+            this.cmd_Lokacija.Name = "cmd_Lokacija";
+            this.cmd_Lokacija.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Lokacija.TabIndex = 15;
+            this.cmd_Lokacija.Text = "Lokacija";
+            this.cmd_Lokacija.UseVisualStyleBackColor = true;
+            this.cmd_Lokacija.Click += new System.EventHandler(this.cmd_Lokacija_Click);
+            // 
             // GlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -479,7 +479,6 @@
         private System.Windows.Forms.Button cmd_Izvodjac;
         private System.Windows.Forms.Button cnd_Jednodnevna;
         private System.Windows.Forms.Button cmd_Kobinovana;
-        private System.Windows.Forms.Button cmd_Lokacija;
         private System.Windows.Forms.Button cmd_MenadzerskaAgencija;
         private System.Windows.Forms.Button cmd_OtvorenaLokacija;
         private System.Windows.Forms.Button cmd_TelefonIzvodjac;
@@ -501,6 +500,7 @@
         private System.Windows.Forms.Button cmdVisenaVise2;
         private System.Windows.Forms.Button cmdJedanNaVise5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cmd_Lokacija;
     }
 }
 

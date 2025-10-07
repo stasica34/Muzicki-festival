@@ -83,9 +83,7 @@ namespace Muzicki_festival
 
         private void cmd_Ulaznica_Click(object sender, EventArgs e)
         {
-            FormaUlaznica formaUlaznica = new FormaUlaznica(this);
-            formaUlaznica.Show();
-            this.Hide();
+          
         }
 
         private void cmd_Clan_Click(object sender, EventArgs e)
@@ -97,9 +95,7 @@ namespace Muzicki_festival
 
         private void cmd_Izvodjac_Click(object sender, EventArgs e)
         {
-            FormaIzvodjac formaIzvodjac = new FormaIzvodjac(this);
-            formaIzvodjac.Show();
-            this.Hide();
+
         }
 
         private void cnd_Jednodnevna_Click(object sender, EventArgs e)

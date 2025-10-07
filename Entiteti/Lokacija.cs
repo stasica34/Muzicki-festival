@@ -29,6 +29,10 @@ namespace Muzicki_festival.Entiteti
             Dogadjaji = new List<Dogadjaj>();
             Lokacija_ID = new LokacijaID();
         }
+        public override string ToString()
+        {
+            return $"{Lokacija_ID.NAZIV} - {Lokacija_ID.GPS_KOORDINATE}";
+        }
     }
 
 }

@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
-using Muzicki_festival.Entiteti;
 
 namespace Muzicki_festival.Forme
 {
