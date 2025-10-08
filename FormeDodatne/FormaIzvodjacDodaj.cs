@@ -82,7 +82,6 @@ namespace Muzicki_festival.FormeDodatne
                 MenadzerskaAgencija = menadzerskaAgencija
             };
             i.Dogadjaji.Add(dog);
-            dog.Izvodjaci.Add(i);
             s.Save(i);
             s.Flush();
             s.Close();
@@ -129,6 +128,11 @@ namespace Muzicki_festival.FormeDodatne
             {
                 MessageBox.Show("Greška pri učitavanju lokacija: " + ex.Message);
             }
+        }
+
+        private void cmdIzmeni_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

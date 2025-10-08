@@ -146,6 +146,18 @@
     <Compile Include="FormeDodatne\FormaIzvodjacIzmeni.Designer.cs">
       <DependentUpon>FormaIzvodjacIzmeni.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.Designer.cs">
+      <DependentUpon>FormaSoloIzvodjacBendIzmeni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaSoloUmetnikBend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaSoloUmetnikBend.Designer.cs">
+      <DependentUpon>FormaSoloUmetnikBend.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormeDodatne\FormaUlazniceDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +212,12 @@
     <Compile Include="FormeDodatne\FormaDogadjajIzmeni.Designer.cs">
       <DependentUpon>FormaDogadjajIzmeni.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\FormaIzvodjac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\FormaIzvodjac.Designer.cs">
+      <DependentUpon>FormaIzvodjac.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\GlavnaForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,11 +230,11 @@
     <Compile Include="Forme\FormaGrupa.Designer.cs">
       <DependentUpon>FormaGrupa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\FormaIzvodjac.cs">
+    <Compile Include="Forme\FormaIzvodjacDogadjaj.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forme\FormaIzvodjac.Designer.cs">
-      <DependentUpon>FormaIzvodjac.cs</DependentUpon>
+    <Compile Include="Forme\FormaIzvodjacDogadjaj.Designer.cs">
+      <DependentUpon>FormaIzvodjacDogadjaj.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\FormaJeClan.cs">
       <SubType>Form</SubType>
@@ -351,6 +369,9 @@
     <EmbeddedResource Include="FormeDodatne\FormaIzvodjacIzmeni.resx">
       <DependentUpon>FormaIzvodjacIzmeni.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.resx">
+      <DependentUpon>FormaSoloIzvodjacBendIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaUlazniceDodaj.resx">
       <DependentUpon>FormaUlazniceDodaj.cs</DependentUpon>
     </EmbeddedResource>
@@ -378,14 +399,17 @@
     <EmbeddedResource Include="FormeDodatne\FormaDogadjajIzmeni.resx">
       <DependentUpon>FormaDogadjajIzmeni.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\FormaIzvodjac.resx">
+      <DependentUpon>FormaIzvodjac.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\GlavnaForma.resx">
       <DependentUpon>GlavnaForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaGrupa.resx">
       <DependentUpon>FormaGrupa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaIzvodjac.resx">
-      <DependentUpon>FormaIzvodjac.cs</DependentUpon>
+    <EmbeddedResource Include="Forme\FormaIzvodjacDogadjaj.resx">
+      <DependentUpon>FormaIzvodjacDogadjaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaJeClan.resx">
       <DependentUpon>FormaJeClan.cs</DependentUpon>

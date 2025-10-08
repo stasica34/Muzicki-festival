@@ -43,7 +43,6 @@
             this.labelOpis = new System.Windows.Forms.Label();
             this.labelTip = new System.Windows.Forms.Label();
             this.labelNaziv = new System.Windows.Forms.Label();
-            this.btnDodajLokacija = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -91,7 +90,7 @@
             // 
             this.cmbLokacija.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbLokacija.FormattingEnabled = true;
-            this.cmbLokacija.Location = new System.Drawing.Point(556, 360);
+            this.cmbLokacija.Location = new System.Drawing.Point(556, 422);
             this.cmbLokacija.Name = "cmbLokacija";
             this.cmbLokacija.Size = new System.Drawing.Size(267, 28);
             this.cmbLokacija.TabIndex = 14;
@@ -100,7 +99,7 @@
             // 
             this.cmbTip.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbTip.FormattingEnabled = true;
-            this.cmbTip.Location = new System.Drawing.Point(556, 88);
+            this.cmbTip.Location = new System.Drawing.Point(556, 104);
             this.cmbTip.Name = "cmbTip";
             this.cmbTip.Size = new System.Drawing.Size(267, 28);
             this.cmbTip.TabIndex = 13;
@@ -108,7 +107,7 @@
             // dtpKraj
             // 
             this.dtpKraj.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dtpKraj.Location = new System.Drawing.Point(542, 293);
+            this.dtpKraj.Location = new System.Drawing.Point(542, 342);
             this.dtpKraj.Name = "dtpKraj";
             this.dtpKraj.Size = new System.Drawing.Size(295, 26);
             this.dtpKraj.TabIndex = 12;
@@ -116,7 +115,7 @@
             // dtpPocetak
             // 
             this.dtpPocetak.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dtpPocetak.Location = new System.Drawing.Point(542, 225);
+            this.dtpPocetak.Location = new System.Drawing.Point(542, 263);
             this.dtpPocetak.Name = "dtpPocetak";
             this.dtpPocetak.Size = new System.Drawing.Size(295, 26);
             this.dtpPocetak.TabIndex = 11;
@@ -124,7 +123,7 @@
             // txtOpis
             // 
             this.txtOpis.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtOpis.Location = new System.Drawing.Point(565, 157);
+            this.txtOpis.Location = new System.Drawing.Point(565, 184);
             this.txtOpis.Name = "txtOpis";
             this.txtOpis.Size = new System.Drawing.Size(250, 26);
             this.txtOpis.TabIndex = 8;
@@ -132,7 +131,7 @@
             // txtNaziv
             // 
             this.txtNaziv.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNaziv.Location = new System.Drawing.Point(565, 21);
+            this.txtNaziv.Location = new System.Drawing.Point(565, 26);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(250, 26);
             this.txtNaziv.TabIndex = 7;
@@ -141,7 +140,7 @@
             // 
             this.lblLokacijaNaziv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblLokacijaNaziv.AutoSize = true;
-            this.lblLokacijaNaziv.Location = new System.Drawing.Point(105, 364);
+            this.lblLokacijaNaziv.Location = new System.Drawing.Point(105, 426);
             this.lblLokacijaNaziv.Name = "lblLokacijaNaziv";
             this.lblLokacijaNaziv.Size = new System.Drawing.Size(107, 20);
             this.lblLokacijaNaziv.TabIndex = 5;
@@ -151,7 +150,7 @@
             // 
             this.labelDatumiVreme2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelDatumiVreme2.AutoSize = true;
-            this.labelDatumiVreme2.Location = new System.Drawing.Point(82, 296);
+            this.labelDatumiVreme2.Location = new System.Drawing.Point(82, 345);
             this.labelDatumiVreme2.Name = "labelDatumiVreme2";
             this.labelDatumiVreme2.Size = new System.Drawing.Size(153, 20);
             this.labelDatumiVreme2.TabIndex = 4;
@@ -161,7 +160,7 @@
             // 
             this.labelDatumiVreme1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelDatumiVreme1.AutoSize = true;
-            this.labelDatumiVreme1.Location = new System.Drawing.Point(71, 228);
+            this.labelDatumiVreme1.Location = new System.Drawing.Point(71, 266);
             this.labelDatumiVreme1.Name = "labelDatumiVreme1";
             this.labelDatumiVreme1.Size = new System.Drawing.Size(176, 20);
             this.labelDatumiVreme1.TabIndex = 3;
@@ -171,7 +170,7 @@
             // 
             this.labelOpis.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelOpis.AutoSize = true;
-            this.labelOpis.Location = new System.Drawing.Point(136, 160);
+            this.labelOpis.Location = new System.Drawing.Point(136, 187);
             this.labelOpis.Name = "labelOpis";
             this.labelOpis.Size = new System.Drawing.Size(45, 20);
             this.labelOpis.TabIndex = 2;
@@ -181,7 +180,7 @@
             // 
             this.labelTip.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTip.AutoSize = true;
-            this.labelTip.Location = new System.Drawing.Point(142, 92);
+            this.labelTip.Location = new System.Drawing.Point(142, 108);
             this.labelTip.Name = "labelTip";
             this.labelTip.Size = new System.Drawing.Size(34, 20);
             this.labelTip.TabIndex = 1;
@@ -191,28 +190,17 @@
             // 
             this.labelNaziv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNaziv.AutoSize = true;
-            this.labelNaziv.Location = new System.Drawing.Point(133, 24);
+            this.labelNaziv.Location = new System.Drawing.Point(133, 29);
             this.labelNaziv.Name = "labelNaziv";
             this.labelNaziv.Size = new System.Drawing.Size(51, 20);
             this.labelNaziv.TabIndex = 0;
             this.labelNaziv.Text = "Naziv:";
-            // 
-            // btnDodajLokacija
-            // 
-            this.btnDodajLokacija.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDodajLokacija.Location = new System.Drawing.Point(604, 411);
-            this.btnDodajLokacija.Name = "btnDodajLokacija";
-            this.btnDodajLokacija.Size = new System.Drawing.Size(172, 63);
-            this.btnDodajLokacija.TabIndex = 2;
-            this.btnDodajLokacija.Text = "Dodaj Lokaciju";
-            this.btnDodajLokacija.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Controls.Add(this.btnDodajLokacija, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.labelNaziv, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelTip, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelOpis, 0, 2);
@@ -228,7 +216,7 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -273,7 +261,6 @@
         private System.Windows.Forms.Label labelOpis;
         private System.Windows.Forms.Label labelTip;
         private System.Windows.Forms.Label labelNaziv;
-        private System.Windows.Forms.Button btnDodajLokacija;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

@@ -31,7 +31,6 @@
             this.txtTelefon = new System.Windows.Forms.TextBox();
             this.txtKontaktOsoba = new System.Windows.Forms.TextBox();
             this.txtDrzavaPorekla = new System.Windows.Forms.TextBox();
-            this.btnDodajMenadzersku = new System.Windows.Forms.Button();
             this.lableIme = new System.Windows.Forms.Label();
             this.labelDrzava = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
@@ -45,6 +44,9 @@
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelaTip = new System.Windows.Forms.Label();
+            this.rdbSolo = new System.Windows.Forms.RadioButton();
+            this.rdbBend = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +54,7 @@
             // txtTelefon
             // 
             this.txtTelefon.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTelefon.Location = new System.Drawing.Point(522, 369);
+            this.txtTelefon.Location = new System.Drawing.Point(373, 369);
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(250, 26);
             this.txtTelefon.TabIndex = 17;
@@ -60,7 +62,7 @@
             // txtKontaktOsoba
             // 
             this.txtKontaktOsoba.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtKontaktOsoba.Location = new System.Drawing.Point(522, 284);
+            this.txtKontaktOsoba.Location = new System.Drawing.Point(373, 284);
             this.txtKontaktOsoba.Name = "txtKontaktOsoba";
             this.txtKontaktOsoba.Size = new System.Drawing.Size(250, 26);
             this.txtKontaktOsoba.TabIndex = 16;
@@ -68,26 +70,16 @@
             // txtDrzavaPorekla
             // 
             this.txtDrzavaPorekla.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDrzavaPorekla.Location = new System.Drawing.Point(522, 114);
+            this.txtDrzavaPorekla.Location = new System.Drawing.Point(373, 114);
             this.txtDrzavaPorekla.Name = "txtDrzavaPorekla";
             this.txtDrzavaPorekla.Size = new System.Drawing.Size(250, 26);
             this.txtDrzavaPorekla.TabIndex = 15;
-            // 
-            // btnDodajMenadzersku
-            // 
-            this.btnDodajMenadzersku.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDodajMenadzersku.Location = new System.Drawing.Point(561, 522);
-            this.btnDodajMenadzersku.Name = "btnDodajMenadzersku";
-            this.btnDodajMenadzersku.Size = new System.Drawing.Size(172, 64);
-            this.btnDodajMenadzersku.TabIndex = 2;
-            this.btnDodajMenadzersku.Text = "Dodaj Menadzersku:";
-            this.btnDodajMenadzersku.UseVisualStyleBackColor = true;
             // 
             // lableIme
             // 
             this.lableIme.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lableIme.AutoSize = true;
-            this.lableIme.Location = new System.Drawing.Point(129, 32);
+            this.lableIme.Location = new System.Drawing.Point(146, 32);
             this.lableIme.Name = "lableIme";
             this.lableIme.Size = new System.Drawing.Size(40, 20);
             this.lableIme.TabIndex = 0;
@@ -97,7 +89,7 @@
             // 
             this.labelDrzava.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelDrzava.AutoSize = true;
-            this.labelDrzava.Location = new System.Drawing.Point(89, 117);
+            this.labelDrzava.Location = new System.Drawing.Point(106, 117);
             this.labelDrzava.Name = "labelDrzava";
             this.labelDrzava.Size = new System.Drawing.Size(119, 20);
             this.labelDrzava.TabIndex = 1;
@@ -107,7 +99,7 @@
             // 
             this.labelEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(123, 202);
+            this.labelEmail.Location = new System.Drawing.Point(140, 202);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(52, 20);
             this.labelEmail.TabIndex = 2;
@@ -117,7 +109,7 @@
             // 
             this.lblKontakt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblKontakt.AutoSize = true;
-            this.lblKontakt.Location = new System.Drawing.Point(91, 287);
+            this.lblKontakt.Location = new System.Drawing.Point(108, 287);
             this.lblKontakt.Name = "lblKontakt";
             this.lblKontakt.Size = new System.Drawing.Size(116, 20);
             this.lblKontakt.TabIndex = 3;
@@ -127,7 +119,7 @@
             // 
             this.lblTelefon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTelefon.AutoSize = true;
-            this.lblTelefon.Location = new System.Drawing.Point(116, 372);
+            this.lblTelefon.Location = new System.Drawing.Point(133, 372);
             this.lblTelefon.Name = "lblTelefon";
             this.lblTelefon.Size = new System.Drawing.Size(66, 20);
             this.lblTelefon.TabIndex = 4;
@@ -148,7 +140,7 @@
             // 
             this.lblMenadzerska.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMenadzerska.AutoSize = true;
-            this.lblMenadzerska.Location = new System.Drawing.Point(63, 457);
+            this.lblMenadzerska.Location = new System.Drawing.Point(80, 544);
             this.lblMenadzerska.Name = "lblMenadzerska";
             this.lblMenadzerska.Size = new System.Drawing.Size(172, 20);
             this.lblMenadzerska.TabIndex = 5;
@@ -157,7 +149,7 @@
             // txtIme
             // 
             this.txtIme.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtIme.Location = new System.Drawing.Point(522, 29);
+            this.txtIme.Location = new System.Drawing.Point(373, 29);
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(250, 26);
             this.txtIme.TabIndex = 7;
@@ -165,7 +157,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmail.Location = new System.Drawing.Point(522, 199);
+            this.txtEmail.Location = new System.Drawing.Point(373, 199);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(250, 26);
             this.txtEmail.TabIndex = 8;
@@ -174,7 +166,7 @@
             // 
             this.cmdMenadzerska.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmdMenadzerska.FormattingEnabled = true;
-            this.cmdMenadzerska.Location = new System.Drawing.Point(513, 453);
+            this.cmdMenadzerska.Location = new System.Drawing.Point(364, 540);
             this.cmdMenadzerska.Name = "cmdMenadzerska";
             this.cmdMenadzerska.Size = new System.Drawing.Size(267, 28);
             this.cmdMenadzerska.TabIndex = 14;
@@ -208,22 +200,25 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Controls.Add(this.txtTelefon, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtKontaktOsoba, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtDrzavaPorekla, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnDodajMenadzersku, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.lableIme, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelDrzava, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelEmail, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblKontakt, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblTelefon, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.lblMenadzerska, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtIme, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtEmail, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.cmdMenadzerska, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.cmdMenadzerska, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblMenadzerska, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.labelaTip, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.rdbSolo, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.rdbBend, 2, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -237,6 +232,42 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(996, 599);
             this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // labelaTip
+            // 
+            this.labelaTip.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelaTip.AutoSize = true;
+            this.labelaTip.Location = new System.Drawing.Point(149, 457);
+            this.labelaTip.Name = "labelaTip";
+            this.labelaTip.Size = new System.Drawing.Size(34, 20);
+            this.labelaTip.TabIndex = 19;
+            this.labelaTip.Text = "Tip:";
+            // 
+            // rdbSolo
+            // 
+            this.rdbSolo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdbSolo.AutoSize = true;
+            this.rdbSolo.Location = new System.Drawing.Point(433, 455);
+            this.rdbSolo.Name = "rdbSolo";
+            this.rdbSolo.Size = new System.Drawing.Size(129, 24);
+            this.rdbSolo.TabIndex = 20;
+            this.rdbSolo.TabStop = true;
+            this.rdbSolo.Text = "Solo Umetnik";
+            this.rdbSolo.UseVisualStyleBackColor = true;
+            this.rdbSolo.CheckedChanged += new System.EventHandler(this.rdbSolo_CheckedChanged);
+            // 
+            // rdbBend
+            // 
+            this.rdbBend.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdbBend.AutoSize = true;
+            this.rdbBend.Location = new System.Drawing.Point(794, 455);
+            this.rdbBend.Name = "rdbBend";
+            this.rdbBend.Size = new System.Drawing.Size(72, 24);
+            this.rdbBend.TabIndex = 21;
+            this.rdbBend.TabStop = true;
+            this.rdbBend.Text = "Bend";
+            this.rdbBend.UseVisualStyleBackColor = true;
+            this.rdbBend.CheckedChanged += new System.EventHandler(this.rdbBend_CheckedChanged);
             // 
             // FormaIzvodjacIzmeni
             // 
@@ -260,7 +291,6 @@
         private System.Windows.Forms.TextBox txtTelefon;
         private System.Windows.Forms.TextBox txtKontaktOsoba;
         private System.Windows.Forms.TextBox txtDrzavaPorekla;
-        private System.Windows.Forms.Button btnDodajMenadzersku;
         private System.Windows.Forms.Label lableIme;
         private System.Windows.Forms.Label labelDrzava;
         private System.Windows.Forms.Label labelEmail;
@@ -274,5 +304,8 @@
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label labelaTip;
+        private System.Windows.Forms.RadioButton rdbSolo;
+        private System.Windows.Forms.RadioButton rdbBend;
     }
 }

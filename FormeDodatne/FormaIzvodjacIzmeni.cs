@@ -63,7 +63,8 @@ namespace Muzicki_festival.FormeDodatne
         {
             if (string.IsNullOrWhiteSpace(txtIme.Text) || string.IsNullOrWhiteSpace(txtDrzavaPorekla.Text) ||
                 string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtTelefon.Text) ||
-                 string.IsNullOrWhiteSpace(txtKontaktOsoba.Text) || cmdMenadzerska.SelectedItem == null)
+                 string.IsNullOrWhiteSpace(txtKontaktOsoba.Text) || cmdMenadzerska.SelectedItem == null
+                )
             {
                 MessageBox.Show("Molimo popunite sva polja ispravno.");
                 return;
@@ -85,7 +86,8 @@ namespace Muzicki_festival.FormeDodatne
                     s.Update(i);
                     s.Flush();
                 }
-
+                bool novaJeSolo = rdbSolo.Checked;
+                bool staraJeSolo = izvodjacZaIzmenu is Solo_Umetnik;
                 MessageBox.Show("Izvodjac uspešno izmenjen.");
                 parentform.Show();
                 this.Close();
@@ -100,6 +102,48 @@ namespace Muzicki_festival.FormeDodatne
         {
             parentform.Show();
             this.Close();
+        }
+
+        private void rdbBend_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbBend.Checked)
+            {
+                FormaSoloIzvodjacBendIzmeni forma = new FormaSoloIzvodjacBendIzmeni(
+                  this,
+                  false,
+                  txtIme.Text.Trim(),
+                  txtDrzavaPorekla.Text.Trim(),
+                  txtEmail.Text.Trim(),
+                  txtKontaktOsoba.Text.Trim(),
+                  txtTelefon.Text.Trim(),
+                  cmdMenadzerska.SelectedItem as MenadzerskaAgencija,
+                  izvodjacZaIzmenu.ID
+                );
+                this.Hide();
+                forma.ShowDialog();
+                this.Show();
+            }
+        }
+
+        private void rdbSolo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbSolo.Checked)
+            {
+                FormaSoloIzvodjacBendIzmeni forma = new FormaSoloIzvodjacBendIzmeni(
+                  this,
+                  true,
+                  txtIme.Text.Trim(),
+                  txtDrzavaPorekla.Text.Trim(),
+                  txtEmail.Text.Trim(),
+                  txtKontaktOsoba.Text.Trim(),
+                  txtTelefon.Text.Trim(),
+                  cmdMenadzerska.SelectedItem as MenadzerskaAgencija,
+                  izvodjacZaIzmenu.ID
+                );
+                this.Hide();
+                forma.ShowDialog();
+                this.Show();
+            }
         }
     }
 }

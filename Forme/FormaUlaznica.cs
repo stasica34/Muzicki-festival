@@ -58,11 +58,6 @@ namespace Muzicki_festival.Forme
             }
         }
 
-        private void cmd_Ucitavanje_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void cmd_Nazad_Click(object sender, EventArgs e)
         {
             parentForm.Show();

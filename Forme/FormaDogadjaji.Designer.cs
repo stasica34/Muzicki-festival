@@ -33,19 +33,19 @@
             this.cmdDodavanje2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnIzvodjac = new System.Windows.Forms.Button();
             this.cmdIzmeni = new System.Windows.Forms.Button();
             this.cmdUcitavanjeDogadjaja = new System.Windows.Forms.Button();
             this.btnObrisi = new System.Windows.Forms.Button();
-            this.btnIzvodjac = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdDodavanje
             // 
-            this.cmdDodavanje.Location = new System.Drawing.Point(187, 12);
+            this.cmdDodavanje.Location = new System.Drawing.Point(196, 12);
             this.cmdDodavanje.Name = "cmdDodavanje";
-            this.cmdDodavanje.Size = new System.Drawing.Size(169, 57);
+            this.cmdDodavanje.Size = new System.Drawing.Size(178, 57);
             this.cmdDodavanje.TabIndex = 3;
             this.cmdDodavanje.Text = "Dodavanje";
             this.cmdDodavanje.UseVisualStyleBackColor = true;
@@ -74,12 +74,12 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 83);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 116);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1246, 586);
+            this.dataGridView1.Size = new System.Drawing.Size(1246, 553);
             this.dataGridView1.TabIndex = 6;
             // 
             // panel1
@@ -94,9 +94,19 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1246, 83);
+            this.panel1.Size = new System.Drawing.Size(1246, 110);
             this.panel1.TabIndex = 7;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnIzvodjac
+            // 
+            this.btnIzvodjac.Location = new System.Drawing.Point(712, 12);
+            this.btnIzvodjac.Name = "btnIzvodjac";
+            this.btnIzvodjac.Size = new System.Drawing.Size(169, 57);
+            this.btnIzvodjac.TabIndex = 9;
+            this.btnIzvodjac.Text = "Dodaj Izvodjaca";
+            this.btnIzvodjac.UseVisualStyleBackColor = true;
+            this.btnIzvodjac.Click += new System.EventHandler(this.btnIzvodjac_Click_1);
             // 
             // cmdIzmeni
             // 
@@ -104,7 +114,7 @@
             this.cmdIzmeni.Name = "cmdIzmeni";
             this.cmdIzmeni.Size = new System.Drawing.Size(169, 57);
             this.cmdIzmeni.TabIndex = 8;
-            this.cmdIzmeni.Text = "Izmeni";
+            this.cmdIzmeni.Text = "Izmeni Dogadjaj";
             this.cmdIzmeni.UseVisualStyleBackColor = true;
             this.cmdIzmeni.Click += new System.EventHandler(this.cmdIzmeni_Click);
             // 
@@ -112,7 +122,7 @@
             // 
             this.cmdUcitavanjeDogadjaja.Location = new System.Drawing.Point(12, 12);
             this.cmdUcitavanjeDogadjaja.Name = "cmdUcitavanjeDogadjaja";
-            this.cmdUcitavanjeDogadjaja.Size = new System.Drawing.Size(169, 57);
+            this.cmdUcitavanjeDogadjaja.Size = new System.Drawing.Size(178, 57);
             this.cmdUcitavanjeDogadjaja.TabIndex = 2;
             this.cmdUcitavanjeDogadjaja.Text = "Ucitavanje";
             this.cmdUcitavanjeDogadjaja.UseVisualStyleBackColor = true;
@@ -124,19 +134,9 @@
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(169, 57);
             this.btnObrisi.TabIndex = 8;
-            this.btnObrisi.Text = "Obrisi\r\n";
+            this.btnObrisi.Text = "Obrisi\r\n Dogadjaj";
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
-            // 
-            // btnIzvodjac
-            // 
-            this.btnIzvodjac.Location = new System.Drawing.Point(712, 12);
-            this.btnIzvodjac.Name = "btnIzvodjac";
-            this.btnIzvodjac.Size = new System.Drawing.Size(169, 57);
-            this.btnIzvodjac.TabIndex = 9;
-            this.btnIzvodjac.Text = "Izvodjaci";
-            this.btnIzvodjac.UseVisualStyleBackColor = true;
-            this.btnIzvodjac.Click += new System.EventHandler(this.btnIzvodjac_Click_1);
             // 
             // FormaDogadjaji
             // 

@@ -393,11 +393,16 @@ namespace Muzicki_festival.Forme
                     return;
                 }
 
-                FormaIzvodjacDodaj formaIzvodjac = new FormaIzvodjacDodaj(this, d);
+                FormaIzvodjacDogadjaj formaIzvodjacdogadaj = new FormaIzvodjacDogadjaj(this, d);
                 this.Hide();
-                formaIzvodjac.ShowDialog();
+                formaIzvodjacdogadaj.ShowDialog();
                 this.Show();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

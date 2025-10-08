@@ -28,102 +28,102 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmd_Nazad = new System.Windows.Forms.Button();
-            this.cmd_Ucitavanje = new System.Windows.Forms.Button();
-            this.cmdDodavanje = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnObrisi = new System.Windows.Forms.Button();
-            this.cmdIzmeni = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnIzvodjaci = new System.Windows.Forms.Button();
+            this.btnMenadzerskaAgencija = new System.Windows.Forms.Button();
+            this.btnBend = new System.Windows.Forms.Button();
+            this.btnSolo = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // cmd_Nazad
+            // splitContainer1
             // 
-            this.cmd_Nazad.Location = new System.Drawing.Point(1003, 14);
-            this.cmd_Nazad.Name = "cmd_Nazad";
-            this.cmd_Nazad.Size = new System.Drawing.Size(169, 52);
-            this.cmd_Nazad.TabIndex = 7;
-            this.cmd_Nazad.Text = "Nazad";
-            this.cmd_Nazad.UseVisualStyleBackColor = true;
-            this.cmd_Nazad.Click += new System.EventHandler(this.cmd_Nazad_Click);
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // cmd_Ucitavanje
+            // splitContainer1.Panel1
             // 
-            this.cmd_Ucitavanje.Location = new System.Drawing.Point(12, 12);
-            this.cmd_Ucitavanje.Name = "cmd_Ucitavanje";
-            this.cmd_Ucitavanje.Size = new System.Drawing.Size(169, 57);
-            this.cmd_Ucitavanje.TabIndex = 6;
-            this.cmd_Ucitavanje.Text = "Ucitavanje";
-            this.cmd_Ucitavanje.UseVisualStyleBackColor = true;
-            this.cmd_Ucitavanje.Click += new System.EventHandler(this.cmd_Ucitavanje_Click);
+            this.splitContainer1.Panel1.Controls.Add(this.btnIzvodjaci);
+            this.splitContainer1.Panel1.Controls.Add(this.btnMenadzerskaAgencija);
+            this.splitContainer1.Panel1.Controls.Add(this.btnBend);
+            this.splitContainer1.Panel1.Controls.Add(this.btnSolo);
             // 
-            // cmdDodavanje
+            // splitContainer1.Panel2
             // 
-            this.cmdDodavanje.Location = new System.Drawing.Point(187, 12);
-            this.cmdDodavanje.Name = "cmdDodavanje";
-            this.cmdDodavanje.Size = new System.Drawing.Size(169, 57);
-            this.cmdDodavanje.TabIndex = 8;
-            this.cmdDodavanje.Text = "Dodavanje";
-            this.cmdDodavanje.UseVisualStyleBackColor = true;
-            this.cmdDodavanje.Click += new System.EventHandler(this.cmdDodavanje_Click);
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Size = new System.Drawing.Size(897, 536);
+            this.splitContainer1.SplitterDistance = 299;
+            this.splitContainer1.TabIndex = 0;
             // 
-            // panel1
+            // btnIzvodjaci
             // 
-            this.panel1.Controls.Add(this.btnObrisi);
-            this.panel1.Controls.Add(this.cmdIzmeni);
-            this.panel1.Controls.Add(this.cmd_Ucitavanje);
-            this.panel1.Controls.Add(this.cmdDodavanje);
-            this.panel1.Controls.Add(this.cmd_Nazad);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1184, 83);
-            this.panel1.TabIndex = 9;
+            this.btnIzvodjaci.Location = new System.Drawing.Point(55, 60);
+            this.btnIzvodjaci.Name = "btnIzvodjaci";
+            this.btnIzvodjaci.Size = new System.Drawing.Size(195, 51);
+            this.btnIzvodjaci.TabIndex = 3;
+            this.btnIzvodjaci.Text = "Svi izvodjaci:";
+            this.btnIzvodjaci.UseVisualStyleBackColor = true;
+            this.btnIzvodjaci.Click += new System.EventHandler(this.btnIzvodjaci_Click);
             // 
-            // btnObrisi
+            // btnMenadzerskaAgencija
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(537, 12);
-            this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(169, 57);
-            this.btnObrisi.TabIndex = 10;
-            this.btnObrisi.Text = "Obrisi\r\n";
-            this.btnObrisi.UseVisualStyleBackColor = true;
-            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            this.btnMenadzerskaAgencija.Location = new System.Drawing.Point(55, 344);
+            this.btnMenadzerskaAgencija.Name = "btnMenadzerskaAgencija";
+            this.btnMenadzerskaAgencija.Size = new System.Drawing.Size(195, 51);
+            this.btnMenadzerskaAgencija.TabIndex = 2;
+            this.btnMenadzerskaAgencija.Text = "Menadzerska agencija";
+            this.btnMenadzerskaAgencija.UseVisualStyleBackColor = true;
+            this.btnMenadzerskaAgencija.Click += new System.EventHandler(this.btnMenadzerskaAgencija_Click);
             // 
-            // cmdIzmeni
+            // btnBend
             // 
-            this.cmdIzmeni.Location = new System.Drawing.Point(362, 12);
-            this.cmdIzmeni.Name = "cmdIzmeni";
-            this.cmdIzmeni.Size = new System.Drawing.Size(169, 57);
-            this.cmdIzmeni.TabIndex = 9;
-            this.cmdIzmeni.Text = "Izmeni";
-            this.cmdIzmeni.UseVisualStyleBackColor = true;
-            this.cmdIzmeni.Click += new System.EventHandler(this.cmdIzmeni_Click);
+            this.btnBend.Location = new System.Drawing.Point(55, 246);
+            this.btnBend.Name = "btnBend";
+            this.btnBend.Size = new System.Drawing.Size(195, 51);
+            this.btnBend.TabIndex = 1;
+            this.btnBend.Text = "Svi bendovi";
+            this.btnBend.UseVisualStyleBackColor = true;
+            this.btnBend.Click += new System.EventHandler(this.btnBend_Click);
+            // 
+            // btnSolo
+            // 
+            this.btnSolo.Location = new System.Drawing.Point(55, 150);
+            this.btnSolo.Name = "btnSolo";
+            this.btnSolo.Size = new System.Drawing.Size(195, 51);
+            this.btnSolo.TabIndex = 0;
+            this.btnSolo.Text = "Svi solo umetnici";
+            this.btnSolo.UseVisualStyleBackColor = true;
+            this.btnSolo.Click += new System.EventHandler(this.btnSolo_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 83);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1184, 539);
-            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.Size = new System.Drawing.Size(594, 536);
+            this.dataGridView1.TabIndex = 0;
             // 
             // FormaIzvodjac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 622);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(897, 536);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "FormaIzvodjac";
             this.Text = "FormaIzvodjac";
             this.Load += new System.EventHandler(this.FormaIzvodjac_Load);
-            this.panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -131,12 +131,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button cmd_Nazad;
-        private System.Windows.Forms.Button cmd_Ucitavanje;
-        private System.Windows.Forms.Button cmdDodavanje;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button btnSolo;
+        private System.Windows.Forms.Button btnMenadzerskaAgencija;
+        private System.Windows.Forms.Button btnBend;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button cmdIzmeni;
-        private System.Windows.Forms.Button btnObrisi;
+        private System.Windows.Forms.Button btnIzvodjaci;
     }
 }
