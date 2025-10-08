@@ -1,4 +1,6 @@
 ﻿using Muzicki_festival.Entiteti;
+using Muzicki_festival.FormeDodatne;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 
 namespace Muzicki_festival.Forme
 {
@@ -29,33 +30,140 @@ namespace Muzicki_festival.Forme
 
         private void cmd_Ucitavanje_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    ISession s = DataLayer.GetSession();
+            //    using (var session = DataLayer.GetSession())
+            //    {
+            //        using (var transaction = session.BeginTransaction())
+            //        {
+            //            var listaMenadzerskaAgenciaj = session.QueryOver<MenadzerskaAgencija>().List();
+            //            if (listaMenadzerskaAgenciaj.Count == 0)
+            //            {
+            //                MessageBox.Show("Nema mendaz.agencija  u bazi.");
+            //                return;
+            //            }
+            //            StringBuilder sb = new StringBuilder();
+            //            foreach (var ao in listaMenadzerskaAgenciaj)
+            //            {
+            //                sb.AppendLine($"ID: {ao.ID}");
+            //                sb.AppendLine($"Naziv: {ao.NAZIV}");
+            //                sb.AppendLine($"Adresa: {ao.ADRESA}");
+            //                sb.AppendLine($"Kontakt osoba: {ao.KONTAKT_OSOBA}");
+            //                sb.AppendLine(new string('-', 40));
+            //            }
+            //            MessageBox.Show(sb.ToString(), $"Lista mendaz.agencija : {listaMenadzerskaAgenciaj.Count}");
+            //            transaction.Commit();
+            //        }
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+        }
+
+        private void FormaMenaderskaAgencija_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                UcitajMenagerskeAgencije();
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView1.ReadOnly = true;
+                dataGridView1.AllowUserToAddRows = false;
+                dataGridView1.RowHeadersVisible = false;
+                dataGridView1.BorderStyle = BorderStyle.None;
+                dataGridView1.BackgroundColor = Color.WhiteSmoke;
+                dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                dataGridView1.GridColor = Color.LightGray;
+
+                dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+
+                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+                dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+                dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
+                dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dataGridView1.EnableHeadersVisualStyles = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+
+        private void btnObrisi_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Izaberite menadzersku agenciju koji zelite da obrisete!");
+                return;
+            }
+            int selectedRowIndex = dataGridView1.SelectedRows[0].Index;
+            object idObj = dataGridView1.Rows[selectedRowIndex].Cells["ID"].Value;
+
+            if (idObj == null || !int.TryParse(idObj.ToString(), out int agencijaID))
+            {
+                MessageBox.Show("Greška prilikom čitanja ID-ja agnecije.");
+                return;
+            }
+            DialogResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete izabri menadzersku agenciju?", "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    using (ISession s = DataLayer.GetSession())
+                    {
+                        MenadzerskaAgencija menadzerskaAgencija = s.Get<MenadzerskaAgencija>(agencijaID);
+                        if (menadzerskaAgencija == null)
+                        {
+                            MessageBox.Show("Menadzerska agencija ne postoji u bazi.");
+                            return;
+                        }
+
+                        s.Delete(menadzerskaAgencija);
+                        s.Flush();
+                    }
+
+                    MessageBox.Show("Menadzerska agencija uspešno obrisana.");
+                   UcitajMenagerskeAgencije();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Greška prilikom brisanja: " + ex.Message);
+                }
+            }
+        }
+        private void UcitajMenagerskeAgencije()
+        {
             try
             {
                 ISession s = DataLayer.GetSession();
                 using (var session = DataLayer.GetSession())
                 {
-                    using (var transaction = session.BeginTransaction())
+                    var listaMenadzerskaAgencija = session.QueryOver<MenadzerskaAgencija>().List();
+                    if (listaMenadzerskaAgencija.Count == 0)
                     {
-                        var listaMenadzerskaAgenciaj = session.QueryOver<MenadzerskaAgencija>().List();
-                        if (listaMenadzerskaAgenciaj.Count == 0)
-                        {
-                            MessageBox.Show("Nema mendaz.agencija  u bazi.");
-                            return;
-                        }
-                        StringBuilder sb = new StringBuilder();
-                        foreach (var ao in listaMenadzerskaAgenciaj)
-                        {
-                            sb.AppendLine($"ID: {ao.ID}");
-                            sb.AppendLine($"Naziv: {ao.NAZIV}");
-                            sb.AppendLine($"Adresa: {ao.ADRESA}");
-                            sb.AppendLine($"Kontakt osoba: {ao.KONTAKT_OSOBA}");
-                            sb.AppendLine(new string('-', 40));
-                        }
-                        MessageBox.Show(sb.ToString(), $"Lista mendaz.agencija : {listaMenadzerskaAgenciaj.Count}");
-                        transaction.Commit();
+                        MessageBox.Show("Trenutno nema menadzerskih agencija u bazi.");
                     }
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("ID");
+                    dt.Columns.Add("NAZIV");
+                    dt.Columns.Add("ADRESA");
+                    dt.Columns.Add("KONTAKT_OSOBA");
+                    foreach (var d in listaMenadzerskaAgencija)
+                    {
+                        dt.Rows.Add(d.ID, d.NAZIV, d.ADRESA, d.KONTAKT_OSOBA);
+                    }
+                    dataGridView1.DataSource = dt;
+                    dataGridView1.Columns["ID"].Visible = false;
                 }
-
             }
             catch (Exception ex)
             {
@@ -63,18 +171,46 @@ namespace Muzicki_festival.Forme
             }
         }
 
-        private void FormaMenaderskaAgencija_Load(object sender, EventArgs e)
+        private void cmdDodavanje_Click(object sender, EventArgs e)
         {
-            try
+            FormaMenaderskaAgencija menaderskaAgencija = new FormaMenaderskaAgencija(this);
+            this.Hide();
+            menaderskaAgencija.ShowDialog();
+            this.Show();
+            UcitajMenagerskeAgencije();
+        }
+
+        private void cmdIzmeni_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
             {
-                using (var session = DataLayer.GetSession())
-                {
-                    MessageBox.Show("Forma uspešno otvorena!");
-                }
+                MessageBox.Show("Odaberite agenciju za izmenu.");
+                return;
             }
-            catch (Exception ex)
+
+            int agencijaID;
+            if (!int.TryParse(dataGridView1.SelectedRows[0].Cells["ID"].Value.ToString(), out agencijaID))
             {
-                MessageBox.Show("Greška: " + ex.Message);
+                MessageBox.Show("Greška pri čitanju ID-a događaja.");
+                return;
+            }
+
+            using (ISession s = DataLayer.GetSession())
+            {
+                MenadzerskaAgencija menadzerskaAgencija = s.Get<MenadzerskaAgencija>(agencijaID);
+
+                if (menadzerskaAgencija != null)
+                {
+                    FormaMenadzerskaAgencijaIzmeni forma = new FormaIzvodjacIzmeni(this, i);
+                    this.Hide();
+                    forma.ShowDialog();
+                    this.Show();
+                    UcitajIzvodjace();
+                }
+                else
+                {
+                    MessageBox.Show("Greška: Događaj nije pronađen.");
+                }
             }
         }
     }

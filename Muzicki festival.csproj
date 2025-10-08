@@ -146,6 +146,18 @@
     <Compile Include="FormeDodatne\FormaIzvodjacIzmeni.Designer.cs">
       <DependentUpon>FormaIzvodjacIzmeni.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormeDodatne\FormaMenadzerskaAgencijaDodavanje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaMenadzerskaAgencijaDodavanje.Designer.cs">
+      <DependentUpon>FormaMenadzerskaAgencijaDodavanje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaMenadzerskaAgencijaIzmeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaMenadzerskaAgencijaIzmeni.Designer.cs">
+      <DependentUpon>FormaMenadzerskaAgencijaIzmeni.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.cs">
       <SubType>Form</SubType>
     </Compile>
