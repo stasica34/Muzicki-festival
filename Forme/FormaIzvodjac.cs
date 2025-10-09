@@ -107,7 +107,8 @@ namespace Muzicki_festival.Forme
 
                     foreach (var d in listaIzvodjaca)
                     {
-                        dt.Rows.Add(d.ID, d.IME, d.DRZAVA_POREKLA, d.EMAIL, d.MenadzerskaAgencija.NAZIV, d.KONTAKT_OSOBA, d.TELEFON);
+                        string nazivAgencije = d.MenadzerskaAgencija != null ? d.MenadzerskaAgencija.NAZIV : "Nema agenciju";
+                        dt.Rows.Add(d.ID, d.IME, d.DRZAVA_POREKLA, d.EMAIL, nazivAgencije, d.KONTAKT_OSOBA, d.TELEFON);
                     }
                     dataGridView1.DataSource = dt;
                     dataGridView1.Columns["ID"].Visible = false;

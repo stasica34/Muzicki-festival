@@ -118,6 +118,7 @@
     <Compile Include="Entiteti\JeClanID.cs" />
     <Compile Include="Entiteti\Jednodnevna.cs" />
     <Compile Include="Entiteti\KombinovanaLokacija.cs" />
+    <Compile Include="Entiteti\KontaktPodaciMenadzerskaAgencija.cs" />
     <Compile Include="Entiteti\Lokacija.cs" />
     <Compile Include="Entiteti\LokacijaID.cs" />
     <Compile Include="Entiteti\MenadzerskaAgencija.cs" />
@@ -163,12 +164,6 @@
     </Compile>
     <Compile Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.Designer.cs">
       <DependentUpon>FormaSoloIzvodjacBendIzmeni.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaSoloUmetnikBend.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaSoloUmetnikBend.Designer.cs">
-      <DependentUpon>FormaSoloUmetnikBend.cs</DependentUpon>
     </Compile>
     <Compile Include="FormeDodatne\FormaUlazniceDodaj.cs">
       <SubType>Form</SubType>
@@ -229,6 +224,12 @@
     </Compile>
     <Compile Include="Forme\FormaIzvodjac.Designer.cs">
       <DependentUpon>FormaIzvodjac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\FormaKontaktPodaci.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\FormaKontaktPodaci.Designer.cs">
+      <DependentUpon>FormaKontaktPodaci.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\GlavnaForma.cs">
       <SubType>Form</SubType>
@@ -381,6 +382,12 @@
     <EmbeddedResource Include="FormeDodatne\FormaIzvodjacIzmeni.resx">
       <DependentUpon>FormaIzvodjacIzmeni.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaMenadzerskaAgencijaDodavanje.resx">
+      <DependentUpon>FormaMenadzerskaAgencijaDodavanje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaMenadzerskaAgencijaIzmeni.resx">
+      <DependentUpon>FormaMenadzerskaAgencijaIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.resx">
       <DependentUpon>FormaSoloIzvodjacBendIzmeni.cs</DependentUpon>
     </EmbeddedResource>
@@ -413,6 +420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaIzvodjac.resx">
       <DependentUpon>FormaIzvodjac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\FormaKontaktPodaci.resx">
+      <DependentUpon>FormaKontaktPodaci.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\GlavnaForma.resx">
       <DependentUpon>GlavnaForma.cs</DependentUpon>

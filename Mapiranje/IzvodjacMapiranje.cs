@@ -28,6 +28,7 @@ namespace Muzicki_festival.Mapiranje
               .ParentKeyColumn("IZVODJAC_ID")
               .ChildKeyColumn("DOGADJAJ_ID")
               .Cascade.All();
+            //svuda gde mi je nasladjivanje da uradim i sa discriminator sa tipom
         }
     }
 }

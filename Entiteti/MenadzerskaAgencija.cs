@@ -12,11 +12,14 @@ namespace Muzicki_festival.Entiteti
         public virtual string NAZIV { get; set; }
         public virtual string ADRESA { get; set; }
         public virtual string KONTAKT_OSOBA { get; set; }
+        //povezivanje visevrednostnog atributa
+        public virtual IList<KontaktPodaciMenadzerskaAgencija> KONTAKTPODACI { get; set; }
         //poverizvanj 1:n sa izvodjacem
         public virtual IList<Izvodjac> Izvodjaci { get; set; }
         public MenadzerskaAgencija()
         {
             Izvodjaci = new List<Izvodjac>();
+            KONTAKTPODACI = new List<KontaktPodaciMenadzerskaAgencija>();
         }
         public override string ToString()
         {

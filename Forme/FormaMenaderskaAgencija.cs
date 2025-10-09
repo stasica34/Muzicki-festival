@@ -147,7 +147,9 @@ namespace Muzicki_festival.Forme
                 ISession s = DataLayer.GetSession();
                 using (var session = DataLayer.GetSession())
                 {
-                    var listaMenadzerskaAgencija = session.QueryOver<MenadzerskaAgencija>().List();
+                    var listaMenadzerskaAgencija = session.QueryOver<MenadzerskaAgencija>()
+                                                                      .Fetch(x => x.KONTAKTPODACI).Eager
+                                                                      .List();
                     if (listaMenadzerskaAgencija.Count == 0)
                     {
                         MessageBox.Show("Trenutno nema menadzerskih agencija u bazi.");
@@ -157,9 +159,11 @@ namespace Muzicki_festival.Forme
                     dt.Columns.Add("NAZIV");
                     dt.Columns.Add("ADRESA");
                     dt.Columns.Add("KONTAKT_OSOBA");
+                    dt.Columns.Add("KONTAKTPODACI");
                     foreach (var d in listaMenadzerskaAgencija)
                     {
-                        dt.Rows.Add(d.ID, d.NAZIV, d.ADRESA, d.KONTAKT_OSOBA);
+                        string kontaktPodaciString = string.Join("; ", d.KONTAKTPODACI.Select(kp => kp.ToString()));
+                        dt.Rows.Add(d.ID, d.NAZIV, d.ADRESA, d.KONTAKT_OSOBA,kontaktPodaciString);
                     }
                     dataGridView1.DataSource = dt;
                     dataGridView1.Columns["ID"].Visible = false;
@@ -173,7 +177,7 @@ namespace Muzicki_festival.Forme
 
         private void cmdDodavanje_Click(object sender, EventArgs e)
         {
-            FormaMenaderskaAgencija menaderskaAgencija = new FormaMenaderskaAgencija(this);
+            FormaMenadzerskaAgencijaDodavanje menaderskaAgencija = new FormaMenadzerskaAgencijaDodavanje(this, null);
             this.Hide();
             menaderskaAgencija.ShowDialog();
             this.Show();
@@ -201,11 +205,11 @@ namespace Muzicki_festival.Forme
 
                 if (menadzerskaAgencija != null)
                 {
-                    FormaMenadzerskaAgencijaIzmeni forma = new FormaIzvodjacIzmeni(this, i);
+                    FormaMenadzerskaAgencijaIzmeni forma = new FormaMenadzerskaAgencijaIzmeni(this, menadzerskaAgencija);
                     this.Hide();
                     forma.ShowDialog();
                     this.Show();
-                    UcitajIzvodjace();
+                    UcitajMenagerskeAgencije();
                 }
                 else
                 {

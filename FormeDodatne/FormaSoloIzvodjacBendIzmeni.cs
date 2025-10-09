@@ -1,15 +1,7 @@
 ﻿using Muzicki_festival.Entiteti;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using NHibernate;
+using System;
+using System.Windows.Forms;
 
 namespace Muzicki_festival.FormeDodatne
 {
@@ -87,7 +79,23 @@ namespace Muzicki_festival.FormeDodatne
                     {
                         solo.TIP_INSTRUMENTA = txtTip.Text.Trim();
                         solo.SVIRA_INSTRUMENT = cmbSvira.SelectedItem.ToString();
-                        s.SaveOrUpdate(solo);
+                        s.Update(solo);
+                        
+                    }
+                    else
+                    {
+                        solo = new Solo_Umetnik
+                        {
+                            IME = stari.IME,
+                            DRZAVA_POREKLA = stari.DRZAVA_POREKLA,
+                            EMAIL = stari.EMAIL,
+                            KONTAKT_OSOBA = stari.KONTAKT_OSOBA,
+                            TELEFON = stari.TELEFON,
+                            MenadzerskaAgencija = stari.MenadzerskaAgencija,
+                            TIP_INSTRUMENTA = txtTip.Text.Trim(),
+                            SVIRA_INSTRUMENT = cmbSvira.SelectedItem.ToString()
+                        };
+                        s.Save(solo);
                     }
                 }
                 else
@@ -98,10 +106,14 @@ namespace Muzicki_festival.FormeDodatne
                         return;
                     }
                     Bend bend = s.Get<Bend>(postojediId);
-                    if (bend!=null)
+                    if (bend != null)
                     {
                         bend.BROJ_CLANOVA = int.Parse(txtBroj.Text.Trim());
                         s.Update(bend);
+                    }
+                    else
+                    {
+                        return;
                     }
                 }
                 s.Flush();

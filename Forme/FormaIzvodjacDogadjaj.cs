@@ -67,7 +67,7 @@ namespace Muzicki_festival.Forme
 
         private void cmdDodavanje_Click(object sender, EventArgs e)
         {
-            FormaIzvodjacDodaj formaDodaj = new FormaIzvodjacDodaj(this, null);
+            FormaMenadzerskaAgencijaDodavanje formaDodaj = new FormaMenadzerskaAgencijaDodavanje(this, null);
             this.Hide();
             formaDodaj.ShowDialog();
             this.Show();

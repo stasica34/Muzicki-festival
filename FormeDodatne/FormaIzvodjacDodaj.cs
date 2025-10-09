@@ -129,10 +129,5 @@ namespace Muzicki_festival.FormeDodatne
                 MessageBox.Show("Greška pri učitavanju lokacija: " + ex.Message);
             }
         }
-
-        private void cmdIzmeni_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
