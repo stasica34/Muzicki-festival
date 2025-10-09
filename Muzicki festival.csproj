@@ -361,6 +361,7 @@
     <Compile Include="Mapiranje\JeCLanMapiranje.cs" />
     <Compile Include="Mapiranje\JednodnevnaMapiranje.cs" />
     <Compile Include="Mapiranje\KombinovanaLokacijaMapiranje.cs" />
+    <Compile Include="Mapiranje\KontaktPodaciMapiranje.cs" />
     <Compile Include="Mapiranje\LokacijaMapiranja.cs" />
     <Compile Include="Mapiranje\MenadzerskaAgencijaMapiranje.cs" />
     <Compile Include="Mapiranje\OtvorenaLokacijaMapiranje.cs" />

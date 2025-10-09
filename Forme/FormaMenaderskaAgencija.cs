@@ -147,10 +147,12 @@ namespace Muzicki_festival.Forme
                 ISession s = DataLayer.GetSession();
                 using (var session = DataLayer.GetSession())
                 {
-                    var listaMenadzerskaAgencija = session.QueryOver<MenadzerskaAgencija>()
-                                                                      .Fetch(x => x.KONTAKTPODACI).Eager
-                                                                      .List();
-                    if (listaMenadzerskaAgencija.Count == 0)
+                    //var listaMenadzerskaAgencija = session.QueryOver<MenadzerskaAgencija>()
+                    //                                                  .Fetch(x => x.KONTAKTPODACI).Eager
+                    //                                                  .List();
+                    var listaMenadzerskihAgencija = s.QueryOver<MenadzerskaAgencija>().List();
+
+                    if (listaMenadzerskihAgencija.Count == 0)
                     {
                         MessageBox.Show("Trenutno nema menadzerskih agencija u bazi.");
                     }
@@ -160,7 +162,7 @@ namespace Muzicki_festival.Forme
                     dt.Columns.Add("ADRESA");
                     dt.Columns.Add("KONTAKT_OSOBA");
                     dt.Columns.Add("KONTAKTPODACI");
-                    foreach (var d in listaMenadzerskaAgencija)
+                    foreach (var d in listaMenadzerskihAgencija)
                     {
                         string kontaktPodaciString = string.Join("; ", d.KONTAKTPODACI.Select(kp => kp.ToString()));
                         dt.Rows.Add(d.ID, d.NAZIV, d.ADRESA, d.KONTAKT_OSOBA,kontaktPodaciString);

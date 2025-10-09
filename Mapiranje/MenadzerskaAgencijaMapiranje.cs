@@ -17,14 +17,10 @@ public class MenadzerskaAgencijaMapiranje : ClassMap<MenadzerskaAgencija>
             .KeyColumn("MENADZERSKA_AGENCIJA_ID")
             .Inverse()
             .Cascade.All();
+        //mapiranje visevrednostinog atributa
         HasMany(x => x.KONTAKTPODACI)
-            .Table("KONTAKT_PODACI")
             .KeyColumn("MENADZERSKA_AGENCIJA_ID")
-            .Component(x =>
-            {
-                x.Map(y => y.EMAIL).Column("EMAIL");
-                x.Map(y => y.TELEFON).Column("TELEFON");
-            })
+            .Inverse()
             .Cascade.All();
     }
 }

@@ -120,11 +120,10 @@ namespace Muzicki_festival.FormeDodatne
             {
                 using (ISession s = DataLayer.GetSession())
                 {
-                    // Učitaj sve menadžerske agencije sa njihovim kontakt podacima
-                    var listaMenadzerskihAgencija = s.QueryOver<MenadzerskaAgencija>()
-                                                     .Fetch(x => x.KONTAKTPODACI).Eager
-                                                     .List();
-
+                    //var listaMenadzerskihAgencija = s.QueryOver<MenadzerskaAgencija>()
+                    //                                 .Fetch(x => x.KONTAKTPODACI).Eager
+                    //                                 .List();
+                    var listaMenadzerskihAgencija = s.QueryOver<MenadzerskaAgencija>().List();
                     DataTable dt = new DataTable();
                     dt.Columns.Add("Agencija", typeof(string));
                     dt.Columns.Add("Email", typeof(string));
