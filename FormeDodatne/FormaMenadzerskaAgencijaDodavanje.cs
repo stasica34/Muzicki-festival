@@ -69,16 +69,21 @@ namespace Muzicki_festival.FormeDodatne
                 return;
             }
 
-            agencijaDodavanje.NAZIV = txtNaziv.Text.Trim();
-            agencijaDodavanje.ADRESA = txtAdresa.Text.Trim();
-            agencijaDodavanje.KONTAKT_OSOBA = txtKontaktOsoba.Text.Trim();
+            ISession s = DataLayer.GetSession();
+            int kontaktId = (int)dataGridView1.SelectedRows[0].Cells["ID"].Value;
+            var kontakt = s.Get<KontaktPodaciMenadzerskaAgencija>(kontaktId);
 
-            using (ISession s = DataLayer.GetSession())
+            MenadzerskaAgencija agencija = new MenadzerskaAgencija
             {
-                s.SaveOrUpdate(agencijaDodavanje);
-                s.Flush();
-            }
-
+                NAZIV = txtNaziv.Text.Trim(),
+                ADRESA = txtAdresa.Text.Trim(),
+                KONTAKT_OSOBA = txtKontaktOsoba.Text.Trim(),
+                KONTAKTPODACI = new List<KontaktPodaciMenadzerskaAgencija>()
+            };
+            kontakt.AGENCIJA = agencija;
+            agencija.KONTAKTPODACI.Add(kontakt);
+            s.Save(agencija);
+            s.Flush();
             MessageBox.Show("Agencija je uspešno sačuvana.");
             parentForm.Show();
             this.Close();
@@ -125,6 +130,7 @@ namespace Muzicki_festival.FormeDodatne
                     //                                 .List();
                     var listaMenadzerskihAgencija = s.QueryOver<MenadzerskaAgencija>().List();
                     DataTable dt = new DataTable();
+                    dt.Columns.Add("ID", typeof(int));
                     dt.Columns.Add("Agencija", typeof(string));
                     dt.Columns.Add("Email", typeof(string));
                     dt.Columns.Add("Telefon", typeof(string));
@@ -135,12 +141,13 @@ namespace Muzicki_festival.FormeDodatne
                         {
                             foreach (var kontakt in agencija.KONTAKTPODACI)
                             {
-                                dt.Rows.Add(agencija.NAZIV, kontakt.EMAIL, kontakt.TELEFON);
+                                dt.Rows.Add(agencija.ID,agencija.NAZIV, kontakt.EMAIL, kontakt.TELEFON);
                             }
                         }
                     }
 
                     dataGridView1.DataSource = dt;
+                    dataGridView1.Columns["ID"].Visible = false;
                 }
             }
             catch (Exception ex)
