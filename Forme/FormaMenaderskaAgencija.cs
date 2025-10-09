@@ -104,13 +104,11 @@ namespace Muzicki_festival.Forme
 
             int selectedRowIndex = dataGridView1.SelectedRows[0].Index;
 
-            // Preuzmi ID agencije iz selektovanog reda
             object idObj = dataGridView1.Rows[selectedRowIndex].Cells["ID"].Value;
 
             if (idObj == null || !int.TryParse(idObj.ToString(), out int agencijaID))
                 return;
 
-            // Učitaj kontakt podatke i otvori novu formu
             using (ISession session = DataLayer.GetSession())
             {
                 var agencija = session.Get<MenadzerskaAgencija>(agencijaID);    
@@ -122,7 +120,7 @@ namespace Muzicki_festival.Forme
 
                     FormaKontaktPodaciNOVINA kontaktForma = new FormaKontaktPodaciNOVINA(this, agencija.KONTAKTPODACI.ToList());
                     kontaktForma.StartPosition = FormStartPosition.CenterParent;
-                    kontaktForma.ShowDialog(); // modalno, kao MessageBox
+                    kontaktForma.ShowDialog();
                 }
             }
         }
