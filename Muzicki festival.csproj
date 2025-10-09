@@ -177,6 +177,12 @@
     <Compile Include="FormeDodatne\FormaUlazniceIzmeni.Designer.cs">
       <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormeUkrasne\FormaKontaktPodaciNOVINA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeUkrasne\FormaKontaktPodaciNOVINA.Designer.cs">
+      <DependentUpon>FormaKontaktPodaciNOVINA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\FormaAgencijaOrganizator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -397,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaUlazniceIzmeni.resx">
       <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeUkrasne\FormaKontaktPodaciNOVINA.resx">
+      <DependentUpon>FormaKontaktPodaciNOVINA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaAgencijaOrganizator.resx">
       <DependentUpon>FormaAgencijaOrganizator.cs</DependentUpon>

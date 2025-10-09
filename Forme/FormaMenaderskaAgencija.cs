@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Muzicki_festival.FormeUkrasne;
 namespace Muzicki_festival.Forme
 {
     public partial class FormaMenaderskaAgencija : Form
@@ -80,6 +80,7 @@ namespace Muzicki_festival.Forme
                 dataGridView1.GridColor = Color.LightGray;
 
                 dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+                dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
 
                 dataGridView1.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
                 dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
@@ -94,6 +95,35 @@ namespace Muzicki_festival.Forme
             catch (Exception ex)
             {
                 MessageBox.Show("Greška: " + ex.Message);
+            }
+        }
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
+
+            int selectedRowIndex = dataGridView1.SelectedRows[0].Index;
+
+            // Preuzmi ID agencije iz selektovanog reda
+            object idObj = dataGridView1.Rows[selectedRowIndex].Cells["ID"].Value;
+
+            if (idObj == null || !int.TryParse(idObj.ToString(), out int agencijaID))
+                return;
+
+            // Učitaj kontakt podatke i otvori novu formu
+            using (ISession session = DataLayer.GetSession())
+            {
+                var agencija = session.Get<MenadzerskaAgencija>(agencijaID);    
+
+                if (agencija != null && agencija.KONTAKTPODACI != null && agencija.KONTAKTPODACI.Count > 0)
+                {
+                    // Spreči višestruko otvaranje prozora ako korisnik brzo klikće
+                    if (!this.ContainsFocus) return;
+
+                    FormaKontaktPodaciNOVINA kontaktForma = new FormaKontaktPodaciNOVINA(this, agencija.KONTAKTPODACI.ToList());
+                    kontaktForma.StartPosition = FormStartPosition.CenterParent;
+                    kontaktForma.ShowDialog(); // modalno, kao MessageBox
+                }
             }
         }
 
