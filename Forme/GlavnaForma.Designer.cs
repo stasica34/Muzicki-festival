@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.cmd_AgencijaOrganizator = new System.Windows.Forms.Button();
             this.cmd_Akreditacija = new System.Windows.Forms.Button();
             this.cmd_Posetilac = new System.Windows.Forms.Button();
             this.cmd_Grupa = new System.Windows.Forms.Button();
@@ -61,16 +60,6 @@
             this.cmd_Clan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // cmd_AgencijaOrganizator
-            // 
-            this.cmd_AgencijaOrganizator.Location = new System.Drawing.Point(362, 21);
-            this.cmd_AgencijaOrganizator.Name = "cmd_AgencijaOrganizator";
-            this.cmd_AgencijaOrganizator.Size = new System.Drawing.Size(169, 56);
-            this.cmd_AgencijaOrganizator.TabIndex = 4;
-            this.cmd_AgencijaOrganizator.Text = "Agencija Organizator";
-            this.cmd_AgencijaOrganizator.UseVisualStyleBackColor = true;
-            this.cmd_AgencijaOrganizator.Click += new System.EventHandler(this.cmd_AgencijaOrganizator_Click);
-            // 
             // cmd_Akreditacija
             // 
             this.cmd_Akreditacija.Location = new System.Drawing.Point(12, 21);
@@ -83,7 +72,7 @@
             // 
             // cmd_Posetilac
             // 
-            this.cmd_Posetilac.Location = new System.Drawing.Point(362, 149);
+            this.cmd_Posetilac.Location = new System.Drawing.Point(12, 406);
             this.cmd_Posetilac.Name = "cmd_Posetilac";
             this.cmd_Posetilac.Size = new System.Drawing.Size(169, 54);
             this.cmd_Posetilac.TabIndex = 6;
@@ -93,7 +82,7 @@
             // 
             // cmd_Grupa
             // 
-            this.cmd_Grupa.Location = new System.Drawing.Point(362, 84);
+            this.cmd_Grupa.Location = new System.Drawing.Point(537, 466);
             this.cmd_Grupa.Name = "cmd_Grupa";
             this.cmd_Grupa.Size = new System.Drawing.Size(169, 56);
             this.cmd_Grupa.TabIndex = 7;
@@ -103,7 +92,7 @@
             // 
             // cmd_TelefonPosetilac
             // 
-            this.cmd_TelefonPosetilac.Location = new System.Drawing.Point(374, 407);
+            this.cmd_TelefonPosetilac.Location = new System.Drawing.Point(362, 407);
             this.cmd_TelefonPosetilac.Name = "cmd_TelefonPosetilac";
             this.cmd_TelefonPosetilac.Size = new System.Drawing.Size(169, 55);
             this.cmd_TelefonPosetilac.TabIndex = 8;
@@ -153,7 +142,7 @@
             // 
             // cmd_TelefonIzvodjac
             // 
-            this.cmd_TelefonIzvodjac.Location = new System.Drawing.Point(199, 406);
+            this.cmd_TelefonIzvodjac.Location = new System.Drawing.Point(187, 407);
             this.cmd_TelefonIzvodjac.Name = "cmd_TelefonIzvodjac";
             this.cmd_TelefonIzvodjac.Size = new System.Drawing.Size(169, 56);
             this.cmd_TelefonIzvodjac.TabIndex = 20;
@@ -193,7 +182,7 @@
             // 
             // cmd_VisednevnaDani
             // 
-            this.cmd_VisednevnaDani.Location = new System.Drawing.Point(12, 330);
+            this.cmd_VisednevnaDani.Location = new System.Drawing.Point(187, 268);
             this.cmd_VisednevnaDani.Name = "cmd_VisednevnaDani";
             this.cmd_VisednevnaDani.Size = new System.Drawing.Size(169, 56);
             this.cmd_VisednevnaDani.TabIndex = 24;
@@ -223,7 +212,7 @@
             // 
             // cmdViseNaJedan2
             // 
-            this.cmdViseNaJedan2.Location = new System.Drawing.Point(712, 271);
+            this.cmdViseNaJedan2.Location = new System.Drawing.Point(362, 21);
             this.cmdViseNaJedan2.Name = "cmdViseNaJedan2";
             this.cmdViseNaJedan2.Size = new System.Drawing.Size(169, 56);
             this.cmdViseNaJedan2.TabIndex = 30;
@@ -243,7 +232,7 @@
             // 
             // cmdJedanNaVise
             // 
-            this.cmdJedanNaVise.Location = new System.Drawing.Point(712, 335);
+            this.cmdJedanNaVise.Location = new System.Drawing.Point(362, 85);
             this.cmdJedanNaVise.Name = "cmdJedanNaVise";
             this.cmdJedanNaVise.Size = new System.Drawing.Size(169, 56);
             this.cmdJedanNaVise.TabIndex = 31;
@@ -273,7 +262,7 @@
             // 
             // cmdViseNaJedan4
             // 
-            this.cmdViseNaJedan4.Location = new System.Drawing.Point(712, 396);
+            this.cmdViseNaJedan4.Location = new System.Drawing.Point(362, 146);
             this.cmdViseNaJedan4.Name = "cmdViseNaJedan4";
             this.cmdViseNaJedan4.Size = new System.Drawing.Size(169, 56);
             this.cmdViseNaJedan4.TabIndex = 34;
@@ -283,7 +272,7 @@
             // 
             // cmdJedanNaVise4
             // 
-            this.cmdJedanNaVise4.Location = new System.Drawing.Point(712, 458);
+            this.cmdJedanNaVise4.Location = new System.Drawing.Point(362, 208);
             this.cmdJedanNaVise4.Name = "cmdJedanNaVise4";
             this.cmdJedanNaVise4.Size = new System.Drawing.Size(169, 56);
             this.cmdJedanNaVise4.TabIndex = 35;
@@ -333,7 +322,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(199, 468);
+            this.button1.Location = new System.Drawing.Point(187, 467);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(169, 56);
             this.button1.TabIndex = 41;
@@ -353,7 +342,7 @@
             // 
             // cmd_Clan
             // 
-            this.cmd_Clan.Location = new System.Drawing.Point(374, 468);
+            this.cmd_Clan.Location = new System.Drawing.Point(362, 468);
             this.cmd_Clan.Name = "cmd_Clan";
             this.cmd_Clan.Size = new System.Drawing.Size(169, 53);
             this.cmd_Clan.TabIndex = 11;
@@ -395,7 +384,6 @@
             this.Controls.Add(this.cmd_Grupa);
             this.Controls.Add(this.cmd_Posetilac);
             this.Controls.Add(this.cmd_Akreditacija);
-            this.Controls.Add(this.cmd_AgencijaOrganizator);
             this.Name = "GlavnaForma";
             this.Text = "S";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -406,7 +394,6 @@
         #endregion
 
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button cmd_AgencijaOrganizator;
         private System.Windows.Forms.Button cmd_Akreditacija;
         private System.Windows.Forms.Button cmd_Posetilac;
         private System.Windows.Forms.Button cmd_Grupa;

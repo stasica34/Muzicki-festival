@@ -130,10 +130,10 @@ namespace Muzicki_festival.FormeDodatne
                     //                                 .List();
                     var listaMenadzerskihAgencija = s.QueryOver<MenadzerskaAgencija>().List();
                     DataTable dt = new DataTable();
-                    dt.Columns.Add("ID", typeof(int));
-                    dt.Columns.Add("Agencija", typeof(string));
-                    dt.Columns.Add("Email", typeof(string));
-                    dt.Columns.Add("Telefon", typeof(string));
+                    dt.Columns.Add("ID");
+                    dt.Columns.Add("Agencija");
+                    dt.Columns.Add("Email");
+                    dt.Columns.Add("Telefon");
 
                     foreach (var agencija in listaMenadzerskihAgencija)
                     {

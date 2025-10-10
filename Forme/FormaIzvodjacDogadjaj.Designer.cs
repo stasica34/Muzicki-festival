@@ -110,6 +110,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "FormaIzvodjacDogadjaj";
+            this.ShowInTaskbar = false;
             this.Text = "FormaIzvodjac";
             this.Load += new System.EventHandler(this.FormaIzvodjac_Load);
             this.panel1.ResumeLayout(false);

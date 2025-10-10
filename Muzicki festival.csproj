@@ -135,6 +135,30 @@
     <Compile Include="Entiteti\VisednevnaDani.cs" />
     <Compile Include="Entiteti\VisednevnaDaniID.cs" />
     <Compile Include="Entiteti\ZatvorenaLokacija.cs" />
+    <Compile Include="FormeDodatne\FormaAgencijaOrganizatorDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaAgencijaOrganizatorDodaj.Designer.cs">
+      <DependentUpon>FormaAgencijaOrganizatorDodaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.Designer.cs">
+      <DependentUpon>FormaAgencijaOrganizatorIzmeni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaGrupaDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaGrupaDodaj.Designer.cs">
+      <DependentUpon>FormaGrupaDodaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaGrupaIzmeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaGrupaIzmeni.Designer.cs">
+      <DependentUpon>FormaGrupaIzmeni.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormeDodatne\FormaIzvodjacDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +182,18 @@
     </Compile>
     <Compile Include="FormeDodatne\FormaMenadzerskaAgencijaIzmeni.Designer.cs">
       <DependentUpon>FormaMenadzerskaAgencijaIzmeni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaPosetilacDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaPosetilacDodaj.Designer.cs">
+      <DependentUpon>FormaPosetilacDodaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaPosetilacIzmeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaPosetilacIzmeni.Designer.cs">
+      <DependentUpon>FormaPosetilacIzmeni.cs</DependentUpon>
     </Compile>
     <Compile Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.cs">
       <SubType>Form</SubType>
@@ -383,6 +419,18 @@
     <Compile Include="Mapiranje\ZatvorenaLokacijaMapiranje.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormeDodatne\FormaAgencijaOrganizatorDodaj.resx">
+      <DependentUpon>FormaAgencijaOrganizatorDodaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.resx">
+      <DependentUpon>FormaAgencijaOrganizatorIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaGrupaDodaj.resx">
+      <DependentUpon>FormaGrupaDodaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaGrupaIzmeni.resx">
+      <DependentUpon>FormaGrupaIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaIzvodjacDodaj.resx">
       <DependentUpon>FormaIzvodjacDodaj.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,6 +442,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaMenadzerskaAgencijaIzmeni.resx">
       <DependentUpon>FormaMenadzerskaAgencijaIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaPosetilacDodaj.resx">
+      <DependentUpon>FormaPosetilacDodaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaPosetilacIzmeni.resx">
+      <DependentUpon>FormaPosetilacIzmeni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.resx">
       <DependentUpon>FormaSoloIzvodjacBendIzmeni.cs</DependentUpon>

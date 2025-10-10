@@ -30,7 +30,7 @@ namespace Muzicki_festival.Forme
             {
                 this.Text = $"Izvodjaci za događaj: {dogadjajizvodjac.NAZIV}";
                 UcitajIzvodjace();
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView1.ReadOnly = true;
                 dataGridView1.AllowUserToAddRows = false;
@@ -51,8 +51,6 @@ namespace Muzicki_festival.Forme
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
                 dataGridView1.EnableHeadersVisualStyles = false;
-
-
             }
             catch (Exception ex)
             {
