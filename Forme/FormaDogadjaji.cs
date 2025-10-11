@@ -161,7 +161,7 @@ namespace Muzicki_festival.Forme
 
                     foreach (var d in listadogajdaja)
                     {
-                        dt.Rows.Add(d.ID, d.NAZIV, d.TIP, d.OPIS, d.DATUM_VREME_POCETKA, d.DATUM_VREME_KRAJA, d.Lokacija.Lokacija_ID.GPS_KOORDINATE, d.Lokacija.Lokacija_ID.NAZIV);
+                        dt.Rows.Add(d.ID, d.NAZIV, d.TIP, d.OPIS, d.DATUM_VREME_POCETKA, d.DATUM_VREME_KRAJA, d.Lokacija.GPS_KOORDINATE, d.Lokacija.NAZIV);
                     }
                     dataGridView1.DataSource = dt;
                     dataGridView1.Columns["ID"].Visible = false;

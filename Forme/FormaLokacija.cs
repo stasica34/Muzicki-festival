@@ -45,10 +45,11 @@ namespace Muzicki_festival.Forme
                         StringBuilder sb = new StringBuilder();
                         foreach (var a in listalokacija)
                         {
-                            sb.AppendLine($"GPS_KOORDINATE: {a.Lokacija_ID.GPS_KOORDINATE}");
-                            sb.AppendLine($"NAZIV: {a.Lokacija_ID.GPS_KOORDINATE}");
+                            sb.AppendLine($"GPS_KOORDINATE: {a.GPS_KOORDINATE}");
+                            sb.AppendLine($"NAZIV: {a.NAZIV}");
                             sb.AppendLine($"OPIS: {a.OPIS}");
                             sb.AppendLine($"MAX_KAPACITET: {a.MAX_KAPACITET}");
+                            sb.AppendLine($"TIP_LOKACIJE: {a.TIP_LOKACIJE}");
                             sb.AppendLine(new string('-', 40));
                         }
                         MessageBox.Show(sb.ToString(), $"Lista lokacija: {listalokacija.Count}");

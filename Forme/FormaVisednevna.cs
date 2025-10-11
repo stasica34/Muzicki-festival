@@ -58,7 +58,6 @@ namespace Muzicki_festival.Forme
 
                             var sviDani = ulaznica
                             .SelectMany(x => x.Dani)
-                            .Select(p => p.DAN_VAZENJA)
                             .Distinct();
 
                             foreach (var dani in sviDani)

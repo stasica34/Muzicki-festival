@@ -250,11 +250,10 @@ namespace Muzicki_festival.Forme
                     dt.Columns.Add("MENADZERSKA_AGENCIJA_ID");
                     dt.Columns.Add("KONTAKT_OSOBA");
                     dt.Columns.Add("TELEFON");
-                    dt.Columns.Add("Solo umetnik");
 
                     foreach (var d in listaIzvodjaca)
                     {
-                        dt.Rows.Add(d.ID, d.IME, d.DRZAVA_POREKLA, d.EMAIL, d.MenadzerskaAgencija.NAZIV, d.KONTAKT_OSOBA, d.TELEFON);
+                        dt.Rows.Add(d.ID, d.IME, d.DRZAVA_POREKLA, d.EMAIL, d.MenadzerskaAgencija.NAZIV, d.KONTAKT_OSOBA, d.Telefoni);
                     }
                     dataGridView1.DataSource = dt;
                     dataGridView1.Columns["ID"].Visible = false;

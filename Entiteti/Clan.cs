@@ -9,29 +9,18 @@ namespace Muzicki_festival.Entiteti
 {
     public class Clan
     {
-        public virtual ClanID Id { get; set; }
+        public virtual int Id { get; set; }
+        //visevrednosni atribut
+        public virtual IList<string> Uloge { get; set; }
 
-        public virtual string IME
-        {
-            get => Id.IME;
-            set => Id.IME = value;
-        }
+        public virtual string IME { get; set; }
+        public virtual string INSTRUMENT { get; set; }
 
-        public virtual string INSTRUMENT
-        {
-            get => Id.INSTRUMENT;
-            set => Id.INSTRUMENT = value;
-        }
-
-        public virtual Bend BEND_ID
-        {
-            get => Id.BEND_ID;
-            set => Id.BEND_ID = value;
-        }
+        public virtual Bend BEND_ID { get; set; }
 
         public Clan()
         {
-            Id = new ClanID();
+          Uloge = new List<string>();
         }
     }
 }

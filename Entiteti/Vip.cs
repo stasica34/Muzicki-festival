@@ -9,10 +9,10 @@ namespace Muzicki_festival.Entiteti
     public class Vip:Ulaznica
     {
         //povezivanje visevrednostnog atributa
-        public virtual IList<VIpPogodnosti> Pogodnosti { get; set; }
+        public virtual IList<string> Pogodnosti { get; set; } //visevrednostni ka VIP
         public Vip() 
         {
-            Pogodnosti = new List<VIpPogodnosti>();
+            Pogodnosti = new List<string>();
         }   
     }
 }

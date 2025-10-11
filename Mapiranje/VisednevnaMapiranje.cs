@@ -14,12 +14,12 @@ namespace Muzicki_festival.Mapiranje
             Table("VISEDNEVNA");
             KeyColumn("ID_ULAZNICE");
             Map(x => x.BROJ_DANA, "BROJ_DANA");
-
-            //mapiranje sa visednevna dani:
-            HasMany(x => x.Dani)
-                .KeyColumn("ID_ULAZNICE")
-                .Inverse()
-                .Cascade.All();
+            //visevrednosni atribut
+            HasMany(x => x.Dani).
+                Table("VISEDNEVNA_DANI")
+                .KeyColumn(("ID_ULAZNICE"))
+                .Element("DAN_VAZENJA").
+                Cascade.All();
         }
     }
 }

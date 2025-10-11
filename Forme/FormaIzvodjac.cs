@@ -70,6 +70,7 @@ namespace Muzicki_festival.Forme
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
                 dataGridView1.EnableHeadersVisualStyles = false;
+                dataGridView1.CellClick += dataGridView1_CellClick;
 
 
             }
@@ -103,12 +104,23 @@ namespace Muzicki_festival.Forme
                     dt.Columns.Add("EMAIL");
                     dt.Columns.Add("MENADZERSKA_AGENCIJA_ID");
                     dt.Columns.Add("KONTAKT_OSOBA");
-                    dt.Columns.Add("TELEFON");
+                    dt.Columns.Add("TELEFONI");
+                    dt.Columns.Add("ZANROVI");
+                    dt.Columns.Add("TEHNICKI_ZAHTEVI");
 
                     foreach (var d in listaIzvodjaca)
                     {
                         string nazivAgencije = d.MenadzerskaAgencija != null ? d.MenadzerskaAgencija.NAZIV : "Nema agenciju";
-                        dt.Rows.Add(d.ID, d.IME, d.DRZAVA_POREKLA, d.EMAIL, nazivAgencije, d.KONTAKT_OSOBA, d.TELEFON);
+                        var telefonList = d.Telefoni != null && d.Telefoni.Any()
+                            ? string.Join(", ", d.Telefoni)
+                            : "Nema telefon";
+                        var zanrovi = d.Zanrovi != null && d.Zanrovi.Any()
+                          ? string.Join(", ", d.Zanrovi)
+                          : "Nema zanr";
+                        var tehinckizahtevi = d.Lista_tehnickih_zahteva != null && d.Lista_tehnickih_zahteva.Any()
+                         ? string.Join(", ", d.Lista_tehnickih_zahteva)
+                         : "Nema zahtev";
+                        dt.Rows.Add(d.ID, d.IME, d.DRZAVA_POREKLA, d.EMAIL, nazivAgencije, d.KONTAKT_OSOBA,telefonList, zanrovi,tehinckizahtevi);
                     }
                     dataGridView1.DataSource = dt;
                     dataGridView1.Columns["ID"].Visible = false;
@@ -118,6 +130,11 @@ namespace Muzicki_festival.Forme
             {
                 MessageBox.Show("Greška: " + ex.Message);
             }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

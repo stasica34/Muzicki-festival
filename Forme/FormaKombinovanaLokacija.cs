@@ -46,8 +46,7 @@ namespace Muzicki_festival.Forme
                         StringBuilder sb = new StringBuilder();
                         foreach (var a in listaKombinovana)
                         {
-                            sb.AppendLine($"GPS: {a.GPS_KOORDINATE}");
-                            sb.AppendLine($"Naziv: {a.NAZIV}");
+                            sb.AppendLine($"Lokacije: {a.Lokacija}");
                             sb.AppendLine(new string('-', 40));
                         }
                         MessageBox.Show(sb.ToString(), $"Lista kombinovanih lokacija: {listaKombinovana.Count}");

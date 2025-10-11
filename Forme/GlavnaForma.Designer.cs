@@ -32,16 +32,12 @@
             this.cmd_Akreditacija = new System.Windows.Forms.Button();
             this.cmd_Posetilac = new System.Windows.Forms.Button();
             this.cmd_Grupa = new System.Windows.Forms.Button();
-            this.cmd_TelefonPosetilac = new System.Windows.Forms.Button();
             this.cmd_JeClan = new System.Windows.Forms.Button();
             this.cnd_Jednodnevna = new System.Windows.Forms.Button();
             this.cmd_Kobinovana = new System.Windows.Forms.Button();
             this.cmd_OtvorenaLokacija = new System.Windows.Forms.Button();
-            this.cmd_TelefonIzvodjac = new System.Windows.Forms.Button();
             this.cmd_Vip = new System.Windows.Forms.Button();
-            this.cmd_VipPogodnosti = new System.Windows.Forms.Button();
             this.cmd_Visednevna = new System.Windows.Forms.Button();
-            this.cmd_VisednevnaDani = new System.Windows.Forms.Button();
             this.cmd_ZatvorenaLokacija = new System.Windows.Forms.Button();
             this.cmd_ViseNaJedan = new System.Windows.Forms.Button();
             this.cmdViseNaJedan2 = new System.Windows.Forms.Button();
@@ -72,7 +68,7 @@
             // 
             // cmd_Posetilac
             // 
-            this.cmd_Posetilac.Location = new System.Drawing.Point(12, 406);
+            this.cmd_Posetilac.Location = new System.Drawing.Point(712, 466);
             this.cmd_Posetilac.Name = "cmd_Posetilac";
             this.cmd_Posetilac.Size = new System.Drawing.Size(169, 54);
             this.cmd_Posetilac.TabIndex = 6;
@@ -89,16 +85,6 @@
             this.cmd_Grupa.Text = "Grupa";
             this.cmd_Grupa.UseVisualStyleBackColor = true;
             this.cmd_Grupa.Click += new System.EventHandler(this.cmd_Grupa_Click);
-            // 
-            // cmd_TelefonPosetilac
-            // 
-            this.cmd_TelefonPosetilac.Location = new System.Drawing.Point(362, 407);
-            this.cmd_TelefonPosetilac.Name = "cmd_TelefonPosetilac";
-            this.cmd_TelefonPosetilac.Size = new System.Drawing.Size(169, 55);
-            this.cmd_TelefonPosetilac.TabIndex = 8;
-            this.cmd_TelefonPosetilac.Text = "Telefon Posetilac";
-            this.cmd_TelefonPosetilac.UseVisualStyleBackColor = true;
-            this.cmd_TelefonPosetilac.Click += new System.EventHandler(this.cmd_TelefonPosetilac_Click);
             // 
             // cmd_JeClan
             // 
@@ -140,16 +126,6 @@
             this.cmd_OtvorenaLokacija.UseVisualStyleBackColor = true;
             this.cmd_OtvorenaLokacija.Click += new System.EventHandler(this.cmd_OtvorenaLokacija_Click);
             // 
-            // cmd_TelefonIzvodjac
-            // 
-            this.cmd_TelefonIzvodjac.Location = new System.Drawing.Point(187, 407);
-            this.cmd_TelefonIzvodjac.Name = "cmd_TelefonIzvodjac";
-            this.cmd_TelefonIzvodjac.Size = new System.Drawing.Size(169, 56);
-            this.cmd_TelefonIzvodjac.TabIndex = 20;
-            this.cmd_TelefonIzvodjac.Text = "Telefon Izvodjac";
-            this.cmd_TelefonIzvodjac.UseVisualStyleBackColor = true;
-            this.cmd_TelefonIzvodjac.Click += new System.EventHandler(this.cmd_TelefonIzvodjac_Click);
-            // 
             // cmd_Vip
             // 
             this.cmd_Vip.Location = new System.Drawing.Point(12, 143);
@@ -160,35 +136,15 @@
             this.cmd_Vip.UseVisualStyleBackColor = true;
             this.cmd_Vip.Click += new System.EventHandler(this.cmd_Vip_Click);
             // 
-            // cmd_VipPogodnosti
-            // 
-            this.cmd_VipPogodnosti.Location = new System.Drawing.Point(12, 206);
-            this.cmd_VipPogodnosti.Name = "cmd_VipPogodnosti";
-            this.cmd_VipPogodnosti.Size = new System.Drawing.Size(169, 56);
-            this.cmd_VipPogodnosti.TabIndex = 22;
-            this.cmd_VipPogodnosti.Text = "Vip pogodnosti";
-            this.cmd_VipPogodnosti.UseVisualStyleBackColor = true;
-            this.cmd_VipPogodnosti.Click += new System.EventHandler(this.cmd_VipPogodnosti_Click);
-            // 
             // cmd_Visednevna
             // 
-            this.cmd_Visednevna.Location = new System.Drawing.Point(12, 268);
+            this.cmd_Visednevna.Location = new System.Drawing.Point(12, 209);
             this.cmd_Visednevna.Name = "cmd_Visednevna";
             this.cmd_Visednevna.Size = new System.Drawing.Size(169, 56);
             this.cmd_Visednevna.TabIndex = 23;
             this.cmd_Visednevna.Text = "Visednevna";
             this.cmd_Visednevna.UseVisualStyleBackColor = true;
             this.cmd_Visednevna.Click += new System.EventHandler(this.cmd_Visednevna_Click);
-            // 
-            // cmd_VisednevnaDani
-            // 
-            this.cmd_VisednevnaDani.Location = new System.Drawing.Point(187, 268);
-            this.cmd_VisednevnaDani.Name = "cmd_VisednevnaDani";
-            this.cmd_VisednevnaDani.Size = new System.Drawing.Size(169, 56);
-            this.cmd_VisednevnaDani.TabIndex = 24;
-            this.cmd_VisednevnaDani.Text = "Visednevna Dani";
-            this.cmd_VisednevnaDani.UseVisualStyleBackColor = true;
-            this.cmd_VisednevnaDani.Click += new System.EventHandler(this.cmd_VisednevnaDani_Click);
             // 
             // cmd_ZatvorenaLokacija
             // 
@@ -369,18 +325,14 @@
             this.Controls.Add(this.cmd_JedanNaVise);
             this.Controls.Add(this.cmd_ViseNaJedan);
             this.Controls.Add(this.cmd_ZatvorenaLokacija);
-            this.Controls.Add(this.cmd_VisednevnaDani);
             this.Controls.Add(this.cmd_Visednevna);
-            this.Controls.Add(this.cmd_VipPogodnosti);
             this.Controls.Add(this.cmd_Vip);
-            this.Controls.Add(this.cmd_TelefonIzvodjac);
             this.Controls.Add(this.cmd_OtvorenaLokacija);
             this.Controls.Add(this.cmd_Lokacija);
             this.Controls.Add(this.cmd_Kobinovana);
             this.Controls.Add(this.cnd_Jednodnevna);
             this.Controls.Add(this.cmd_Clan);
             this.Controls.Add(this.cmd_JeClan);
-            this.Controls.Add(this.cmd_TelefonPosetilac);
             this.Controls.Add(this.cmd_Grupa);
             this.Controls.Add(this.cmd_Posetilac);
             this.Controls.Add(this.cmd_Akreditacija);
@@ -397,16 +349,12 @@
         private System.Windows.Forms.Button cmd_Akreditacija;
         private System.Windows.Forms.Button cmd_Posetilac;
         private System.Windows.Forms.Button cmd_Grupa;
-        private System.Windows.Forms.Button cmd_TelefonPosetilac;
         private System.Windows.Forms.Button cmd_JeClan;
         private System.Windows.Forms.Button cnd_Jednodnevna;
         private System.Windows.Forms.Button cmd_Kobinovana;
         private System.Windows.Forms.Button cmd_OtvorenaLokacija;
-        private System.Windows.Forms.Button cmd_TelefonIzvodjac;
         private System.Windows.Forms.Button cmd_Vip;
-        private System.Windows.Forms.Button cmd_VipPogodnosti;
         private System.Windows.Forms.Button cmd_Visednevna;
-        private System.Windows.Forms.Button cmd_VisednevnaDani;
         private System.Windows.Forms.Button cmd_ZatvorenaLokacija;
         private System.Windows.Forms.Button cmd_ViseNaJedan;
         private System.Windows.Forms.Button cmdViseNaJedan2;

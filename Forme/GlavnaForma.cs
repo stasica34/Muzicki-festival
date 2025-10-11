@@ -66,14 +66,6 @@ namespace Muzicki_festival
             formaGrupa.Show();
             this.Hide();
         }
-
-        private void cmd_TelefonPosetilac_Click(object sender, EventArgs e)
-        {
-            FormaTelefonPosetilac formaTelefonPosetilac = new FormaTelefonPosetilac(this);
-            formaTelefonPosetilac.Show();
-            this.Hide();
-        }
-
         private void cmd_JeClan_Click(object sender, EventArgs e)
         {
             FormaJeClan formaJeClan = new FormaJeClan(this);
@@ -81,21 +73,11 @@ namespace Muzicki_festival
             this.Hide();
         }
 
-        private void cmd_Ulaznica_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void cmd_Clan_Click(object sender, EventArgs e)
         {
             FormaClan formaClan = new FormaClan(this);
             formaClan.Show();
             this.Hide();
-        }
-
-        private void cmd_Izvodjac_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void cnd_Jednodnevna_Click(object sender, EventArgs e)
@@ -131,39 +113,16 @@ namespace Muzicki_festival
             formaotvorenaLokacija.Show();
             this.Hide();
         }
-
-        private void cmd_TelefonIzvodjac_Click(object sender, EventArgs e)
-        {
-            FormaTelefonIzvodjac formaTelefonIzvodjac = new FormaTelefonIzvodjac(this);
-            formaTelefonIzvodjac.Show();
-            this.Hide();
-        }
-
         private void cmd_Vip_Click(object sender, EventArgs e)
         {
             FormaVip formaVip = new FormaVip(this);
             formaVip.Show();
             this.Hide();
         }
-
-        private void cmd_VipPogodnosti_Click(object sender, EventArgs e)
-        {
-            FormaVipPogodnosti formaVipPogodnosti = new FormaVipPogodnosti(this);
-            formaVipPogodnosti.Show();
-            this.Hide();
-        }
-
         private void cmd_Visednevna_Click(object sender, EventArgs e)
         {
             FormaVisednevna formaVisednevna = new FormaVisednevna(this);
             formaVisednevna.Show();
-            this.Hide();
-        }
-
-        private void cmd_VisednevnaDani_Click(object sender, EventArgs e)
-        {
-            FormaVisednevnaDani formaVisednevnadani = new FormaVisednevnaDani(this);
-            formaVisednevnadani.Show();
             this.Hide();
         }
 
@@ -250,23 +209,20 @@ namespace Muzicki_festival
 
         private void cmdVisenaJedan3_Click(object sender, EventArgs e)
         {
-            //clan i grupa
-            //ovde je komplikovano  jer je kompozitni kljuc u pitanju
             try
             {
                 ISession session = DataLayer.GetSession();
                 Bend bend = session.Load<Bend>(6);
-                ClanID clanId = new ClanID
+                Clan clanId = new Clan
                 {
                     IME = "Marko Jovanović",
                     INSTRUMENT = "Gitara",
                     BEND_ID = bend
                 };
-                Clan clan = session.Get<Clan>(clanId);
 
-                if (clan != null)
+                if (clanId != null)
                 {
-                    MessageBox.Show($"Ime: {clan.IME},\nBend broj clanova: {clan.BEND_ID.BROJ_CLANOVA}", "Detalji");
+                    MessageBox.Show($"Ime: {clanId.IME},\nBend broj clanova: {clanId.BEND_ID.BROJ_CLANOVA}", "Detalji");
                 }
                 else
                 {
@@ -483,7 +439,7 @@ namespace Muzicki_festival
                 {
                     Lokacija lokacija = session.Query<Lokacija>()
                         .Fetch(l => l.Dogadjaji)
-                        .Where(l => l.Lokacija_ID.GPS_KOORDINATE == "43.335,21.910" && l.Lokacija_ID.NAZIV == "Trg Republike")
+                        .Where(l => l.GPS_KOORDINATE == "43.335,21.910" && l.NAZIV == "Trg Republike")
                         .SingleOrDefault();
 
                     if (lokacija != null)
@@ -525,6 +481,12 @@ namespace Muzicki_festival
             GlavnaStranica glavna = new GlavnaStranica(this);
             glavna.Show();
             this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+
         }
     }
 }

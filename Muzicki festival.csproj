@@ -110,7 +110,6 @@
     <Compile Include="Entiteti\Akreditacija.cs" />
     <Compile Include="Entiteti\Bend.cs" />
     <Compile Include="Entiteti\Clan.cs" />
-    <Compile Include="Entiteti\ClanID.cs" />
     <Compile Include="Entiteti\Dogadjaj.cs" />
     <Compile Include="Entiteti\Grupa.cs" />
     <Compile Include="Entiteti\Izvodjac.cs" />
@@ -120,20 +119,14 @@
     <Compile Include="Entiteti\KombinovanaLokacija.cs" />
     <Compile Include="Entiteti\KontaktPodaciMenadzerskaAgencija.cs" />
     <Compile Include="Entiteti\Lokacija.cs" />
-    <Compile Include="Entiteti\LokacijaID.cs" />
     <Compile Include="Entiteti\MenadzerskaAgencija.cs" />
     <Compile Include="Entiteti\OtvorenaLokacija.cs" />
     <Compile Include="Entiteti\Posetilac.cs" />
     <Compile Include="Entiteti\Solo_Umetnik.cs" />
-    <Compile Include="Entiteti\TelefonIzvodjac.cs" />
-    <Compile Include="Entiteti\TelefonPosetilac.cs" />
+    <Compile Include="Entiteti\.cs" />
     <Compile Include="Entiteti\Ulaznica.cs" />
     <Compile Include="Entiteti\Vip.cs" />
-    <Compile Include="Entiteti\VIpPogodnosti.cs" />
-    <Compile Include="Entiteti\VipPogodnostiID.cs" />
     <Compile Include="Entiteti\Visednevna.cs" />
-    <Compile Include="Entiteti\VisednevnaDani.cs" />
-    <Compile Include="Entiteti\VisednevnaDaniID.cs" />
     <Compile Include="Entiteti\ZatvorenaLokacija.cs" />
     <Compile Include="FormeDodatne\FormaAgencijaOrganizatorDodaj.cs">
       <SubType>Form</SubType>
@@ -212,12 +205,6 @@
     </Compile>
     <Compile Include="FormeDodatne\FormaUlazniceIzmeni.Designer.cs">
       <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormeUkrasne\FormaKontaktPodaciNOVINA.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeUkrasne\FormaKontaktPodaciNOVINA.Designer.cs">
-      <DependentUpon>FormaKontaktPodaciNOVINA.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\FormaAgencijaOrganizator.cs">
       <SubType>Form</SubType>
@@ -339,18 +326,6 @@
     <Compile Include="Forme\FormaSoloUmetnik.Designer.cs">
       <DependentUpon>FormaSoloUmetnik.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\FormaTelefonIzvodjac.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaTelefonIzvodjac.Designer.cs">
-      <DependentUpon>FormaTelefonIzvodjac.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaTelefonPosetilac.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaTelefonPosetilac.Designer.cs">
-      <DependentUpon>FormaTelefonPosetilac.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forme\FormaUlaznica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -363,23 +338,11 @@
     <Compile Include="Forme\FormaVip.Designer.cs">
       <DependentUpon>FormaVip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\FormaVipPogodnosti.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaVipPogodnosti.Designer.cs">
-      <DependentUpon>FormaVipPogodnosti.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forme\FormaVisednevna.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forme\FormaVisednevna.Designer.cs">
       <DependentUpon>FormaVisednevna.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaVisednevnaDani.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaVisednevnaDani.Designer.cs">
-      <DependentUpon>FormaVisednevnaDani.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\FormaZatvorenaLokacija.cs">
       <SubType>Form</SubType>
@@ -409,12 +372,8 @@
     <Compile Include="Mapiranje\OtvorenaLokacijaMapiranje.cs" />
     <Compile Include="Mapiranje\PosetilacMapiranje.cs" />
     <Compile Include="Mapiranje\SoloUmetnikMapiranje.cs" />
-    <Compile Include="Mapiranje\TelefonIzvodjacMapiranje.cs" />
-    <Compile Include="Mapiranje\TelefonPosetilacMapiranje.cs" />
     <Compile Include="Mapiranje\UlaznicaMapiranja.cs" />
     <Compile Include="Mapiranje\VipMapiranja.cs" />
-    <Compile Include="Mapiranje\VipPogodnostiMapiranje.cs" />
-    <Compile Include="Mapiranje\VisednevnaDaniMapiranja.cs" />
     <Compile Include="Mapiranje\VisednevnaMapiranje.cs" />
     <Compile Include="Mapiranje\ZatvorenaLokacijaMapiranje.cs" />
     <Compile Include="Program.cs" />
@@ -457,9 +416,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaUlazniceIzmeni.resx">
       <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormeUkrasne\FormaKontaktPodaciNOVINA.resx">
-      <DependentUpon>FormaKontaktPodaciNOVINA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaAgencijaOrganizator.resx">
       <DependentUpon>FormaAgencijaOrganizator.cs</DependentUpon>
@@ -521,26 +477,14 @@
     <EmbeddedResource Include="Forme\FormaSoloUmetnik.resx">
       <DependentUpon>FormaSoloUmetnik.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaTelefonIzvodjac.resx">
-      <DependentUpon>FormaTelefonIzvodjac.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaTelefonPosetilac.resx">
-      <DependentUpon>FormaTelefonPosetilac.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaUlaznica.resx">
       <DependentUpon>FormaUlaznica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaVip.resx">
       <DependentUpon>FormaVip.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaVipPogodnosti.resx">
-      <DependentUpon>FormaVipPogodnosti.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaVisednevna.resx">
       <DependentUpon>FormaVisednevna.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaVisednevnaDani.resx">
-      <DependentUpon>FormaVisednevnaDani.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaZatvorenaLokacija.resx">
       <DependentUpon>FormaZatvorenaLokacija.cs</DependentUpon>

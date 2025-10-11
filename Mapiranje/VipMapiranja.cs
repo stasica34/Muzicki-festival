@@ -13,13 +13,12 @@ namespace Muzicki_festival.Mapiranje
         {
             Table("VIP");
             KeyColumn("ID_ULAZNICE");
-
-            //mapiranje sa vip pogodnostima:
+            //visevrednosni atribut
             HasMany(x => x.Pogodnosti)
-                .KeyColumn("ID_ULAZNICE")
-                .Cascade.AllDeleteOrphan()
-                .Inverse()
-                .Table("VIP_POGODNOSTI");
+                .Table("VIP_POGODNOSTI")
+                .KeyColumn(("ID_ULAZNICE"))
+                .Element("POGODNOST")//naziv tabele iz baze
+                .Cascade.All();
         }
     }
 }

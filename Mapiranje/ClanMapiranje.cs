@@ -13,10 +13,17 @@ namespace Muzicki_festival.Mapiranje
         public ClanMapiranje()
         {
             Table("CLAN");
-            CompositeId<ClanID>(x => x.Id)
-             .KeyProperty(x => x.IME, "IME")
-             .KeyProperty(x => x.INSTRUMENT, "INSTRUMENT")
-             .KeyReference(x => x.BEND_ID, "BEND_ID");
+            Id(x => x.Id).Column("CLAN_ID").GeneratedBy.Identity();
+            Map(x => x.IME, "IME");
+            Map(x => x.INSTRUMENT, "INSTRUMENT");
+
+            References(x => x.BEND_ID, "BEND_ID").LazyLoad().Cascade.All();
+            //visevrednosni atribut
+            HasMany(x => x.Uloge)
+                .Table("CLAN_ULOGA")
+                .KeyColumn("CLAN_ID")
+                .Element("ULOGA")
+                .Cascade.All();
         }
     }
 }

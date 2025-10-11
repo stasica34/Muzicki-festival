@@ -13,13 +13,14 @@ namespace Muzicki_festival.Mapiranje
         public LokacijaMapiranja()
         {
             Table("LOKACIJA");
-            CompositeId<LokacijaID>(x=>x.Lokacija_ID)
-                .KeyProperty(x => x.GPS_KOORDINATE, "GPS_KOORDINATE")
-                .KeyProperty(x => x.NAZIV, "NAZIV");
+            Id(x => x.Lokacija_ID, "LOKACIJA_ID").GeneratedBy.Identity();
             Map(x => x.OPIS, "OPIS").Not.Nullable();
+            Map(x => x.GPS_KOORDINATE, "GPS_KOORDINATE").Not.Nullable();
+            Map(x => x.NAZIV, "NAZIV").Not.Nullable();
             Map(x => x.MAX_KAPACITET, "MAX_KAPACITET").Nullable();
+            Map(x => x.TIP_LOKACIJE, "TIP_LOKACIJE").Not.Nullable();
             HasMany(x => x.Dogadjaji)
-                .KeyColumns.Add("GPS_KOORDINATE", "LOKACIJA_NAZIV")
+                .KeyColumn("LOKACIJA_ID")
                 .Inverse()
                 .Cascade.All()
                 .LazyLoad();

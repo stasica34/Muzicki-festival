@@ -90,7 +90,6 @@ namespace Muzicki_festival.FormeDodatne
                             DRZAVA_POREKLA = stari.DRZAVA_POREKLA,
                             EMAIL = stari.EMAIL,
                             KONTAKT_OSOBA = stari.KONTAKT_OSOBA,
-                            TELEFON = stari.TELEFON,
                             MenadzerskaAgencija = stari.MenadzerskaAgencija,
                             TIP_INSTRUMENTA = txtTip.Text.Trim(),
                             SVIRA_INSTRUMENT = cmbSvira.SelectedItem.ToString()

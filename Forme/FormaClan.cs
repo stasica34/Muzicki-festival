@@ -57,7 +57,6 @@ namespace Muzicki_festival.Forme
         {
             try
             {
-                ISession s = DataLayer.GetSession();
                 using (var session = DataLayer.GetSession())
                 {
 
@@ -77,14 +76,20 @@ namespace Muzicki_festival.Forme
                     //}
                     //MessageBox.Show(sb.ToString(), $"Lista akreditacija: {listaClanova.Count}");
                     DataTable dt = new DataTable();
+                    dt.Columns.Add("ID");
                     dt.Columns.Add("IME");
                     dt.Columns.Add("INSTRUMENT");
                     dt.Columns.Add("Bend_ID");
+                    dt.Columns.Add("ULOGE");
                     foreach (var d in listaClanova)
                     {
-                        dt.Rows.Add(d.IME, d.INSTRUMENT,d.BEND_ID.ID);
+                        var uloge = d.Uloge != null && d.Uloge.Any()
+                            ? string.Join(", ", d.Uloge)
+                            : "Nema";
+                        dt.Rows.Add(d.Id,d.IME, d.INSTRUMENT,d.BEND_ID.ID,uloge);
                     }
                     dataGridView1.DataSource = dt;
+                    dataGridView1.Columns["ID"].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -107,7 +112,7 @@ namespace Muzicki_festival.Forme
                 return;
             }
             int selectedRowIndex = dataGridView1.SelectedRows[0].Index;
-            object idObj = dataGridView1.Rows[selectedRowIndex].Cells["ID_Grupe"].Value;
+            object idObj = dataGridView1.Rows[selectedRowIndex].Cells["ID"].Value;
 
             if (idObj == null || !int.TryParse(idObj.ToString(), out int clanId))
             {

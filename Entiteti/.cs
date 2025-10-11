@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Entiteti
 {
-    public class TelefonIzvodjac
+    public class TelefonPosetilac
     {
-        public virtual int IZVODJAC_ID { get; protected set; }
-
         public virtual string TELEFON { get; set; }
-        public TelefonIzvodjac() { }
+        //veza ka posetiocu - visevrednsotiatirbut
+        public virtual Posetilac Posetioci { get; set; }
+        public TelefonPosetilac() {
+        }
     }
 }

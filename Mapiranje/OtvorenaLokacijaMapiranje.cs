@@ -12,8 +12,15 @@ namespace Muzicki_festival.Mapiranje
         public OtvorenaLokacijaMapiranje()
         {
             Table("OTVORENA_LOKACIJA");
-            Id(x => x.GPS_KOORDINATE, "GPS_KOORDINATE").GeneratedBy.TriggerIdentity();
-            Map(x => x.NAZIV, "NAZIV").Not.Nullable();
+            Id(x => x.ID, "OTVORENA_ID").GeneratedBy.Identity();
+
+            //visevrednosni atribut
+            HasMany(x => x.DOSTUPNOST_OPREME)
+                .Table("DOSTUPNOST_OPREME")
+                .KeyColumn("OTVORENA_ID")
+                .Element("OPREMA")
+                .Cascade.All();
+
         }
     }
 }

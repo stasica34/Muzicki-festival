@@ -41,11 +41,15 @@ namespace Muzicki_festival.Forme
                     dt.Columns.Add("EMAIL");
                     dt.Columns.Add("SVIRA_INSTRUMENT");
                     dt.Columns.Add("TIP_INSTRUMENTA");
+                    dt.Columns.Add("VOKALNE SPOSOBNOSTI");
 
                     foreach (var d in listaSoloUmetnika)
                     {
+                        var vokalnesposobnosti = d.VOKALNE_SPOSOBNOSTI != null && d.VOKALNE_SPOSOBNOSTI.Any()
+                           ? string.Join(", ", d.VOKALNE_SPOSOBNOSTI)
+                           : "Nema ";
                         dt.Rows.Add(d.ID, d.IME, d.DRZAVA_POREKLA, d.EMAIL,
-                            d.SVIRA_INSTRUMENT, d.TIP_INSTRUMENTA);
+                            d.SVIRA_INSTRUMENT, d.TIP_INSTRUMENTA,vokalnesposobnosti);
                     }
                     dataGridView1.DataSource = dt;
                     dataGridView1.Columns["ID"].Visible = false;
@@ -67,7 +71,7 @@ namespace Muzicki_festival.Forme
         {
             try
             {
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView1.ReadOnly = true;
                 dataGridView1.AllowUserToAddRows = false;

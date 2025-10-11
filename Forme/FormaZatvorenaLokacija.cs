@@ -47,8 +47,6 @@ namespace Muzicki_festival.Forme
                         StringBuilder sb = new StringBuilder();
                         foreach (var a in zatvorenaLokacija)
                         {
-                            sb.AppendLine($"GPS_KOORDINATE: {a.GPS_KOORDINATE}");
-                            sb.AppendLine($"NAZIV: {a.NAZIV}");
                             sb.AppendLine($"TIP_PROSTORA: {a.TIP_PROSTORA}");
                             sb.AppendLine($"KLIMA: {a.KLIMA}");
                             sb.AppendLine($"DOSTUPNOST_SEDENJA: {a.DOSTUPNOST_SEDENJA}");

@@ -8,8 +8,8 @@ namespace Muzicki_festival.Entiteti
 {
     public class OtvorenaLokacija
     {
-        public virtual string GPS_KOORDINATE { get; set; }
-        public virtual string NAZIV { get; set; }
+        public virtual int ID { get; set; }
+        public virtual IList<string> DOSTUPNOST_OPREME { get; set; }
         public OtvorenaLokacija() { }
     }
 }

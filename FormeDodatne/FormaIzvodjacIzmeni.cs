@@ -40,7 +40,6 @@ namespace Muzicki_festival.FormeDodatne
                 txtIme.Text = izvodjacZaIzmenu.IME;
                 txtDrzavaPorekla.Text = izvodjacZaIzmenu.DRZAVA_POREKLA;
                 txtEmail.Text = izvodjacZaIzmenu.EMAIL;
-                txtTelefon.Text = izvodjacZaIzmenu.TELEFON;
                 txtKontaktOsoba.Text = izvodjacZaIzmenu.KONTAKT_OSOBA;
 
                 foreach (MenadzerskaAgencija agencija in cmdMenadzerska.Items)
@@ -80,7 +79,7 @@ namespace Muzicki_festival.FormeDodatne
                     i.DRZAVA_POREKLA = txtDrzavaPorekla.Text.Trim();
                     i.EMAIL = txtEmail.Text.Trim();
                     i.KONTAKT_OSOBA = txtKontaktOsoba.Text.Trim();
-                    i.TELEFON = txtTelefon.Text.Trim();
+                    i.Telefoni = new List<string> { txtTelefon.Text.Trim() };
                     i.MenadzerskaAgencija = cmdMenadzerska.SelectedItem as MenadzerskaAgencija;
 
                     s.Update(i);

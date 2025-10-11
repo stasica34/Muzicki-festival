@@ -13,7 +13,9 @@ namespace Muzicki_festival.Entiteti
 
         public virtual string KONTAKT_OSOBA { get; set; }
 
-        public virtual string TELEFON { get; set; }
+        public virtual IList<string> Telefoni { get; set; }
+        public virtual IList<string> Zanrovi { get; set; }
+        public virtual IList<string> Lista_tehnickih_zahteva { get; set; }
         public virtual MenadzerskaAgencija MenadzerskaAgencija { get; set; }
         //veza n:m sa dogadjem
         public virtual IList<Dogadjaj> Dogadjaji { get; set; }
@@ -21,6 +23,9 @@ namespace Muzicki_festival.Entiteti
         public Izvodjac()
         {
             Dogadjaji = new List<Dogadjaj>();
+            Telefoni = new List<string>();
+            Zanrovi = new List<string>();
+            Lista_tehnickih_zahteva = new List<string>();
         }
         public override string ToString()
         {

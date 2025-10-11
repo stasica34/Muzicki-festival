@@ -52,10 +52,14 @@ namespace Muzicki_festival.Forme
                     dt.Columns.Add("IME");
                     dt.Columns.Add("PREZIME");
                     dt.Columns.Add("EMAIL");
+                    dt.Columns.Add("TELEFON");
 
                     foreach (var d in listaPosetilaca)
                     {
-                        dt.Rows.Add(d.ID, d.IME, d.PREZIME, d.EMAIL);
+                        var telefonList = d.Telefoni != null && d.Telefoni.Any()
+                           ? string.Join(", ", d.Telefoni)
+                           : "Nema telefon";
+                        dt.Rows.Add(d.ID, d.IME, d.PREZIME, d.EMAIL,telefonList);
                     }
                     dataGridView1.DataSource = dt;
                     dataGridView1.Columns["ID"].Visible = false;

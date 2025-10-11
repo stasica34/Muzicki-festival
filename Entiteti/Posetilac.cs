@@ -13,6 +13,7 @@ namespace Muzicki_festival.Entiteti
         public virtual string PREZIME { get; set; }
         public virtual string EMAIL { get; set; }
 
+        public virtual IList<string> Telefoni { get; set; }//visevrenosti atribut ide kao 1:n veza
         //povezivanje 1:n veze sa ulaznicama
         //interface list - pri pokazivanju liste ulaznica
         //jer nhibarnate ne koristi obicne liste, nego iliste, pri pokretanju, kreira ilist
@@ -26,6 +27,7 @@ namespace Muzicki_festival.Entiteti
             //inicijalizacija liste ulaznica
             Ulaznice = new List<Ulaznica>();
             JeClan  = new List<JeClan>();
+            Telefoni = new List<string>();
         }
         public override string ToString()
         {

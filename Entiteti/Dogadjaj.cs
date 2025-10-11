@@ -15,7 +15,7 @@ namespace Muzicki_festival.Entiteti
         public virtual string TIP { get; set; }
         public virtual string OPIS { get; set; }
         public virtual DateTime DATUM_VREME_POCETKA { get; set; }
-        public virtual DateTime DATUM_VREME_KRAJA  {get;set;}
+        public virtual DateTime DATUM_VREME_KRAJA { get; set; }
 
         //virtual properti - mogu da se overriduju, mora da budu virtual zbog mapiranja
         //konstructor
@@ -26,7 +26,7 @@ namespace Muzicki_festival.Entiteti
         public virtual IList<Izvodjac> Izvodjaci { get; set; }
         //vwza n:m sa ulaznicom
         public virtual IList<Ulaznica> Ulaznica { get; set; }
-        public Dogadjaj() 
+        public Dogadjaj()
         {
             Izvodjaci = new List<Izvodjac>();
             Ulaznica = new List<Ulaznica>();

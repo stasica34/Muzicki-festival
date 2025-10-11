@@ -58,10 +58,9 @@ namespace Muzicki_festival.Forme
                             sb.AppendLine($"ID ulaznice: {grupa.Key}");
                             sb.AppendLine("Pogodnosti:");
 
-                            // Spajanje svih pogodnosti iz grupe i uklanjanje duplikata
+                            //Spajanje svih pogodnosti iz grupe i uklanjanje duplikata
                             var svePogodnosti = grupa
                                 .SelectMany(x => x.Pogodnosti)
-                                .Select(p => p.POGODNOST)
                                 .Distinct();
 
                             foreach (var pogodnost in svePogodnosti)

@@ -8,7 +8,7 @@ using FluentNHibernate.Mapping;
 
 namespace Muzicki_festival.Mapiranje
 {
-    public class PosetilacMapiranje: ClassMap<Muzicki_festival.Entiteti.Posetilac>
+    public class PosetilacMapiranje : ClassMap<Muzicki_festival.Entiteti.Posetilac>
     {
         public PosetilacMapiranje()
         {
@@ -32,7 +32,17 @@ namespace Muzicki_festival.Mapiranje
             //   .Cascade.All()
 
             //mapiranje sa n:m
-            HasMany(x => x.JeClan).KeyColumn("POSETILAC_ID").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.JeClan)
+                .KeyColumn("POSETILAC_ID")
+                .LazyLoad()
+                .Cascade.All()
+                .Inverse();
+            //visevrednosni atribut
+            HasMany(x => x.Telefoni)
+                .Table("TELEFON_POSETILAC")
+                .KeyColumn(("POSETILAC_ID"))
+                .Element("TELEFON")
+                .Cascade.All();
         }
     }
 }

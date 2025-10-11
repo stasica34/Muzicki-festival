@@ -78,7 +78,7 @@ namespace Muzicki_festival.FormeDodatne
                 DRZAVA_POREKLA = txtDrzavaPorekla.Text.Trim(),
                 EMAIL = txtEmail.Text.Trim(),
                 KONTAKT_OSOBA = txtKontaktOsoba.Text.Trim(),
-                TELEFON = txtTelefon.Text.Trim(),
+                Telefoni = new List<string> { txtTelefon.Text.Trim() },
                 MenadzerskaAgencija = menadzerskaAgencija
             };
             i.Dogadjaji.Add(dog);
