@@ -116,12 +116,14 @@
     <Compile Include="Entiteti\Bend.cs" />
     <Compile Include="Entiteti\Clan.cs" />
     <Compile Include="Entiteti\Dogadjaj.cs" />
+    <Compile Include="Entiteti\DostupnaOprema.cs" />
     <Compile Include="Entiteti\Grupa.cs" />
     <Compile Include="Entiteti\Izvodjac.cs" />
     <Compile Include="Entiteti\JeClan.cs" />
     <Compile Include="Entiteti\JeClanID.cs" />
     <Compile Include="Entiteti\Jednodnevna.cs" />
     <Compile Include="Entiteti\KombinovanaLokacija.cs" />
+    <Compile Include="Entiteti\KontaktMenadzerskeAgencije.cs" />
     <Compile Include="Entiteti\KontaktPodaciMenadzerskaAgencija.cs" />
     <Compile Include="Entiteti\Lokacija.cs" />
     <Compile Include="Entiteti\MenadzerskaAgencija.cs" />
@@ -210,6 +212,18 @@
     </Compile>
     <Compile Include="FormeDodatne\FormaUlazniceIzmeni.Designer.cs">
       <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\IzmenaLokacije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\IzmenaLokacije.Designer.cs">
+      <DependentUpon>IzmenaLokacije.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaLokacijaDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaLokacijaDodaj.Designer.cs">
+      <DependentUpon>FormaLokacijaDodaj.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\FormaAgencijaOrganizator.cs">
       <SubType>Form</SubType>
@@ -366,11 +380,13 @@
     <Compile Include="Mapiranje\BendMapiranja.cs" />
     <Compile Include="Mapiranje\ClanMapiranje.cs" />
     <Compile Include="Mapiranje\DogadjajMapiranje.cs" />
+    <Compile Include="Mapiranje\DostupnaOpremaMapiranje.cs" />
     <Compile Include="Mapiranje\GrupaMapiranje.cs" />
     <Compile Include="Mapiranje\IzvodjacMapiranje.cs" />
     <Compile Include="Mapiranje\JeCLanMapiranje.cs" />
     <Compile Include="Mapiranje\JednodnevnaMapiranje.cs" />
     <Compile Include="Mapiranje\KombinovanaLokacijaMapiranje.cs" />
+    <Compile Include="Mapiranje\KontaktMenadzerskeAgencijeMapiranje.cs" />
     <Compile Include="Mapiranje\KontaktPodaciMapiranje.cs" />
     <Compile Include="Mapiranje\LokacijaMapiranja.cs" />
     <Compile Include="Mapiranje\MenadzerskaAgencijaMapiranje.cs" />
@@ -421,6 +437,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaUlazniceIzmeni.resx">
       <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\IzmenaLokacije.resx">
+      <DependentUpon>IzmenaLokacije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaLokacijaDodaj.resx">
+      <DependentUpon>FormaLokacijaDodaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaAgencijaOrganizator.resx">
       <DependentUpon>FormaAgencijaOrganizator.cs</DependentUpon>

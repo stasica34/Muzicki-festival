@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Mapiranje
 {
+    /*
     public class KombinovanaLokacijaMapiranje:ClassMap<Muzicki_festival.Entiteti.KombinovanaLokacija>
     {
         public KombinovanaLokacijaMapiranje()
@@ -15,4 +16,5 @@ namespace Muzicki_festival.Mapiranje
             Id(x => x.Lokacija, "LOKACIJA_ID").GeneratedBy.Assigned();
         }
     }
+    */
 }

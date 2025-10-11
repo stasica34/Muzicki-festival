@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,8 @@ namespace Muzicki_festival.FormeDodatne
         private IList<IzvodjacView> izvodjacViews;
         private IList<MenadzerskaAgencijaView> menadzerskaAgencijaViews;
         private IList<ClanBendaView> clanBendaViews;
+        private IList<string> vokalneSposobnosti;
+        private IList<string> zahtevi;
         private int idSelektovan = -1;
 
         public FormaIzvodjacDodaj(Form caller)
@@ -33,6 +36,8 @@ namespace Muzicki_festival.FormeDodatne
             PopuniTabeluIzvodjaci();
 
             InitTabeluClanovi();
+            InitTabeluSposobnosti();
+            InitTabeluZahtevi();
 
             PopuniIzborMenadzerske();
         }
@@ -69,6 +74,7 @@ namespace Muzicki_festival.FormeDodatne
             TabelaIzvodjaci.Columns.Add("EMAIL", "EMAIL");
             TabelaIzvodjaci.Columns.Add("TELEFON", "TELEFON");
             TabelaIzvodjaci.Columns.Add("KONTAKT_OSOBA", "KONTAKT_OSOBA");
+            TabelaIzvodjaci.Columns.Add("ZANR", "ZANR");
             TabelaIzvodjaci.Columns.Add("TIP", "TIP");
         }
 
@@ -101,6 +107,62 @@ namespace Muzicki_festival.FormeDodatne
             TabelaClanovi.Columns["ID"].Visible = false;
             TabelaClanovi.Columns.Add("IME", "IME");
             TabelaClanovi.Columns.Add("INSTRUMENT", "INSTRUMENT");
+            TabelaClanovi.Columns.Add("ULOGA", "ULOGA");
+        }
+
+        private void InitTabeluZahtevi()
+        {
+            TabelaZahtevi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            TabelaZahtevi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TabelaZahtevi.ReadOnly = true;
+            TabelaZahtevi.AllowUserToAddRows = false;
+            TabelaZahtevi.RowHeadersVisible = false;
+            TabelaZahtevi.BorderStyle = BorderStyle.None;
+            TabelaZahtevi.BackgroundColor = Color.WhiteSmoke;
+            TabelaZahtevi.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TabelaZahtevi.GridColor = Color.LightGray;
+
+            TabelaZahtevi.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+
+            TabelaZahtevi.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            TabelaZahtevi.DefaultCellStyle.SelectionForeColor = Color.White;
+            TabelaZahtevi.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            TabelaZahtevi.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            TabelaZahtevi.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
+            TabelaZahtevi.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
+            TabelaZahtevi.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            TabelaZahtevi.EnableHeadersVisualStyles = false;
+
+
+            TabelaZahtevi.Columns.Add("ZAHTEV", "ZAHTEV");
+        }
+
+        private void InitTabeluSposobnosti()
+        {
+            TabelaVokalneSposobnosti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            TabelaVokalneSposobnosti.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TabelaVokalneSposobnosti.ReadOnly = true;
+            TabelaVokalneSposobnosti.AllowUserToAddRows = false;
+            TabelaVokalneSposobnosti.RowHeadersVisible = false;
+            TabelaVokalneSposobnosti.BorderStyle = BorderStyle.None;
+            TabelaVokalneSposobnosti.BackgroundColor = Color.WhiteSmoke;
+            TabelaVokalneSposobnosti.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TabelaVokalneSposobnosti.GridColor = Color.LightGray;
+
+            TabelaVokalneSposobnosti.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+
+            TabelaVokalneSposobnosti.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            TabelaVokalneSposobnosti.DefaultCellStyle.SelectionForeColor = Color.White;
+            TabelaVokalneSposobnosti.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            TabelaVokalneSposobnosti.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            TabelaVokalneSposobnosti.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
+            TabelaVokalneSposobnosti.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
+            TabelaVokalneSposobnosti.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            TabelaVokalneSposobnosti.EnableHeadersVisualStyles = false;
+
+            TabelaVokalneSposobnosti.Columns.Add("SPOSOBNOST", "SPOSOBNOST");
         }
 
         private void PopuniTabeluIzvodjaci()
@@ -108,7 +170,7 @@ namespace Muzicki_festival.FormeDodatne
             TabelaIzvodjaci.Rows.Clear();
             foreach (var i in izvodjacViews)
             {
-                TabelaIzvodjaci.Rows.Add(i.Id, i.Ime, i.Drzava_porekla, i.Email, i.Telefon, i.Kontakt_osoba, i.tipIzvodajaca);
+                TabelaIzvodjaci.Rows.Add(i.Id, i.Ime, i.Drzava_porekla, i.Email, i.Telefon, i.Kontakt_osoba, i.Zanr, i.tipIzvodajaca);
             }
         }
 
@@ -125,7 +187,25 @@ namespace Muzicki_festival.FormeDodatne
             TabelaClanovi.Rows.Clear();
             foreach (var c in clanBendaViews)
             {
-                TabelaClanovi.Rows.Add(c.Id, c.Ime, c.Instrument);
+                TabelaClanovi.Rows.Add(c.Id, c.Ime, c.Instrument, c.Uloga);
+            }
+        }
+
+        private void PopuniTabeluSposobnosti()
+        {
+            TabelaVokalneSposobnosti.Rows.Clear();
+            foreach (var s in vokalneSposobnosti)
+            {
+                TabelaVokalneSposobnosti.Rows.Add(s);
+            }
+        }
+
+        private void PopuniTabeluZahtevi()
+        {
+            TabelaZahtevi.Rows.Clear();
+            foreach (var z in zahtevi)
+            {
+                TabelaZahtevi.Rows.Add(z);
             }
         }
 
@@ -161,6 +241,11 @@ namespace Muzicki_festival.FormeDodatne
                 MessageBox.Show("Unesite telefon izvodjaca.");
                 return;
             }
+            if (string.IsNullOrWhiteSpace(ZanrTxt.Text))
+            {
+                MessageBox.Show("Unesite zanr izvodjaca.");
+                return;
+            }
 
             if (izborMenadzerske.SelectedItem == null)
             {
@@ -173,7 +258,7 @@ namespace Muzicki_festival.FormeDodatne
 
             if (BendRadio.Checked)
             {
-                BendBasic novi = new BendBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, mb);
+                BendBasic novi = new BendBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, ZanrTxt.Text, mb);
 
                 IzvodjacView dodat = DTOManager.DodajIzvodjaca(novi);
 
@@ -194,7 +279,7 @@ namespace Muzicki_festival.FormeDodatne
                     return;
                 }
 
-                Solo_UmetnikBasic su = new Solo_UmetnikBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, mb, svira, instrumentTxt.Text);
+                Solo_UmetnikBasic su = new Solo_UmetnikBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, ZanrTxt.Text, mb, svira, instrumentTxt.Text);
 
                 IzvodjacView dodat = DTOManager.DodajIzvodjaca(su);
 
@@ -214,7 +299,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void btnDodajMenadzersku_Click(object sender, EventArgs e)
         {
-            FormaMenaderskaAgencija forma = new FormaMenaderskaAgencija(this);
+            FormaMenadzerskaAgencijaDodavanje forma = new FormaMenadzerskaAgencijaDodavanje(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();
@@ -292,13 +377,25 @@ namespace Muzicki_festival.FormeDodatne
                 IzvodjacView iz = izvodjacViews.Where(i => i.Id == idSelektovan).FirstOrDefault();
                 if (iz != null && iz.tipIzvodajaca == IzvodjacTip.BEND)
                 {
+                    TabelaVokalneSposobnosti.Visible = false;
+                    GrupaDodatnaTabela.Text = "Clanovi benda";
+                    TabelaClanovi.Visible = true;
+
                     clanBendaViews = DTOManager.VratiClanoveBenda(iz.Id);
+                    PopuniTabeluClanovi();
                 }
                 else
                 {
-                    clanBendaViews.Clear();
+                    TabelaClanovi.Visible = false;
+                    GrupaDodatnaTabela.Text = "Vokalne sposobnosti";
+                    TabelaVokalneSposobnosti.Visible = true;
+
+                    vokalneSposobnosti = DTOManager.VratiVokalneSposobnosti(iz.Id);
+                    PopuniTabeluSposobnosti();
                 }
-                PopuniTabeluClanovi();
+
+                zahtevi = DTOManager.VratiTehnickeZahteve(iz.Id);
+                PopuniTabeluZahtevi();
             }
         }
 
@@ -315,6 +412,11 @@ namespace Muzicki_festival.FormeDodatne
                     PopuniTabeluClanovi();
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

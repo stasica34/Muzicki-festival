@@ -1,12 +1,13 @@
-﻿using System;
+﻿using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
+using Muzicki_festival.Mapiranje;
+using NHibernate;
+using NHibernate.Tool.hbm2ddl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NHibernate;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
-using Muzicki_festival.Mapiranje;
 
 namespace Muzicki_festival
 {
@@ -41,15 +42,33 @@ namespace Muzicki_festival
         {
             try
             {
-                var cfg = OracleManagedDataClientConfiguration.Oracle10.ConnectionString
-                    (c => c.Is("DATA SOURCE = gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;PERSIST SECURITY INFO = True; User ID=S19184; Password = StasaKostic1#"));
+                #region KonfiguracijaStanimirovic
+                /*
+                    var cfg = OracleManagedDataClientConfiguration.Oracle10.ConnectionString
+                        (c => c.Is("DATA SOURCE = gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;PERSIST SECURITY INFO = True; User ID=S19184; Password = StasaKostic1#"));
+                    return Fluently.Configure()
+                        .Database(cfg.ShowSql())
+                        //imamo samo jedno mapiranje za sve entitete, ukoliko menjamo da sve menjamo
+                        //kada kazemo jedno mapiranje sve se zameni
+                        //nema potrebe da pisemo vise mapiranja, jer jedno mapiranje
+                        //sa addfromassemblyof kaze da trazi sva mapiranja u toj biblioteci
+                        .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Mapiranje.DogadjajMapiranje>()).BuildSessionFactory();
+                */
+                #endregion
+
+                var cfg = MsSqlConfiguration.MsSql2012.ConnectionString(c => c.Is(@"Data Source=(localdb)\MSSQLLocalDB;
+                            Initial Catalog=MojaLokalnaBaza;
+                            Integrated Security=True;")).ShowSql();
+
                 return Fluently.Configure()
-                    .Database(cfg.ShowSql())
-                    //imamo samo jedno mapiranje za sve entitete, ukoliko menjamo da sve menjamo
-                    //kada kazemo jedno mapiranje sve se zameni
-                    //nema potrebe da pisemo vise mapiranja, jer jedno mapiranje
-                    //sa addfromassemblyof kaze da trazi sva mapiranja u toj biblioteci
-                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Mapiranje.DogadjajMapiranje>()).BuildSessionFactory();
+                    .Database(cfg)
+                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Mapiranje.DogadjajMapiranje>())
+                    .ExposeConfiguration(conf =>
+                    {
+                        // Opcionalno – kreira tabele ako ih nema
+                        new SchemaUpdate(conf).Execute(false, true);
+                    })
+                    .BuildSessionFactory();
             }
             catch (Exception ex)
             {

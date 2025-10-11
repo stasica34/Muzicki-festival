@@ -31,7 +31,7 @@ namespace Muzicki_festival.Mapiranje
               .Cascade.All();
             //svuda gde mi je nasladjivanje da uradim i sa discriminator sa tipom
             //visevrednosni atribut
-            Map(x => x.Telefon, "TELEFON");
+            Map(x => x.TELEFON, "TELEFON");
             Map(x => x.Zanr, "ZANR");
 
             HasMany(x => x.Lista_tehnickih_zahteva)

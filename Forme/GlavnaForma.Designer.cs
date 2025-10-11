@@ -54,13 +54,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cmd_Lokacija = new System.Windows.Forms.Button();
             this.cmd_Clan = new System.Windows.Forms.Button();
+            this.Izvodjac = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmd_Akreditacija
             // 
-            this.cmd_Akreditacija.Location = new System.Drawing.Point(12, 21);
+            this.cmd_Akreditacija.Location = new System.Drawing.Point(8, 14);
+            this.cmd_Akreditacija.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_Akreditacija.Name = "cmd_Akreditacija";
-            this.cmd_Akreditacija.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Akreditacija.Size = new System.Drawing.Size(113, 36);
             this.cmd_Akreditacija.TabIndex = 5;
             this.cmd_Akreditacija.Text = "Akreditacija";
             this.cmd_Akreditacija.UseVisualStyleBackColor = true;
@@ -68,9 +70,10 @@
             // 
             // cmd_Posetilac
             // 
-            this.cmd_Posetilac.Location = new System.Drawing.Point(712, 466);
+            this.cmd_Posetilac.Location = new System.Drawing.Point(475, 303);
+            this.cmd_Posetilac.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_Posetilac.Name = "cmd_Posetilac";
-            this.cmd_Posetilac.Size = new System.Drawing.Size(169, 54);
+            this.cmd_Posetilac.Size = new System.Drawing.Size(113, 35);
             this.cmd_Posetilac.TabIndex = 6;
             this.cmd_Posetilac.Text = "Posetilac";
             this.cmd_Posetilac.UseVisualStyleBackColor = true;
@@ -78,9 +81,10 @@
             // 
             // cmd_Grupa
             // 
-            this.cmd_Grupa.Location = new System.Drawing.Point(537, 466);
+            this.cmd_Grupa.Location = new System.Drawing.Point(358, 303);
+            this.cmd_Grupa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_Grupa.Name = "cmd_Grupa";
-            this.cmd_Grupa.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Grupa.Size = new System.Drawing.Size(113, 36);
             this.cmd_Grupa.TabIndex = 7;
             this.cmd_Grupa.Text = "Grupa";
             this.cmd_Grupa.UseVisualStyleBackColor = true;
@@ -88,9 +92,10 @@
             // 
             // cmd_JeClan
             // 
-            this.cmd_JeClan.Location = new System.Drawing.Point(12, 468);
+            this.cmd_JeClan.Location = new System.Drawing.Point(8, 304);
+            this.cmd_JeClan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_JeClan.Name = "cmd_JeClan";
-            this.cmd_JeClan.Size = new System.Drawing.Size(169, 55);
+            this.cmd_JeClan.Size = new System.Drawing.Size(113, 36);
             this.cmd_JeClan.TabIndex = 9;
             this.cmd_JeClan.Text = "Je Clan";
             this.cmd_JeClan.UseVisualStyleBackColor = true;
@@ -98,9 +103,10 @@
             // 
             // cnd_Jednodnevna
             // 
-            this.cnd_Jednodnevna.Location = new System.Drawing.Point(12, 82);
+            this.cnd_Jednodnevna.Location = new System.Drawing.Point(8, 53);
+            this.cnd_Jednodnevna.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cnd_Jednodnevna.Name = "cnd_Jednodnevna";
-            this.cnd_Jednodnevna.Size = new System.Drawing.Size(169, 55);
+            this.cnd_Jednodnevna.Size = new System.Drawing.Size(113, 36);
             this.cnd_Jednodnevna.TabIndex = 13;
             this.cnd_Jednodnevna.Text = "Jednodnevna";
             this.cnd_Jednodnevna.UseVisualStyleBackColor = true;
@@ -108,9 +114,10 @@
             // 
             // cmd_Kobinovana
             // 
-            this.cmd_Kobinovana.Location = new System.Drawing.Point(187, 82);
+            this.cmd_Kobinovana.Location = new System.Drawing.Point(125, 53);
+            this.cmd_Kobinovana.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_Kobinovana.Name = "cmd_Kobinovana";
-            this.cmd_Kobinovana.Size = new System.Drawing.Size(169, 55);
+            this.cmd_Kobinovana.Size = new System.Drawing.Size(113, 36);
             this.cmd_Kobinovana.TabIndex = 14;
             this.cmd_Kobinovana.Text = "Kombinovana Lokacija";
             this.cmd_Kobinovana.UseVisualStyleBackColor = true;
@@ -118,9 +125,10 @@
             // 
             // cmd_OtvorenaLokacija
             // 
-            this.cmd_OtvorenaLokacija.Location = new System.Drawing.Point(187, 21);
+            this.cmd_OtvorenaLokacija.Location = new System.Drawing.Point(125, 14);
+            this.cmd_OtvorenaLokacija.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_OtvorenaLokacija.Name = "cmd_OtvorenaLokacija";
-            this.cmd_OtvorenaLokacija.Size = new System.Drawing.Size(169, 55);
+            this.cmd_OtvorenaLokacija.Size = new System.Drawing.Size(113, 36);
             this.cmd_OtvorenaLokacija.TabIndex = 19;
             this.cmd_OtvorenaLokacija.Text = "Otvorena Lokacija";
             this.cmd_OtvorenaLokacija.UseVisualStyleBackColor = true;
@@ -128,9 +136,10 @@
             // 
             // cmd_Vip
             // 
-            this.cmd_Vip.Location = new System.Drawing.Point(12, 143);
+            this.cmd_Vip.Location = new System.Drawing.Point(8, 93);
+            this.cmd_Vip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_Vip.Name = "cmd_Vip";
-            this.cmd_Vip.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Vip.Size = new System.Drawing.Size(113, 36);
             this.cmd_Vip.TabIndex = 21;
             this.cmd_Vip.Text = "Vip";
             this.cmd_Vip.UseVisualStyleBackColor = true;
@@ -138,9 +147,10 @@
             // 
             // cmd_Visednevna
             // 
-            this.cmd_Visednevna.Location = new System.Drawing.Point(12, 209);
+            this.cmd_Visednevna.Location = new System.Drawing.Point(8, 136);
+            this.cmd_Visednevna.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_Visednevna.Name = "cmd_Visednevna";
-            this.cmd_Visednevna.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Visednevna.Size = new System.Drawing.Size(113, 36);
             this.cmd_Visednevna.TabIndex = 23;
             this.cmd_Visednevna.Text = "Visednevna";
             this.cmd_Visednevna.UseVisualStyleBackColor = true;
@@ -148,9 +158,10 @@
             // 
             // cmd_ZatvorenaLokacija
             // 
-            this.cmd_ZatvorenaLokacija.Location = new System.Drawing.Point(187, 143);
+            this.cmd_ZatvorenaLokacija.Location = new System.Drawing.Point(125, 93);
+            this.cmd_ZatvorenaLokacija.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_ZatvorenaLokacija.Name = "cmd_ZatvorenaLokacija";
-            this.cmd_ZatvorenaLokacija.Size = new System.Drawing.Size(169, 56);
+            this.cmd_ZatvorenaLokacija.Size = new System.Drawing.Size(113, 36);
             this.cmd_ZatvorenaLokacija.TabIndex = 25;
             this.cmd_ZatvorenaLokacija.Text = "Zatvorena Lokacija";
             this.cmd_ZatvorenaLokacija.UseVisualStyleBackColor = true;
@@ -158,9 +169,10 @@
             // 
             // cmd_ViseNaJedan
             // 
-            this.cmd_ViseNaJedan.Location = new System.Drawing.Point(712, 21);
+            this.cmd_ViseNaJedan.Location = new System.Drawing.Point(475, 14);
+            this.cmd_ViseNaJedan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_ViseNaJedan.Name = "cmd_ViseNaJedan";
-            this.cmd_ViseNaJedan.Size = new System.Drawing.Size(169, 56);
+            this.cmd_ViseNaJedan.Size = new System.Drawing.Size(113, 36);
             this.cmd_ViseNaJedan.TabIndex = 28;
             this.cmd_ViseNaJedan.Text = "ViseNaJedan";
             this.cmd_ViseNaJedan.UseVisualStyleBackColor = true;
@@ -168,9 +180,10 @@
             // 
             // cmdViseNaJedan2
             // 
-            this.cmdViseNaJedan2.Location = new System.Drawing.Point(362, 21);
+            this.cmdViseNaJedan2.Location = new System.Drawing.Point(241, 14);
+            this.cmdViseNaJedan2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdViseNaJedan2.Name = "cmdViseNaJedan2";
-            this.cmdViseNaJedan2.Size = new System.Drawing.Size(169, 56);
+            this.cmdViseNaJedan2.Size = new System.Drawing.Size(113, 36);
             this.cmdViseNaJedan2.TabIndex = 30;
             this.cmdViseNaJedan2.Text = "ViseNaJedan";
             this.cmdViseNaJedan2.UseVisualStyleBackColor = true;
@@ -178,9 +191,10 @@
             // 
             // cmd_JedanNaVise
             // 
-            this.cmd_JedanNaVise.Location = new System.Drawing.Point(712, 85);
+            this.cmd_JedanNaVise.Location = new System.Drawing.Point(475, 55);
+            this.cmd_JedanNaVise.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_JedanNaVise.Name = "cmd_JedanNaVise";
-            this.cmd_JedanNaVise.Size = new System.Drawing.Size(169, 55);
+            this.cmd_JedanNaVise.Size = new System.Drawing.Size(113, 36);
             this.cmd_JedanNaVise.TabIndex = 29;
             this.cmd_JedanNaVise.Text = "JedanNaVise";
             this.cmd_JedanNaVise.UseVisualStyleBackColor = true;
@@ -188,9 +202,10 @@
             // 
             // cmdJedanNaVise
             // 
-            this.cmdJedanNaVise.Location = new System.Drawing.Point(362, 85);
+            this.cmdJedanNaVise.Location = new System.Drawing.Point(241, 55);
+            this.cmdJedanNaVise.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdJedanNaVise.Name = "cmdJedanNaVise";
-            this.cmdJedanNaVise.Size = new System.Drawing.Size(169, 56);
+            this.cmdJedanNaVise.Size = new System.Drawing.Size(113, 36);
             this.cmdJedanNaVise.TabIndex = 31;
             this.cmdJedanNaVise.Text = "JedanNaVise";
             this.cmdJedanNaVise.UseVisualStyleBackColor = true;
@@ -198,9 +213,10 @@
             // 
             // cmdVisenaJedan3
             // 
-            this.cmdVisenaJedan3.Location = new System.Drawing.Point(712, 147);
+            this.cmdVisenaJedan3.Location = new System.Drawing.Point(475, 96);
+            this.cmdVisenaJedan3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdVisenaJedan3.Name = "cmdVisenaJedan3";
-            this.cmdVisenaJedan3.Size = new System.Drawing.Size(169, 56);
+            this.cmdVisenaJedan3.Size = new System.Drawing.Size(113, 36);
             this.cmdVisenaJedan3.TabIndex = 32;
             this.cmdVisenaJedan3.Text = "ViseNaJedan";
             this.cmdVisenaJedan3.UseVisualStyleBackColor = true;
@@ -208,9 +224,10 @@
             // 
             // cmdJedanNaVise3
             // 
-            this.cmdJedanNaVise3.Location = new System.Drawing.Point(712, 209);
+            this.cmdJedanNaVise3.Location = new System.Drawing.Point(475, 136);
+            this.cmdJedanNaVise3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdJedanNaVise3.Name = "cmdJedanNaVise3";
-            this.cmdJedanNaVise3.Size = new System.Drawing.Size(169, 56);
+            this.cmdJedanNaVise3.Size = new System.Drawing.Size(113, 36);
             this.cmdJedanNaVise3.TabIndex = 33;
             this.cmdJedanNaVise3.Text = "JedanNaVise";
             this.cmdJedanNaVise3.UseVisualStyleBackColor = true;
@@ -218,9 +235,10 @@
             // 
             // cmdViseNaJedan4
             // 
-            this.cmdViseNaJedan4.Location = new System.Drawing.Point(362, 146);
+            this.cmdViseNaJedan4.Location = new System.Drawing.Point(241, 95);
+            this.cmdViseNaJedan4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdViseNaJedan4.Name = "cmdViseNaJedan4";
-            this.cmdViseNaJedan4.Size = new System.Drawing.Size(169, 56);
+            this.cmdViseNaJedan4.Size = new System.Drawing.Size(113, 36);
             this.cmdViseNaJedan4.TabIndex = 34;
             this.cmdViseNaJedan4.Text = "ViseNaJedan";
             this.cmdViseNaJedan4.UseVisualStyleBackColor = true;
@@ -228,9 +246,10 @@
             // 
             // cmdJedanNaVise4
             // 
-            this.cmdJedanNaVise4.Location = new System.Drawing.Point(362, 208);
+            this.cmdJedanNaVise4.Location = new System.Drawing.Point(241, 135);
+            this.cmdJedanNaVise4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdJedanNaVise4.Name = "cmdJedanNaVise4";
-            this.cmdJedanNaVise4.Size = new System.Drawing.Size(169, 56);
+            this.cmdJedanNaVise4.Size = new System.Drawing.Size(113, 36);
             this.cmdJedanNaVise4.TabIndex = 35;
             this.cmdJedanNaVise4.Text = "JedanNaVise";
             this.cmdJedanNaVise4.UseVisualStyleBackColor = true;
@@ -238,9 +257,10 @@
             // 
             // cmdViseNaJedan5
             // 
-            this.cmdViseNaJedan5.Location = new System.Drawing.Point(537, 207);
+            this.cmdViseNaJedan5.Location = new System.Drawing.Point(358, 135);
+            this.cmdViseNaJedan5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdViseNaJedan5.Name = "cmdViseNaJedan5";
-            this.cmdViseNaJedan5.Size = new System.Drawing.Size(169, 56);
+            this.cmdViseNaJedan5.Size = new System.Drawing.Size(113, 36);
             this.cmdViseNaJedan5.TabIndex = 36;
             this.cmdViseNaJedan5.Text = "ViseNaJedan";
             this.cmdViseNaJedan5.UseVisualStyleBackColor = true;
@@ -248,9 +268,10 @@
             // 
             // cmdViseNaVise
             // 
-            this.cmdViseNaVise.Location = new System.Drawing.Point(537, 145);
+            this.cmdViseNaVise.Location = new System.Drawing.Point(358, 94);
+            this.cmdViseNaVise.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdViseNaVise.Name = "cmdViseNaVise";
-            this.cmdViseNaVise.Size = new System.Drawing.Size(169, 56);
+            this.cmdViseNaVise.Size = new System.Drawing.Size(113, 36);
             this.cmdViseNaVise.TabIndex = 38;
             this.cmdViseNaVise.Text = "ViseNaVise";
             this.cmdViseNaVise.UseVisualStyleBackColor = true;
@@ -258,9 +279,10 @@
             // 
             // cmdVisenaVise2
             // 
-            this.cmdVisenaVise2.Location = new System.Drawing.Point(537, 83);
+            this.cmdVisenaVise2.Location = new System.Drawing.Point(358, 54);
+            this.cmdVisenaVise2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdVisenaVise2.Name = "cmdVisenaVise2";
-            this.cmdVisenaVise2.Size = new System.Drawing.Size(169, 56);
+            this.cmdVisenaVise2.Size = new System.Drawing.Size(113, 36);
             this.cmdVisenaVise2.TabIndex = 39;
             this.cmdVisenaVise2.Text = "ViseNaVise";
             this.cmdVisenaVise2.UseVisualStyleBackColor = true;
@@ -268,9 +290,10 @@
             // 
             // cmdJedanNaVise5
             // 
-            this.cmdJedanNaVise5.Location = new System.Drawing.Point(537, 21);
+            this.cmdJedanNaVise5.Location = new System.Drawing.Point(358, 14);
+            this.cmdJedanNaVise5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmdJedanNaVise5.Name = "cmdJedanNaVise5";
-            this.cmdJedanNaVise5.Size = new System.Drawing.Size(169, 56);
+            this.cmdJedanNaVise5.Size = new System.Drawing.Size(113, 36);
             this.cmdJedanNaVise5.TabIndex = 40;
             this.cmdJedanNaVise5.Text = "JedanNaVise";
             this.cmdJedanNaVise5.UseVisualStyleBackColor = true;
@@ -278,9 +301,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(187, 467);
+            this.button1.Location = new System.Drawing.Point(125, 304);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(169, 56);
+            this.button1.Size = new System.Drawing.Size(113, 36);
             this.button1.TabIndex = 41;
             this.button1.Text = "GlavnaStranica";
             this.button1.UseVisualStyleBackColor = true;
@@ -288,9 +312,10 @@
             // 
             // cmd_Lokacija
             // 
-            this.cmd_Lokacija.Location = new System.Drawing.Point(187, 208);
+            this.cmd_Lokacija.Location = new System.Drawing.Point(125, 135);
+            this.cmd_Lokacija.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_Lokacija.Name = "cmd_Lokacija";
-            this.cmd_Lokacija.Size = new System.Drawing.Size(169, 56);
+            this.cmd_Lokacija.Size = new System.Drawing.Size(113, 36);
             this.cmd_Lokacija.TabIndex = 15;
             this.cmd_Lokacija.Text = "Lokacija";
             this.cmd_Lokacija.UseVisualStyleBackColor = true;
@@ -298,19 +323,31 @@
             // 
             // cmd_Clan
             // 
-            this.cmd_Clan.Location = new System.Drawing.Point(362, 468);
+            this.cmd_Clan.Location = new System.Drawing.Point(241, 304);
+            this.cmd_Clan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmd_Clan.Name = "cmd_Clan";
-            this.cmd_Clan.Size = new System.Drawing.Size(169, 53);
+            this.cmd_Clan.Size = new System.Drawing.Size(113, 34);
             this.cmd_Clan.TabIndex = 11;
             this.cmd_Clan.Text = "Clan";
             this.cmd_Clan.UseVisualStyleBackColor = true;
             this.cmd_Clan.Click += new System.EventHandler(this.cmd_Clan_Click);
             // 
+            // Izvodjac
+            // 
+            this.Izvodjac.Location = new System.Drawing.Point(8, 177);
+            this.Izvodjac.Name = "Izvodjac";
+            this.Izvodjac.Size = new System.Drawing.Size(113, 38);
+            this.Izvodjac.TabIndex = 42;
+            this.Izvodjac.Text = "Izvodjac";
+            this.Izvodjac.UseVisualStyleBackColor = true;
+            this.Izvodjac.Click += new System.EventHandler(this.Izvodjac_Click);
+            // 
             // GlavnaForma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 536);
+            this.ClientSize = new System.Drawing.Size(605, 348);
+            this.Controls.Add(this.Izvodjac);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmdJedanNaVise5);
             this.Controls.Add(this.cmdVisenaVise2);
@@ -336,6 +373,7 @@
             this.Controls.Add(this.cmd_Grupa);
             this.Controls.Add(this.cmd_Posetilac);
             this.Controls.Add(this.cmd_Akreditacija);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "GlavnaForma";
             this.Text = "S";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -371,6 +409,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button cmd_Lokacija;
         private System.Windows.Forms.Button cmd_Clan;
+        private System.Windows.Forms.Button Izvodjac;
     }
 }
 

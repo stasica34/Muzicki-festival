@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Entiteti
 {
+    /*
     public class KombinovanaLokacija
     {
         public virtual int Lokacija { get; set; }
         public KombinovanaLokacija() { }
     }
+    */
 }

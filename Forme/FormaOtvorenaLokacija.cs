@@ -30,6 +30,7 @@ namespace Muzicki_festival.Forme
 
         private void cmd_Ucitavanje_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -59,6 +60,7 @@ namespace Muzicki_festival.Forme
             {
                 MessageBox.Show(ex.Message);
             }
+            */
         }
 
         private void FormaOtvorenaLokacija_Load(object sender, EventArgs e)

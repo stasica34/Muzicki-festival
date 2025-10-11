@@ -24,6 +24,11 @@ namespace Muzicki_festival.FormeDodatne
         private int selektovanClanId = -1;
         public IList<ClanBendaView> clanoviBenda;
         bool otklonjenaAgencija = false;
+        private IList<string> zahtevi;
+        private IList<string> sposobnosti;
+
+        private int selektovanZahtevRowId = -1;
+        private int selektovanaSposobnostRowId = -1;
 
         ComboBox agencijeCbox;
         Label AgencijaLabela;
@@ -40,8 +45,12 @@ namespace Muzicki_festival.FormeDodatne
             AgencijaLabela.Anchor = AnchorStyles.None;
 
             InitTabeluClanovi();
+            InitTabeluSposobnosti();
+            InitTabeluZahtevi();
 
             izvodjacView = DTOManager.VratiIzvodjaca(idIzvodjac);
+            zahtevi = DTOManager.VratiTehnickeZahteve(idIzvodjac);
+
             PopuniPodatke();
         }
 
@@ -74,6 +83,78 @@ namespace Muzicki_festival.FormeDodatne
             TabelaClanovi.Columns["ID"].Visible = false;
             TabelaClanovi.Columns.Add("IME", "IME");
             TabelaClanovi.Columns.Add("INSTRUMENT", "INSTRUMENT");
+            TabelaClanovi.Columns.Add("ULOGA", "ULOGA");
+        }
+
+        private void InitTabeluZahtevi()
+        {
+            TabelaTehnickiZahtevi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            TabelaTehnickiZahtevi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TabelaTehnickiZahtevi.ReadOnly = true;
+            TabelaTehnickiZahtevi.AllowUserToAddRows = false;
+            TabelaTehnickiZahtevi.RowHeadersVisible = false;
+            TabelaTehnickiZahtevi.BorderStyle = BorderStyle.None;
+            TabelaTehnickiZahtevi.BackgroundColor = Color.WhiteSmoke;
+            TabelaTehnickiZahtevi.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TabelaTehnickiZahtevi.GridColor = Color.LightGray;
+
+            TabelaTehnickiZahtevi.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+
+            TabelaTehnickiZahtevi.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            TabelaTehnickiZahtevi.DefaultCellStyle.SelectionForeColor = Color.White;
+            TabelaTehnickiZahtevi.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            TabelaTehnickiZahtevi.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            TabelaTehnickiZahtevi.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
+            TabelaTehnickiZahtevi.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
+            TabelaTehnickiZahtevi.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            TabelaTehnickiZahtevi.EnableHeadersVisualStyles = false;
+
+
+            TabelaTehnickiZahtevi.Columns.Add("ZAHTEV", "ZAHTEV");
+        }
+
+        private void InitTabeluSposobnosti()
+        {
+            TabelaVokalneSposobnosti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            TabelaVokalneSposobnosti.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TabelaVokalneSposobnosti.ReadOnly = true;
+            TabelaVokalneSposobnosti.AllowUserToAddRows = false;
+            TabelaVokalneSposobnosti.RowHeadersVisible = false;
+            TabelaVokalneSposobnosti.BorderStyle = BorderStyle.None;
+            TabelaVokalneSposobnosti.BackgroundColor = Color.WhiteSmoke;
+            TabelaVokalneSposobnosti.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TabelaVokalneSposobnosti.GridColor = Color.LightGray;
+
+            TabelaVokalneSposobnosti.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+
+            TabelaVokalneSposobnosti.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            TabelaVokalneSposobnosti.DefaultCellStyle.SelectionForeColor = Color.White;
+            TabelaVokalneSposobnosti.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            TabelaVokalneSposobnosti.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            TabelaVokalneSposobnosti.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
+            TabelaVokalneSposobnosti.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
+            TabelaVokalneSposobnosti.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            TabelaVokalneSposobnosti.EnableHeadersVisualStyles = false;
+
+            TabelaVokalneSposobnosti.Columns.Add("SPOSOBNOST", "SPOSOBNOST");
+        }
+
+        private void PopuniTabeluZahtevi()
+        {
+            TabelaTehnickiZahtevi.Rows.Clear();
+            foreach (var z in zahtevi)
+                TabelaTehnickiZahtevi.Rows.Add(z);
+        }
+
+        private void PopuniTabeluSposobnosti()
+        {
+            TabelaVokalneSposobnosti.Rows.Clear();
+            foreach (var s in sposobnosti)
+            {
+                TabelaVokalneSposobnosti.Rows.Add(s);
+            }
         }
 
         private void PopuniTabeluClanovi()
@@ -81,7 +162,7 @@ namespace Muzicki_festival.FormeDodatne
             TabelaClanovi.Rows.Clear();
             foreach(var c in clanoviBenda)
             {
-                TabelaClanovi.Rows.Add(c.Id, c.Ime, c.Instrument);
+                TabelaClanovi.Rows.Add(c.Id, c.Ime, c.Instrument, c.Uloga);
             }
         }
 
@@ -92,8 +173,11 @@ namespace Muzicki_festival.FormeDodatne
             txtEmail.Text = izvodjacView.Email;
             txtKontaktOsoba.Text = izvodjacView.Kontakt_osoba;
             txtTelefon.Text = izvodjacView.Telefon;
+            txtZanr.Text = izvodjacView.Zanr;
 
             menadzerska = DTOManager.VratiMenadzerskuIzvodjaca(idIzvodjac);
+
+            PopuniTabeluZahtevi();
 
             if (menadzerska == null)
             {
@@ -122,6 +206,9 @@ namespace Muzicki_festival.FormeDodatne
                     instrumentCheckbox.Checked = true;
                     instrumentTxt.Text = sv.Tip_instrumenta;
                 }
+
+                sposobnosti = DTOManager.VratiVokalneSposobnosti(idIzvodjac);
+                PopuniTabeluSposobnosti();
             }
             else
             {
@@ -176,7 +263,7 @@ namespace Muzicki_festival.FormeDodatne
                 string svira = instrumentCheckbox.Checked ? "DA" : "NE";
                 string instrument = instrumentCheckbox.Checked ? instrumentTxt.Text : "";
 
-                Solo_UmetnikBasic sb = new Solo_UmetnikBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, mb, svira, instrument);
+                Solo_UmetnikBasic sb = new Solo_UmetnikBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, txtZanr.Text, mb, svira, instrument);
 
                 if (DTOManager.IzmeniIzvodjaca(sb))
                 {
@@ -191,7 +278,7 @@ namespace Muzicki_festival.FormeDodatne
             }
             else
             {
-                BendBasic bend = new BendBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, mb);
+                BendBasic bend = new BendBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtZanr.Text, txtTelefon.Text, mb);
 
                 if (DTOManager.IzmeniIzvodjaca(bend))
                 {
@@ -235,10 +322,16 @@ namespace Muzicki_festival.FormeDodatne
 
         private void DugmeDodajClana_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(ImeClana.Text) || string.IsNullOrWhiteSpace(InstrumentClanaBenda.Text) || string.IsNullOrWhiteSpace(txtUlogaClana.Text))
+            {
+                MessageBox.Show("Unesite sve podatke za clana!");
+                return;
+            }
+
             BendView bv = izvodjacView as BendView;
 
-            BendBasic b = new BendBasic(bv.Id, bv.Ime, bv.Drzava_porekla, bv.Email, bv.Kontakt_osoba, bv.Telefon, null);
-            ClanBendaBasic cb = new ClanBendaBasic(0, ImeClana.Text, InstrumentClanaBenda.Text, b);
+            BendBasic b = new BendBasic(bv.Id, bv.Ime, bv.Drzava_porekla, bv.Email, bv.Kontakt_osoba, bv.Telefon, txtZanr.Text, null);
+            ClanBendaBasic cb = new ClanBendaBasic(0, ImeClana.Text, InstrumentClanaBenda.Text, txtUlogaClana.Text, b);
 
             ClanBendaView novi = DTOManager.DodajClanaBendu(cb);
 
@@ -271,8 +364,8 @@ namespace Muzicki_festival.FormeDodatne
 
             BendView bv = izvodjacView as BendView;
 
-            BendBasic b = new BendBasic(bv.Id, bv.Ime, bv.Drzava_porekla, bv.Email, bv.Kontakt_osoba, bv.Telefon, null);
-            ClanBendaBasic cb = new ClanBendaBasic(cv.Id, cv.Ime, cv.Instrument, b);
+            BendBasic b = new BendBasic(bv.Id, bv.Ime, bv.Drzava_porekla, bv.Email, bv.Kontakt_osoba, bv.Telefon, txtZanr.Text, null);
+            ClanBendaBasic cb = new ClanBendaBasic(cv.Id, cv.Ime, cv.Instrument, cv.Uloga, b);
 
             if (DTOManager.ObrisiClana(cb))
             {
@@ -319,6 +412,107 @@ namespace Muzicki_festival.FormeDodatne
         private void AgencijaCbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DugmeDodajZahtev_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtZahtev.Text))
+            {
+                MessageBox.Show("Unesite novi zahtev");
+                return;
+            }
+
+            if (DTOManager.DodajTehnickiZahtev(idIzvodjac, txtZahtev.Text))
+            {
+                MessageBox.Show("Uspesno dodat zahtev " + txtZahtev.Text);
+                zahtevi.Add(txtZahtev.Text);
+                PopuniTabeluZahtevi();
+            }
+            else
+            {
+                MessageBox.Show("Greska pri dodavanju", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DugmeObrisiZahtev_Click(object sender, EventArgs e)
+        {
+            if (selektovanZahtevRowId == -1)
+            {
+                MessageBox.Show("Izaberite zahtev za brisanje");
+                return;
+            }
+
+            string zahtev = (string)TabelaTehnickiZahtevi.Rows[selektovanZahtevRowId].Cells["ZAHTEV"].Value;
+
+            if (DTOManager.ObrisiTehnickiZahtev(idIzvodjac, zahtev))
+            {
+                MessageBox.Show("Uspesno obrisan zahtev " + zahtev);
+                zahtevi.Remove(zahtev);
+                PopuniTabeluZahtevi();
+            }
+            else
+            {
+                MessageBox.Show("Greska pri brisanju", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DugmeDodajSposobnost_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSposobnost.Text))
+            {
+                MessageBox.Show("Unesti sposobnost!");
+                return;
+            }
+
+            if (DTOManager.DodajVokalnuSposobnost(idIzvodjac, txtSposobnost.Text))
+            {
+                MessageBox.Show("Dodata sposobnost " +  txtSposobnost.Text);
+                sposobnosti.Add(txtSposobnost.Text);
+                PopuniTabeluSposobnosti();
+            }
+        }
+
+        private void DugmeObrisiSposobnost_Click(object sender, EventArgs e)
+        {
+            if (selektovanaSposobnostRowId == -1)
+            {
+                MessageBox.Show("Izaberite zahtev za brisanje");
+                return;
+            }
+
+            string sposobnost = (string)TabelaVokalneSposobnosti.Rows[selektovanaSposobnostRowId].Cells["SPOSOBNOST"].Value;
+
+            if (DTOManager.ObrisiVokalnuSposobnost(idIzvodjac, sposobnost))
+            {
+                MessageBox.Show("Uspesno obrisana sposobnost " + sposobnost);
+                sposobnosti.Remove(sposobnost);
+                PopuniTabeluSposobnosti();
+            }
+            else
+            {
+                MessageBox.Show("Greska pri brisanju", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TabelaTehnickiZahtevi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < TabelaTehnickiZahtevi.Rows.Count)
+            {
+                selektovanZahtevRowId = e.RowIndex;
+            }    
+        }
+
+        private void TabelaVokalneSposobnosti_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex <= TabelaVokalneSposobnosti.Rows.Count)
+            {
+                selektovanaSposobnostRowId = e.RowIndex;
+            }
         }
     }
 }

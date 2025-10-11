@@ -26,6 +26,7 @@ namespace Muzicki_festival.Forme
 
         private void FormaDogadjajIzmeni_Load(object sender, EventArgs e)
         {
+            /*
             try
             {
                 using (ISession s = DataLayer.GetSession())
@@ -65,6 +66,7 @@ namespace Muzicki_festival.Forme
             {
                 MessageBox.Show("Greška prilikom učitavanja forme za izmenu: " + ex.Message);
             }
+            */
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)

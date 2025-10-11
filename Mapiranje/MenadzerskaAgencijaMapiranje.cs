@@ -1,26 +1,29 @@
 ﻿using FluentNHibernate.Mapping;
-using Muzicki_festival.Entiteti;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class MenadzerskaAgencijaMapiranje : ClassMap<MenadzerskaAgencija>
+namespace Muzicki_festival.Mapiranje
 {
-    public MenadzerskaAgencijaMapiranje()
+    public class MenadzerskaAgencijaMapiranje : ClassMap<Muzicki_festival.Entiteti.MenadzerskaAgencija>
     {
-        Table("MENADZERSKA_AGENCIJA");
-
-        Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
-
-        Map(x => x.NAZIV, "NAZIV").Not.Nullable();
-        Map(x => x.ADRESA, "ADRESA").Not.Nullable();
-        Map(x => x.KONTAKT_OSOBA, "KONTAKT_OSOBA").Not.Nullable();
-
-        HasMany(x => x.Izvodjaci)
-            .KeyColumn("MENADZERSKA_AGENCIJA_ID")
-            .Inverse()
-            .Cascade.All();
-        //mapiranje visevrednostinog atributa
-        HasMany(x => x.KONTAKTPODACI)
-            .KeyColumn("MENADZERSKA_AGENCIJA_ID")
-            .Inverse()
-            .Cascade.All();
+        public MenadzerskaAgencijaMapiranje()
+        {
+            Table("MENADZERSKA_AGENCIJA");
+            Id(x => x.ID, "ID").GeneratedBy.Identity();
+            Map(x => x.NAZIV, "NAZIV").Not.Nullable();
+            Map(x => x.ADRESA, "ADRESA").Not.Nullable();
+            Map(x => x.KONTAKT_OSOBA, "KONTAKT_OSOBA").Not.Nullable();
+            HasMany(x => x.Izvodjaci)
+                .KeyColumn("MENADZERSKA_AGENCIJA_ID") //FK kolona u tabeli Izvodjac
+                .Inverse()
+                .Cascade.All();
+            HasMany(x => x.KONTAKT_PODACI)
+                .KeyColumn("MENADZERSKA_AGENCIJA_ID")
+                .Inverse()
+                .Cascade.All();
+        }
     }
 }

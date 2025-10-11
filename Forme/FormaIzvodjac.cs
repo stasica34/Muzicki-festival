@@ -86,6 +86,7 @@ namespace Muzicki_festival.Forme
         }
         private void UcitajIzvodjace()
         {
+            /*
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -130,6 +131,7 @@ namespace Muzicki_festival.Forme
             {
                 MessageBox.Show("Greška: " + ex.Message);
             }
+            */
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

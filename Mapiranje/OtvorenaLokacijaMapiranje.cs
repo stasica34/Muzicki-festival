@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Mapiranje
 {
+    /*
     public class OtvorenaLokacijaMapiranje:ClassMap<Muzicki_festival.Entiteti.OtvorenaLokacija>
     {
         public OtvorenaLokacijaMapiranje()
@@ -23,4 +24,5 @@ namespace Muzicki_festival.Mapiranje
 
         }
     }
+    */
 }

@@ -46,6 +46,8 @@
             this.txtDrzavaPorekla = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.izborMenadzerske = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ZanrTxt = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.SoloUmetnikRadio = new System.Windows.Forms.RadioButton();
@@ -61,8 +63,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.GrupaDodatnaTabela = new System.Windows.Forms.GroupBox();
             this.TabelaClanovi = new System.Windows.Forms.DataGridView();
+            this.TabelaVokalneSposobnosti = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TabelaZahtevi = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -74,17 +80,21 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.GrupaDodatnaTabela.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabelaClanovi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaVokalneSposobnosti)).BeginInit();
+            this.tableLayoutPanel8.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaZahtevi)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSacuvaj
             // 
             this.btnSacuvaj.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSacuvaj.Location = new System.Drawing.Point(111, 13);
+            this.btnSacuvaj.Location = new System.Drawing.Point(20, 2);
             this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(2);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(115, 42);
+            this.btnSacuvaj.Size = new System.Drawing.Size(115, 21);
             this.btnSacuvaj.TabIndex = 0;
             this.btnSacuvaj.Text = "Sacuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -93,7 +103,7 @@
             // btnDodajMenadzersku
             // 
             this.btnDodajMenadzersku.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDodajMenadzersku.Location = new System.Drawing.Point(222, 6);
+            this.btnDodajMenadzersku.Location = new System.Drawing.Point(222, 3);
             this.btnDodajMenadzersku.Margin = new System.Windows.Forms.Padding(2);
             this.btnDodajMenadzersku.Name = "btnDodajMenadzersku";
             this.btnDodajMenadzersku.Size = new System.Drawing.Size(115, 25);
@@ -106,7 +116,7 @@
             // 
             this.lableIme.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lableIme.AutoSize = true;
-            this.lableIme.Location = new System.Drawing.Point(121, 13);
+            this.lableIme.Location = new System.Drawing.Point(121, 10);
             this.lableIme.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lableIme.Name = "lableIme";
             this.lableIme.Size = new System.Drawing.Size(27, 13);
@@ -117,7 +127,7 @@
             // 
             this.labelDrzava.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelDrzava.AutoSize = true;
-            this.labelDrzava.Location = new System.Drawing.Point(94, 53);
+            this.labelDrzava.Location = new System.Drawing.Point(94, 43);
             this.labelDrzava.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDrzava.Name = "labelDrzava";
             this.labelDrzava.Size = new System.Drawing.Size(82, 13);
@@ -128,7 +138,7 @@
             // 
             this.labelEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(117, 93);
+            this.labelEmail.Location = new System.Drawing.Point(117, 76);
             this.labelEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(35, 13);
@@ -139,7 +149,7 @@
             // 
             this.lblKontakt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblKontakt.AutoSize = true;
-            this.lblKontakt.Location = new System.Drawing.Point(95, 133);
+            this.lblKontakt.Location = new System.Drawing.Point(95, 109);
             this.lblKontakt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblKontakt.Name = "lblKontakt";
             this.lblKontakt.Size = new System.Drawing.Size(79, 13);
@@ -150,7 +160,7 @@
             // 
             this.lblTelefon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTelefon.AutoSize = true;
-            this.lblTelefon.Location = new System.Drawing.Point(112, 173);
+            this.lblTelefon.Location = new System.Drawing.Point(112, 142);
             this.lblTelefon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTelefon.Name = "lblTelefon";
             this.lblTelefon.Size = new System.Drawing.Size(46, 13);
@@ -161,7 +171,7 @@
             // 
             this.lblMenadzerska.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMenadzerska.AutoSize = true;
-            this.lblMenadzerska.Location = new System.Drawing.Point(76, 215);
+            this.lblMenadzerska.Location = new System.Drawing.Point(76, 210);
             this.lblMenadzerska.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMenadzerska.Name = "lblMenadzerska";
             this.lblMenadzerska.Size = new System.Drawing.Size(117, 13);
@@ -170,28 +180,28 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.58366F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.41634F));
             this.tableLayoutPanel2.Controls.Add(this.btnOtkazi, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSacuvaj, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(11, 397);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(165, 397);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(668, 68);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(310, 25);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // btnOtkazi
             // 
             this.btnOtkazi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnOtkazi.Location = new System.Drawing.Point(445, 13);
+            this.btnOtkazi.Location = new System.Drawing.Point(175, 2);
             this.btnOtkazi.Margin = new System.Windows.Forms.Padding(2);
             this.btnOtkazi.Name = "btnOtkazi";
-            this.btnOtkazi.Size = new System.Drawing.Size(115, 42);
+            this.btnOtkazi.Size = new System.Drawing.Size(115, 21);
             this.btnOtkazi.TabIndex = 1;
             this.btnOtkazi.Text = "Otkazi";
             this.btnOtkazi.UseVisualStyleBackColor = true;
@@ -200,7 +210,7 @@
             // txtIme
             // 
             this.txtIme.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtIme.Location = new System.Drawing.Point(375, 10);
+            this.txtIme.Location = new System.Drawing.Point(375, 6);
             this.txtIme.Margin = new System.Windows.Forms.Padding(2);
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(168, 20);
@@ -209,7 +219,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmail.Location = new System.Drawing.Point(375, 90);
+            this.txtEmail.Location = new System.Drawing.Point(375, 72);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(168, 20);
@@ -219,7 +229,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66666F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.33334F));
             this.tableLayoutPanel1.Controls.Add(this.txtTelefon, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtKontaktOsoba, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtDrzavaPorekla, 1, 1);
@@ -230,26 +240,28 @@
             this.tableLayoutPanel1.Controls.Add(this.txtIme, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtEmail, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblTelefon, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.lblMenadzerska, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblMenadzerska, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.ZanrTxt, 1, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 18);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(649, 244);
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(649, 236);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // txtTelefon
             // 
             this.txtTelefon.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTelefon.Location = new System.Drawing.Point(375, 170);
+            this.txtTelefon.Location = new System.Drawing.Point(375, 138);
             this.txtTelefon.Margin = new System.Windows.Forms.Padding(2);
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(168, 20);
@@ -258,7 +270,7 @@
             // txtKontaktOsoba
             // 
             this.txtKontaktOsoba.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtKontaktOsoba.Location = new System.Drawing.Point(375, 130);
+            this.txtKontaktOsoba.Location = new System.Drawing.Point(375, 105);
             this.txtKontaktOsoba.Margin = new System.Windows.Forms.Padding(2);
             this.txtKontaktOsoba.Name = "txtKontaktOsoba";
             this.txtKontaktOsoba.Size = new System.Drawing.Size(168, 20);
@@ -267,7 +279,7 @@
             // txtDrzavaPorekla
             // 
             this.txtDrzavaPorekla.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDrzavaPorekla.Location = new System.Drawing.Point(375, 50);
+            this.txtDrzavaPorekla.Location = new System.Drawing.Point(375, 39);
             this.txtDrzavaPorekla.Margin = new System.Windows.Forms.Padding(2);
             this.txtDrzavaPorekla.Name = "txtDrzavaPorekla";
             this.txtDrzavaPorekla.Size = new System.Drawing.Size(168, 20);
@@ -280,23 +292,41 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.btnDodajMenadzersku, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.izborMenadzerske, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(273, 203);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(273, 201);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(373, 38);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(373, 32);
             this.tableLayoutPanel3.TabIndex = 18;
             // 
             // izborMenadzerske
             // 
             this.izborMenadzerske.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.izborMenadzerske.FormattingEnabled = true;
-            this.izborMenadzerske.Location = new System.Drawing.Point(4, 8);
+            this.izborMenadzerske.Location = new System.Drawing.Point(4, 5);
             this.izborMenadzerske.Name = "izborMenadzerske";
             this.izborMenadzerske.Size = new System.Drawing.Size(177, 21);
             this.izborMenadzerske.TabIndex = 3;
             this.izborMenadzerske.SelectedIndexChanged += new System.EventHandler(this.izborMenadzerske_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(119, 175);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Zanr:";
+            // 
+            // ZanrTxt
+            // 
+            this.ZanrTxt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ZanrTxt.Location = new System.Drawing.Point(375, 171);
+            this.ZanrTxt.Name = "ZanrTxt";
+            this.ZanrTxt.Size = new System.Drawing.Size(168, 20);
+            this.ZanrTxt.TabIndex = 20;
             // 
             // tableLayoutPanel4
             // 
@@ -428,15 +458,16 @@
             this.TabelaIzvodjaci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TabelaIzvodjaci.Location = new System.Drawing.Point(3, 3);
             this.TabelaIzvodjaci.Name = "TabelaIzvodjaci";
-            this.TabelaIzvodjaci.Size = new System.Drawing.Size(460, 144);
+            this.TabelaIzvodjaci.Size = new System.Drawing.Size(595, 144);
             this.TabelaIzvodjaci.TabIndex = 5;
             this.TabelaIzvodjaci.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaIzvodjaci_CellClick);
             // 
             // Izmeni
             // 
-            this.Izmeni.Location = new System.Drawing.Point(12, 640);
+            this.Izmeni.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Izmeni.Location = new System.Drawing.Point(604, 118);
             this.Izmeni.Name = "Izmeni";
-            this.Izmeni.Size = new System.Drawing.Size(79, 29);
+            this.Izmeni.Size = new System.Drawing.Size(61, 29);
             this.Izmeni.TabIndex = 6;
             this.Izmeni.Text = "Izmeni";
             this.Izmeni.UseVisualStyleBackColor = true;
@@ -447,7 +478,7 @@
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(667, 267);
+            this.groupBox2.Size = new System.Drawing.Size(667, 259);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Osnovni podaci";
@@ -465,43 +496,86 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel7.Controls.Add(this.TabelaIzvodjaci, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.groupBox1, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(11, 484);
+            this.tableLayoutPanel7.Controls.Add(this.Izmeni, 1, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(12, 436);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(668, 150);
             this.tableLayoutPanel7.TabIndex = 21;
             // 
+            // GrupaDodatnaTabela
+            // 
+            this.GrupaDodatnaTabela.Controls.Add(this.TabelaVokalneSposobnosti);
+            this.GrupaDodatnaTabela.Controls.Add(this.TabelaClanovi);
+            this.GrupaDodatnaTabela.Location = new System.Drawing.Point(179, 3);
+            this.GrupaDodatnaTabela.Name = "GrupaDodatnaTabela";
+            this.GrupaDodatnaTabela.Size = new System.Drawing.Size(171, 125);
+            this.GrupaDodatnaTabela.TabIndex = 6;
+            this.GrupaDodatnaTabela.TabStop = false;
+            this.GrupaDodatnaTabela.Text = "Clanovi benda";
+            // 
             // TabelaClanovi
             // 
             this.TabelaClanovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TabelaClanovi.Location = new System.Drawing.Point(6, 19);
+            this.TabelaClanovi.Location = new System.Drawing.Point(13, 22);
             this.TabelaClanovi.Name = "TabelaClanovi";
-            this.TabelaClanovi.Size = new System.Drawing.Size(183, 119);
+            this.TabelaClanovi.Size = new System.Drawing.Size(152, 103);
             this.TabelaClanovi.TabIndex = 6;
+            // 
+            // TabelaVokalneSposobnosti
+            // 
+            this.TabelaVokalneSposobnosti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TabelaVokalneSposobnosti.Location = new System.Drawing.Point(6, 22);
+            this.TabelaVokalneSposobnosti.Name = "TabelaVokalneSposobnosti";
+            this.TabelaVokalneSposobnosti.Size = new System.Drawing.Size(159, 103);
+            this.TabelaVokalneSposobnosti.TabIndex = 7;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.GrupaDodatnaTabela, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(153, 598);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(353, 147);
+            this.tableLayoutPanel8.TabIndex = 22;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.TabelaClanovi);
-            this.groupBox1.Location = new System.Drawing.Point(470, 3);
+            this.groupBox1.Controls.Add(this.TabelaZahtevi);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(195, 144);
-            this.groupBox1.TabIndex = 6;
+            this.groupBox1.Size = new System.Drawing.Size(170, 141);
+            this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Clanovi benda";
+            this.groupBox1.Text = "Tehnicki zahtevi";
+            // 
+            // TabelaZahtevi
+            // 
+            this.TabelaZahtevi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TabelaZahtevi.Location = new System.Drawing.Point(6, 22);
+            this.TabelaZahtevi.Name = "TabelaZahtevi";
+            this.TabelaZahtevi.Size = new System.Drawing.Size(158, 103);
+            this.TabelaZahtevi.TabIndex = 0;
+            this.TabelaZahtevi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FormaIzvodjacDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 681);
+            this.ClientSize = new System.Drawing.Size(684, 757);
+            this.Controls.Add(this.tableLayoutPanel8);
             this.Controls.Add(this.tableLayoutPanel7);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.Izmeni);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.groupBox2);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -524,8 +598,12 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
+            this.GrupaDodatnaTabela.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TabelaClanovi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaVokalneSposobnosti)).EndInit();
+            this.tableLayoutPanel8.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaZahtevi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -566,6 +644,12 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.DataGridView TabelaClanovi;
+        private System.Windows.Forms.GroupBox GrupaDodatnaTabela;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox ZanrTxt;
+        private System.Windows.Forms.DataGridView TabelaVokalneSposobnosti;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView TabelaZahtevi;
     }
 }

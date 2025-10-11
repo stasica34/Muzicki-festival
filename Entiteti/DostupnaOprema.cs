@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Entiteti
 {
-    /*
-    public class OtvorenaLokacija
+    public class DostupnaOprema
     {
         public virtual int ID { get; set; }
-        public virtual IList<string> DOSTUPNOST_OPREME { get; set; }
-        public OtvorenaLokacija() { }
+        public virtual string NAZIV { get; set; }
+        public virtual Lokacija Lokacija { get; set; }
     }
-    */
 }

@@ -29,25 +29,37 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelKontaktPodaci = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.txtAdresa = new System.Windows.Forms.TextBox();
             this.labelNaziv = new System.Windows.Forms.Label();
             this.labelaAdresa = new System.Windows.Forms.Label();
             this.labelBrojClanova = new System.Windows.Forms.Label();
             this.txtKontaktOsoba = new System.Windows.Forms.TextBox();
-            this.btnDodajKontaktPodatke = new System.Windows.Forms.Button();
-            this.btnOtkazi = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSacuvaj = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.IzvodjaciTabela = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.KontaktTabela = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.AgencijeTabela = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.DugmeIzmeni = new System.Windows.Forms.Button();
+            this.DugmeIzadji = new System.Windows.Forms.Button();
+            this.DugmeDodaj = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IzvodjaciTabela)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KontaktTabela)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AgencijeTabela)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
@@ -57,52 +69,43 @@
             this.tableLayoutPanel1.Controls.Add(this.labelaAdresa, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelBrojClanova, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtKontaktOsoba, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.labelKontaktPodaci, 0, 3);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(59, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.14286F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(951, 506);
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(616, 146);
             this.tableLayoutPanel1.TabIndex = 8;
-            // 
-            // labelKontaktPodaci
-            // 
-            this.labelKontaktPodaci.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelKontaktPodaci.AutoSize = true;
-            this.labelKontaktPodaci.Location = new System.Drawing.Point(59, 351);
-            this.labelKontaktPodaci.Name = "labelKontaktPodaci";
-            this.labelKontaktPodaci.Size = new System.Drawing.Size(119, 20);
-            this.labelKontaktPodaci.TabIndex = 8;
-            this.labelKontaktPodaci.Text = "Kontakt podaci:";
             // 
             // txtNaziv
             // 
             this.txtNaziv.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNaziv.Location = new System.Drawing.Point(481, 23);
+            this.txtNaziv.Location = new System.Drawing.Point(309, 14);
+            this.txtNaziv.Margin = new System.Windows.Forms.Padding(2);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(226, 26);
+            this.txtNaziv.Size = new System.Drawing.Size(152, 20);
             this.txtNaziv.TabIndex = 7;
             // 
             // txtAdresa
             // 
             this.txtAdresa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtAdresa.Location = new System.Drawing.Point(481, 95);
+            this.txtAdresa.Location = new System.Drawing.Point(309, 62);
+            this.txtAdresa.Margin = new System.Windows.Forms.Padding(2);
             this.txtAdresa.Name = "txtAdresa";
-            this.txtAdresa.Size = new System.Drawing.Size(226, 26);
+            this.txtAdresa.Size = new System.Drawing.Size(152, 20);
             this.txtAdresa.TabIndex = 6;
             // 
             // labelNaziv
             // 
             this.labelNaziv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNaziv.AutoSize = true;
-            this.labelNaziv.Location = new System.Drawing.Point(93, 26);
+            this.labelNaziv.Location = new System.Drawing.Point(58, 17);
+            this.labelNaziv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelNaziv.Name = "labelNaziv";
-            this.labelNaziv.Size = new System.Drawing.Size(51, 20);
+            this.labelNaziv.Size = new System.Drawing.Size(37, 13);
             this.labelNaziv.TabIndex = 1;
             this.labelNaziv.Text = "Naziv:";
             // 
@@ -110,9 +113,10 @@
             // 
             this.labelaAdresa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelaAdresa.AutoSize = true;
-            this.labelaAdresa.Location = new System.Drawing.Point(86, 98);
+            this.labelaAdresa.Location = new System.Drawing.Point(55, 65);
+            this.labelaAdresa.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelaAdresa.Name = "labelaAdresa";
-            this.labelaAdresa.Size = new System.Drawing.Size(64, 20);
+            this.labelaAdresa.Size = new System.Drawing.Size(43, 13);
             this.labelaAdresa.TabIndex = 2;
             this.labelaAdresa.Text = "Adresa:";
             // 
@@ -120,95 +124,175 @@
             // 
             this.labelBrojClanova.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelBrojClanova.AutoSize = true;
-            this.labelBrojClanova.Location = new System.Drawing.Point(60, 170);
+            this.labelBrojClanova.Location = new System.Drawing.Point(37, 114);
+            this.labelBrojClanova.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelBrojClanova.Name = "labelBrojClanova";
-            this.labelBrojClanova.Size = new System.Drawing.Size(116, 20);
+            this.labelBrojClanova.Size = new System.Drawing.Size(79, 13);
             this.labelBrojClanova.TabIndex = 3;
             this.labelBrojClanova.Text = "Kontakt osoba:";
             // 
             // txtKontaktOsoba
             // 
             this.txtKontaktOsoba.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtKontaktOsoba.Location = new System.Drawing.Point(481, 167);
+            this.txtKontaktOsoba.Location = new System.Drawing.Point(309, 111);
+            this.txtKontaktOsoba.Margin = new System.Windows.Forms.Padding(2);
             this.txtKontaktOsoba.Name = "txtKontaktOsoba";
-            this.txtKontaktOsoba.Size = new System.Drawing.Size(226, 26);
+            this.txtKontaktOsoba.Size = new System.Drawing.Size(152, 20);
             this.txtKontaktOsoba.TabIndex = 4;
-            // 
-            // btnDodajKontaktPodatke
-            // 
-            this.btnDodajKontaktPodatke.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDodajKontaktPodatke.Location = new System.Drawing.Point(388, 20);
-            this.btnDodajKontaktPodatke.Name = "btnDodajKontaktPodatke";
-            this.btnDodajKontaktPodatke.Size = new System.Drawing.Size(172, 64);
-            this.btnDodajKontaktPodatke.TabIndex = 10;
-            this.btnDodajKontaktPodatke.Text = "Dodaj kontakt podatke";
-            this.btnDodajKontaktPodatke.UseVisualStyleBackColor = true;
-            this.btnDodajKontaktPodatke.Click += new System.EventHandler(this.btnDodajKontaktPodatke_Click);
-            // 
-            // btnOtkazi
-            // 
-            this.btnOtkazi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnOtkazi.Location = new System.Drawing.Point(705, 20);
-            this.btnOtkazi.Name = "btnOtkazi";
-            this.btnOtkazi.Size = new System.Drawing.Size(172, 64);
-            this.btnOtkazi.TabIndex = 1;
-            this.btnOtkazi.Text = "Otkazi";
-            this.btnOtkazi.UseVisualStyleBackColor = true;
-            this.btnOtkazi.Click += new System.EventHandler(this.btnOtkazi_Click);
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.btnSacuvaj, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnOtkazi, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnDodajKontaktPodatke, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 506);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.groupBox3, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 225);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(951, 104);
-            this.tableLayoutPanel2.TabIndex = 7;
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(711, 159);
+            this.tableLayoutPanel2.TabIndex = 8;
             // 
-            // btnSacuvaj
+            // groupBox3
             // 
-            this.btnSacuvaj.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSacuvaj.Location = new System.Drawing.Point(72, 20);
-            this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(172, 64);
-            this.btnSacuvaj.TabIndex = 0;
-            this.btnSacuvaj.Text = "Sacuvaj";
-            this.btnSacuvaj.UseVisualStyleBackColor = true;
-            this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
+            this.groupBox3.Controls.Add(this.IzvodjaciTabela);
+            this.groupBox3.Location = new System.Drawing.Point(535, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(173, 148);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Izvodjaci";
             // 
-            // dataGridView1
+            // IzvodjaciTabela
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(240, 219);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(708, 284);
-            this.dataGridView1.TabIndex = 11;
+            this.IzvodjaciTabela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.IzvodjaciTabela.Location = new System.Drawing.Point(3, 16);
+            this.IzvodjaciTabela.Name = "IzvodjaciTabela";
+            this.IzvodjaciTabela.Size = new System.Drawing.Size(164, 126);
+            this.IzvodjaciTabela.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.KontaktTabela);
+            this.groupBox2.Location = new System.Drawing.Point(322, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(207, 148);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Kontakt podaci";
+            // 
+            // KontaktTabela
+            // 
+            this.KontaktTabela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.KontaktTabela.Location = new System.Drawing.Point(6, 19);
+            this.KontaktTabela.Name = "KontaktTabela";
+            this.KontaktTabela.Size = new System.Drawing.Size(195, 123);
+            this.KontaktTabela.TabIndex = 10;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.AgencijeTabela);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(313, 151);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Menadzerske agencije";
+            // 
+            // AgencijeTabela
+            // 
+            this.AgencijeTabela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AgencijeTabela.Location = new System.Drawing.Point(6, 19);
+            this.AgencijeTabela.Name = "AgencijeTabela";
+            this.AgencijeTabela.Size = new System.Drawing.Size(301, 126);
+            this.AgencijeTabela.TabIndex = 9;
+            this.AgencijeTabela.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AgencijeTabela_CellClick);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.Controls.Add(this.DugmeIzmeni, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.DugmeIzadji, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.DugmeDodaj, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(59, 151);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(616, 68);
+            this.tableLayoutPanel3.TabIndex = 10;
+            // 
+            // DugmeIzmeni
+            // 
+            this.DugmeIzmeni.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DugmeIzmeni.Location = new System.Drawing.Point(245, 20);
+            this.DugmeIzmeni.Margin = new System.Windows.Forms.Padding(40, 20, 40, 20);
+            this.DugmeIzmeni.Name = "DugmeIzmeni";
+            this.DugmeIzmeni.Size = new System.Drawing.Size(125, 28);
+            this.DugmeIzmeni.TabIndex = 1;
+            this.DugmeIzmeni.Text = "Izmeni";
+            this.DugmeIzmeni.UseVisualStyleBackColor = true;
+            this.DugmeIzmeni.Click += new System.EventHandler(this.DugmeIzmeni_Click);
+            // 
+            // DugmeIzadji
+            // 
+            this.DugmeIzadji.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DugmeIzadji.Location = new System.Drawing.Point(450, 20);
+            this.DugmeIzadji.Margin = new System.Windows.Forms.Padding(40, 20, 40, 20);
+            this.DugmeIzadji.Name = "DugmeIzadji";
+            this.DugmeIzadji.Size = new System.Drawing.Size(126, 28);
+            this.DugmeIzadji.TabIndex = 2;
+            this.DugmeIzadji.Text = "Izadji";
+            this.DugmeIzadji.UseVisualStyleBackColor = true;
+            this.DugmeIzadji.Click += new System.EventHandler(this.DugmeIzadji_Click);
+            // 
+            // DugmeDodaj
+            // 
+            this.DugmeDodaj.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DugmeDodaj.Location = new System.Drawing.Point(40, 20);
+            this.DugmeDodaj.Margin = new System.Windows.Forms.Padding(40, 20, 40, 20);
+            this.DugmeDodaj.Name = "DugmeDodaj";
+            this.DugmeDodaj.Size = new System.Drawing.Size(125, 28);
+            this.DugmeDodaj.TabIndex = 0;
+            this.DugmeDodaj.Text = "Dodaj";
+            this.DugmeDodaj.UseVisualStyleBackColor = true;
+            this.DugmeDodaj.Click += new System.EventHandler(this.DugmeDodaj_Click);
             // 
             // FormaMenadzerskaAgencijaDodavanje
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 610);
+            this.ClientSize = new System.Drawing.Size(735, 396);
+            this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormaMenadzerskaAgencijaDodavanje";
             this.Text = "FormaMenadzerskaAgencijaDodavanje";
             this.Load += new System.EventHandler(this.FormaMenadzerskaAgencijaDodavanje_Load);
+            this.VisibleChanged += new System.EventHandler(this.FormaMenadzerskaAgencijaDodavanje_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.IzvodjaciTabela)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.KontaktTabela)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AgencijeTabela)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -221,12 +305,17 @@
         private System.Windows.Forms.Label labelaAdresa;
         private System.Windows.Forms.Label labelBrojClanova;
         private System.Windows.Forms.TextBox txtKontaktOsoba;
-        private System.Windows.Forms.Button btnOtkazi;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.TextBox txtNaziv;
-        private System.Windows.Forms.Label labelKontaktPodaci;
-        private System.Windows.Forms.Button btnDodajKontaktPodatke;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView IzvodjaciTabela;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView KontaktTabela;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView AgencijeTabela;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button DugmeIzmeni;
+        private System.Windows.Forms.Button DugmeIzadji;
+        private System.Windows.Forms.Button DugmeDodaj;
     }
 }

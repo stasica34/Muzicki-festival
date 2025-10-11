@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Mapiranje
 {
+    /*
     public class ZatvorenaLokacijaMapiranje:ClassMap<Muzicki_festival.Entiteti.ZatvorenaLokacija>
     {
         public ZatvorenaLokacijaMapiranje()
@@ -18,4 +19,5 @@ namespace Muzicki_festival.Mapiranje
             Map(x => x.DOSTUPNOST_SEDENJA, "DOSTUPNOST_SEDENJA").Not.Nullable();
         }
     }
+    */
 }

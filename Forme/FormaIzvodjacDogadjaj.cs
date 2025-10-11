@@ -26,6 +26,7 @@ namespace Muzicki_festival.Forme
 
         private void FormaIzvodjac_Load(object sender, EventArgs e)
         {
+            /*
             try
             {
                 this.Text = $"Izvodjaci za događaj: {dogadjajizvodjac.NAZIV}";
@@ -56,6 +57,7 @@ namespace Muzicki_festival.Forme
             {
                 MessageBox.Show("Greška: " + ex.Message);
             }
+            */
         }
         private void cmd_Nazad_Click(object sender, EventArgs e)
         {
@@ -65,11 +67,12 @@ namespace Muzicki_festival.Forme
 
         private void cmdDodavanje_Click(object sender, EventArgs e)
         {
-            FormaMenadzerskaAgencijaDodavanje formaDodaj = new FormaMenadzerskaAgencijaDodavanje(this, null);
-            this.Hide();
-            formaDodaj.ShowDialog();
-            this.Show();
-            UcitajIzvodjace();
+            
+            //FormaMenadzerskaAgencijaDodavanje formaDodaj = new FormaMenadzerskaAgencijaDodavanje(this, null);
+            //this.Hide();
+            //formaDodaj.ShowDialog();
+            //this.Show();
+            //UcitajIzvodjace();
             //ovakva pristup se koristi kada kod n:m veze nemamo nijedan atribut
             //try
             //{
@@ -135,6 +138,7 @@ namespace Muzicki_festival.Forme
 
         private void cmdIzmeni_Click(object sender, EventArgs e)
         {
+            /*
             if (dataGridView1.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Odaberite izvodajca za izmenu.");
@@ -165,6 +169,7 @@ namespace Muzicki_festival.Forme
                     MessageBox.Show("Greška: Događaj nije pronađen.");
                 }
             }
+            
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)
@@ -212,6 +217,7 @@ namespace Muzicki_festival.Forme
         }
         private void UcitajIzvodjace()
         {
+            /*
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -263,6 +269,7 @@ namespace Muzicki_festival.Forme
             {
                 MessageBox.Show("Greška: " + ex.Message);
             }
+            */
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

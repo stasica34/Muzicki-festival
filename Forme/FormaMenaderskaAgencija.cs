@@ -145,6 +145,7 @@ namespace Muzicki_festival.Forme
         }
         private void UcitajMenagerskeAgencije()
         {
+            /*
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -178,17 +179,19 @@ namespace Muzicki_festival.Forme
             {
                 MessageBox.Show(ex.Message);
             }
+            */
         }
 
         private void cmdDodavanje_Click(object sender, EventArgs e)
         {
+            /*
             FormaMenadzerskaAgencijaDodavanje menaderskaAgencija = new FormaMenadzerskaAgencijaDodavanje(this, null);
             this.Hide();
             menaderskaAgencija.ShowDialog();
             this.Show();
             UcitajMenagerskeAgencije();
-        }
-
+            */
+        }   
         private void cmdIzmeni_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
@@ -206,6 +209,7 @@ namespace Muzicki_festival.Forme
 
             using (ISession s = DataLayer.GetSession())
             {
+                /*
                 MenadzerskaAgencija menadzerskaAgencija = s.Get<MenadzerskaAgencija>(agencijaID);
 
                 if (menadzerskaAgencija != null)
@@ -220,6 +224,7 @@ namespace Muzicki_festival.Forme
                 {
                     MessageBox.Show("Greška: Događaj nije pronađen.");
                 }
+                */
             }
         }
     }

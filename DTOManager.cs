@@ -30,12 +30,12 @@ namespace Muzicki_festival
                     {
                         case IzvodjacTip.SOLO_UMETNIK:
                             Solo_Umetnik u = i as Solo_Umetnik;
-                            izvodjaciView.Add(new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA));
+                            izvodjaciView.Add(new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.Zanr, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA));
                             break;
 
                         case IzvodjacTip.BEND:
                             Bend b = i as Bend;
-                            izvodjaciView.Add(new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.BROJ_CLANOVA));
+                            izvodjaciView.Add(new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.Zanr, b.BROJ_CLANOVA));
                             break;
                     }
                 }
@@ -64,11 +64,11 @@ namespace Muzicki_festival
                     {
                         case IzvodjacTip.SOLO_UMETNIK:
                             Solo_Umetnik u = i as Solo_Umetnik;
-                            iv = new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA);
+                            iv = new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.Zanr, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA);
                             break;
                         case IzvodjacTip.BEND:
                             Bend b = i as Bend;
-                            iv = new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.BROJ_CLANOVA);
+                            iv = new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.Zanr, b.BROJ_CLANOVA);
                             break;
                     }
                 }
@@ -103,6 +103,7 @@ namespace Muzicki_festival
                             EMAIL = i.Email,
                             TELEFON = i.Telefon,
                             TIP_IZVODJACA = i.TipIzvodajaca,
+                            Zanr = i.Zanr,
                             KONTAKT_OSOBA = i.Kontakt_osoba,
                             SVIRA_INSTRUMENT = (i as Solo_UmetnikBasic).Svira_instrument,
                             TIP_INSTRUMENTA = (i as Solo_UmetnikBasic).Tip_instrumenta,
@@ -118,7 +119,7 @@ namespace Muzicki_festival
 
                         s.Close();
 
-                        return new Solo_umetnikView(id, novi.IME, novi.DRZAVA_POREKLA, novi.EMAIL, novi.KONTAKT_OSOBA, novi.TELEFON, novi.SVIRA_INSTRUMENT, novi.TIP_INSTRUMENTA);
+                        return new Solo_umetnikView(id, novi.IME, novi.DRZAVA_POREKLA, novi.EMAIL, novi.KONTAKT_OSOBA, novi.TELEFON, novi.Zanr, novi.SVIRA_INSTRUMENT, novi.TIP_INSTRUMENTA);
                     case IzvodjacTip.BEND:
                         Bend bend = new Bend
                         {
@@ -129,6 +130,7 @@ namespace Muzicki_festival
                             TIP_IZVODJACA = i.TipIzvodajaca,
                             KONTAKT_OSOBA = i.Kontakt_osoba,
                             BROJ_CLANOVA = 0,
+                            Zanr = i.Zanr,
                             MenadzerskaAgencija = ma
                         };
 
@@ -139,7 +141,7 @@ namespace Muzicki_festival
                         s.Flush();
                         
                         s.Close();
-                        return new BendView(id, bend.IME, bend.DRZAVA_POREKLA, bend.EMAIL, bend.KONTAKT_OSOBA, bend.TELEFON, bend.BROJ_CLANOVA);
+                        return new BendView(id, bend.IME, bend.DRZAVA_POREKLA, bend.EMAIL, bend.KONTAKT_OSOBA, bend.TELEFON, bend.Zanr, bend.BROJ_CLANOVA);
                 }
 
                 return null;
@@ -184,7 +186,7 @@ namespace Muzicki_festival
 
                 foreach (var c in b.Clanovi)
                 {
-                    clanovi.Add(new ClanBendaView(c.ID, c.IME, c.INSTRUMENT));
+                    clanovi.Add(new ClanBendaView(c.ID, c.IME, c.INSTRUMENT, c.ULOGA));
                 }
 
                 s.Close();
@@ -213,14 +215,16 @@ namespace Muzicki_festival
                     IME = cb.Ime,
                     INSTRUMENT = cb.Instrument,
                     BEND = bend,
+                    ULOGA = cb.Uloga
                 };
 
                 bend.Clanovi.Add(c);
+                bend.BROJ_CLANOVA += 1;
                 s.Update(bend);
                 s.Flush();
                 s.Close();
                 
-                return new ClanBendaView(c.ID, c.IME, c.INSTRUMENT);
+                return new ClanBendaView(c.ID, c.IME, c.INSTRUMENT, c.ULOGA);
             }
             catch (Exception ex)
             {
@@ -241,6 +245,12 @@ namespace Muzicki_festival
                 Clan c = s.Get<Clan>(cb.Id);
 
                 bool ret = bend.Clanovi.Remove(c);
+                if (ret)
+                    bend.BROJ_CLANOVA -= 1;
+                
+                s.Update(bend);
+                s.Flush();
+
                 s.Update(c);
                 s.Flush();
 
@@ -328,6 +338,169 @@ namespace Muzicki_festival
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        public static IList<string> VratiTehnickeZahteve(int Id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Izvodjac i = s.Get<Izvodjac>(Id);
+
+                if (i == null)
+                {
+                    return new List<string>();
+                }
+
+                // isto ko za vokalne, zbog lazyLoad i zatvaranje sesije
+                List<string> list = new List<string>();
+                foreach (var z in i.Lista_tehnickih_zahteva)
+                    list.Add(z);
+
+                s.Close();
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return new List<string>();
+            }
+        }
+
+        public static bool DodajTehnickiZahtev(int Id, string zahtev)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Izvodjac i = s.Get<Izvodjac>(Id);
+
+                if (i == null)
+                {
+                    return false;
+                }
+
+                i.Lista_tehnickih_zahteva.Add(zahtev);
+                s.Update(i);
+                s.Flush();
+                s.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        public static bool ObrisiTehnickiZahtev(int Id, string zahtev)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Izvodjac i = s.Get<Izvodjac>(Id);
+
+                if (i == null)
+                {
+                    return false;
+                }
+
+                bool ret = i.Lista_tehnickih_zahteva.Remove(zahtev);
+                s.Update(i);
+                s.Flush();
+                s.Close();
+
+                return ret;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        public static IList<string> VratiVokalneSposobnosti(int Id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Solo_Umetnik su = s.Get<Solo_Umetnik>(Id);
+
+                if (su == null)
+                {
+                    return new List<string>();
+                }
+
+                // Ovako jer u suprotnom puca kada se pristupi a zatvori se sesija zbog LazyLoad
+                // bolje ovo nego da nonstop stoji otvorena sesija
+                List<string> list = new List<string>();
+                foreach (var sp in su.VOKALNE_SPOSOBNOSTI) 
+                    list.Add(sp);
+
+                s.Close();
+                return list;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return new List<string>();
+            }
+        }
+
+        public static bool DodajVokalnuSposobnost(int Id, string sposobnost)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Solo_Umetnik su = s.Get<Solo_Umetnik>(Id);
+
+                if (su == null)
+                {
+                    return false;
+                }
+
+                su.VOKALNE_SPOSOBNOSTI.Add(sposobnost);
+
+                s.Update(su);
+                s.Flush();
+                s.Close();
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        public static bool ObrisiVokalnuSposobnost(int Id, string sposobnost)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Solo_Umetnik su = s.Get<Solo_Umetnik>(Id);
+
+                if (su == null)
+                {
+                    return false;
+                }
+
+                bool ret = su.VOKALNE_SPOSOBNOSTI.Remove(sposobnost);
+                s.Update(su);
+                s.Flush();
+                s.Close();
+
+                return ret;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
                 return false;
             }
         }
@@ -580,7 +753,7 @@ namespace Muzicki_festival
                         NAZIV = o.Naziv
                     };
 
-                    l.DOSTUPNA_OPERMA.Add(oprema); // dodaš u kolekciju
+                    l.DOSTUPNA_OPREMA.Add(oprema); // dodaš u kolekciju
                     oprema.Lokacija = l;           // obavezno postavi reference
 
                     s.SaveOrUpdate(l);             // SaveOrUpdate samo lokaciju
@@ -613,7 +786,7 @@ namespace Muzicki_festival
                     if (oprema == null || oprema.Lokacija.ID != l.ID) 
                         return false;
 
-                    bool ret = l.DOSTUPNA_OPERMA.Remove(oprema); 
+                    bool ret = l.DOSTUPNA_OPREMA.Remove(oprema); 
                     s.Delete(oprema);
                     s.SaveOrUpdate(l);             
                     transaction.Commit();
@@ -778,11 +951,11 @@ namespace Muzicki_festival
                         {
                             case IzvodjacTip.SOLO_UMETNIK:
                                 Solo_Umetnik u = i as Solo_Umetnik;
-                                izvodjaciView.Add(new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA));
+                                izvodjaciView.Add(new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.Zanr, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA));
                                 break;
                             case IzvodjacTip.BEND:
                                 Bend b = i as Bend;
-                                izvodjaciView.Add(new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.BROJ_CLANOVA));
+                                izvodjaciView.Add(new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.Zanr, b.BROJ_CLANOVA));
                                 break;
                         }
                     }

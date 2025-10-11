@@ -78,7 +78,7 @@
             this.btnObrisi.TabIndex = 10;
             this.btnObrisi.Text = "Obrisi\r\n";
             this.btnObrisi.UseVisualStyleBackColor = true;
-            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            //this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // cmdIzmeni
             // 

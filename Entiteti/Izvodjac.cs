@@ -19,7 +19,7 @@ namespace Muzicki_festival.Entiteti
 
         public virtual string KONTAKT_OSOBA { get; set; }
 
-        public IzvodjacTip TIP_IZVODJACA { get; set; }
+        public virtual IzvodjacTip TIP_IZVODJACA { get; set; }
 
         public virtual string TELEFON { get; set; }
         public virtual string Zanr { get; set; }

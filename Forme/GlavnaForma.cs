@@ -11,6 +11,7 @@ using NHibernate;
 using Muzicki_festival.Entiteti;
 using NHibernate.Linq;
 using Muzicki_festival.Forme;
+using Muzicki_festival.FormeDodatne;
 namespace Muzicki_festival
 {
     public partial class GlavnaForma : Form
@@ -209,6 +210,7 @@ namespace Muzicki_festival
 
         private void cmdVisenaJedan3_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 ISession session = DataLayer.GetSession();
@@ -235,6 +237,7 @@ namespace Muzicki_festival
             {
                 MessageBox.Show("Greška: " + ex.Message);
             }
+            */
         }
 
         private void cmdJedanNaVise3_Click(object sender, EventArgs e)
@@ -487,6 +490,13 @@ namespace Muzicki_festival
         {
 
 
+        }
+
+        private void Izvodjac_Click(object sender, EventArgs e)
+        {
+            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj(this);
+            this.Hide();
+            forma.Show();
         }
     }
 }
