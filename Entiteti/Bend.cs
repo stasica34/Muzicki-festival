@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Entiteti
 {
-    public class Bend:Izvodjac
-    {
-        public virtual int BROJ_CLANOVA { get; set; }
+    //public class Bend:Izvodjac
+    //{
+    //    public virtual int BROJ_CLANOVA { get; set; }
 
-        //povezivanje 1:n clanovi
-        public virtual IList<Clan> Clanovi { get; set; }
-        public Bend() {
-            Clanovi = new List<Clan>();
-        }
+    //    //povezivanje 1:n clanovi
+    //    public virtual IList<Clan> Clanovi { get; set; }
+    //    public Bend() {
+    //        Clanovi = new List<Clan>();
+    //    }
 
-    }
+    //}
 }

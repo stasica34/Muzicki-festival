@@ -16,14 +16,10 @@ namespace Muzicki_festival.Mapiranje
             Id(x => x.Id).Column("CLAN_ID").GeneratedBy.Identity();
             Map(x => x.IME, "IME");
             Map(x => x.INSTRUMENT, "INSTRUMENT");
+            Map(x => x.ULOGA).Column("ULOGA");
 
             References(x => x.BEND_ID, "BEND_ID").LazyLoad().Cascade.All();
             //visevrednosni atribut
-            HasMany(x => x.Uloge)
-                .Table("CLAN_ULOGA")
-                .KeyColumn("CLAN_ID")
-                .Element("ULOGA")
-                .Cascade.All();
         }
     }
 }
