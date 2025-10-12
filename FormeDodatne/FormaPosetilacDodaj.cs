@@ -59,5 +59,10 @@ namespace Muzicki_festival.FormeDodatne
             parentForm.Show();
             this.Close();
         }
+
+        private void DugmeDodajUlaznicu_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

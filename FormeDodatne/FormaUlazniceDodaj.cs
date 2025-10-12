@@ -14,14 +14,11 @@ namespace Muzicki_festival.FormeDodatne
 {
     public partial class FormaUlazniceDodaj : Form
     {
-        private Dogadjaj dogadjaj;
-
         private Form parentform;
-        public FormaUlazniceDodaj(Form caller, Dogadjaj dogadjaj)
+        public FormaUlazniceDodaj(Form caller)
         {
             InitializeComponent();
             parentform = caller;
-            this.dogadjaj = dogadjaj;
         }
 
         private void FormaUlazniceDodaj_Load(object sender, EventArgs e)
@@ -40,26 +37,20 @@ namespace Muzicki_festival.FormeDodatne
                 "Akreditacija",
                 "VIP"
             });
-            cmbTip.DropDownStyle = ComboBoxStyle.DropDownList;
-            UcitajPosetioce();
+
+            cmbTip.SelectedValue = cmbTip.Items[0];
+
+            InputJednodnevna.Visible = true;
+            InputVisednevna.Visible = false;
+            InputVIP.Visible = false;
+            InputAkreditacija.Visible = false;
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
-            {
-                MessageBox.Show("Unesite naziv ulaznice.");
-                return;
-            }
-
             if (cmbPlacanje.SelectedIndex == -1)
             {
                 MessageBox.Show("Odaberite nacin placanja.");
-                return;
-            }
-            if (cmbKupac.SelectedIndex == -1)
-            {
-                MessageBox.Show("Odaberite kupca.");
                 return;
             }
             if (nudCena.Value <= 0)
@@ -74,56 +65,7 @@ namespace Muzicki_festival.FormeDodatne
             }
             try
             {
-                ISession s = DataLayer.GetSession();
-                if (cmbPlacanje.SelectedItem == null)
-                {
-                    MessageBox.Show("Niste odabrali nacin placanja.");
-                    s.Close();
-                    return;
-                }
-
-                Posetilac posetilac = cmbKupac.SelectedItem as Posetilac;
-                if (posetilac == null)
-                {
-                    MessageBox.Show("Posetilac ne postoji u bazi. Dodajte Vase podatke.");
-                    s.Close();
-                    return;
-                }
-                Ulaznica novaulaznica;
-                string Tip = cmbTip.SelectedItem.ToString();
-                switch (Tip)
-                {
-                    case "Jednodnevna":
-                        novaulaznica = new Jednodnevna();
-                        break;
-                    case "Visednevna":
-                        novaulaznica = new Visednevna();
-                        break;
-                    case "Akreditacija":
-                        novaulaznica = new Akreditacija();
-                        break;
-                    case "VIP":
-                        novaulaznica = new Vip();
-                        break;
-                    default:
-                        MessageBox.Show("Nepoznat tip ulaznice.");
-                        return;
-                }
-                novaulaznica.NAZIV = txtNaziv.Text.Trim();
-                novaulaznica.DATUM_KUPOVINE = dtpDatum.Value;
-                novaulaznica.OSNOVNA_CENA = (float)nudCena.Value;
-                novaulaznica.NACIN_PLACANJA = cmbPlacanje.SelectedItem.ToString();
-                novaulaznica.KUPAC_ID = posetilac;
-                Dogadjaj dogadjaj = s.Load<Dogadjaj>(this.dogadjaj.ID); 
-                novaulaznica.Dogadjaji.Add(dogadjaj);
-                dogadjaj.Ulaznica.Add(novaulaznica);
-                s.Save(novaulaznica);
-                s.Flush();
-                s.Close();
-
-                MessageBox.Show("Ulaznica je uspešno dodata.");
-                parentform.Show();
-                this.Close();
+               
             }
             catch (Exception ex)
             {
@@ -146,27 +88,73 @@ namespace Muzicki_festival.FormeDodatne
         }
         private void UcitajPosetioce()
         {
-            cmbKupac.Items.Clear();
+           
+        }
 
-            try
+        private void cmbTip_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbTip.SelectedItem)
             {
-                ISession s = DataLayer.GetSession();
-                var posetilc = s.Query<Posetilac>().ToList();
-
-                foreach (var p in posetilc)
-                {
-                    cmbKupac.Items.Add(p);
-                }
-
-                if (cmbKupac.Items.Count > 0)
-                    cmbKupac.SelectedIndex = 0;
-
-                s.Close();
+                case "Jednodnevna":
+                    InputJednodnevna.Visible = true;
+                    InputVisednevna.Visible = false;
+                    InputVIP.Visible = false;
+                    InputAkreditacija.Visible = false;
+                    break;
+                case "Visednevna":
+                    InputJednodnevna.Visible = false;
+                    InputVisednevna.Visible = true;
+                    InputVIP.Visible = false;
+                    InputAkreditacija.Visible = false;
+                    break;
+                case "VIP":
+                    InputJednodnevna.Visible = false;
+                    InputVisednevna.Visible = false;
+                    InputVIP.Visible = true;
+                    InputAkreditacija.Visible = false;
+                    break;
+                case "Akreditacija":
+                    InputJednodnevna.Visible = false;
+                    InputVisednevna.Visible = false;
+                    InputVIP.Visible = false;
+                    InputAkreditacija.Visible = true;
+                    break;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška pri učitavanju lokacija: " + ex.Message);
-            }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void DugmeDodajDanVisednevna_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DugmeObrisiDanVisednevna_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DugmeDodajPogodnost_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DugmeObrisiPogodnost_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TabelaDaniVisednevna_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void TabelaPogodnosti_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
+using Muzicki_festival.DTOs;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Muzicki_festival.Forme
 {
@@ -73,45 +75,30 @@ namespace Muzicki_festival.Forme
                 MessageBox.Show("Odaberite lokaciju.");
                 return;
             }
-            try
+
+            LokacijaView lv = cmbLokacija.SelectedItem as LokacijaView;
+            LokacijaBasic lb = null;
+            switch (lv.TipLokacije)
             {
-                ISession s = DataLayer.GetSession();
-                if(cmbLokacija.SelectedItem==null)
-                {
-                    MessageBox.Show("Niste odabrali lokaciju.");
-                    s.Close();
+                case TipLokacije.ZATVORENA:
+                    ZatvorenaLokacijaView zv = lv as ZatvorenaLokacijaView;
+                    lb = new ZatvorenaLokacijaBasic(zv.Id, zv.Opis, zv.Naziv, zv.Gps_koordinate, zv.Kapacitet, zv.Tip_prostora, zv.Klima, zv.Dostupnost_sedenja);
+                    break;
+                case TipLokacije.OTVORENA:
+                    OtvorenaLokacijaView ov = lv as OtvorenaLokacijaView;
+                    ov = new OtvorenaLokacijaView(ov.Id, ov.Opis, ov.Naziv, ov.Gps_koordinate, ov.Kapacitet);
+                    break;
+                case TipLokacije.KOMBINOVANA:
+                    KombinovanaLokacijaView kv = lv as KombinovanaLokacijaView;
+                    lb = new KombinovanaLokacijaBasic(kv.Id, kv.Opis, kv.Naziv, kv.Gps_koordinate, kv.Kapacitet, kv.Tip_prostora, kv.Klima, kv.Dostupnost_sedenja);
+                    break;
+                default:
+                    MessageBox.Show("Greska sa lokacijom!");
                     return;
-                }
-                Lokacija lokacija = cmbLokacija.SelectedItem as Lokacija;
-                if (lokacija == null)
-                {
-                    MessageBox.Show("Lokacija ne postoji u bazi. Dodajte lokaciju pre unosa događaja.");
-                    s.Close();
-                    return;
-                }
-
-                Dogadjaj d = new Dogadjaj()
-                {
-                    NAZIV = txtNaziv.Text.Trim(),
-                    TIP = cmbTip.SelectedItem.ToString(),
-                    OPIS = txtOpis.Text.Trim(),
-                    DATUM_VREME_POCETKA = dtpPocetak.Value,
-                    DATUM_VREME_KRAJA = dtpKraj.Value,
-                    Lokacija = lokacija
-                };
-
-                s.Save(d);
-                s.Flush();
-                s.Close();
-
-                MessageBox.Show("Događaj je uspešno dodat.");
-                parentform.Show();
-                this.Close();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška: " + ex.Message);
-            }
+
+            DogadjajBasic db = new DogadjajBasic(0, txtNaziv.Text, (string)cmbTip.SelectedItem, txtOpis.Text, dtpPocetak.Value, dtpKraj.Value, lb, null);
+
         }
 
         private void btnOtkazi_Click(object sender, EventArgs e)
@@ -132,24 +119,10 @@ namespace Muzicki_festival.Forme
         {
             cmbLokacija.Items.Clear();
 
-            try
+            IList<LokacijaView> lokacijeViews = DTOManager.VratiSveLokacije();
+            foreach(var l in lokacijeViews)
             {
-                ISession s = DataLayer.GetSession();
-                var lokacije = s.Query<Lokacija>().ToList();
-
-                foreach (var lok in lokacije)
-                {
-                    cmbLokacija.Items.Add(lok);
-                }
-
-                if (cmbLokacija.Items.Count > 0)
-                    cmbLokacija.SelectedIndex = 0;
-
-                s.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška pri učitavanju lokacija: " + ex.Message);
+                cmbLokacija.Items.Add(l);
             }
         }
 

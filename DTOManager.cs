@@ -9,6 +9,7 @@ using NHibernate;
 using ISession = NHibernate.ISession;
 using Muzicki_festival.DTOs;
 using System.Windows.Forms;
+using NHibernate.Util;
 namespace Muzicki_festival
 {
     public class DTOManager
@@ -1053,6 +1054,160 @@ namespace Muzicki_festival
 
         #endregion
 
+        #region Dogadjaj
 
+        public static IList<DogadjajView> VratiSveDogadjaje()
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                List<Dogadjaj> dogadjaji = s.Query<Dogadjaj>().ToList();
+
+                List<DogadjajView> dogadjajViews = new List<DogadjajView>();
+                foreach(var d in dogadjaji)
+                {
+                    dogadjajViews.Add(new DogadjajView(d.ID, d.NAZIV, d.TIP, d.OPIS, d.DATUM_VREME_POCETKA, d.DATUM_VREME_KRAJA));
+                }
+
+                s.Close();
+
+                return dogadjajViews;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return new List<DogadjajView>();
+            }
+        }
+
+        public static DogadjajView DodajDogadjaj(DogadjajBasic db)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Lokacija l = s.Get<Lokacija>(db.Lokacija.Id);
+
+                if (l == null)
+                {
+                    throw new Exception("Nepostojeca lokacija!");
+                }
+
+                Dogadjaj d = new Dogadjaj
+                {
+                    NAZIV = db.Naziv,
+                    OPIS = db.Opis,
+                    DATUM_VREME_POCETKA = db.DatumPocetka,
+                    DATUM_VREME_KRAJA = db.DatumKraja,
+                    TIP = db.Tip,
+                    Lokacija = l
+                };
+
+                int id = (int)s.Save(d);
+                s.Flush();
+                s.Close();
+
+                return new DogadjajView(id, db.Naziv, db.Tip, db.Opis, db.DatumPocetka, db.DatumKraja);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region Posetilac
+
+        public static PosetilacView DodajPosetioca(PosetilacBasic pb)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Dogadjaj d = s.Get<Dogadjaj>(pb.Ulaznica.Dogadjaj.Id);
+
+                if (d == null)
+                {
+                    throw new Exception("Nepostojeci dogadjaj");
+                }
+
+                Ulaznica u;
+                switch (pb.Ulaznica.TipUlaznice)
+                {
+                    case TipUlaznice.JEDNODNEVNA:
+                        u = new Jednodnevna
+                        {
+                            OSNOVNA_CENA = pb.Ulaznica.OsnovnaCena,
+                            NACIN_PLACANJA = pb.Ulaznica.NacinPlacanja,
+                            DATUM_KUPOVINE = pb.Ulaznica.DatumKupovine,
+                            TIP_ULAZNICE = TipUlaznice.JEDNODNEVNA,
+                            Dogadjaj = d,
+                            DAN_VAZENJA = (pb.Ulaznica as JednodnevnaBasic).DatumVazenja
+                        };
+                        break;
+                    case TipUlaznice.VISEDNEVNA:
+                        u = new Visednevna
+                        {
+                            OSNOVNA_CENA = pb.Ulaznica.OsnovnaCena,
+                            NACIN_PLACANJA = pb.Ulaznica.NacinPlacanja,
+                            DATUM_KUPOVINE = pb.Ulaznica.DatumKupovine,
+                            TIP_ULAZNICE = TipUlaznice.JEDNODNEVNA,
+                            Dogadjaj = d,
+                            Dani = (pb.Ulaznica as ViseDnevnaBasic).DatumiVazenja
+                        };
+                        break;
+                    case TipUlaznice.VIP:
+                        u = new Vip
+                        {
+                            OSNOVNA_CENA = pb.Ulaznica.OsnovnaCena,
+                            NACIN_PLACANJA = pb.Ulaznica.NacinPlacanja,
+                            DATUM_KUPOVINE = pb.Ulaznica.DatumKupovine,
+                            TIP_ULAZNICE = TipUlaznice.JEDNODNEVNA,
+                            Dogadjaj = d,
+                            Pogodnosti = (pb.Ulaznica as VIPBasic).Pogodnosti,
+                        };
+                        break;
+                    case TipUlaznice.AKREDITACIJA:
+                        u = new Akreditacija
+                        {
+                            OSNOVNA_CENA = pb.Ulaznica.OsnovnaCena,
+                            NACIN_PLACANJA = pb.Ulaznica.NacinPlacanja,
+                            DATUM_KUPOVINE = pb.Ulaznica.DatumKupovine,
+                            TIP_ULAZNICE = TipUlaznice.JEDNODNEVNA,
+                            Dogadjaj = d,
+                            TIP = (pb.Ulaznica as AkreditacijaBasic).Tip
+                        };
+                        break;
+                    default:
+                        throw new Exception("Nepravilna ulaznica!");
+                }
+
+                Posetilac p = new Posetilac
+                {
+                    IME = pb.Ime,
+                    PREZIME = pb.Prezime,
+                    EMAIL = pb.Email,
+                    Telefon = pb.Telefon,
+                    Ulaznica = u
+                };
+
+                u.KUPAC_ID = p;
+
+                int pId = (int)s.Save(p);
+                int UiD = (int)s.Save(u);
+                s.Flush();
+                s.Close();
+
+                return new PosetilacView(pId, pb.Ime, pb.Prezime, pb.Email, pb.Telefon);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+
+
+        #endregion
     }
 }

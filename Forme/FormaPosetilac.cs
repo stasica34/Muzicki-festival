@@ -26,52 +26,7 @@ namespace Muzicki_festival.Forme
 
         private void cmd_Ucitavanje_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-                using (var session = DataLayer.GetSession())
-                {
-                    var listaPosetilaca = session.QueryOver<Posetilac>().List();
-                    if (listaPosetilaca.Count == 0)
-                    {
-                        MessageBox.Show("Nema posetilaca u bazi.");
-                        return;
-                    }
-                    //StringBuilder sb = new StringBuilder();
-                    //foreach (var ao in listaPosetilaca)
-                    //{
-                    //    sb.AppendLine($"ID: {ao.ID}");
-                    //    sb.AppendLine($"Ime:: {ao.IME}");
-                    //    sb.AppendLine($"Prezime: {ao.PREZIME}");
-                    //    sb.AppendLine($"Email: {ao.EMAIL}");
-                    //    sb.AppendLine(new string('-', 40));
-                    //}
-                    //MessageBox.Show(sb.ToString(), $"Lista posetilaca: {listaPosetilaca.Count}");
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("ID");
-                    dt.Columns.Add("IME");
-                    dt.Columns.Add("PREZIME");
-                    dt.Columns.Add("EMAIL");
-                    dt.Columns.Add("TELEFON");
-
-                    foreach (var d in listaPosetilaca)
-                    {
-                        var telefonList = d.Telefoni != null && d.Telefoni.Any()
-                           ? string.Join(", ", d.Telefoni)
-                           : "Nema telefon";
-                        dt.Rows.Add(d.ID, d.IME, d.PREZIME, d.EMAIL,telefonList);
-                    }
-                    dataGridView1.DataSource = dt;
-                    dataGridView1.Columns["ID"].Visible = false;
-
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
 
         private void cmd_Nazad_Click(object sender, EventArgs e)

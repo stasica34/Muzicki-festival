@@ -17,10 +17,7 @@ namespace Muzicki_festival.Mapiranje
             Map(x => x.IME, "IME").Not.Nullable();
             Map(x => x.PREZIME, "PREZIME").Not.Nullable();
             Map(x => x.EMAIL, "EMAIL").Not.Nullable();
-            HasMany(x => x.Ulaznice)
-                .KeyColumn("KUPAC_ID")// FK kolona u tabeli ULAZNICA
-                .Inverse()
-                .Cascade.All();
+            References(x => x.Ulaznica, "ULAZNICA_ID").LazyLoad().Cascade.All();
             //inverse znaci da suprotna strana mora da vodi racuna
             //o stranom kljucu tj o vrednosti stranog kljuca
             //mogu da budu i veze kao:
@@ -38,11 +35,7 @@ namespace Muzicki_festival.Mapiranje
                 .Cascade.All()
                 .Inverse();
             //visevrednosni atribut
-            HasMany(x => x.Telefoni)
-                .Table("TELEFON_POSETILAC")
-                .KeyColumn(("POSETILAC_ID"))
-                .Element("TELEFON")
-                .Cascade.All();
+            Map(x => x.Telefon, "TELEFON").Nullable();
         }
     }
 }

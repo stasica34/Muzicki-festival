@@ -139,55 +139,16 @@ namespace Muzicki_festival.Forme
             //{
             //    MessageBox.Show(ex.Message);
             //}
-            FormaUlazniceDodaj formaDodaj = new FormaUlazniceDodaj(this, dogadjaj);
-            this.Hide();
-            formaDodaj.ShowDialog();
-            this.Show();
-             UcitajUlaznice();
+           // FormaUlazniceDodaj formaDodaj = new FormaUlazniceDodaj(this, dogadjaj);
+            //this.Hide();
+            //formaDodaj.ShowDialog();
+            //this.Show();
+             //UcitajUlaznice();
 
         }
         private void UcitajUlaznice()
         {
-            try
-            {
-                using (ISession s = DataLayer.GetSession())
-                {
-                    var listaulaznice = s.Query<Ulaznica>()
-                                    .Where(u => u.Dogadjaji.Any(d => d.ID == dogadjaj.ID))
-                                    .ToList();
 
-                    if (listaulaznice.Count == 0)
-                    {
-                        MessageBox.Show("Trenutno nema ulaznica za ovaj događaj.");
-                        FormaDogadjaji formaDogadjaji = new FormaDogadjaji(parentForm);
-                        this.Hide();
-                        formaDogadjaji.ShowDialog();
-                        this.Close();
-                    }
-
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("ID_ULAZNICE");
-                    dt.Columns.Add("DATUM_KUPOVINE");
-                    dt.Columns.Add("OSNOVNA_CENA");
-                    dt.Columns.Add("KUPAC_ID");
-                    dt.Columns.Add("NACIN_PLACANJA");
-                    dt.Columns.Add("NAZIV");
-
-                    foreach (var d in listaulaznice)
-                    {
-                        dt.Rows.Add(d.ID_ULAZNICE, d.DATUM_KUPOVINE, d.OSNOVNA_CENA, d.KUPAC_ID.IME, d.NACIN_PLACANJA, d.NAZIV);
-                    }
-                    dataGridView1.DataSource = dt;
-                    dataGridView1.Columns["ID_ULAZNICE"].Visible = false;
-
-                    dataGridView1.DataSource = dt;
-                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška pri učitavanju ulaznica: " + ex.Message);
-            }
         }
 
         private void cmdIzmeni_Click(object sender, EventArgs e)

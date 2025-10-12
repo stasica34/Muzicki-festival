@@ -31,112 +31,11 @@ namespace Muzicki_festival.Forme
             formaDodaj.ShowDialog();
             this.Show();
             cmdUcitavanjeDogadjaja_Click(null, null);
-            //try
-            //{
-            //    ISession s = DataLayer.GetSession();
-            //    Entiteti.Dogadjaj d = new Entiteti.Dogadjaj();
-            //    //postavljaju se vrednost propetijao
-            //    //prva iteracija
-            //    //d.NAZIV = "Dj takmicenja";
-            //    //d.TIP = "Radionica";
-            //    //format - godina, mesec, dan, sat, minut, sekunde
-            //    //d.DATUM_VREME_POCETKA = new DateTime(2025, 8, 5, 18, 30, 0);
-            //    //d.DATUM_VREME_KRAJA = new DateTime(2025, 8, 15, 11, 0, 0);
-            //    //d.GPS_KOORDINATNE = "44.8176N,20.4569EF
-            //    //d.LOKACIJA_NAZIV = "Arena Beograd";
-            //    //alternativa kao kroz save:
-            //    //kada hocemo nesto da dodamo/ ili izmenimo ono sto nemamo, samo pozivamo to sto hocemo da menjamo
-            //    //drugi iteracija
-            //    d = s.Load<Entiteti.Dogadjaj>(22);
-            //    d.OPIS = "Ritmovi Ritmovi";
-            //    s.Save(d);
-            //    //s.SaveOrUpdate() // ukoliko postoji pk!=0 onda se radi azuriranje tog objekta (npr id !=0)
-            //    //ali save ili saveorupdate na istu foru funkcionisu, nije bitno sta koristimo
-            //    //kada pozivamo flush, da sve modifikacije koje su se desile u sesije, da se prosledi u bazi
-            //    //da se vidi da li su sve modifikacije u bazi okej, bolje koristiti flush
-            //    //id kljucevi imaju podrazumevanu vrednost 0, i to je znak da se radi o novom objektu
-            //    s.Flush();
-            //    //prva iteracija
-            //    //MessageBox.Show(
-            //    //          $"Novi dogadjaj uspešno kreiran!\n\n" +
-            //    //          $"Naziv: {d.NAZIV}\n" +
-            //    //          $"Tip: {d.TIP}\n" +
-            //    //          $"Datum početka: {d.DATUM_VREME_POCETKA}\n" +
-            //    //          $"Datum kraja: {d.DATUM_VREME_KRAJA}\n" +
-            //    //          $"GPS: {d.GPS_KOORDINATNE}\n" +
-            //    //          $"Lokacija: {d.LOKACIJA_NAZIV}",
-            //    //          "Uspeh",
-            //    //          MessageBoxButtons.OK,
-            //    //          MessageBoxIcon.Information
-            //    //      );
-            //    //druga iteracija
-            //    MessageBox.Show(
-            //        $"Uspesno je izvresno dodavanje podataka.\n\n" +
-            //        $"Opis: {d.OPIS}\n",
-            //        "Uspeh",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Information
-            //        );
-
-            //    s.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
         }
 
         private void cmdUcitavanjeDogadjaja_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    ISession s = DataLayer.GetSession();
 
-            //    //nhibarnate je na osnovu mapiranja napisao upit, mi nismo morlai da pisemo upit upise, i sve se prosledjuje kao parametar
-            //    //potrebno uocavati podatke koji su zaista potrebni
-            //    //ovde radi kada trazimo po odredjenom id-u
-            //    //Muzicki_festival.Entiteti.Dogadjaj d = s.Load<Muzicki_festival.Entiteti.Dogadjaj>(21);
-            //    //MessageBox.Show(d.NAZIV);
-            //    //ovo je nacin da se ucitaju svi dogadjaji
-            //    using (var session = DataLayer.GetSession())
-            //    {
-            //        using (var transaction = session.BeginTransaction())
-            //        {
-            //            var listaDogadjaja = session.QueryOver<Dogadjaj>().List();
-
-            //            if (listaDogadjaja.Count == 0)
-            //            {
-            //                MessageBox.Show("Nema dogadjaja u bazi.");
-            //                return;
-            //            }
-
-            //            // Spajanje svih događaja u jedan string
-            //            StringBuilder sb = new StringBuilder();
-            //            foreach (var d in listaDogadjaja)
-            //            {
-            //                sb.AppendLine($"ID: {d.ID}");
-            //                sb.AppendLine($"Naziv: {d.NAZIV}");
-            //                sb.AppendLine($"Tip: {d.TIP}");
-            //                sb.AppendLine($"Opis: {d.OPIS}");
-            //                sb.AppendLine($"Datum početka: {d.DATUM_VREME_POCETKA}");
-            //                sb.AppendLine($"Datum kraja: {d.DATUM_VREME_KRAJA}");
-            //                sb.AppendLine($"GPS: {d.Lokacija.Lokacija_ID.GPS_KOORDINATE}");
-            //                sb.AppendLine($"Lokacija Naziv: {d.Lokacija.Lokacija_ID.NAZIV}");
-            //                sb.AppendLine(new string('-', 40)); // separator
-            //            }
-
-            //            MessageBox.Show(sb.ToString(), $"Ukupno dogadjaja: {listaDogadjaja.Count}");
-
-            //            transaction.Commit();
-            //        }
-            //    }
-            //    s.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-
-            //}
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -163,8 +62,8 @@ namespace Muzicki_festival.Forme
                     {
                         dt.Rows.Add(d.ID, d.NAZIV, d.TIP, d.OPIS, d.DATUM_VREME_POCETKA, d.DATUM_VREME_KRAJA, d.Lokacija.GPS_KOORDINATE, d.Lokacija.NAZIV);
                     }
-                    dataGridView1.DataSource = dt;
-                    dataGridView1.Columns["ID"].Visible = false;
+                    TabelaDogadjaj.DataSource = dt;
+                    TabelaDogadjaj.Columns["ID"].Visible = false;
 
 
                 }
@@ -180,27 +79,27 @@ namespace Muzicki_festival.Forme
         {
             try
             {
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                dataGridView1.ReadOnly = true;
-                dataGridView1.AllowUserToAddRows = false;
-                dataGridView1.RowHeadersVisible = false;
-                dataGridView1.BorderStyle = BorderStyle.None;
-                dataGridView1.BackgroundColor = Color.WhiteSmoke;
-                dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-                dataGridView1.GridColor = Color.LightGray;
+                TabelaDogadjaj.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                TabelaDogadjaj.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                TabelaDogadjaj.ReadOnly = true;
+                TabelaDogadjaj.AllowUserToAddRows = false;
+                TabelaDogadjaj.RowHeadersVisible = false;
+                TabelaDogadjaj.BorderStyle = BorderStyle.None;
+                TabelaDogadjaj.BackgroundColor = Color.WhiteSmoke;
+                TabelaDogadjaj.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                TabelaDogadjaj.GridColor = Color.LightGray;
 
-                dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+                TabelaDogadjaj.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
 
-                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
-                dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
-                dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-                dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                TabelaDogadjaj.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+                TabelaDogadjaj.DefaultCellStyle.SelectionForeColor = Color.White;
+                TabelaDogadjaj.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+                TabelaDogadjaj.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
-                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
-                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
-                dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                dataGridView1.EnableHeadersVisualStyles = false;
+                TabelaDogadjaj.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
+                TabelaDogadjaj.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
+                TabelaDogadjaj.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                TabelaDogadjaj.EnableHeadersVisualStyles = false;
 
 
             }
@@ -267,12 +166,12 @@ namespace Muzicki_festival.Forme
             //    MessageBox.Show(ex.Message);
             //}
 
-            if (dataGridView1.SelectedRows.Count == 0)
+            if (TabelaDogadjaj.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Odaberite događaj za koji želite da kupite ulaznicu.");
                 return;
             }
-            int dogadjajId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
+            int dogadjajId = Convert.ToInt32(TabelaDogadjaj.SelectedRows[0].Cells["ID"].Value);
 
             using (ISession s = DataLayer.GetSession())
             {
@@ -297,13 +196,13 @@ namespace Muzicki_festival.Forme
 
         private void btnObrisi_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 0)
+            if (TabelaDogadjaj.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Izaberite dogadjaj koju zelite da obrisete!");
                 return;
             }
-            int selectedRowIndex = dataGridView1.SelectedRows[0].Index;
-            object idObj = dataGridView1.Rows[selectedRowIndex].Cells["ID"].Value;
+            int selectedRowIndex = TabelaDogadjaj.SelectedRows[0].Index;
+            object idObj = TabelaDogadjaj.Rows[selectedRowIndex].Cells["ID"].Value;
 
             if (idObj == null || !int.TryParse(idObj.ToString(), out int dogadjajID))
             {
@@ -344,14 +243,14 @@ namespace Muzicki_festival.Forme
 
         private void cmdIzmeni_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 0)
+            if (TabelaDogadjaj.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Odaberite događaj za izmenu.");
                 return;
             }
 
             int dogadjajId;
-            if (!int.TryParse(dataGridView1.SelectedRows[0].Cells["ID"].Value.ToString(), out dogadjajId))
+            if (!int.TryParse(TabelaDogadjaj.SelectedRows[0].Cells["ID"].Value.ToString(), out dogadjajId))
             {
                 MessageBox.Show("Greška pri čitanju ID-a događaja.");
                 return;
@@ -377,12 +276,12 @@ namespace Muzicki_festival.Forme
         }
         private void btnIzvodjac_Click_1(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 0)
+            if (TabelaDogadjaj.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Odaberite događaj za koji želite da dodate izvodjaca.");
                 return;
             }
-            int dogadjajId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
+            int dogadjajId = Convert.ToInt32(TabelaDogadjaj.SelectedRows[0].Cells["ID"].Value);
 
             using (ISession s = DataLayer.GetSession())
             {

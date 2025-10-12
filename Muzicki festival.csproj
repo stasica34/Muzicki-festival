@@ -107,10 +107,13 @@
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
     <Compile Include="DTOManager.cs" />
+    <Compile Include="DTOs\DogadjajDTO.cs" />
     <Compile Include="DTOs\DostupnaOpremaDTO.cs" />
     <Compile Include="DTOs\IzvodjacDTOs.cs" />
     <Compile Include="DTOs\LokacijaDTOs.cs" />
     <Compile Include="DTOs\MenadzerskaAgencijaDTO.cs" />
+    <Compile Include="DTOs\PosetilacDTO.cs" />
+    <Compile Include="DTOs\UlaznicaDTO.cs" />
     <Compile Include="Entiteti\AgencijaOrganizator.cs" />
     <Compile Include="Entiteti\Akreditacija.cs" />
     <Compile Include="Entiteti\Bend.cs" />

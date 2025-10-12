@@ -55,12 +55,13 @@
             this.cmd_Lokacija = new System.Windows.Forms.Button();
             this.cmd_Clan = new System.Windows.Forms.Button();
             this.Izvodjac = new System.Windows.Forms.Button();
+            this.UlaznicaTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmd_Akreditacija
             // 
             this.cmd_Akreditacija.Location = new System.Drawing.Point(8, 14);
-            this.cmd_Akreditacija.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_Akreditacija.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Akreditacija.Name = "cmd_Akreditacija";
             this.cmd_Akreditacija.Size = new System.Drawing.Size(113, 36);
             this.cmd_Akreditacija.TabIndex = 5;
@@ -71,7 +72,7 @@
             // cmd_Posetilac
             // 
             this.cmd_Posetilac.Location = new System.Drawing.Point(475, 303);
-            this.cmd_Posetilac.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_Posetilac.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Posetilac.Name = "cmd_Posetilac";
             this.cmd_Posetilac.Size = new System.Drawing.Size(113, 35);
             this.cmd_Posetilac.TabIndex = 6;
@@ -82,7 +83,7 @@
             // cmd_Grupa
             // 
             this.cmd_Grupa.Location = new System.Drawing.Point(358, 303);
-            this.cmd_Grupa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_Grupa.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Grupa.Name = "cmd_Grupa";
             this.cmd_Grupa.Size = new System.Drawing.Size(113, 36);
             this.cmd_Grupa.TabIndex = 7;
@@ -93,7 +94,7 @@
             // cmd_JeClan
             // 
             this.cmd_JeClan.Location = new System.Drawing.Point(8, 304);
-            this.cmd_JeClan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_JeClan.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_JeClan.Name = "cmd_JeClan";
             this.cmd_JeClan.Size = new System.Drawing.Size(113, 36);
             this.cmd_JeClan.TabIndex = 9;
@@ -104,7 +105,7 @@
             // cnd_Jednodnevna
             // 
             this.cnd_Jednodnevna.Location = new System.Drawing.Point(8, 53);
-            this.cnd_Jednodnevna.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cnd_Jednodnevna.Margin = new System.Windows.Forms.Padding(2);
             this.cnd_Jednodnevna.Name = "cnd_Jednodnevna";
             this.cnd_Jednodnevna.Size = new System.Drawing.Size(113, 36);
             this.cnd_Jednodnevna.TabIndex = 13;
@@ -115,7 +116,7 @@
             // cmd_Kobinovana
             // 
             this.cmd_Kobinovana.Location = new System.Drawing.Point(125, 53);
-            this.cmd_Kobinovana.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_Kobinovana.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Kobinovana.Name = "cmd_Kobinovana";
             this.cmd_Kobinovana.Size = new System.Drawing.Size(113, 36);
             this.cmd_Kobinovana.TabIndex = 14;
@@ -126,7 +127,7 @@
             // cmd_OtvorenaLokacija
             // 
             this.cmd_OtvorenaLokacija.Location = new System.Drawing.Point(125, 14);
-            this.cmd_OtvorenaLokacija.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_OtvorenaLokacija.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_OtvorenaLokacija.Name = "cmd_OtvorenaLokacija";
             this.cmd_OtvorenaLokacija.Size = new System.Drawing.Size(113, 36);
             this.cmd_OtvorenaLokacija.TabIndex = 19;
@@ -137,7 +138,7 @@
             // cmd_Vip
             // 
             this.cmd_Vip.Location = new System.Drawing.Point(8, 93);
-            this.cmd_Vip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_Vip.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Vip.Name = "cmd_Vip";
             this.cmd_Vip.Size = new System.Drawing.Size(113, 36);
             this.cmd_Vip.TabIndex = 21;
@@ -148,7 +149,7 @@
             // cmd_Visednevna
             // 
             this.cmd_Visednevna.Location = new System.Drawing.Point(8, 136);
-            this.cmd_Visednevna.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_Visednevna.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Visednevna.Name = "cmd_Visednevna";
             this.cmd_Visednevna.Size = new System.Drawing.Size(113, 36);
             this.cmd_Visednevna.TabIndex = 23;
@@ -159,7 +160,7 @@
             // cmd_ZatvorenaLokacija
             // 
             this.cmd_ZatvorenaLokacija.Location = new System.Drawing.Point(125, 93);
-            this.cmd_ZatvorenaLokacija.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_ZatvorenaLokacija.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_ZatvorenaLokacija.Name = "cmd_ZatvorenaLokacija";
             this.cmd_ZatvorenaLokacija.Size = new System.Drawing.Size(113, 36);
             this.cmd_ZatvorenaLokacija.TabIndex = 25;
@@ -170,7 +171,7 @@
             // cmd_ViseNaJedan
             // 
             this.cmd_ViseNaJedan.Location = new System.Drawing.Point(475, 14);
-            this.cmd_ViseNaJedan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_ViseNaJedan.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_ViseNaJedan.Name = "cmd_ViseNaJedan";
             this.cmd_ViseNaJedan.Size = new System.Drawing.Size(113, 36);
             this.cmd_ViseNaJedan.TabIndex = 28;
@@ -181,7 +182,7 @@
             // cmdViseNaJedan2
             // 
             this.cmdViseNaJedan2.Location = new System.Drawing.Point(241, 14);
-            this.cmdViseNaJedan2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdViseNaJedan2.Margin = new System.Windows.Forms.Padding(2);
             this.cmdViseNaJedan2.Name = "cmdViseNaJedan2";
             this.cmdViseNaJedan2.Size = new System.Drawing.Size(113, 36);
             this.cmdViseNaJedan2.TabIndex = 30;
@@ -192,7 +193,7 @@
             // cmd_JedanNaVise
             // 
             this.cmd_JedanNaVise.Location = new System.Drawing.Point(475, 55);
-            this.cmd_JedanNaVise.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_JedanNaVise.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_JedanNaVise.Name = "cmd_JedanNaVise";
             this.cmd_JedanNaVise.Size = new System.Drawing.Size(113, 36);
             this.cmd_JedanNaVise.TabIndex = 29;
@@ -203,7 +204,7 @@
             // cmdJedanNaVise
             // 
             this.cmdJedanNaVise.Location = new System.Drawing.Point(241, 55);
-            this.cmdJedanNaVise.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdJedanNaVise.Margin = new System.Windows.Forms.Padding(2);
             this.cmdJedanNaVise.Name = "cmdJedanNaVise";
             this.cmdJedanNaVise.Size = new System.Drawing.Size(113, 36);
             this.cmdJedanNaVise.TabIndex = 31;
@@ -214,7 +215,7 @@
             // cmdVisenaJedan3
             // 
             this.cmdVisenaJedan3.Location = new System.Drawing.Point(475, 96);
-            this.cmdVisenaJedan3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdVisenaJedan3.Margin = new System.Windows.Forms.Padding(2);
             this.cmdVisenaJedan3.Name = "cmdVisenaJedan3";
             this.cmdVisenaJedan3.Size = new System.Drawing.Size(113, 36);
             this.cmdVisenaJedan3.TabIndex = 32;
@@ -225,7 +226,7 @@
             // cmdJedanNaVise3
             // 
             this.cmdJedanNaVise3.Location = new System.Drawing.Point(475, 136);
-            this.cmdJedanNaVise3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdJedanNaVise3.Margin = new System.Windows.Forms.Padding(2);
             this.cmdJedanNaVise3.Name = "cmdJedanNaVise3";
             this.cmdJedanNaVise3.Size = new System.Drawing.Size(113, 36);
             this.cmdJedanNaVise3.TabIndex = 33;
@@ -236,7 +237,7 @@
             // cmdViseNaJedan4
             // 
             this.cmdViseNaJedan4.Location = new System.Drawing.Point(241, 95);
-            this.cmdViseNaJedan4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdViseNaJedan4.Margin = new System.Windows.Forms.Padding(2);
             this.cmdViseNaJedan4.Name = "cmdViseNaJedan4";
             this.cmdViseNaJedan4.Size = new System.Drawing.Size(113, 36);
             this.cmdViseNaJedan4.TabIndex = 34;
@@ -247,7 +248,7 @@
             // cmdJedanNaVise4
             // 
             this.cmdJedanNaVise4.Location = new System.Drawing.Point(241, 135);
-            this.cmdJedanNaVise4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdJedanNaVise4.Margin = new System.Windows.Forms.Padding(2);
             this.cmdJedanNaVise4.Name = "cmdJedanNaVise4";
             this.cmdJedanNaVise4.Size = new System.Drawing.Size(113, 36);
             this.cmdJedanNaVise4.TabIndex = 35;
@@ -258,7 +259,7 @@
             // cmdViseNaJedan5
             // 
             this.cmdViseNaJedan5.Location = new System.Drawing.Point(358, 135);
-            this.cmdViseNaJedan5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdViseNaJedan5.Margin = new System.Windows.Forms.Padding(2);
             this.cmdViseNaJedan5.Name = "cmdViseNaJedan5";
             this.cmdViseNaJedan5.Size = new System.Drawing.Size(113, 36);
             this.cmdViseNaJedan5.TabIndex = 36;
@@ -269,7 +270,7 @@
             // cmdViseNaVise
             // 
             this.cmdViseNaVise.Location = new System.Drawing.Point(358, 94);
-            this.cmdViseNaVise.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdViseNaVise.Margin = new System.Windows.Forms.Padding(2);
             this.cmdViseNaVise.Name = "cmdViseNaVise";
             this.cmdViseNaVise.Size = new System.Drawing.Size(113, 36);
             this.cmdViseNaVise.TabIndex = 38;
@@ -280,7 +281,7 @@
             // cmdVisenaVise2
             // 
             this.cmdVisenaVise2.Location = new System.Drawing.Point(358, 54);
-            this.cmdVisenaVise2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdVisenaVise2.Margin = new System.Windows.Forms.Padding(2);
             this.cmdVisenaVise2.Name = "cmdVisenaVise2";
             this.cmdVisenaVise2.Size = new System.Drawing.Size(113, 36);
             this.cmdVisenaVise2.TabIndex = 39;
@@ -291,7 +292,7 @@
             // cmdJedanNaVise5
             // 
             this.cmdJedanNaVise5.Location = new System.Drawing.Point(358, 14);
-            this.cmdJedanNaVise5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdJedanNaVise5.Margin = new System.Windows.Forms.Padding(2);
             this.cmdJedanNaVise5.Name = "cmdJedanNaVise5";
             this.cmdJedanNaVise5.Size = new System.Drawing.Size(113, 36);
             this.cmdJedanNaVise5.TabIndex = 40;
@@ -302,7 +303,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(125, 304);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 36);
             this.button1.TabIndex = 41;
@@ -313,7 +314,7 @@
             // cmd_Lokacija
             // 
             this.cmd_Lokacija.Location = new System.Drawing.Point(125, 135);
-            this.cmd_Lokacija.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_Lokacija.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Lokacija.Name = "cmd_Lokacija";
             this.cmd_Lokacija.Size = new System.Drawing.Size(113, 36);
             this.cmd_Lokacija.TabIndex = 15;
@@ -324,7 +325,7 @@
             // cmd_Clan
             // 
             this.cmd_Clan.Location = new System.Drawing.Point(241, 304);
-            this.cmd_Clan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmd_Clan.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Clan.Name = "cmd_Clan";
             this.cmd_Clan.Size = new System.Drawing.Size(113, 34);
             this.cmd_Clan.TabIndex = 11;
@@ -342,11 +343,22 @@
             this.Izvodjac.UseVisualStyleBackColor = true;
             this.Izvodjac.Click += new System.EventHandler(this.Izvodjac_Click);
             // 
+            // UlaznicaTest
+            // 
+            this.UlaznicaTest.Location = new System.Drawing.Point(145, 204);
+            this.UlaznicaTest.Name = "UlaznicaTest";
+            this.UlaznicaTest.Size = new System.Drawing.Size(93, 34);
+            this.UlaznicaTest.TabIndex = 43;
+            this.UlaznicaTest.Text = "UlaznicaTest";
+            this.UlaznicaTest.UseVisualStyleBackColor = true;
+            this.UlaznicaTest.Click += new System.EventHandler(this.UlaznicaTest_Click);
+            // 
             // GlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 348);
+            this.Controls.Add(this.UlaznicaTest);
             this.Controls.Add(this.Izvodjac);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmdJedanNaVise5);
@@ -373,7 +385,7 @@
             this.Controls.Add(this.cmd_Grupa);
             this.Controls.Add(this.cmd_Posetilac);
             this.Controls.Add(this.cmd_Akreditacija);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GlavnaForma";
             this.Text = "S";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -410,6 +422,7 @@
         private System.Windows.Forms.Button cmd_Lokacija;
         private System.Windows.Forms.Button cmd_Clan;
         private System.Windows.Forms.Button Izvodjac;
+        private System.Windows.Forms.Button UlaznicaTest;
     }
 }
 
