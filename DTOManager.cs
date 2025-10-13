@@ -91,9 +91,8 @@ namespace Muzicki_festival
             {
                 ISession s = DataLayer.GetSession();
                 MenadzerskaAgencija ma = s.Get<MenadzerskaAgencija>(i.MenadzerskaAgencija.ID);
-                Dogadjaj d = s.Get<Dogadjaj>(i.Dogadjaj.Id);
 
-                if (ma == null || d == null)
+                if (ma == null)
                     return null;
 
                 int id;
@@ -121,14 +120,6 @@ namespace Muzicki_festival
                         s.Update(ma);
                         s.Flush();
 
-                        d.Izvodjaci.Add(novi);
-                        s.Update(d);
-                        s.Flush();
-
-                        novi.Dogadjaji.Add(d);
-                        s.Update(novi);
-                        s.Flush();
-
                         s.Close();
 
                         return new Solo_umetnikView(id, novi.IME, novi.DRZAVA_POREKLA, novi.EMAIL, novi.KONTAKT_OSOBA, novi.TELEFON, novi.Zanr, novi.SVIRA_INSTRUMENT, novi.TIP_INSTRUMENTA);
@@ -150,14 +141,6 @@ namespace Muzicki_festival
                         s.Flush();
 
                         ma.Izvodjaci.Add(bend);
-                        s.Flush();
-
-                        d.Izvodjaci.Add(bend);
-                        s.Update(d);
-                        s.Flush();
-
-                        bend.Dogadjaji.Add(d);
-                        s.Update(bend);
                         s.Flush();
 
                         s.Close();

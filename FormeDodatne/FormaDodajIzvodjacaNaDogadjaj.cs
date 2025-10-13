@@ -258,7 +258,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void RadSaIzvodjacimaDugme_Click(object sender, EventArgs e)
         {
-            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj(this, dogadjajBasic);
+            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj(this);
             this.Hide();
             if (forma.ShowDialog() == DialogResult.OK)
             {

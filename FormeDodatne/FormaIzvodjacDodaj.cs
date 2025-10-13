@@ -23,18 +23,16 @@ namespace Muzicki_festival.FormeDodatne
         private IList<string> vokalneSposobnosti;
         private IList<string> zahtevi;
         private int idSelektovan = -1;
-        private readonly DogadjajBasic dogadjaj;
 
         public IzvodjacView NoviIzvodjac = null;
 
-        public FormaIzvodjacDodaj(Form caller, DogadjajBasic d)
+        public FormaIzvodjacDodaj(Form caller)
         {
             InitializeComponent();
             parentform = caller;
             izvodjacViews = DTOManager.VratiSveIzvodjace();
             menadzerskaAgencijaViews = DTOManager.VratiSveMenadzerskeAgencije();
             clanBendaViews = new List<ClanBendaView>();
-            dogadjaj = d;
 
             InitTabeluIzvodjaci();
             PopuniTabeluIzvodjaci();
@@ -263,7 +261,7 @@ namespace Muzicki_festival.FormeDodatne
 
             if (BendRadio.Checked)
             {
-                BendBasic novi = new BendBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, ZanrTxt.Text, mb, dogadjaj);
+                BendBasic novi = new BendBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, ZanrTxt.Text, mb, null);
 
                 IzvodjacView dodat = DTOManager.DodajIzvodjaca(novi);
 
@@ -284,7 +282,7 @@ namespace Muzicki_festival.FormeDodatne
                     return;
                 }
 
-                Solo_UmetnikBasic su = new Solo_UmetnikBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, ZanrTxt.Text, mb, dogadjaj, svira, instrumentTxt.Text);
+                Solo_UmetnikBasic su = new Solo_UmetnikBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, ZanrTxt.Text, mb, null, svira, instrumentTxt.Text);
 
                 IzvodjacView dodat = DTOManager.DodajIzvodjaca(su);
 
