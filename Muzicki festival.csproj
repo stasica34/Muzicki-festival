@@ -107,8 +107,10 @@
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
     <Compile Include="DTOManager.cs" />
+    <Compile Include="DTOs\AgencijaOrganizatorDTO.cs" />
     <Compile Include="DTOs\DogadjajDTO.cs" />
     <Compile Include="DTOs\DostupnaOpremaDTO.cs" />
+    <Compile Include="DTOs\GrupaDTO.cs" />
     <Compile Include="DTOs\IzvodjacDTOs.cs" />
     <Compile Include="DTOs\LokacijaDTOs.cs" />
     <Compile Include="DTOs\MenadzerskaAgencijaDTO.cs" />
@@ -122,8 +124,6 @@
     <Compile Include="Entiteti\DostupnaOprema.cs" />
     <Compile Include="Entiteti\Grupa.cs" />
     <Compile Include="Entiteti\Izvodjac.cs" />
-    <Compile Include="Entiteti\JeClan.cs" />
-    <Compile Include="Entiteti\JeClanID.cs" />
     <Compile Include="Entiteti\Jednodnevna.cs" />
     <Compile Include="Entiteti\KombinovanaLokacija.cs" />
     <Compile Include="Entiteti\KontaktMenadzerskeAgencije.cs" />
@@ -133,7 +133,6 @@
     <Compile Include="Entiteti\OtvorenaLokacija.cs" />
     <Compile Include="Entiteti\Posetilac.cs" />
     <Compile Include="Entiteti\Solo_Umetnik.cs" />
-    <Compile Include="Entiteti\TelefonPosetilac.cs" />
     <Compile Include="Entiteti\Ulaznica.cs" />
     <Compile Include="Entiteti\Vip.cs" />
     <Compile Include="Entiteti\Visednevna.cs" />
@@ -149,6 +148,18 @@
     </Compile>
     <Compile Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.Designer.cs">
       <DependentUpon>FormaAgencijaOrganizatorIzmeni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaDodajAgencijuOrganizator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaDodajAgencijuOrganizator.Designer.cs">
+      <DependentUpon>FormaDodajAgencijuOrganizator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaDodajGrupu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaDodajGrupu.Designer.cs">
+      <DependentUpon>FormaDodajGrupu.cs</DependentUpon>
     </Compile>
     <Compile Include="FormeDodatne\FormaDodajIzvodjacaNaDogadjaj.cs">
       <SubType>Form</SubType>
@@ -392,11 +403,9 @@
     <Compile Include="Mapiranje\DostupnaOpremaMapiranje.cs" />
     <Compile Include="Mapiranje\GrupaMapiranje.cs" />
     <Compile Include="Mapiranje\IzvodjacMapiranje.cs" />
-    <Compile Include="Mapiranje\JeCLanMapiranje.cs" />
     <Compile Include="Mapiranje\JednodnevnaMapiranje.cs" />
     <Compile Include="Mapiranje\KombinovanaLokacijaMapiranje.cs" />
     <Compile Include="Mapiranje\KontaktMenadzerskeAgencijeMapiranje.cs" />
-    <Compile Include="Mapiranje\KontaktPodaciMapiranje.cs" />
     <Compile Include="Mapiranje\LokacijaMapiranja.cs" />
     <Compile Include="Mapiranje\MenadzerskaAgencijaMapiranje.cs" />
     <Compile Include="Mapiranje\OtvorenaLokacijaMapiranje.cs" />
@@ -413,6 +422,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.resx">
       <DependentUpon>FormaAgencijaOrganizatorIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaDodajAgencijuOrganizator.resx">
+      <DependentUpon>FormaDodajAgencijuOrganizator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaDodajGrupu.resx">
+      <DependentUpon>FormaDodajGrupu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaDodajIzvodjacaNaDogadjaj.resx">
       <DependentUpon>FormaDodajIzvodjacaNaDogadjaj.cs</DependentUpon>

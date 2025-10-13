@@ -342,7 +342,7 @@ namespace Muzicki_festival.Forme
             {
                 MessageBox.Show("Uspesno dodat posetilac!");
             }
-            else
+            else if (dr == DialogResult.No)
             {
                 MessageBox.Show("Greska!");
             }

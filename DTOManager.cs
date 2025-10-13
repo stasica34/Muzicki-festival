@@ -11,6 +11,7 @@ using Muzicki_festival.DTOs;
 using System.Windows.Forms;
 using NHibernate.Util;
 using System.Security.Cryptography;
+using NHibernate.Hql.Ast.ANTLR.Tree;
 namespace Muzicki_festival
 {
     public class DTOManager
@@ -1213,10 +1214,7 @@ namespace Muzicki_festival
                 if (d.Izvodjaci.Contains(i))
                     return true;
 
-                d.Izvodjaci.Add(i);
                 i.Dogadjaji.Add(d);
-
-                s.Update(d);
                 s.Update(i);
 
                 s.Flush();
@@ -1312,6 +1310,15 @@ namespace Muzicki_festival
                 int pId = (int)s.Save(p);
                 int UiD = (int)s.Save(u);
                 s.Flush();
+
+                if (pb.Grupa != null)
+                {
+                    Grupa g = s.Get<Grupa>(pb.Grupa.Id);
+                    g.Clanovi.Add(p);
+                    s.Update(g);
+                    s.Flush();
+                }
+
                 s.Close();
 
                 return new PosetilacView(pId, pb.Ime, pb.Prezime, pb.Email, pb.Telefon);
@@ -1323,6 +1330,181 @@ namespace Muzicki_festival
             }
         }
 
+
+        #endregion
+
+        #region AgencijaOrganizator
+
+        public static IList<AgencijaOrganizatorView> VratiSveAgencije()
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IList<AgencijaOrganizator> agencije = s.Query<AgencijaOrganizator>().ToList();
+
+                List<AgencijaOrganizatorView> views = new List<AgencijaOrganizatorView>();
+
+                foreach (var a in agencije)
+                {
+                    views.Add(new AgencijaOrganizatorView(a.ID, a.NAZIV, a.ADRESA));
+;               }
+
+                return views;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return new List<AgencijaOrganizatorView>();
+            }
+        }
+
+        public static AgencijaOrganizatorView DodajAgenciju(AgencijaOrganizatorBasic ab)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                AgencijaOrganizator nova = new AgencijaOrganizator
+                {
+                    NAZIV = ab.Naziv,
+                    ADRESA = ab.Adresa
+                };
+
+                int Id = (int)s.Save(nova);
+
+                s.Flush();
+                s.Close();
+
+                return new AgencijaOrganizatorView(nova.ID, nova.NAZIV, nova.ADRESA);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+
+        public static bool ObrisiAgenciju(int agencijaId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                AgencijaOrganizator a = s.Get<AgencijaOrganizator>(agencijaId);
+
+                if (a == null)
+                {
+                    return false;
+                }
+
+                s.Delete(a);
+                s.Flush();
+                s.Close();
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region Grupa
+
+        public static IList<GrupaView> VratiSveGrupe()
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IList<Grupa> grupe = s.Query<Grupa>().ToList();
+
+                List<GrupaView> views = new List<GrupaView>();
+                foreach (var g in grupe)
+                {
+                    List<string> imena = new List<string>();
+                    foreach (var p in g.Clanovi)
+                    {
+                        imena.Add(p.IME);
+                    }
+
+                    views.Add(new GrupaView(g.ID_GRUPE, g.NAZIV, g.AgencijaID.NAZIV, imena));
+                }
+
+                return views;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return new List<GrupaView>();
+            }
+        }
+
+        public static GrupaView DodajGrupu(GrupaBasic gb)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                AgencijaOrganizator ag = s.Get<AgencijaOrganizator>(gb.Agencija.Id);
+
+                if (ag == null)
+                {
+                    return null;
+                }
+
+                Grupa nova = new Grupa
+                {
+                    NAZIV = gb.Naziv,
+                    AgencijaID = ag
+                };
+
+                ag.Grupe.Add(nova);
+
+                s.Update(ag);
+                s.Flush();
+                s.Close();
+
+                return new GrupaView(nova.ID_GRUPE, nova.NAZIV, nova.AgencijaID.NAZIV, new List<string>());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+
+        public static bool DodajClanaGrupi(int grupaId, int clanId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Grupa g = s.Get<Grupa>(grupaId);
+                Posetilac p = s.Get<Posetilac>(clanId);
+
+                if (g == null || p == null) 
+                { 
+                    return false; 
+                }
+
+                if (g.Clanovi.Contains(p))
+                    return true;
+
+                g.Clanovi.Add(p);
+                s.Update(g);
+                s.Flush();
+                s.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
 
         #endregion
     }

@@ -36,8 +36,9 @@ namespace Muzicki_festival.DTOs
         public string Telefon;
 
         public UlaznicaBasic Ulaznica;
+        public GrupaBasic Grupa;
 
-        public PosetilacBasic(int id, string ime, string prezime, string email, string telelfon, UlaznicaBasic ulaznica)
+        public PosetilacBasic(int id, string ime, string prezime, string email, string telelfon, UlaznicaBasic ulaznica, GrupaBasic grupa)
         {
             Id = id;
             Ime = ime;
@@ -45,6 +46,7 @@ namespace Muzicki_festival.DTOs
             Email = email;
             Telefon = telelfon;
             Ulaznica = ulaznica;
+            Grupa = grupa;
         }
     }
 }

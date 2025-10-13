@@ -260,7 +260,11 @@ namespace Muzicki_festival.FormeDodatne
         {
             FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj(this, dogadjajBasic);
             this.Hide();
-            forma.ShowDialog();
+            if (forma.ShowDialog() == DialogResult.OK)
+            {
+                izvodjacViews.Add(forma.NoviIzvodjac);
+                PopuniTabeluIzvodjaci();
+            }
             this.Show();
         }
     }

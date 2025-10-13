@@ -15,11 +15,10 @@ namespace Muzicki_festival.Entiteti
         public virtual string Telefon { get; set; }
         public virtual Ulaznica Ulaznica { get; set; }
         //veza n:m
-        public virtual IList<JeClan> JeClan { get; set; } 
+        public virtual Grupa GRUPA { get; set; } 
         public Posetilac()
         {
-            //inicijalizacija liste ulaznica
-            JeClan  = new List<JeClan>();
+
         }
         public override string ToString()
         {

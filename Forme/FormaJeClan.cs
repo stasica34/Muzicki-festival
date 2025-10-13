@@ -36,6 +36,7 @@ namespace Muzicki_festival.Forme
                 ISession s = DataLayer.GetSession();
                 using (var session = DataLayer.GetSession())
                 {
+                    /*
                     var listaJeCLan = session.QueryOver<JeClan>().List();
                     if (listaJeCLan.Count == 0)
                     {
@@ -67,6 +68,7 @@ namespace Muzicki_festival.Forme
                     dataGridView1.DataSource = dt;
                     dataGridView1.Columns["ID_Grupe"].Visible = false;
                     dataGridView1.Columns["ID Posetilac"].Visible = false;
+                    */
                 }
 
             }
@@ -130,46 +132,7 @@ namespace Muzicki_festival.Forme
         }
         private void btnObrisi_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Izaberite izvodjaca kog zelite da obrisete!");
-                return;
-            }
-            int selectedRowIndex = dataGridView1.SelectedRows[0].Index;
-            object idObj = dataGridView1.Rows[selectedRowIndex].Cells["ID_Grupe"].Value;
 
-            if (idObj == null || !int.TryParse(idObj.ToString(), out int grupaId))
-            {
-                MessageBox.Show("Greška prilikom čitanja.");
-                return;
-            }
-            DialogResult result = MessageBox.Show("Da li ste sigurni da želite da obrišete?", "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    using (ISession s = DataLayer.GetSession())
-                    {
-                        JeClan jeclan = s.Get<JeClan>(grupaId);
-                        if (jeclan == null)
-                        {
-                            MessageBox.Show("Podatak ne postoji u bazi.");
-                            return;
-                        }
-
-                        s.Delete(jeclan);
-                        s.Flush();
-                    }
-
-                    MessageBox.Show("Podatak uspešno obrisan.");
-                    cmd_Ucitavanje_Click(null, null);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Greška prilikom brisanja: " + ex.Message);
-                }
-            }
         }
     }
 }

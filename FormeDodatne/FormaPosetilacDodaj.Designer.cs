@@ -43,9 +43,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.DugmeDodajUlaznicu = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TabelaGrupe = new System.Windows.Forms.DataGridView();
+            this.DugmeUclani = new System.Windows.Forms.Button();
+            this.DugmeDodajGrupu = new System.Windows.Forms.Button();
+            this.TabelaClanovi = new System.Windows.Forms.DataGridView();
+            this.DugmeNapustiGrupu = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaGrupe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaClanovi)).BeginInit();
             this.SuspendLayout();
             // 
             // lableIme
@@ -89,8 +100,8 @@
             this.tableLayoutPanel2.Controls.Add(this.btnOtkazi, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnSacuvaj, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 330);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 393);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -102,7 +113,7 @@
             // 
             this.btnOtkazi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnOtkazi.Location = new System.Drawing.Point(402, 13);
-            this.btnOtkazi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOtkazi.Margin = new System.Windows.Forms.Padding(2);
             this.btnOtkazi.Name = "btnOtkazi";
             this.btnOtkazi.Size = new System.Drawing.Size(115, 42);
             this.btnOtkazi.TabIndex = 1;
@@ -114,7 +125,7 @@
             // 
             this.btnSacuvaj.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSacuvaj.Location = new System.Drawing.Point(97, 13);
-            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(2);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(115, 42);
             this.btnSacuvaj.TabIndex = 0;
@@ -139,7 +150,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -154,7 +165,7 @@
             // 
             this.txtPrezime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPrezime.Location = new System.Drawing.Point(348, 63);
-            this.txtPrezime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrezime.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(168, 20);
             this.txtPrezime.TabIndex = 15;
@@ -163,7 +174,7 @@
             // 
             this.txtIme.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtIme.Location = new System.Drawing.Point(348, 14);
-            this.txtIme.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIme.Margin = new System.Windows.Forms.Padding(2);
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(168, 20);
             this.txtIme.TabIndex = 7;
@@ -172,7 +183,7 @@
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtEmail.Location = new System.Drawing.Point(348, 112);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(168, 20);
             this.txtEmail.TabIndex = 8;
@@ -229,20 +240,107 @@
             this.DugmeDodajUlaznicu.UseVisualStyleBackColor = true;
             this.DugmeDodajUlaznicu.Click += new System.EventHandler(this.DugmeDodajUlaznicu_Click);
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.Controls.Add(this.TabelaGrupe, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.DugmeUclani, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.TabelaClanovi, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.DugmeNapustiGrupu, 0, 1);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 19);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(375, 100);
+            this.tableLayoutPanel4.TabIndex = 6;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tableLayoutPanel4);
+            this.groupBox1.Controls.Add(this.DugmeDodajGrupu);
+            this.groupBox1.Location = new System.Drawing.Point(83, 251);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(466, 130);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Grupa (opciono)";
+            // 
+            // TabelaGrupe
+            // 
+            this.TabelaGrupe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TabelaGrupe.Location = new System.Drawing.Point(96, 3);
+            this.TabelaGrupe.Name = "TabelaGrupe";
+            this.tableLayoutPanel4.SetRowSpan(this.TabelaGrupe, 2);
+            this.TabelaGrupe.Size = new System.Drawing.Size(181, 94);
+            this.TabelaGrupe.TabIndex = 0;
+            this.TabelaGrupe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaGrupe_CellClick);
+            // 
+            // DugmeUclani
+            // 
+            this.DugmeUclani.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DugmeUclani.Location = new System.Drawing.Point(3, 10);
+            this.DugmeUclani.Name = "DugmeUclani";
+            this.DugmeUclani.Size = new System.Drawing.Size(87, 30);
+            this.DugmeUclani.TabIndex = 1;
+            this.DugmeUclani.Text = "Učlani se";
+            this.DugmeUclani.UseVisualStyleBackColor = true;
+            this.DugmeUclani.Click += new System.EventHandler(this.DugmeUclani_Click);
+            // 
+            // DugmeDodajGrupu
+            // 
+            this.DugmeDodajGrupu.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.DugmeDodajGrupu.Location = new System.Drawing.Point(388, 71);
+            this.DugmeDodajGrupu.Name = "DugmeDodajGrupu";
+            this.DugmeDodajGrupu.Size = new System.Drawing.Size(72, 48);
+            this.DugmeDodajGrupu.TabIndex = 2;
+            this.DugmeDodajGrupu.Text = "Dodaj novu grupu";
+            this.DugmeDodajGrupu.UseVisualStyleBackColor = true;
+            this.DugmeDodajGrupu.Click += new System.EventHandler(this.DugmeDodajGrupu_Click);
+            // 
+            // TabelaClanovi
+            // 
+            this.TabelaClanovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TabelaClanovi.Location = new System.Drawing.Point(283, 3);
+            this.TabelaClanovi.Name = "TabelaClanovi";
+            this.tableLayoutPanel4.SetRowSpan(this.TabelaClanovi, 2);
+            this.TabelaClanovi.Size = new System.Drawing.Size(86, 94);
+            this.TabelaClanovi.TabIndex = 2;
+            // 
+            // DugmeNapustiGrupu
+            // 
+            this.DugmeNapustiGrupu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DugmeNapustiGrupu.Enabled = false;
+            this.DugmeNapustiGrupu.Location = new System.Drawing.Point(3, 60);
+            this.DugmeNapustiGrupu.Name = "DugmeNapustiGrupu";
+            this.DugmeNapustiGrupu.Size = new System.Drawing.Size(87, 30);
+            this.DugmeNapustiGrupu.TabIndex = 3;
+            this.DugmeNapustiGrupu.Text = "Napusti grupu";
+            this.DugmeNapustiGrupu.UseVisualStyleBackColor = true;
+            this.DugmeNapustiGrupu.Click += new System.EventHandler(this.DugmeNapustiGrupu_Click);
+            // 
             // FormaPosetilacDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 398);
+            this.ClientSize = new System.Drawing.Size(611, 461);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormaPosetilacDodaj";
             this.Text = "FormaPosetilacDodaj";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaGrupe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaClanovi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,5 +361,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button DugmeDodajUlaznicu;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView TabelaGrupe;
+        private System.Windows.Forms.Button DugmeUclani;
+        private System.Windows.Forms.Button DugmeDodajGrupu;
+        private System.Windows.Forms.DataGridView TabelaClanovi;
+        private System.Windows.Forms.Button DugmeNapustiGrupu;
     }
 }

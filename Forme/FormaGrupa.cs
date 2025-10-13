@@ -134,7 +134,7 @@ namespace Muzicki_festival.Forme
 
         private void btnObrisi_Click(object sender, EventArgs e)
         {
-
+            /*
             if (dataGridView1.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Izaberite grupu koju zelite da obrisete!");
@@ -179,6 +179,7 @@ namespace Muzicki_festival.Forme
                     MessageBox.Show("Greška prilikom brisanja: " + ex.Message);
                 }
             }
+            */
         }
 
         private void cmd_Dodavanje_Click(object sender, EventArgs e)

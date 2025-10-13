@@ -29,11 +29,7 @@ namespace Muzicki_festival.Mapiranje
             //   .Cascade.All()
 
             //mapiranje sa n:m
-            HasMany(x => x.JeClan)
-                .KeyColumn("POSETILAC_ID")
-                .LazyLoad()
-                .Cascade.All()
-                .Inverse();
+            References(x => x.GRUPA, "GRUPA_ID").LazyLoad().Cascade.AllDeleteOrphan();
             //visevrednosni atribut
             Map(x => x.Telefon, "TELEFON").Nullable();
         }

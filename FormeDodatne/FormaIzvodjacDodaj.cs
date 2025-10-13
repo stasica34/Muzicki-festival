@@ -25,6 +25,8 @@ namespace Muzicki_festival.FormeDodatne
         private int idSelektovan = -1;
         private readonly DogadjajBasic dogadjaj;
 
+        public IzvodjacView NoviIzvodjac = null;
+
         public FormaIzvodjacDodaj(Form caller, DogadjajBasic d)
         {
             InitializeComponent();
@@ -178,6 +180,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void PopuniIzborMenadzerske()
         {
+            izborMenadzerske.Items.Clear();
             foreach (var m in menadzerskaAgencijaViews)
             {
                 izborMenadzerske.Items.Add(m);
@@ -291,6 +294,7 @@ namespace Muzicki_festival.FormeDodatne
                     izvodjacViews.Add(dodat);
                     PopuniTabeluIzvodjaci();
                     this.DialogResult = DialogResult.OK;
+                    NoviIzvodjac = dodat;
                     this.Close();
                 }
                 else
@@ -316,7 +320,8 @@ namespace Muzicki_festival.FormeDodatne
         }
         private void UcitajMenadzerske()
         {
-            
+            menadzerskaAgencijaViews = DTOManager.VratiSveMenadzerskeAgencije();
+            PopuniIzborMenadzerske();
         }
 
         private void cmdIzmeni_Click(object sender, EventArgs e)
@@ -372,8 +377,9 @@ namespace Muzicki_festival.FormeDodatne
             }
 
             FormaIzvodjacIzmeni formaIzmeni = new FormaIzvodjacIzmeni(this, idSelektovan);
-            formaIzmeni.Show();
             this.Hide();
+            formaIzmeni.ShowDialog();
+            this.Show();
         }
 
         private void TabelaIzvodjaci_CellClick(object sender, DataGridViewCellEventArgs e)

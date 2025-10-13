@@ -13,7 +13,7 @@ namespace Muzicki_festival.Mapiranje
         public AgencijaOrganizatorMapiranje()
         {
             Table("AGENCIJA_ORGANIZATOR");
-            Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
+            Id(x => x.ID, "ID").GeneratedBy.Identity();
             Map(x => x.NAZIV, "NAZIV").Not.Nullable();
             Map(x => x.ADRESA, "ADRESA").Not.Nullable();
             HasMany(x => x.Grupe)

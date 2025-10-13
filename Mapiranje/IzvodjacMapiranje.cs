@@ -28,7 +28,7 @@ namespace Muzicki_festival.Mapiranje
               .Table("NASTUPA")
               .ParentKeyColumn("IZVODJAC_ID")
               .ChildKeyColumn("DOGADJAJ_ID")
-              .Cascade.All();
+              .Cascade.None();
 
             //svuda gde mi je nasladjivanje da uradim i sa discriminator sa tipom
             //visevrednosni atribut

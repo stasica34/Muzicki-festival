@@ -48,8 +48,7 @@ namespace Muzicki_festival.Mapiranje
                 .Table("NASTUPA")
                 .ParentKeyColumn("DOGADJAJ_ID")//grupa
                 .ChildKeyColumn("IZVODJAC_ID")//posetilac
-                .Cascade.All()
-                .Inverse();//inverzna strana veze
+                .Cascade.None();//inverzna strana veze
                            //inverzija moze da bude na obe strane
                            //ali biramo tamo inverziju gde nam vise odgovara
             //mapiranje n:m sa ulaznicom
