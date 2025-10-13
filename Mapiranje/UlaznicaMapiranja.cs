@@ -14,7 +14,7 @@ namespace Muzicki_festival.Mapiranje
         public UlaznicaMapiranjaL()
         {
             Table("ULAZNICA");
-            Id(x => x.ID_ULAZNICE, "ID_ULAZNICE").GeneratedBy.TriggerIdentity();
+            Id(x => x.ID_ULAZNICE, "ID_ULAZNICE").GeneratedBy.Identity();
             Map(x => x.OSNOVNA_CENA, "OSNOVNA_CENA").Not.Nullable();
             Map(x => x.NACIN_PLACANJA, "NACIN_PLACANJA").Not.Nullable();
             Map(x => x.DATUM_KUPOVINE, "DATUM_KUPOVINE").Not.Nullable();

@@ -371,6 +371,7 @@ namespace Muzicki_festival
 
         private void cmdVisenaVise2_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -408,6 +409,7 @@ namespace Muzicki_festival
             {
                 MessageBox.Show("Greška: " + ex.Message);
             }
+            */
         }
 
         private void cmdJedanNaVise5_Click(object sender, EventArgs e)
@@ -470,15 +472,19 @@ namespace Muzicki_festival
 
         private void Izvodjac_Click(object sender, EventArgs e)
         {
-            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj(this);
-            this.Hide();
-            forma.Show();
         }
 
         private void UlaznicaTest_Click(object sender, EventArgs e)
         {
-            FormaUlazniceDodaj forma = new FormaUlazniceDodaj(this);
+           // FormaUlazniceDodaj forma = new FormaUlazniceDodaj(this);
+           // forma.Show();
+        }
+
+        private void Dogadjaj_Click(object sender, EventArgs e)
+        {
+            FormaDogadjaji forma = new FormaDogadjaji(this);
             forma.Show();
+            this.Hide();
         }
     }
 }

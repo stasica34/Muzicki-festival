@@ -10,6 +10,7 @@ using ISession = NHibernate.ISession;
 using Muzicki_festival.DTOs;
 using System.Windows.Forms;
 using NHibernate.Util;
+using System.Security.Cryptography;
 namespace Muzicki_festival
 {
     public class DTOManager
@@ -89,8 +90,9 @@ namespace Muzicki_festival
             {
                 ISession s = DataLayer.GetSession();
                 MenadzerskaAgencija ma = s.Get<MenadzerskaAgencija>(i.MenadzerskaAgencija.ID);
+                Dogadjaj d = s.Get<Dogadjaj>(i.Dogadjaj.Id);
 
-                if (ma == null)
+                if (ma == null || d == null)
                     return null;
 
                 int id;
@@ -108,7 +110,7 @@ namespace Muzicki_festival
                             KONTAKT_OSOBA = i.Kontakt_osoba,
                             SVIRA_INSTRUMENT = (i as Solo_UmetnikBasic).Svira_instrument,
                             TIP_INSTRUMENTA = (i as Solo_UmetnikBasic).Tip_instrumenta,
-                            MenadzerskaAgencija = ma
+                            MenadzerskaAgencija = ma,
                         };
 
                         id = (int)s.Save(novi);
@@ -116,6 +118,14 @@ namespace Muzicki_festival
 
                         ma.Izvodjaci.Add(novi);
                         s.Update(ma);
+                        s.Flush();
+
+                        d.Izvodjaci.Add(novi);
+                        s.Update(d);
+                        s.Flush();
+
+                        novi.Dogadjaji.Add(d);
+                        s.Update(novi);
                         s.Flush();
 
                         s.Close();
@@ -140,7 +150,15 @@ namespace Muzicki_festival
 
                         ma.Izvodjaci.Add(bend);
                         s.Flush();
-                        
+
+                        d.Izvodjaci.Add(bend);
+                        s.Update(d);
+                        s.Flush();
+
+                        bend.Dogadjaji.Add(d);
+                        s.Update(bend);
+                        s.Flush();
+
                         s.Close();
                         return new BendView(id, bend.IME, bend.DRZAVA_POREKLA, bend.EMAIL, bend.KONTAKT_OSOBA, bend.TELEFON, bend.Zanr, bend.BROJ_CLANOVA);
                 }
@@ -199,7 +217,6 @@ namespace Muzicki_festival
                 return new List<ClanBendaView>();
             }
         }
-
 
         public static ClanBendaView DodajClanaBendu(ClanBendaBasic cb)
         {
@@ -1066,7 +1083,7 @@ namespace Muzicki_festival
                 List<DogadjajView> dogadjajViews = new List<DogadjajView>();
                 foreach(var d in dogadjaji)
                 {
-                    dogadjajViews.Add(new DogadjajView(d.ID, d.NAZIV, d.TIP, d.OPIS, d.DATUM_VREME_POCETKA, d.DATUM_VREME_KRAJA));
+                    dogadjajViews.Add(new DogadjajView(d.ID, d.NAZIV, d.TIP, d.OPIS, d.DATUM_VREME_POCETKA, d.DATUM_VREME_KRAJA, d.Lokacija.NAZIV));
                 }
 
                 s.Close();
@@ -1106,12 +1123,111 @@ namespace Muzicki_festival
                 s.Flush();
                 s.Close();
 
-                return new DogadjajView(id, db.Naziv, db.Tip, db.Opis, db.DatumPocetka, db.DatumKraja);
+                return new DogadjajView(id, db.Naziv, db.Tip, db.Opis, db.DatumPocetka, db.DatumKraja, db.Lokacija.Naziv);
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 return null;
+            }
+        }
+
+        public static IList<PosetilacView> VratiPosetioceDogadjaja(int dogadjajId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Dogadjaj d = s.Get<Dogadjaj>(dogadjajId);
+                if (d == null)
+                {
+                    return new List<PosetilacView>();
+                }
+
+                List<PosetilacView> posetilacViews = new List<PosetilacView>();
+                foreach (var u in d.Ulaznica)
+                {
+                    var p = new PosetilacView(u.KUPAC_ID.ID, u.KUPAC_ID.IME, u.KUPAC_ID.PREZIME, u.KUPAC_ID.EMAIL, u.KUPAC_ID.Telefon);
+                    p.UlaznicaTip = u.TIP_ULAZNICE;
+                    posetilacViews.Add(p);
+                }
+
+                return posetilacViews;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return new List<PosetilacView>();
+            }
+        }
+
+        public static IList<IzvodjacView> VratiSveIzvodjaceDogadjaja(int dogadjajId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Dogadjaj d = s.Get<Dogadjaj>(dogadjajId);
+                if (d == null)
+                {
+                    return new List<IzvodjacView>();
+                }
+
+                List<IzvodjacView> izvodjacViews = new List<IzvodjacView>();
+                foreach (var i in d.Izvodjaci)
+                {
+                    switch (i.TIP_IZVODJACA)
+                    {
+                        case IzvodjacTip.SOLO_UMETNIK:
+                            var u = i as Solo_Umetnik;
+                            izvodjacViews.Add(new Solo_umetnikView(u.ID, u.IME, u.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.Zanr, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA));
+                            break;
+                        case IzvodjacTip.BEND:
+                            var b = i as Bend;
+                            izvodjacViews.Add(new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.Zanr, b.BROJ_CLANOVA));
+                            break;
+                    }
+                }
+
+                return izvodjacViews;
+            }
+            catch (Exception e)
+            
+            {
+                MessageBox.Show(e.Message);
+                return new List<IzvodjacView>();
+            }
+        }
+
+        public static bool DodajIzvodjacaNaDogadjaj(int dogadjajId, int izvodjacId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Dogadjaj d = s.Get<Dogadjaj>(dogadjajId);
+                Izvodjac i = s.Get<Izvodjac>(izvodjacId);
+
+                if (d == null || i == null)
+                {
+                    return false;
+                }
+
+                if (d.Izvodjaci.Contains(i))
+                    return true;
+
+                d.Izvodjaci.Add(i);
+                i.Dogadjaji.Add(d);
+
+                s.Update(d);
+                s.Update(i);
+
+                s.Flush();
+                s.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
             }
         }
 

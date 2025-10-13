@@ -17,6 +17,7 @@ namespace Muzicki_festival.Forme
     public partial class FormaDogadjajDodaj : Form
     {
         private Dogadjaj dogadjajzaDodavanje;
+        public DogadjajView novDogadjaj = null;
 
         private Form parentform;
         public FormaDogadjajDodaj(Form caller,Dogadjaj dogadjaj)
@@ -53,6 +54,12 @@ namespace Muzicki_festival.Forme
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtGps.Text))
+            {
+                MessageBox.Show("Unesite GPS koordinate");
+                return;
+            }
+
             if (cmbTip.SelectedIndex == -1)
             {
                 MessageBox.Show("Odaberite tip događaja.");
@@ -65,7 +72,7 @@ namespace Muzicki_festival.Forme
                 return;
             }
 
-            if (dtpKraj.Value <= dtpPocetak.Value)
+            if (dtpKraj.Value < dtpPocetak.Value)
             {
                 MessageBox.Show("Datum kraja mora biti posle datuma početka.");
                 return;
@@ -86,7 +93,7 @@ namespace Muzicki_festival.Forme
                     break;
                 case TipLokacije.OTVORENA:
                     OtvorenaLokacijaView ov = lv as OtvorenaLokacijaView;
-                    ov = new OtvorenaLokacijaView(ov.Id, ov.Opis, ov.Naziv, ov.Gps_koordinate, ov.Kapacitet);
+                    lb = new OtvorenaLokacijaBasic(ov.Id, ov.Opis, ov.Naziv, ov.Gps_koordinate, ov.Kapacitet);
                     break;
                 case TipLokacije.KOMBINOVANA:
                     KombinovanaLokacijaView kv = lv as KombinovanaLokacijaView;
@@ -99,17 +106,30 @@ namespace Muzicki_festival.Forme
 
             DogadjajBasic db = new DogadjajBasic(0, txtNaziv.Text, (string)cmbTip.SelectedItem, txtOpis.Text, dtpPocetak.Value, dtpKraj.Value, lb, null);
 
+            DogadjajView novi = DTOManager.DodajDogadjaj(db);
+
+            if (novi != null)
+            {
+                this.DialogResult = DialogResult.OK;
+                novDogadjaj = novi;
+                this.Close();
+            }
+            else
+            {
+                this.DialogResult = DialogResult.No;
+                this.Close();
+            }
         }
 
         private void btnOtkazi_Click(object sender, EventArgs e)
         {
-            parentform.Show();
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
         private void btnDodajLokacija_Click(object sender, EventArgs e)
         {
-            FormaLokacija forma = new FormaLokacija(this);
+            FormaLokacijaDodaj forma = new FormaLokacijaDodaj();
             this.Hide();
             forma.ShowDialog();
             this.Show();

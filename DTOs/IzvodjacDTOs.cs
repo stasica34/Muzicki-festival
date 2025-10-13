@@ -67,8 +67,9 @@ namespace Muzicki_festival.DTOs
         public IzvodjacTip TipIzvodajaca;
 
         public MenadzerskaAgencijaBasic MenadzerskaAgencija;
+        public DogadjajBasic Dogadjaj;
 
-        public IzvodjacBasic(int id, string ime,string drzava_poreka, string email,string kontakt_osoba, string telefon, string zanr, IzvodjacTip tipIzvodjaca, MenadzerskaAgencijaBasic menadzerskaAgencija)
+        public IzvodjacBasic(int id, string ime,string drzava_poreka, string email,string kontakt_osoba, string telefon, string zanr, IzvodjacTip tipIzvodjaca, MenadzerskaAgencijaBasic menadzerskaAgencija, DogadjajBasic dogadjaj)
         {
             Id = id;
             Ime = ime;
@@ -79,6 +80,7 @@ namespace Muzicki_festival.DTOs
             TipIzvodajaca = tipIzvodjaca;
             MenadzerskaAgencija = menadzerskaAgencija;
             Zanr = zanr;
+            Dogadjaj = dogadjaj;
         }
     }
 
@@ -87,8 +89,8 @@ namespace Muzicki_festival.DTOs
         public string Svira_instrument;
         public string Tip_instrumenta;
 
-        public Solo_UmetnikBasic(int id, string ime, string drzava_poreka, string email, string kontakt_osoba, string telefon, string zanr, MenadzerskaAgencijaBasic menadzerskaAgencija, string svira_instrument, string tip_instrumenta)
-            :base(id, ime, drzava_poreka, email, kontakt_osoba, telefon, zanr, IzvodjacTip.SOLO_UMETNIK, menadzerskaAgencija)
+        public Solo_UmetnikBasic(int id, string ime, string drzava_poreka, string email, string kontakt_osoba, string telefon, string zanr, MenadzerskaAgencijaBasic menadzerskaAgencija, DogadjajBasic dogadjaj,string svira_instrument, string tip_instrumenta)
+            :base(id, ime, drzava_poreka, email, kontakt_osoba, telefon, zanr, IzvodjacTip.SOLO_UMETNIK, menadzerskaAgencija, dogadjaj)
         {
             Svira_instrument = svira_instrument;
             Tip_instrumenta = tip_instrumenta;
@@ -97,8 +99,8 @@ namespace Muzicki_festival.DTOs
 
     public class BendBasic : IzvodjacBasic
     {
-        public BendBasic(int id, string ime, string drzava_poreka, string email, string kontakt_osoba, string telefon, string zanr, MenadzerskaAgencijaBasic menadzerskaAgencija)
-            : base(id, ime, drzava_poreka, email, kontakt_osoba, telefon, zanr, IzvodjacTip.BEND, menadzerskaAgencija)
+        public BendBasic(int id, string ime, string drzava_poreka, string email, string kontakt_osoba, string telefon, string zanr, MenadzerskaAgencijaBasic menadzerskaAgencija, DogadjajBasic dogadjaj)
+            : base(id, ime, drzava_poreka, email, kontakt_osoba, telefon, zanr, IzvodjacTip.BEND, menadzerskaAgencija, dogadjaj)
         {
 
         }

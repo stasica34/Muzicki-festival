@@ -120,8 +120,6 @@ namespace Muzicki_festival.FormeDodatne
                     if (DTOManager.IzmeniLokaciju(o))
                     {
                         MessageBox.Show("Uspešno izmenjena lokacija.", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FormaLokacijaDodaj lokacijeTest = new FormaLokacijaDodaj();
-                        lokacijeTest.Show();
                         this.Close();
                     }
                     else
@@ -134,8 +132,6 @@ namespace Muzicki_festival.FormeDodatne
                     if (DTOManager.IzmeniLokaciju(z))
                     {
                         MessageBox.Show("Uspešno izmenjena lokacija.", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FormaLokacijaDodaj lokacijeTest = new FormaLokacijaDodaj();
-                        lokacijeTest.Show();
                         this.Close();
                     }
                     else
@@ -148,8 +144,6 @@ namespace Muzicki_festival.FormeDodatne
                     if (DTOManager.IzmeniLokaciju(k))
                     {
                         MessageBox.Show("Uspešno izmenjena lokacija.", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FormaLokacijaDodaj lokacijeTest = new FormaLokacijaDodaj();
-                        lokacijeTest.Show();
                         this.Close();
                     }
                     else

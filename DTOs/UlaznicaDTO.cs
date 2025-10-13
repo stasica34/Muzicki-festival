@@ -43,7 +43,7 @@ namespace Muzicki_festival.DTOs
         public List<DateTime> DatumiVazenja;
 
         public ViseDnevnaBasic(int id, float osnovnaCena, string nacinPlacanja, DateTime datumKupovine, DogadjajBasic dogadjaj, List<DateTime> datumiVazenja)
-            : base(id, osnovnaCena, nacinPlacanja, datumKupovine, TipUlaznice.JEDNODNEVNA, dogadjaj)
+            : base(id, osnovnaCena, nacinPlacanja, datumKupovine, TipUlaznice.VISEDNEVNA, dogadjaj)
         {
             DatumiVazenja = datumiVazenja;
         }
@@ -54,7 +54,7 @@ namespace Muzicki_festival.DTOs
         public List<string> Pogodnosti;
 
         public VIPBasic(int id, float osnovnaCena, string nacinPlacanja, DateTime datumKupovine, DogadjajBasic dogadjaj, List<string> pogodnosti)
-            : base(id, osnovnaCena, nacinPlacanja, datumKupovine, TipUlaznice.JEDNODNEVNA, dogadjaj)
+            : base(id, osnovnaCena, nacinPlacanja, datumKupovine, TipUlaznice.VIP, dogadjaj)
         {
             Pogodnosti = pogodnosti;
         }
@@ -65,7 +65,7 @@ namespace Muzicki_festival.DTOs
         public TipAkreditacije Tip;
 
         public AkreditacijaBasic(int id, float osnovnaCena, string nacinPlacanja, DateTime datumKupovine, DogadjajBasic dogadjaj, TipAkreditacije tip)
-             :base(id, osnovnaCena, nacinPlacanja, datumKupovine, TipUlaznice.JEDNODNEVNA, dogadjaj)
+             :base(id, osnovnaCena, nacinPlacanja, datumKupovine, TipUlaznice.AKREDITACIJA, dogadjaj)
         {
             Tip = tip;
         }

@@ -56,6 +56,7 @@
             this.cmd_Clan = new System.Windows.Forms.Button();
             this.Izvodjac = new System.Windows.Forms.Button();
             this.UlaznicaTest = new System.Windows.Forms.Button();
+            this.Dogadjaj = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmd_Akreditacija
@@ -353,11 +354,22 @@
             this.UlaznicaTest.UseVisualStyleBackColor = true;
             this.UlaznicaTest.Click += new System.EventHandler(this.UlaznicaTest_Click);
             // 
+            // Dogadjaj
+            // 
+            this.Dogadjaj.Location = new System.Drawing.Point(296, 204);
+            this.Dogadjaj.Name = "Dogadjaj";
+            this.Dogadjaj.Size = new System.Drawing.Size(90, 34);
+            this.Dogadjaj.TabIndex = 44;
+            this.Dogadjaj.Text = "Dogadjaj";
+            this.Dogadjaj.UseVisualStyleBackColor = true;
+            this.Dogadjaj.Click += new System.EventHandler(this.Dogadjaj_Click);
+            // 
             // GlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 348);
+            this.Controls.Add(this.Dogadjaj);
             this.Controls.Add(this.UlaznicaTest);
             this.Controls.Add(this.Izvodjac);
             this.Controls.Add(this.button1);
@@ -423,6 +435,7 @@
         private System.Windows.Forms.Button cmd_Clan;
         private System.Windows.Forms.Button Izvodjac;
         private System.Windows.Forms.Button UlaznicaTest;
+        private System.Windows.Forms.Button Dogadjaj;
     }
 }
 

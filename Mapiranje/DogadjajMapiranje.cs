@@ -23,7 +23,7 @@ namespace Muzicki_festival.Mapiranje
             //sequence - kroz sekvecnu direktno, ne kroz triger - najcesce 
             //Identity - autonumber za genrisanje surogat kljuceva
             //increment - nije bas najsjajnije rsenje
-            Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
+            Id(x => x.ID, "ID").GeneratedBy.Identity();
 
 
             //mapiranje svojstva
@@ -53,11 +53,10 @@ namespace Muzicki_festival.Mapiranje
                            //inverzija moze da bude na obe strane
                            //ali biramo tamo inverziju gde nam vise odgovara
             //mapiranje n:m sa ulaznicom
-            HasManyToMany(x => x.Ulaznica)
-                .Table("OMOGUCAVA_ULAZ_NA")
-                .ParentKeyColumn("DOGADJAJ_ID")
-                .ChildKeyColumn("ID_ULAZNICE")
-                .Cascade.All();
+            HasMany(x => x.Ulaznica)
+                .KeyColumn("DOGADJAJ_ID")
+                .Inverse()
+                .Cascade.All().LazyLoad();
         }
     }
 }

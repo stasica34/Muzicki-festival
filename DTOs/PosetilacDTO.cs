@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Muzicki_festival.Entiteti;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Muzicki_festival.DTOs
         public string Prezime;
         public string Email;
         public string Telefon;
+
+        public TipUlaznice UlaznicaTip { get; set; } // da ne menjam konstrukor valjda na jedno mesto treba ovaj podatak samo
     
         public PosetilacView(int id, string ime, string prezime, string email, string telefon)
         {

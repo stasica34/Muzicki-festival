@@ -146,11 +146,11 @@ namespace Muzicki_festival.Forme
 
         private void cmdDodaj_Click(object sender, EventArgs e)
         {
-            FormaPosetilacDodaj formaDodaj = new FormaPosetilacDodaj(this);
-            this.Hide();
-            formaDodaj.ShowDialog();
-            this.Show();
-            cmd_Ucitavanje_Click(null, null);
+           // FormaPosetilacDodaj formaDodaj = new FormaPosetilacDodaj(this);
+         //   this.Hide();
+           // formaDodaj.ShowDialog();
+           // this.Show();
+           // cmd_Ucitavanje_Click(null, null);
             //try
             //{
             //    ISession s = DataLayer.GetSession();

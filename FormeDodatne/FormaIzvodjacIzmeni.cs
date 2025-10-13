@@ -263,7 +263,7 @@ namespace Muzicki_festival.FormeDodatne
                 string svira = instrumentCheckbox.Checked ? "DA" : "NE";
                 string instrument = instrumentCheckbox.Checked ? instrumentTxt.Text : "";
 
-                Solo_UmetnikBasic sb = new Solo_UmetnikBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, txtZanr.Text, mb, svira, instrument);
+                Solo_UmetnikBasic sb = new Solo_UmetnikBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, txtZanr.Text, mb, null, svira, instrument);
 
                 if (DTOManager.IzmeniIzvodjaca(sb))
                 {
@@ -278,7 +278,7 @@ namespace Muzicki_festival.FormeDodatne
             }
             else
             {
-                BendBasic bend = new BendBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtZanr.Text, txtTelefon.Text, mb);
+                BendBasic bend = new BendBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtZanr.Text, txtTelefon.Text, mb, null);
 
                 if (DTOManager.IzmeniIzvodjaca(bend))
                 {
@@ -330,7 +330,7 @@ namespace Muzicki_festival.FormeDodatne
 
             BendView bv = izvodjacView as BendView;
 
-            BendBasic b = new BendBasic(bv.Id, bv.Ime, bv.Drzava_porekla, bv.Email, bv.Kontakt_osoba, bv.Telefon, txtZanr.Text, null);
+            BendBasic b = new BendBasic(bv.Id, bv.Ime, bv.Drzava_porekla, bv.Email, bv.Kontakt_osoba, bv.Telefon, txtZanr.Text, null, null);
             ClanBendaBasic cb = new ClanBendaBasic(0, ImeClana.Text, InstrumentClanaBenda.Text, txtUlogaClana.Text, b);
 
             ClanBendaView novi = DTOManager.DodajClanaBendu(cb);
@@ -364,7 +364,7 @@ namespace Muzicki_festival.FormeDodatne
 
             BendView bv = izvodjacView as BendView;
 
-            BendBasic b = new BendBasic(bv.Id, bv.Ime, bv.Drzava_porekla, bv.Email, bv.Kontakt_osoba, bv.Telefon, txtZanr.Text, null);
+            BendBasic b = new BendBasic(bv.Id, bv.Ime, bv.Drzava_porekla, bv.Email, bv.Kontakt_osoba, bv.Telefon, txtZanr.Text, null, null);
             ClanBendaBasic cb = new ClanBendaBasic(cv.Id, cv.Ime, cv.Instrument, cv.Uloga, b);
 
             if (DTOManager.ObrisiClana(cb))

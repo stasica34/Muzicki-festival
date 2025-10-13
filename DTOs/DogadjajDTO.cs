@@ -16,7 +16,9 @@ namespace Muzicki_festival.DTOs
         public DateTime DatumPocetka;
         public DateTime DatumKraja;
 
-        public DogadjajView(int id, string naziv, string tip, string opis, DateTime datumPocetka, DateTime datumKraja)
+        public string LokacijaNaziv;
+
+        public DogadjajView(int id, string naziv, string tip, string opis, DateTime datumPocetka, DateTime datumKraja, string lokacijaNaziv)
         {
             Id = id;
             Naziv = naziv;
@@ -24,6 +26,7 @@ namespace Muzicki_festival.DTOs
             Opis = opis;
             DatumPocetka = datumPocetka;
             DatumKraja = datumKraja;
+            LokacijaNaziv = lokacijaNaziv;
         }
     }
 

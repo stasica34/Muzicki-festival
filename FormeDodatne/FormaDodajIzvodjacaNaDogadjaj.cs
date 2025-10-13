@@ -1,38 +1,37 @@
 ﻿using Muzicki_festival.DTOs;
 using Muzicki_festival.Entiteti;
 using Muzicki_festival.Forme;
-using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.ServiceModel.Channels;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace Muzicki_festival.FormeDodatne
 {
-    public partial class FormaIzvodjacDodaj : Form
+    public partial class FormaDodajIzvodjacaNaDogadjaj : Form
     {
-        private Form parentform;
-        private IList<IzvodjacView> izvodjacViews;
-        private IList<MenadzerskaAgencijaView> menadzerskaAgencijaViews;
+        private DogadjajBasic dogadjajBasic;
+        private Form parent;
         private IList<ClanBendaView> clanBendaViews;
         private IList<string> vokalneSposobnosti;
         private IList<string> zahtevi;
+        private IList<IzvodjacView> izvodjacViews;
         private int idSelektovan = -1;
-        private readonly DogadjajBasic dogadjaj;
 
-        public FormaIzvodjacDodaj(Form caller, DogadjajBasic d)
+        public FormaDodajIzvodjacaNaDogadjaj(Form parent, DogadjajBasic dogadjaj)
         {
             InitializeComponent();
-            parentform = caller;
-            izvodjacViews = DTOManager.VratiSveIzvodjace();
-            menadzerskaAgencijaViews = DTOManager.VratiSveMenadzerskeAgencije();
+            this.parent = parent;
+            dogadjajBasic = dogadjaj;
+
             clanBendaViews = new List<ClanBendaView>();
-            dogadjaj = d;
+            izvodjacViews = DTOManager.VratiSveIzvodjace();
 
             InitTabeluIzvodjaci();
             PopuniTabeluIzvodjaci();
@@ -41,7 +40,39 @@ namespace Muzicki_festival.FormeDodatne
             InitTabeluSposobnosti();
             InitTabeluZahtevi();
 
-            PopuniIzborMenadzerske();
+            LabelaNazivDogadjaj.Text = dogadjaj.Naziv;
+        }
+
+        private void TabelaIzvodjaci_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex <= TabelaIzvodjaci.Rows.Count)
+            {
+                var row = TabelaIzvodjaci.Rows[e.RowIndex];
+                idSelektovan = (int)row.Cells["ID"].Value;
+
+                IzvodjacView iz = izvodjacViews.Where(i => i.Id == idSelektovan).FirstOrDefault();
+                if (iz != null && iz.tipIzvodajaca == IzvodjacTip.BEND)
+                {
+                    TabelaVokalneSposobnosti.Visible = false;
+                    GrupaDodatnaTabela.Text = "Clanovi benda";
+                    TabelaClanovi.Visible = true;
+
+                    clanBendaViews = DTOManager.VratiClanoveBenda(iz.Id);
+                    PopuniTabeluClanovi();
+                }
+                else
+                {
+                    TabelaClanovi.Visible = false;
+                    GrupaDodatnaTabela.Text = "Vokalne sposobnosti";
+                    TabelaVokalneSposobnosti.Visible = true;
+
+                    vokalneSposobnosti = DTOManager.VratiVokalneSposobnosti(iz.Id);
+                    PopuniTabeluSposobnosti();
+                }
+
+                zahtevi = DTOManager.VratiTehnickeZahteve(iz.Id);
+                PopuniTabeluZahtevi();
+            }
         }
 
         private void InitTabeluIzvodjaci()
@@ -176,14 +207,6 @@ namespace Muzicki_festival.FormeDodatne
             }
         }
 
-        private void PopuniIzborMenadzerske()
-        {
-            foreach (var m in menadzerskaAgencijaViews)
-            {
-                izborMenadzerske.Items.Add(m);
-            }
-        }
-
         private void PopuniTabeluClanovi()
         {
             TabelaClanovi.Rows.Clear();
@@ -211,221 +234,34 @@ namespace Muzicki_festival.FormeDodatne
             }
         }
 
-        private void FormaIzvodjacDodaj_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void btnSacuvaj_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtIme.Text))
-            {
-                MessageBox.Show("Unesite ime izvodjaca.");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtDrzavaPorekla.Text))
-            {
-                MessageBox.Show("Unesite drzavu porekla izvodjaca.");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                MessageBox.Show("Unesite email izvodjaca.");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtKontaktOsoba.Text))
-            {
-                MessageBox.Show("Unesite kontakt osobu izvodjaca.");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtTelefon.Text))
-            {
-                MessageBox.Show("Unesite telefon izvodjaca.");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(ZanrTxt.Text))
-            {
-                MessageBox.Show("Unesite zanr izvodjaca.");
-                return;
-            }
-
-            if (izborMenadzerske.SelectedItem == null)
-            {
-                MessageBox.Show("Izaberite menadzersku agenciju.");
-                return;
-            }
-
-            MenadzerskaAgencijaView ma = (MenadzerskaAgencijaView)izborMenadzerske.SelectedItem;
-            MenadzerskaAgencijaBasic mb = new MenadzerskaAgencijaBasic(ma.ID, ma.Naziv, ma.Adresa, ma.KontaktOsoba, null);
-
-            if (BendRadio.Checked)
-            {
-                BendBasic novi = new BendBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, ZanrTxt.Text, mb, dogadjaj);
-
-                IzvodjacView dodat = DTOManager.DodajIzvodjaca(novi);
-
-                if (dodat != null)
-                {
-                    MessageBox.Show($"Uspesno dodato {dodat.Id} {dodat.Ime}");
-                    izvodjacViews.Add(dodat);
-                    PopuniTabeluIzvodjaci();
-                }
-            }
-            else if (SoloUmetnikRadio.Checked)
-            {
-                string svira = sviraCheckBox.Checked ? "DA" : "NE";
-
-                if (sviraCheckBox.Checked && string.IsNullOrEmpty(instrumentTxt.Text))
-                {
-                    MessageBox.Show("Unesite instrument");
-                    return;
-                }
-
-                Solo_UmetnikBasic su = new Solo_UmetnikBasic(0, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, ZanrTxt.Text, mb, dogadjaj, svira, instrumentTxt.Text);
-
-                IzvodjacView dodat = DTOManager.DodajIzvodjaca(su);
-
-                if (dodat != null)
-                {
-                    MessageBox.Show($"Uspesno dodato {dodat.Id} {dodat.Ime}");
-                    izvodjacViews.Add(dodat);
-                    PopuniTabeluIzvodjaci();
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    this.DialogResult = DialogResult.No;
-                    this.Close();
-                }
-            }
-        }
-        private void btnOtkazi_Click(object sender, EventArgs e)
-        {
-            parentform.Show();
-            this.Close();
-        }
-
-        private void btnDodajMenadzersku_Click(object sender, EventArgs e)
-        {
-            FormaMenadzerskaAgencijaDodavanje forma = new FormaMenadzerskaAgencijaDodavanje(this);
-            this.Hide();
-            forma.ShowDialog();
-            this.Show();
-            UcitajMenadzerske();
-        }
-        private void UcitajMenadzerske()
-        {
-            
-        }
-
-        private void cmdIzmeni_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void SoloUmetnikRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            if (BendRadio.Checked)
-            {
-                DodatniPodaciGrupa.Enabled = false;
-            }
-            else if (SoloUmetnikRadio.Checked)
-            {
-                DodatniPodaciGrupa.Enabled = true;
-            }
-        }
-
-        private void BendRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            if (BendRadio.Checked)
-            {
-                DodatniPodaciGrupa.Enabled = false;
-            }
-            else if (SoloUmetnikRadio.Checked)
-            {
-                DodatniPodaciGrupa.Enabled = true;
-            }
-        }
-
-        private void sviraCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (sviraCheckBox.Checked)
-                instrumentTxt.Enabled = true;
-            else
-            {
-                instrumentTxt.Enabled = false;
-                instrumentTxt.Text = "";
-            }
-        }
-
-        private void izborMenadzerske_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void Izmeni_Click(object sender, EventArgs e)
+        private void DugmeDodajIzvodjaca_Click(object sender, EventArgs e)
         {
             if (idSelektovan == -1)
             {
-                MessageBox.Show("Izaberite izvodjaca");
+                MessageBox.Show("Prvo izaberite izvodjaca duplim klikom na vrstu u tabeli");
                 return;
             }
 
-            FormaIzvodjacIzmeni formaIzmeni = new FormaIzvodjacIzmeni(this, idSelektovan);
-            formaIzmeni.Show();
+            if (DTOManager.DodajIzvodjacaNaDogadjaj(dogadjajBasic.Id, idSelektovan))
+            {
+                MessageBox.Show("Uspesno dodat izvodjac!");
+                return;
+            }
+
+            MessageBox.Show("Greska pri dodavanju izvodjaca na dogadjaj!");
+        }
+
+        private void RadSaIzvodjacimaDugme_Click(object sender, EventArgs e)
+        {
+            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj(this, dogadjajBasic);
             this.Hide();
-        }
-
-        private void TabelaIzvodjaci_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.RowIndex <= TabelaIzvodjaci.Rows.Count)
-            {
-                var row = TabelaIzvodjaci.Rows[e.RowIndex];
-                idSelektovan = (int)row.Cells["ID"].Value;
-
-                IzvodjacView iz = izvodjacViews.Where(i => i.Id == idSelektovan).FirstOrDefault();
-                if (iz != null && iz.tipIzvodajaca == IzvodjacTip.BEND)
-                {
-                    TabelaVokalneSposobnosti.Visible = false;
-                    GrupaDodatnaTabela.Text = "Clanovi benda";
-                    TabelaClanovi.Visible = true;
-
-                    clanBendaViews = DTOManager.VratiClanoveBenda(iz.Id);
-                    PopuniTabeluClanovi();
-                }
-                else
-                {
-                    TabelaClanovi.Visible = false;
-                    GrupaDodatnaTabela.Text = "Vokalne sposobnosti";
-                    TabelaVokalneSposobnosti.Visible = true;
-
-                    vokalneSposobnosti = DTOManager.VratiVokalneSposobnosti(iz.Id);
-                    PopuniTabeluSposobnosti();
-                }
-
-                zahtevi = DTOManager.VratiTehnickeZahteve(iz.Id);
-                PopuniTabeluZahtevi();
-            }
-        }
-
-        private void FormaIzvodjacDodaj_VisibleChanged(object sender, EventArgs e)
-        {
-            if (this.Visible)
-            {
-                izvodjacViews = DTOManager.VratiSveIzvodjace();
-                PopuniTabeluIzvodjaci();
-
-                if (clanBendaViews != null)
-                {
-                    clanBendaViews.Clear();
-                    PopuniTabeluClanovi();
-                }
-            }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            forma.ShowDialog();
+            this.Show();
         }
     }
 }

@@ -36,7 +36,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelaCena = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.nudCena = new System.Windows.Forms.NumericUpDown();
+            this.txtCena = new System.Windows.Forms.NumericUpDown();
             this.cmbPlacanje = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbTip = new System.Windows.Forms.ComboBox();
@@ -64,7 +64,7 @@
             this.TabelaPogodnosti = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCena)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCena)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.InputJednodnevna.SuspendLayout();
             this.InputVisednevna.SuspendLayout();
@@ -147,7 +147,7 @@
             this.tableLayoutPanel1.Controls.Add(this.labelNaziv, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dtpDatum, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.nudCena, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtCena, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.cmbPlacanje, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.cmbTip, 1, 3);
@@ -186,19 +186,19 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Nacin placanja:";
             // 
-            // nudCena
+            // txtCena
             // 
-            this.nudCena.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nudCena.Location = new System.Drawing.Point(326, 50);
-            this.nudCena.Margin = new System.Windows.Forms.Padding(2);
-            this.nudCena.Maximum = new decimal(new int[] {
+            this.txtCena.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCena.Location = new System.Drawing.Point(326, 50);
+            this.txtCena.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCena.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.nudCena.Name = "nudCena";
-            this.nudCena.Size = new System.Drawing.Size(97, 20);
-            this.nudCena.TabIndex = 16;
+            this.txtCena.Name = "txtCena";
+            this.txtCena.Size = new System.Drawing.Size(97, 20);
+            this.txtCena.TabIndex = 16;
             // 
             // cmbPlacanje
             // 
@@ -516,7 +516,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCena)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCena)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.InputJednodnevna.ResumeLayout(false);
             this.InputJednodnevna.PerformLayout();
@@ -542,7 +542,7 @@
         private System.Windows.Forms.DateTimePicker dtpDatum;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label labelaCena;
-        private System.Windows.Forms.NumericUpDown nudCena;
+        private System.Windows.Forms.NumericUpDown txtCena;
         private System.Windows.Forms.ComboBox cmbTip;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;

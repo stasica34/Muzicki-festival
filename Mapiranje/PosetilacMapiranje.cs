@@ -13,7 +13,7 @@ namespace Muzicki_festival.Mapiranje
         public PosetilacMapiranje()
         {
             Table("POSETILAC");
-            Id(x => x.ID, "ID").GeneratedBy.Sequence("POSETILAC_PK");
+            Id(x => x.ID, "ID").GeneratedBy.Identity();
             Map(x => x.IME, "IME").Not.Nullable();
             Map(x => x.PREZIME, "PREZIME").Not.Nullable();
             Map(x => x.EMAIL, "EMAIL").Not.Nullable();

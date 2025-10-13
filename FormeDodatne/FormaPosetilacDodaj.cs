@@ -9,15 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
+using Muzicki_festival.DTOs;
 namespace Muzicki_festival.FormeDodatne
 {
     public partial class FormaPosetilacDodaj : Form
     {
         private Form parentForm;
-        public FormaPosetilacDodaj(Form parentForm)
+        private readonly DogadjajView Dogadjaj;
+        private UlaznicaBasic ulaznica = null;
+
+        public FormaPosetilacDodaj(Form parentForm, DogadjajView dogadjaj)
         {
             InitializeComponent();
             this.parentForm = parentForm;
+            Dogadjaj = dogadjaj;
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
@@ -32,37 +37,52 @@ namespace Muzicki_festival.FormeDodatne
                 MessageBox.Show("Unesite prezime posetioca.");
                 return;
             }
-
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 MessageBox.Show("Unesite email posetioca.");
                 return;
             }
-            ISession s = DataLayer.GetSession();
-            Posetilac posetilac = new Posetilac
+            if (ulaznica == null)
             {
-                IME = txtIme.Text,
-                PREZIME = txtPrezime.Text,
-                EMAIL = txtEmail.Text
-            };
-            s.Save(posetilac);
-            s.Flush();
-            s.Close();
-            MessageBox.Show("Posetilac je uspešno dodat.");
-            parentForm.Show();
-            this.Close();
+                MessageBox.Show("Dodajte ulaznicu za korisnika!");
+                return;
+            }
 
+            PosetilacBasic pb = new PosetilacBasic(0, txtIme.Text, txtPrezime.Text, txtEmail.Text, txtTelefon.Text, ulaznica);
+            
+            if (DTOManager.DodajPosetioca(pb) != null)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                this.DialogResult = DialogResult.No;
+                this.Close();
+            }
         }
 
         private void btnOtkazi_Click(object sender, EventArgs e)
         {
-            parentForm.Show();
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
         private void DugmeDodajUlaznicu_Click(object sender, EventArgs e)
         {
-            
+            DogadjajBasic db = new DogadjajBasic(Dogadjaj.Id, Dogadjaj.Naziv, Dogadjaj.Tip, Dogadjaj.Opis, Dogadjaj.DatumPocetka, Dogadjaj.DatumKraja, null, null);
+
+            FormaUlazniceDodaj forma = new FormaUlazniceDodaj(this, db);
+            DialogResult dr = forma.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                ulaznica = forma.UlaznicaBasicIzlaz;
+            }
+            else if (dr == DialogResult.No)
+            {
+                MessageBox.Show("Greska");
+            }
         }
     }
 }

@@ -26,6 +26,11 @@ namespace Muzicki_festival.DTOs
             Kapacitet = kapacitet;
             TipLokacije = tipLokacije;
         }
+
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 
     public class ZatvorenaLokacijaView : LokacijaView

@@ -244,8 +244,9 @@ namespace Muzicki_festival.Forme
             }
 
             IzmenaLokacije izmena = new IzmenaLokacije(idSelektovan);
-            izmena.Show();
-            this.Close();
+            this.Hide();
+            izmena.ShowDialog();
+            this.Show();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -150,6 +150,12 @@
     <Compile Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.Designer.cs">
       <DependentUpon>FormaAgencijaOrganizatorIzmeni.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormeDodatne\FormaDodajIzvodjacaNaDogadjaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaDodajIzvodjacaNaDogadjaj.Designer.cs">
+      <DependentUpon>FormaDodajIzvodjacaNaDogadjaj.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormeDodatne\FormaGrupaDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.resx">
       <DependentUpon>FormaAgencijaOrganizatorIzmeni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaDodajIzvodjacaNaDogadjaj.resx">
+      <DependentUpon>FormaDodajIzvodjacaNaDogadjaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaGrupaDodaj.resx">
       <DependentUpon>FormaGrupaDodaj.cs</DependentUpon>
