@@ -20,7 +20,10 @@ namespace Muzicki_festival.Forme
 
         private void cmd_Izvodjac_Click(object sender, EventArgs e)
         {
-
+            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj();
+            this.Hide();
+            forma.ShowDialog();
+            this.Show();
         }
 
         private void cmd_Dogadjaji_Click(object sender, EventArgs e)

@@ -64,11 +64,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.GrupaDodatnaTabela = new System.Windows.Forms.GroupBox();
-            this.TabelaClanovi = new System.Windows.Forms.DataGridView();
             this.TabelaVokalneSposobnosti = new System.Windows.Forms.DataGridView();
+            this.TabelaClanovi = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TabelaZahtevi = new System.Windows.Forms.DataGridView();
+            this.DugmeObrisi = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -81,8 +82,8 @@
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.GrupaDodatnaTabela.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TabelaClanovi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabelaVokalneSposobnosti)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaClanovi)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabelaZahtevi)).BeginInit();
@@ -296,7 +297,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(373, 32);
             this.tableLayoutPanel3.TabIndex = 18;
             // 
@@ -458,16 +459,18 @@
             this.TabelaIzvodjaci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TabelaIzvodjaci.Location = new System.Drawing.Point(3, 3);
             this.TabelaIzvodjaci.Name = "TabelaIzvodjaci";
+            this.tableLayoutPanel7.SetRowSpan(this.TabelaIzvodjaci, 2);
             this.TabelaIzvodjaci.Size = new System.Drawing.Size(595, 144);
             this.TabelaIzvodjaci.TabIndex = 5;
             this.TabelaIzvodjaci.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaIzvodjaci_CellClick);
             // 
             // Izmeni
             // 
-            this.Izmeni.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Izmeni.Location = new System.Drawing.Point(604, 118);
+            this.Izmeni.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.Izmeni.Enabled = false;
+            this.Izmeni.Location = new System.Drawing.Point(604, 3);
             this.Izmeni.Name = "Izmeni";
-            this.Izmeni.Size = new System.Drawing.Size(61, 29);
+            this.Izmeni.Size = new System.Drawing.Size(61, 69);
             this.Izmeni.TabIndex = 6;
             this.Izmeni.Text = "Izmeni";
             this.Izmeni.UseVisualStyleBackColor = true;
@@ -498,12 +501,14 @@
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel7.Controls.Add(this.DugmeObrisi, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.TabelaIzvodjaci, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.Izmeni, 1, 0);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(12, 436);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(668, 150);
             this.tableLayoutPanel7.TabIndex = 21;
             // 
@@ -518,14 +523,6 @@
             this.GrupaDodatnaTabela.TabStop = false;
             this.GrupaDodatnaTabela.Text = "Clanovi benda";
             // 
-            // TabelaClanovi
-            // 
-            this.TabelaClanovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TabelaClanovi.Location = new System.Drawing.Point(13, 22);
-            this.TabelaClanovi.Name = "TabelaClanovi";
-            this.TabelaClanovi.Size = new System.Drawing.Size(152, 103);
-            this.TabelaClanovi.TabIndex = 6;
-            // 
             // TabelaVokalneSposobnosti
             // 
             this.TabelaVokalneSposobnosti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -533,6 +530,14 @@
             this.TabelaVokalneSposobnosti.Name = "TabelaVokalneSposobnosti";
             this.TabelaVokalneSposobnosti.Size = new System.Drawing.Size(159, 103);
             this.TabelaVokalneSposobnosti.TabIndex = 7;
+            // 
+            // TabelaClanovi
+            // 
+            this.TabelaClanovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TabelaClanovi.Location = new System.Drawing.Point(13, 22);
+            this.TabelaClanovi.Name = "TabelaClanovi";
+            this.TabelaClanovi.Size = new System.Drawing.Size(152, 103);
+            this.TabelaClanovi.TabIndex = 6;
             // 
             // tableLayoutPanel8
             // 
@@ -568,6 +573,18 @@
             this.TabelaZahtevi.TabIndex = 0;
             this.TabelaZahtevi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // DugmeObrisi
+            // 
+            this.DugmeObrisi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.DugmeObrisi.Enabled = false;
+            this.DugmeObrisi.Location = new System.Drawing.Point(604, 78);
+            this.DugmeObrisi.Name = "DugmeObrisi";
+            this.DugmeObrisi.Size = new System.Drawing.Size(61, 69);
+            this.DugmeObrisi.TabIndex = 7;
+            this.DugmeObrisi.Text = "Obrisi";
+            this.DugmeObrisi.UseVisualStyleBackColor = true;
+            this.DugmeObrisi.Click += new System.EventHandler(this.DugmeObrisi_Click);
+            // 
             // FormaIzvodjacDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,8 +616,8 @@
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.GrupaDodatnaTabela.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TabelaClanovi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabelaVokalneSposobnosti)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaClanovi)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TabelaZahtevi)).EndInit();
@@ -651,5 +668,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView TabelaZahtevi;
+        private System.Windows.Forms.Button DugmeObrisi;
     }
 }

@@ -156,22 +156,27 @@ namespace Muzicki_festival
             }
         }
 
-        public static void ObrisiIzvodjaca(int id)
+        public static bool ObrisiIzvodjaca(int id)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
                 Izvodjac i = s.Get<Izvodjac>(id);
-                if (i != null)
-                {
-                    s.Delete(i);
-                    s.Flush();
-                }
+                
+                if (i==null)
+                    return false;
+                
+                s.Delete(i);
+                s.Flush();
+                
                 s.Close();
+
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return false;
             }
         }
 

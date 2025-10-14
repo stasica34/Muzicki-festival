@@ -300,13 +300,14 @@ namespace Muzicki_festival.Forme
             }
 
             DogadjajBasic db = new DogadjajBasic(dv.Id, dv.Naziv, dv.Tip, dv.Opis, dv.DatumPocetka, dv.DatumPocetka, null, null);
-            FormaDodajIzvodjacaNaDogadjaj forma = new FormaDodajIzvodjacaNaDogadjaj(this, db);
+            FormaDodajIzvodjacaNaDogadjaj forma = new FormaDodajIzvodjacaNaDogadjaj(db);
 
             DialogResult dr = forma.ShowDialog();
 
             if (dr == DialogResult.OK)
             {
                 MessageBox.Show("Uspesno dodat izvodjac");
+                return;
             }
             else if (dr == DialogResult.No)
             {

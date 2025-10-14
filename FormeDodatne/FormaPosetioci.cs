@@ -29,6 +29,9 @@ namespace Muzicki_festival.FormeDodatne
 
             InitTabeluGrupe();
             InitTabeluClanovi();
+
+            MessageBox.Show("Ovde je moguc pregled, izmena i brisanje posetioca. Dodavnje se vrsi preko forme za dogadjaje",
+                "Napoemena", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
         }
 
         private void InitTabeluPosetioci()
@@ -354,6 +357,11 @@ namespace Muzicki_festival.FormeDodatne
                 PosetilacView obrisan = posetilacViews.Where(p => p.Id == idSelektovan).FirstOrDefault();
                 posetilacViews.Remove(obrisan);
                 PopuniTabeluPosetioci();
+
+                LabelaCena.Text = "";
+                LabelaDatumKupovine.Text = "";
+                LabelaNacin.Text = "";
+                LabelaTip.Text = "";
             }
         }
     }

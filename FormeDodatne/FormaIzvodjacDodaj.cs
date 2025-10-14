@@ -16,7 +16,6 @@ namespace Muzicki_festival.FormeDodatne
 {
     public partial class FormaIzvodjacDodaj : Form
     {
-        private Form parentform;
         private IList<IzvodjacView> izvodjacViews;
         private IList<MenadzerskaAgencijaView> menadzerskaAgencijaViews;
         private IList<ClanBendaView> clanBendaViews;
@@ -26,10 +25,9 @@ namespace Muzicki_festival.FormeDodatne
 
         public IzvodjacView NoviIzvodjac = null;
 
-        public FormaIzvodjacDodaj(Form caller)
+        public FormaIzvodjacDodaj()
         {
             InitializeComponent();
-            parentform = caller;
             izvodjacViews = DTOManager.VratiSveIzvodjace();
             menadzerskaAgencijaViews = DTOManager.VratiSveMenadzerskeAgencije();
             clanBendaViews = new List<ClanBendaView>();
@@ -291,9 +289,7 @@ namespace Muzicki_festival.FormeDodatne
                     MessageBox.Show($"Uspesno dodato {dodat.Id} {dodat.Ime}");
                     izvodjacViews.Add(dodat);
                     PopuniTabeluIzvodjaci();
-                    this.DialogResult = DialogResult.OK;
                     NoviIzvodjac = dodat;
-                    this.Close();
                 }
                 else
                 {
@@ -304,7 +300,6 @@ namespace Muzicki_festival.FormeDodatne
         }
         private void btnOtkazi_Click(object sender, EventArgs e)
         {
-            parentform.Show();
             this.Close();
         }
 
@@ -409,6 +404,9 @@ namespace Muzicki_festival.FormeDodatne
 
                 zahtevi = DTOManager.VratiTehnickeZahteve(iz.Id);
                 PopuniTabeluZahtevi();
+
+                DugmeObrisi.Enabled = true;
+                Izmeni.Enabled = true;
             }
         }
 
@@ -429,7 +427,42 @@ namespace Muzicki_festival.FormeDodatne
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
 
+        private void DugmeObrisi_Click(object sender, EventArgs e)
+        {
+            if (idSelektovan == -1)
+            {
+                MessageBox.Show("Izaberite izvodjaca");
+                return;
+            }
+
+            if (MessageBox.Show(
+                "Da li ste sigurni da želite da obrišete izvođača, ovo je nepovratna radnja!",
+                "Potvrda",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+            {
+                return;
+            }
+
+            if (DTOManager.ObrisiIzvodjaca(idSelektovan))
+            {
+                MessageBox.Show("Uspesno obrisan izvodjac!");
+
+                var obrisan = izvodjacViews.Where(i => i.Id == idSelektovan).FirstOrDefault();
+                izvodjacViews.Remove(obrisan);
+
+                PopuniTabeluIzvodjaci();
+                clanBendaViews.Clear();
+                vokalneSposobnosti.Clear();
+                zahtevi.Clear();
+                PopuniTabeluClanovi();
+                PopuniTabeluSposobnosti();
+                PopuniTabeluZahtevi();
+                idSelektovan = -1;
+                DugmeObrisi.Enabled = false;
+                Izmeni.Enabled = false;
+            }
         }
     }
 }

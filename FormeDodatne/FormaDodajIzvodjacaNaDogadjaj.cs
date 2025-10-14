@@ -17,17 +17,15 @@ namespace Muzicki_festival.FormeDodatne
     public partial class FormaDodajIzvodjacaNaDogadjaj : Form
     {
         private DogadjajBasic dogadjajBasic;
-        private Form parent;
         private IList<ClanBendaView> clanBendaViews;
         private IList<string> vokalneSposobnosti;
         private IList<string> zahtevi;
         private IList<IzvodjacView> izvodjacViews;
         private int idSelektovan = -1;
 
-        public FormaDodajIzvodjacaNaDogadjaj(Form parent, DogadjajBasic dogadjaj)
+        public FormaDodajIzvodjacaNaDogadjaj(DogadjajBasic dogadjaj)
         {
             InitializeComponent();
-            this.parent = parent;
             dogadjajBasic = dogadjaj;
 
             clanBendaViews = new List<ClanBendaView>();
@@ -249,22 +247,24 @@ namespace Muzicki_festival.FormeDodatne
 
             if (DTOManager.DodajIzvodjacaNaDogadjaj(dogadjajBasic.Id, idSelektovan))
             {
+                this.DialogResult = DialogResult.OK;
                 MessageBox.Show("Uspesno dodat izvodjac!");
+                this.Close();
                 return;
             }
 
+            this.DialogResult = DialogResult.No;
             MessageBox.Show("Greska pri dodavanju izvodjaca na dogadjaj!");
+            this.Close();
         }
 
         private void RadSaIzvodjacimaDugme_Click(object sender, EventArgs e)
         {
-            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj(this);
+            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj();
             this.Hide();
-            if (forma.ShowDialog() == DialogResult.OK)
-            {
-                izvodjacViews.Add(forma.NoviIzvodjac);
-                PopuniTabeluIzvodjaci();
-            }
+            forma.ShowDialog();
+            izvodjacViews = DTOManager.VratiSveIzvodjace();
+            PopuniTabeluIzvodjaci();
             this.Show();
         }
     }
