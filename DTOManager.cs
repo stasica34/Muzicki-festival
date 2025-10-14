@@ -1722,6 +1722,75 @@ namespace Muzicki_festival
             }
         }
 
+        public static bool IzmeniGrupu(GrupaBasic gb)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Grupa g = s.Get<Grupa>(gb.Id);
+
+                if (g == null)
+                    return false;
+
+                g.NAZIV = gb.Naziv;
+
+                if (gb.Agencija != null && (g.AgencijaID.ID != gb.Agencija.Id))
+                {
+                    AgencijaOrganizator ag = s.Get<AgencijaOrganizator>(g.AgencijaID.ID);
+                    ag.Grupe.Remove(g);
+                    s.Update(ag);
+                    s.Flush();
+
+                    AgencijaOrganizator nova = s.Get<AgencijaOrganizator>(gb.Agencija.Id);
+                    if (nova == null)
+                    {
+                        s.Close();
+                        return false;
+                    }
+
+                    nova.Grupe.Add(g);
+                    g.AgencijaID = nova;
+
+                    s.Update(nova);
+                    s.Flush();
+                }
+
+                s.Update(g);
+                s.Flush();
+                
+                s.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+        
+        public static bool ObrisiGrupu(int grupaId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Grupa g = s.Get<Grupa>(grupaId);
+                if (g == null)
+                    return false;
+
+                s.Delete(g);
+                s.Flush();
+                s.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+
         #endregion
     }
 }

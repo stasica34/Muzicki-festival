@@ -30,12 +30,13 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.MenadzerkseAgencije = new System.Windows.Forms.Button();
             this.cmd_Dogadjaji = new System.Windows.Forms.Button();
             this.cmd_Izvodjac = new System.Windows.Forms.Button();
             this.DugmeLokacije = new System.Windows.Forms.Button();
             this.Posetilac = new System.Windows.Forms.Button();
             this.AgencijeOrganizatori = new System.Windows.Forms.Button();
-            this.MenadzerkseAgencije = new System.Windows.Forms.Button();
+            this.Grupe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -61,6 +62,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.Grupe, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.MenadzerkseAgencije, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.cmd_Dogadjaji, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmd_Izvodjac, 0, 1);
@@ -69,20 +71,31 @@
             this.tableLayoutPanel1.Controls.Add(this.AgencijeOrganizatori, 0, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66733F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66733F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66733F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66567F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66567F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 268);
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28587F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28587F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28587F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28445F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28445F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 334);
             this.tableLayoutPanel1.TabIndex = 28;
+            // 
+            // MenadzerkseAgencije
+            // 
+            this.MenadzerkseAgencije.Location = new System.Drawing.Point(3, 238);
+            this.MenadzerkseAgencije.Name = "MenadzerkseAgencije";
+            this.MenadzerkseAgencije.Size = new System.Drawing.Size(138, 38);
+            this.MenadzerkseAgencije.TabIndex = 31;
+            this.MenadzerkseAgencije.Text = "Menadzerske";
+            this.MenadzerkseAgencije.UseVisualStyleBackColor = true;
+            this.MenadzerkseAgencije.Click += new System.EventHandler(this.MenadzerkseAgencije_Click);
             // 
             // cmd_Dogadjaji
             // 
             this.cmd_Dogadjaji.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmd_Dogadjaji.Location = new System.Drawing.Point(2, 2);
+            this.cmd_Dogadjaji.Location = new System.Drawing.Point(2, 3);
             this.cmd_Dogadjaji.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Dogadjaji.Name = "cmd_Dogadjaji";
             this.cmd_Dogadjaji.Size = new System.Drawing.Size(140, 40);
@@ -94,7 +107,7 @@
             // cmd_Izvodjac
             // 
             this.cmd_Izvodjac.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmd_Izvodjac.Location = new System.Drawing.Point(2, 46);
+            this.cmd_Izvodjac.Location = new System.Drawing.Point(2, 50);
             this.cmd_Izvodjac.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Izvodjac.Name = "cmd_Izvodjac";
             this.cmd_Izvodjac.Size = new System.Drawing.Size(140, 40);
@@ -106,7 +119,7 @@
             // DugmeLokacije
             // 
             this.DugmeLokacije.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DugmeLokacije.Location = new System.Drawing.Point(3, 91);
+            this.DugmeLokacije.Location = new System.Drawing.Point(3, 98);
             this.DugmeLokacije.Name = "DugmeLokacije";
             this.DugmeLokacije.Size = new System.Drawing.Size(138, 38);
             this.DugmeLokacije.TabIndex = 28;
@@ -116,7 +129,7 @@
             // 
             // Posetilac
             // 
-            this.Posetilac.Location = new System.Drawing.Point(3, 135);
+            this.Posetilac.Location = new System.Drawing.Point(3, 144);
             this.Posetilac.Name = "Posetilac";
             this.Posetilac.Size = new System.Drawing.Size(138, 38);
             this.Posetilac.TabIndex = 29;
@@ -126,7 +139,7 @@
             // 
             // AgencijeOrganizatori
             // 
-            this.AgencijeOrganizatori.Location = new System.Drawing.Point(3, 179);
+            this.AgencijeOrganizatori.Location = new System.Drawing.Point(3, 191);
             this.AgencijeOrganizatori.Name = "AgencijeOrganizatori";
             this.AgencijeOrganizatori.Size = new System.Drawing.Size(138, 38);
             this.AgencijeOrganizatori.TabIndex = 30;
@@ -134,15 +147,15 @@
             this.AgencijeOrganizatori.UseVisualStyleBackColor = true;
             this.AgencijeOrganizatori.Click += new System.EventHandler(this.AgencijeOrganizatori_Click);
             // 
-            // MenadzerkseAgencije
+            // Grupe
             // 
-            this.MenadzerkseAgencije.Location = new System.Drawing.Point(3, 223);
-            this.MenadzerkseAgencije.Name = "MenadzerkseAgencije";
-            this.MenadzerkseAgencije.Size = new System.Drawing.Size(138, 38);
-            this.MenadzerkseAgencije.TabIndex = 31;
-            this.MenadzerkseAgencije.Text = "Menadzerske";
-            this.MenadzerkseAgencije.UseVisualStyleBackColor = true;
-            this.MenadzerkseAgencije.Click += new System.EventHandler(this.MenadzerkseAgencije_Click);
+            this.Grupe.Location = new System.Drawing.Point(3, 285);
+            this.Grupe.Name = "Grupe";
+            this.Grupe.Size = new System.Drawing.Size(138, 38);
+            this.Grupe.TabIndex = 32;
+            this.Grupe.Text = "Grupe";
+            this.Grupe.UseVisualStyleBackColor = true;
+            this.Grupe.Click += new System.EventHandler(this.Grupe_Click);
             // 
             // GlavnaStranica
             // 
@@ -171,5 +184,6 @@
         private System.Windows.Forms.Button Posetilac;
         private System.Windows.Forms.Button AgencijeOrganizatori;
         private System.Windows.Forms.Button MenadzerkseAgencije;
+        private System.Windows.Forms.Button Grupe;
     }
 }

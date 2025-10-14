@@ -65,5 +65,13 @@ namespace Muzicki_festival.Forme
             forma.ShowDialog();
             this.Show();
         }
+
+        private void Grupe_Click(object sender, EventArgs e)
+        {
+            FormaDodajGrupu forma = new FormaDodajGrupu();
+            this.Hide();
+            forma.ShowDialog();
+            this.Show();
+        }
     }
 }
