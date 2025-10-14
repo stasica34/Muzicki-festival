@@ -73,5 +73,13 @@ namespace Muzicki_festival.Forme
             forma.ShowDialog();
             this.Show();
         }
+
+        private void Ulaznice_Click(object sender, EventArgs e)
+        {
+            FormaUlaznicePregled forma = new FormaUlaznicePregled();
+            this.Hide(); 
+            forma.ShowDialog(); 
+            this.Show();
+        }
     }
 }

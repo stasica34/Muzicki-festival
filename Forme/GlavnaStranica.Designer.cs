@@ -30,13 +30,14 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Grupe = new System.Windows.Forms.Button();
             this.MenadzerkseAgencije = new System.Windows.Forms.Button();
             this.cmd_Dogadjaji = new System.Windows.Forms.Button();
             this.cmd_Izvodjac = new System.Windows.Forms.Button();
             this.DugmeLokacije = new System.Windows.Forms.Button();
             this.Posetilac = new System.Windows.Forms.Button();
             this.AgencijeOrganizatori = new System.Windows.Forms.Button();
-            this.Grupe = new System.Windows.Forms.Button();
+            this.Ulaznice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -53,7 +54,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(533, 358);
+            this.splitContainer1.Size = new System.Drawing.Size(533, 445);
             this.splitContainer1.SplitterDistance = 177;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
@@ -69,22 +70,34 @@
             this.tableLayoutPanel1.Controls.Add(this.DugmeLokacije, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.Posetilac, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.AgencijeOrganizatori, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.Ulaznice, 0, 7);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28587F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28587F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28587F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28445F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28445F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 334);
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49967F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49967F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49967F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49843F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49843F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49918F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.50167F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.50328F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 421);
             this.tableLayoutPanel1.TabIndex = 28;
+            // 
+            // Grupe
+            // 
+            this.Grupe.Location = new System.Drawing.Point(3, 315);
+            this.Grupe.Name = "Grupe";
+            this.Grupe.Size = new System.Drawing.Size(138, 38);
+            this.Grupe.TabIndex = 32;
+            this.Grupe.Text = "Grupe";
+            this.Grupe.UseVisualStyleBackColor = true;
+            this.Grupe.Click += new System.EventHandler(this.Grupe_Click);
             // 
             // MenadzerkseAgencije
             // 
-            this.MenadzerkseAgencije.Location = new System.Drawing.Point(3, 238);
+            this.MenadzerkseAgencije.Location = new System.Drawing.Point(3, 263);
             this.MenadzerkseAgencije.Name = "MenadzerkseAgencije";
             this.MenadzerkseAgencije.Size = new System.Drawing.Size(138, 38);
             this.MenadzerkseAgencije.TabIndex = 31;
@@ -95,7 +108,7 @@
             // cmd_Dogadjaji
             // 
             this.cmd_Dogadjaji.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmd_Dogadjaji.Location = new System.Drawing.Point(2, 3);
+            this.cmd_Dogadjaji.Location = new System.Drawing.Point(2, 6);
             this.cmd_Dogadjaji.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Dogadjaji.Name = "cmd_Dogadjaji";
             this.cmd_Dogadjaji.Size = new System.Drawing.Size(140, 40);
@@ -107,7 +120,7 @@
             // cmd_Izvodjac
             // 
             this.cmd_Izvodjac.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmd_Izvodjac.Location = new System.Drawing.Point(2, 50);
+            this.cmd_Izvodjac.Location = new System.Drawing.Point(2, 58);
             this.cmd_Izvodjac.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Izvodjac.Name = "cmd_Izvodjac";
             this.cmd_Izvodjac.Size = new System.Drawing.Size(140, 40);
@@ -119,7 +132,7 @@
             // DugmeLokacije
             // 
             this.DugmeLokacije.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DugmeLokacije.Location = new System.Drawing.Point(3, 98);
+            this.DugmeLokacije.Location = new System.Drawing.Point(3, 111);
             this.DugmeLokacije.Name = "DugmeLokacije";
             this.DugmeLokacije.Size = new System.Drawing.Size(138, 38);
             this.DugmeLokacije.TabIndex = 28;
@@ -129,7 +142,7 @@
             // 
             // Posetilac
             // 
-            this.Posetilac.Location = new System.Drawing.Point(3, 144);
+            this.Posetilac.Location = new System.Drawing.Point(3, 159);
             this.Posetilac.Name = "Posetilac";
             this.Posetilac.Size = new System.Drawing.Size(138, 38);
             this.Posetilac.TabIndex = 29;
@@ -139,7 +152,7 @@
             // 
             // AgencijeOrganizatori
             // 
-            this.AgencijeOrganizatori.Location = new System.Drawing.Point(3, 191);
+            this.AgencijeOrganizatori.Location = new System.Drawing.Point(3, 211);
             this.AgencijeOrganizatori.Name = "AgencijeOrganizatori";
             this.AgencijeOrganizatori.Size = new System.Drawing.Size(138, 38);
             this.AgencijeOrganizatori.TabIndex = 30;
@@ -147,21 +160,22 @@
             this.AgencijeOrganizatori.UseVisualStyleBackColor = true;
             this.AgencijeOrganizatori.Click += new System.EventHandler(this.AgencijeOrganizatori_Click);
             // 
-            // Grupe
+            // Ulaznice
             // 
-            this.Grupe.Location = new System.Drawing.Point(3, 285);
-            this.Grupe.Name = "Grupe";
-            this.Grupe.Size = new System.Drawing.Size(138, 38);
-            this.Grupe.TabIndex = 32;
-            this.Grupe.Text = "Grupe";
-            this.Grupe.UseVisualStyleBackColor = true;
-            this.Grupe.Click += new System.EventHandler(this.Grupe_Click);
+            this.Ulaznice.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Ulaznice.Location = new System.Drawing.Point(3, 373);
+            this.Ulaznice.Name = "Ulaznice";
+            this.Ulaznice.Size = new System.Drawing.Size(138, 38);
+            this.Ulaznice.TabIndex = 33;
+            this.Ulaznice.Text = "Ulaznice";
+            this.Ulaznice.UseVisualStyleBackColor = true;
+            this.Ulaznice.Click += new System.EventHandler(this.Ulaznice_Click);
             // 
             // GlavnaStranica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 358);
+            this.ClientSize = new System.Drawing.Size(533, 445);
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GlavnaStranica";
@@ -185,5 +199,6 @@
         private System.Windows.Forms.Button AgencijeOrganizatori;
         private System.Windows.Forms.Button MenadzerkseAgencije;
         private System.Windows.Forms.Button Grupe;
+        private System.Windows.Forms.Button Ulaznice;
     }
 }

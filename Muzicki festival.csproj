@@ -197,6 +197,12 @@
     <Compile Include="FormeDodatne\FormaUlazniceDodaj.Designer.cs">
       <DependentUpon>FormaUlazniceDodaj.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormeDodatne\FormaUlaznicePregled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaUlaznicePregled.Designer.cs">
+      <DependentUpon>FormaUlaznicePregled.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormeDodatne\IzmenaLokacije.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaUlazniceDodaj.resx">
       <DependentUpon>FormaUlazniceDodaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaUlaznicePregled.resx">
+      <DependentUpon>FormaUlaznicePregled.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\IzmenaLokacije.resx">
       <DependentUpon>IzmenaLokacije.cs</DependentUpon>

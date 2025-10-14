@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using NHibernate.Util;
 using System.Security.Cryptography;
 using NHibernate.Hql.Ast.ANTLR.Tree;
+using NHibernate.Collection;
+using NHibernate.Linq;
 namespace Muzicki_festival
 {
     public class DTOManager
@@ -1790,6 +1792,141 @@ namespace Muzicki_festival
             }
         }
 
+
+        #endregion
+
+        #region Ulaznice
+
+        // malo krsi pravila jer vraca basic ali sta da se radi, zurba
+        public static IList<UlaznicaBasic> VratiSveUlaznice()
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IList<Ulaznica> ulaznice = s.Query<Ulaznica>().ToList();
+
+                IList<UlaznicaBasic> basics = new List<UlaznicaBasic>();
+
+                foreach (var u in ulaznice)
+                {
+                    switch (u.TIP_ULAZNICE)
+                    {
+                        case TipUlaznice.JEDNODNEVNA:
+                            basics.Add(new JednodnevnaBasic(u.ID_ULAZNICE, u.OSNOVNA_CENA, u.NACIN_PLACANJA, u.DATUM_KUPOVINE, null, (u as Jednodnevna).DAN_VAZENJA));
+                            break;
+                        case TipUlaznice.VISEDNEVNA:
+                            basics.Add(new ViseDnevnaBasic(u.ID_ULAZNICE, u.OSNOVNA_CENA, u.NACIN_PLACANJA, u.DATUM_KUPOVINE, null, (u as Visednevna).Dani.ToList()));
+                            break;
+                        case TipUlaznice.VIP:
+                            basics.Add(new VIPBasic(u.ID_ULAZNICE, u.OSNOVNA_CENA, u.NACIN_PLACANJA, u.DATUM_KUPOVINE, null, (u as Vip).Pogodnosti.ToList()));
+                            break;
+                        case TipUlaznice.AKREDITACIJA:
+                            basics.Add(new AkreditacijaBasic(u.ID_ULAZNICE, u.OSNOVNA_CENA, u.NACIN_PLACANJA, u.DATUM_KUPOVINE, null, (u as Akreditacija).TIP));
+                            break;
+                        default:
+                            throw new Exception("Nepravilna ulaznica!");
+                    }
+                }
+
+                return basics;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return new List<UlaznicaBasic>();
+            }
+        }
+
+        public static bool IzmeniUlaznicu(UlaznicaBasic ub)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Ulaznica u = s.Get<Ulaznica>(ub.Id);
+
+                if (u == null)
+                {
+                    return false;
+                }
+
+                switch (u.TIP_ULAZNICE)
+                {
+                    case TipUlaznice.JEDNODNEVNA:
+                        Jednodnevna j = u as Jednodnevna;
+                        j.OSNOVNA_CENA = ub.OsnovnaCena;
+                        j.NACIN_PLACANJA = ub.NacinPlacanja;
+                        j.DATUM_KUPOVINE = ub.DatumKupovine;
+                        j.DAN_VAZENJA = (ub as JednodnevnaBasic).DatumVazenja;
+
+                        s.Update(j);
+                        break;
+                    case TipUlaznice.VISEDNEVNA:
+                        Visednevna v = u as Visednevna;
+                        v.OSNOVNA_CENA = ub.OsnovnaCena;
+                        v.NACIN_PLACANJA = ub.NacinPlacanja;
+                        v.DATUM_KUPOVINE = ub.DatumKupovine;
+                        v.Dani = (ub as ViseDnevnaBasic).DatumiVazenja.ToList();
+
+                        s.Update(v);
+                        break;
+                    case TipUlaznice.VIP:
+                        Vip vi = u as Vip;
+                        vi.OSNOVNA_CENA = ub.OsnovnaCena;
+                        vi.NACIN_PLACANJA = ub.NacinPlacanja;
+                        vi.DATUM_KUPOVINE = ub.DatumKupovine;
+                        vi.Pogodnosti = (ub as VIPBasic).Pogodnosti.ToList();
+
+                        s.Update(vi);
+                        break;
+                    case TipUlaznice.AKREDITACIJA:
+                        Akreditacija a = u as Akreditacija;
+                        a.OSNOVNA_CENA = ub.OsnovnaCena;
+                        a.NACIN_PLACANJA = ub.NacinPlacanja;
+                        a.DATUM_KUPOVINE = ub.DatumKupovine;
+                        a.TIP = (ub as AkreditacijaBasic).Tip;
+
+                        s.Update(a);
+                        break;
+                    default:
+                        throw new Exception("Nepravilna ulaznica!");
+                }
+
+                s.Flush();
+                s.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        public static bool ObrisiUlaznicu(int ulaznicaID)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Ulaznica u = s.Get<Ulaznica>(ulaznicaID);
+
+                if (u == null)
+                {
+                    return false;
+                }
+
+                s.Delete(u);
+                s.Flush();
+                s.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
 
         #endregion
     }
