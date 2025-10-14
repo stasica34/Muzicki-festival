@@ -232,6 +232,9 @@ namespace Muzicki_festival.Forme
                         dataGridView2.Rows.Clear();
                         return;
                 }
+
+                IzmeniLokaciju.Enabled = true;
+                DugmeObrisi.Enabled = true;
             }
         }
 
@@ -247,11 +250,44 @@ namespace Muzicki_festival.Forme
             this.Hide();
             izmena.ShowDialog();
             this.Show();
+
+            lokacije = DTOManager.VratiSveLokacije();
+            PopuniTabeluLokacije();
+            oprema.Clear();
+            PopuniTabeluOprema();
+            idSelektovan = -1;
+            DugmeObrisi.Enabled = false;
+            IzmeniLokaciju.Enabled = false;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DugmeObrisi_Click(object sender, EventArgs e)
         {
+            if (idSelektovan == -1)
+            {
+                MessageBox.Show("Izaberite lokaciju za brisanje.");
+                return;
+            }
 
+            if (MessageBox.Show(
+                "Da li ste sigurni da želite da obrišete lokaciju, ovo je nepovratna radnja!",
+                "Potvrda",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+            {
+                return;
+            }
+
+            if (DTOManager.ObrisiLokaciju(idSelektovan))
+            {
+                MessageBox.Show("Uspesno obrisana lokacija");
+                LokacijaView obrisana = lokacije.Where(l => l.Id ==  idSelektovan).FirstOrDefault();
+                lokacije.Remove(obrisana);
+                PopuniTabeluLokacije();
+                oprema.Clear();
+                PopuniTabeluOprema();
+                idSelektovan = -1;
+                DugmeObrisi.Enabled = false;
+                IzmeniLokaciju.Enabled = false;
+            }
         }
     }
 }

@@ -652,6 +652,7 @@ namespace Muzicki_festival
                 return null;
             }
         }
+        
         public static bool IzmeniLokaciju(LokacijaBasic nova)
         {
             try
@@ -711,6 +712,28 @@ namespace Muzicki_festival
             }
         }
 
+        public static bool ObrisiLokaciju(int idLokacije)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Lokacija l = s.Get<Lokacija>(idLokacije);
+
+                if (l == null)
+                    return false;
+
+                s.Delete(l);
+                s.Flush();
+                s.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
         #endregion
 
         #region DostupnaOprema
@@ -919,22 +942,26 @@ namespace Muzicki_festival
             }
         }
 
-        public static void ObrisiMenadzerskuAgenciju(int id)
+        public static bool ObrisiMenadzerskuAgenciju(int id)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
                 MenadzerskaAgencija ma = s.Get<MenadzerskaAgencija>(id);
-                if (ma != null)
-                {
-                    s.Delete(ma);
-                    s.Flush();
-                }
+                
+                if (ma == null) return false;
+
+                s.Delete(ma);
+                s.Flush();
+                
                 s.Close();
+
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return false;
             }
         }
 
@@ -1216,6 +1243,28 @@ namespace Muzicki_festival
 
         #region Posetilac
 
+        public static IList<PosetilacView> VratiSvePosetioce()
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IList <Posetilac> lista = s.Query<Posetilac>().ToList();
+
+                List<PosetilacView> views = new List<PosetilacView>();
+                foreach(Posetilac poset in lista)
+                {
+                    views.Add(new PosetilacView(poset.ID, poset.IME, poset.PREZIME, poset.EMAIL, poset.Telefon));
+                }
+
+                return views;
+;            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return new List<PosetilacView>();
+            }
+        }            
+
         public static PosetilacView DodajPosetioca(PosetilacBasic pb)
         {
             try
@@ -1248,7 +1297,7 @@ namespace Muzicki_festival
                             OSNOVNA_CENA = pb.Ulaznica.OsnovnaCena,
                             NACIN_PLACANJA = pb.Ulaznica.NacinPlacanja,
                             DATUM_KUPOVINE = pb.Ulaznica.DatumKupovine,
-                            TIP_ULAZNICE = TipUlaznice.JEDNODNEVNA,
+                            TIP_ULAZNICE = TipUlaznice.VISEDNEVNA,
                             Dogadjaj = d,
                             Dani = (pb.Ulaznica as ViseDnevnaBasic).DatumiVazenja
                         };
@@ -1259,7 +1308,7 @@ namespace Muzicki_festival
                             OSNOVNA_CENA = pb.Ulaznica.OsnovnaCena,
                             NACIN_PLACANJA = pb.Ulaznica.NacinPlacanja,
                             DATUM_KUPOVINE = pb.Ulaznica.DatumKupovine,
-                            TIP_ULAZNICE = TipUlaznice.JEDNODNEVNA,
+                            TIP_ULAZNICE = TipUlaznice.VIP,
                             Dogadjaj = d,
                             Pogodnosti = (pb.Ulaznica as VIPBasic).Pogodnosti,
                         };
@@ -1270,7 +1319,7 @@ namespace Muzicki_festival
                             OSNOVNA_CENA = pb.Ulaznica.OsnovnaCena,
                             NACIN_PLACANJA = pb.Ulaznica.NacinPlacanja,
                             DATUM_KUPOVINE = pb.Ulaznica.DatumKupovine,
-                            TIP_ULAZNICE = TipUlaznice.JEDNODNEVNA,
+                            TIP_ULAZNICE = TipUlaznice.AKREDITACIJA,
                             Dogadjaj = d,
                             TIP = (pb.Ulaznica as AkreditacijaBasic).Tip
                         };
@@ -1289,9 +1338,8 @@ namespace Muzicki_festival
                 };
 
                 u.KUPAC_ID = p;
-
-                int pId = (int)s.Save(p);
-                int UiD = (int)s.Save(u);
+                
+                s.SaveOrUpdate(p);
                 s.Flush();
 
                 if (pb.Grupa != null)
@@ -1304,7 +1352,7 @@ namespace Muzicki_festival
 
                 s.Close();
 
-                return new PosetilacView(pId, pb.Ime, pb.Prezime, pb.Email, pb.Telefon);
+                return new PosetilacView(p.ID, pb.Ime, pb.Prezime, pb.Email, pb.Telefon);
             }
             catch (Exception e)
             {
@@ -1313,6 +1361,160 @@ namespace Muzicki_festival
             }
         }
 
+        public static PosetilacView IzmeniPosetioca(PosetilacBasic pb)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Posetilac p = s.Get<Posetilac>(pb.Id);
+
+                if (p == null)
+                    return null;
+
+                p.IME = pb.Ime;
+                p.PREZIME = pb.Prezime;
+                p.EMAIL = pb.Email;
+                p.Telefon = pb.Telefon;
+
+                s.Update(p);
+                s.Flush();
+                s.Close();
+
+                return new PosetilacView(p.ID, p.IME, p.PREZIME, p.EMAIL, p.Telefon);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+
+        public static bool ObrisiPosetioca(int idPosetioca)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Posetilac p = s.Get<Posetilac>(idPosetioca);
+
+                if (p == null)
+                    return false;
+
+                s.Delete(p);
+                s.Flush();
+                s.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        public static UlaznicaBasic VratiUlaznicuPosetioca(int idPosetioca)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Ulaznica u = s.Query<Ulaznica>().Where(ul => ul.KUPAC_ID.ID == idPosetioca).FirstOrDefault();
+
+                if (u == null) 
+                    return null;
+
+                UlaznicaBasic ret = null;
+                switch (u.TIP_ULAZNICE)
+                {
+                    case TipUlaznice.JEDNODNEVNA:
+                        ret = new JednodnevnaBasic(u.ID_ULAZNICE, u.OSNOVNA_CENA, u.NACIN_PLACANJA, u.DATUM_KUPOVINE, null, (u as Jednodnevna).DAN_VAZENJA);
+                        break;
+
+                    case TipUlaznice.VISEDNEVNA:
+                        ret = new ViseDnevnaBasic(u.ID_ULAZNICE, u.OSNOVNA_CENA, u.NACIN_PLACANJA, u.DATUM_KUPOVINE, null, (u as Visednevna).Dani);
+                        break;
+
+                    case TipUlaznice.VIP:
+                        ret = new VIPBasic(u.ID_ULAZNICE, u.OSNOVNA_CENA, u.NACIN_PLACANJA, u.DATUM_KUPOVINE, null, (u as Vip).Pogodnosti);
+                        break;
+
+                    case TipUlaznice.AKREDITACIJA:
+                        ret = new AkreditacijaBasic(u.ID_ULAZNICE, u.OSNOVNA_CENA, u.NACIN_PLACANJA, u.DATUM_KUPOVINE, null, (u as Akreditacija).TIP);
+                        break;
+                }
+
+                return ret;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+
+        public static GrupaView VratiGrupuPosetioca(int idPosetioca)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Posetilac p = s.Get<Posetilac>(idPosetioca);
+
+                if (p == null)
+                    return null;
+
+                if (p.GRUPA == null)
+                    return null;
+
+                Grupa g = p.GRUPA;
+
+                List<string> imena = new List<string>();
+                foreach (var c in g.Clanovi)
+                {
+                    imena.Add(c.IME);
+                }
+
+                GrupaView gb = new GrupaView(g.ID_GRUPE, g.NAZIV, g.AgencijaID.NAZIV, imena);
+
+                return gb;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+
+        public static bool IzbaciIzGrupe(int idPosetioca, int idGrupe)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Posetilac p = s.Get<Posetilac>(idPosetioca);
+                Grupa g = s.Get<Grupa>(idGrupe);
+
+                if (p == null || g == null)
+                    return false;
+
+                if (p.GRUPA.ID_GRUPE != g.ID_GRUPE)
+                    return false;
+
+                g.Clanovi.Remove(p);
+                p.GRUPA = null;
+
+                s.Update(g);
+                s.Update(p);
+
+                s.Flush();
+                s.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
 
         #endregion
 
@@ -1386,6 +1588,32 @@ namespace Muzicki_festival
 
                 return true;
 
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        public static bool IzmeniAgencijuOrganizator(AgencijaOrganizatorBasic ab)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                AgencijaOrganizator a = s.Get<AgencijaOrganizator>(ab.Id);
+
+                if (a == null)
+                    return false;
+
+                a.NAZIV = ab.Naziv;
+                a.ADRESA = ab.Adresa;
+
+                s.Update(a);
+                s.Flush();
+                s.Close();
+
+                return true;
             }
             catch (Exception e)
             {

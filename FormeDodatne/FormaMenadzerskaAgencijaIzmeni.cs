@@ -14,17 +14,14 @@ namespace Muzicki_festival.FormeDodatne
 {
     public partial class FormaMenadzerskaAgencijaIzmeni : Form
     {
-        private Form privateForm;
-
         private readonly int IdAgencije;
         private MenadzerskaAgencijaView agencija;
         private IList<MenadzerskaAgencijaKontaktView> kontaktPodaci;
         private int selektovanKontaktId = -1;
 
-        public FormaMenadzerskaAgencijaIzmeni(Form caller, int idAgencije)
+        public FormaMenadzerskaAgencijaIzmeni(int idAgencije)
         {
             InitializeComponent();
-            privateForm = caller;
             IdAgencije = idAgencije;
 
             agencija = DTOManager.VratiMenadzerskuAgenciju(IdAgencije);
@@ -88,7 +85,6 @@ namespace Muzicki_festival.FormeDodatne
             if (DTOManager.IzmeniMenadzerskuAgenciju(izmena))
             {
                 MessageBox.Show("Uspešno izmenjena menadžerska agencija.");
-                privateForm.Show();
                 this.Close();
             }
             else
@@ -99,7 +95,6 @@ namespace Muzicki_festival.FormeDodatne
 
         private void btnOtkazi_Click(object sender, EventArgs e)
         {
-            privateForm.Show();
             this.Close();
         }
 

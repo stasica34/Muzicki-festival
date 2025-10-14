@@ -156,8 +156,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void OtkaziDugme_Click(object sender, EventArgs e)
         {
-            FormaLokacijaDodaj lokacijeTest = new FormaLokacijaDodaj();
-            lokacijeTest.Show();
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 

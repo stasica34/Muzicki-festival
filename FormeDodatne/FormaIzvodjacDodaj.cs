@@ -310,7 +310,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void btnDodajMenadzersku_Click(object sender, EventArgs e)
         {
-            FormaMenadzerskaAgencijaDodavanje forma = new FormaMenadzerskaAgencijaDodavanje(this);
+            FormaMenadzerskaAgencijaDodavanje forma = new FormaMenadzerskaAgencijaDodavanje();
             this.Hide();
             forma.ShowDialog();
             this.Show();

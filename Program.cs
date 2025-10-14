@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Muzicki_festival.Forme;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Muzicki_festival
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GlavnaForma());
+            Application.Run(new GlavnaStranica());
         }
     }
 }

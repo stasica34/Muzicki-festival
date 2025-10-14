@@ -17,19 +17,11 @@ namespace Muzicki_festival.Mapiranje
             Map(x => x.IME, "IME").Not.Nullable();
             Map(x => x.PREZIME, "PREZIME").Not.Nullable();
             Map(x => x.EMAIL, "EMAIL").Not.Nullable();
-            References(x => x.Ulaznica, "ULAZNICA_ID").LazyLoad().Cascade.All();
-            //inverse znaci da suprotna strana mora da vodi racuna
-            //o stranom kljucu tj o vrednosti stranog kljuca
-            //mogu da budu i veze kao:
-            //HasMany(x => x.Ulaznice)
-            //lista odeljenja i strani kljuc
-            //   .KeyColumn("KUPAC_ID"); 
-            //HasMany(x => x.Ulaznice)
-            //   .KeyColumn("KUPAC_ID")
-            //   .Cascade.All()
+            References(x => x.Ulaznica)
+                .Column("ULAZNICA_ID")
+                .Cascade.All();
 
-            //mapiranje sa n:m
-            References(x => x.GRUPA, "GRUPA_ID").LazyLoad().Cascade.AllDeleteOrphan();
+            References(x => x.GRUPA, "GRUPA_ID").LazyLoad().Cascade.None();
             //visevrednosni atribut
             Map(x => x.Telefon, "TELEFON").Nullable();
         }

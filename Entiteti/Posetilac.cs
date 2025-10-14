@@ -14,11 +14,9 @@ namespace Muzicki_festival.Entiteti
         public virtual string EMAIL { get; set; }
         public virtual string Telefon { get; set; }
         public virtual Ulaznica Ulaznica { get; set; }
-        //veza n:m
         public virtual Grupa GRUPA { get; set; } 
         public Posetilac()
         {
-
         }
         public override string ToString()
         {

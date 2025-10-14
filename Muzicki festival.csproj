@@ -137,18 +137,6 @@
     <Compile Include="Entiteti\Vip.cs" />
     <Compile Include="Entiteti\Visednevna.cs" />
     <Compile Include="Entiteti\ZatvorenaLokacija.cs" />
-    <Compile Include="FormeDodatne\FormaAgencijaOrganizatorDodaj.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaAgencijaOrganizatorDodaj.Designer.cs">
-      <DependentUpon>FormaAgencijaOrganizatorDodaj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.Designer.cs">
-      <DependentUpon>FormaAgencijaOrganizatorIzmeni.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormeDodatne\FormaDodajAgencijuOrganizator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,18 +154,6 @@
     </Compile>
     <Compile Include="FormeDodatne\FormaDodajIzvodjacaNaDogadjaj.Designer.cs">
       <DependentUpon>FormaDodajIzvodjacaNaDogadjaj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaGrupaDodaj.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaGrupaDodaj.Designer.cs">
-      <DependentUpon>FormaGrupaDodaj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaGrupaIzmeni.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaGrupaIzmeni.Designer.cs">
-      <DependentUpon>FormaGrupaIzmeni.cs</DependentUpon>
     </Compile>
     <Compile Include="FormeDodatne\FormaIzvodjacDodaj.cs">
       <SubType>Form</SubType>
@@ -209,29 +185,17 @@
     <Compile Include="FormeDodatne\FormaPosetilacDodaj.Designer.cs">
       <DependentUpon>FormaPosetilacDodaj.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormeDodatne\FormaPosetilacIzmeni.cs">
+    <Compile Include="FormeDodatne\FormaPosetioci.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormeDodatne\FormaPosetilacIzmeni.Designer.cs">
-      <DependentUpon>FormaPosetilacIzmeni.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.Designer.cs">
-      <DependentUpon>FormaSoloIzvodjacBendIzmeni.cs</DependentUpon>
+    <Compile Include="FormeDodatne\FormaPosetioci.Designer.cs">
+      <DependentUpon>FormaPosetioci.cs</DependentUpon>
     </Compile>
     <Compile Include="FormeDodatne\FormaUlazniceDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormeDodatne\FormaUlazniceDodaj.Designer.cs">
       <DependentUpon>FormaUlazniceDodaj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaUlazniceIzmeni.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaUlazniceIzmeni.Designer.cs">
-      <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
     </Compile>
     <Compile Include="FormeDodatne\IzmenaLokacije.cs">
       <SubType>Form</SubType>
@@ -244,30 +208,6 @@
     </Compile>
     <Compile Include="FormeDodatne\FormaLokacijaDodaj.Designer.cs">
       <DependentUpon>FormaLokacijaDodaj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaAgencijaOrganizator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaAgencijaOrganizator.Designer.cs">
-      <DependentUpon>FormaAgencijaOrganizator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaAkreditacija.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaAkreditacija.Designer.cs">
-      <DependentUpon>FormaAkreditacija.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaBend.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaBend.Designer.cs">
-      <DependentUpon>FormaBend.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaClan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaClan.Designer.cs">
-      <DependentUpon>FormaClan.cs</DependentUpon>
     </Compile>
     <Compile Include="FormeDodatne\FormaDogadjajDodaj.cs">
       <SubType>Form</SubType>
@@ -287,108 +227,6 @@
     <Compile Include="FormeDodatne\FormaDogadjajIzmeni.Designer.cs">
       <DependentUpon>FormaDogadjajIzmeni.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\FormaIzvodjac.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaIzvodjac.Designer.cs">
-      <DependentUpon>FormaIzvodjac.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaKontaktPodaci.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaKontaktPodaci.Designer.cs">
-      <DependentUpon>FormaKontaktPodaci.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\GlavnaForma.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\GlavnaForma.Designer.cs">
-      <DependentUpon>GlavnaForma.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaGrupa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaGrupa.Designer.cs">
-      <DependentUpon>FormaGrupa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaIzvodjacDogadjaj.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaIzvodjacDogadjaj.Designer.cs">
-      <DependentUpon>FormaIzvodjacDogadjaj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaJeClan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaJeClan.Designer.cs">
-      <DependentUpon>FormaJeClan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaJednodnevna.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaJednodnevna.Designer.cs">
-      <DependentUpon>FormaJednodnevna.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaKombinovanaLokacija.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaKombinovanaLokacija.Designer.cs">
-      <DependentUpon>FormaKombinovanaLokacija.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaLokacija.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaLokacija.Designer.cs">
-      <DependentUpon>FormaLokacija.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaMenaderskaAgencija.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaMenaderskaAgencija.Designer.cs">
-      <DependentUpon>FormaMenaderskaAgencija.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaOtvorenaLokacija.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaOtvorenaLokacija.Designer.cs">
-      <DependentUpon>FormaOtvorenaLokacija.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaPosetilac.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaPosetilac.Designer.cs">
-      <DependentUpon>FormaPosetilac.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaSoloUmetnik.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaSoloUmetnik.Designer.cs">
-      <DependentUpon>FormaSoloUmetnik.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaUlaznica.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaUlaznica.Designer.cs">
-      <DependentUpon>FormaUlaznica.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaVip.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaVip.Designer.cs">
-      <DependentUpon>FormaVip.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaVisednevna.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaVisednevna.Designer.cs">
-      <DependentUpon>FormaVisednevna.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forme\FormaZatvorenaLokacija.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\FormaZatvorenaLokacija.Designer.cs">
-      <DependentUpon>FormaZatvorenaLokacija.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forme\GlavnaStranica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -396,14 +234,12 @@
       <DependentUpon>GlavnaStranica.cs</DependentUpon>
     </Compile>
     <Compile Include="Mapiranje\AgencijaOrganizatorMapiranje.cs" />
-    <Compile Include="Mapiranje\AkreditacijaMapiranje.cs" />
     <Compile Include="Mapiranje\BendMapiranja.cs" />
     <Compile Include="Mapiranje\ClanMapiranje.cs" />
     <Compile Include="Mapiranje\DogadjajMapiranje.cs" />
     <Compile Include="Mapiranje\DostupnaOpremaMapiranje.cs" />
     <Compile Include="Mapiranje\GrupaMapiranje.cs" />
     <Compile Include="Mapiranje\IzvodjacMapiranje.cs" />
-    <Compile Include="Mapiranje\JednodnevnaMapiranje.cs" />
     <Compile Include="Mapiranje\KombinovanaLokacijaMapiranje.cs" />
     <Compile Include="Mapiranje\KontaktMenadzerskeAgencijeMapiranje.cs" />
     <Compile Include="Mapiranje\LokacijaMapiranja.cs" />
@@ -412,17 +248,9 @@
     <Compile Include="Mapiranje\PosetilacMapiranje.cs" />
     <Compile Include="Mapiranje\SoloUmetnikMapiranje.cs" />
     <Compile Include="Mapiranje\UlaznicaMapiranja.cs" />
-    <Compile Include="Mapiranje\VipMapiranja.cs" />
-    <Compile Include="Mapiranje\VisednevnaMapiranje.cs" />
     <Compile Include="Mapiranje\ZatvorenaLokacijaMapiranje.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormeDodatne\FormaAgencijaOrganizatorDodaj.resx">
-      <DependentUpon>FormaAgencijaOrganizatorDodaj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormeDodatne\FormaAgencijaOrganizatorIzmeni.resx">
-      <DependentUpon>FormaAgencijaOrganizatorIzmeni.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaDodajAgencijuOrganizator.resx">
       <DependentUpon>FormaDodajAgencijuOrganizator.cs</DependentUpon>
     </EmbeddedResource>
@@ -431,12 +259,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaDodajIzvodjacaNaDogadjaj.resx">
       <DependentUpon>FormaDodajIzvodjacaNaDogadjaj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormeDodatne\FormaGrupaDodaj.resx">
-      <DependentUpon>FormaGrupaDodaj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormeDodatne\FormaGrupaIzmeni.resx">
-      <DependentUpon>FormaGrupaIzmeni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaIzvodjacDodaj.resx">
       <DependentUpon>FormaIzvodjacDodaj.cs</DependentUpon>
@@ -453,35 +275,17 @@
     <EmbeddedResource Include="FormeDodatne\FormaPosetilacDodaj.resx">
       <DependentUpon>FormaPosetilacDodaj.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormeDodatne\FormaPosetilacIzmeni.resx">
-      <DependentUpon>FormaPosetilacIzmeni.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormeDodatne\FormaSoloIzvodjacBendIzmeni.resx">
-      <DependentUpon>FormaSoloIzvodjacBendIzmeni.cs</DependentUpon>
+    <EmbeddedResource Include="FormeDodatne\FormaPosetioci.resx">
+      <DependentUpon>FormaPosetioci.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaUlazniceDodaj.resx">
       <DependentUpon>FormaUlazniceDodaj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormeDodatne\FormaUlazniceIzmeni.resx">
-      <DependentUpon>FormaUlazniceIzmeni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\IzmenaLokacije.resx">
       <DependentUpon>IzmenaLokacije.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaLokacijaDodaj.resx">
       <DependentUpon>FormaLokacijaDodaj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaAgencijaOrganizator.resx">
-      <DependentUpon>FormaAgencijaOrganizator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaAkreditacija.resx">
-      <DependentUpon>FormaAkreditacija.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaBend.resx">
-      <DependentUpon>FormaBend.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaClan.resx">
-      <DependentUpon>FormaClan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaDogadjajDodaj.resx">
       <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
@@ -491,57 +295,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaDogadjajIzmeni.resx">
       <DependentUpon>FormaDogadjajIzmeni.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaIzvodjac.resx">
-      <DependentUpon>FormaIzvodjac.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaKontaktPodaci.resx">
-      <DependentUpon>FormaKontaktPodaci.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\GlavnaForma.resx">
-      <DependentUpon>GlavnaForma.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaGrupa.resx">
-      <DependentUpon>FormaGrupa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaIzvodjacDogadjaj.resx">
-      <DependentUpon>FormaIzvodjacDogadjaj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaJeClan.resx">
-      <DependentUpon>FormaJeClan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaJednodnevna.resx">
-      <DependentUpon>FormaJednodnevna.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaKombinovanaLokacija.resx">
-      <DependentUpon>FormaKombinovanaLokacija.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaLokacija.resx">
-      <DependentUpon>FormaLokacija.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaMenaderskaAgencija.resx">
-      <DependentUpon>FormaMenaderskaAgencija.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaOtvorenaLokacija.resx">
-      <DependentUpon>FormaOtvorenaLokacija.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaPosetilac.resx">
-      <DependentUpon>FormaPosetilac.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaSoloUmetnik.resx">
-      <DependentUpon>FormaSoloUmetnik.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaUlaznica.resx">
-      <DependentUpon>FormaUlaznica.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaVip.resx">
-      <DependentUpon>FormaVip.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaVisednevna.resx">
-      <DependentUpon>FormaVisednevna.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forme\FormaZatvorenaLokacija.resx">
-      <DependentUpon>FormaZatvorenaLokacija.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\GlavnaStranica.resx">
       <DependentUpon>GlavnaStranica.cs</DependentUpon>

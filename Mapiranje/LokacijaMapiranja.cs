@@ -23,7 +23,7 @@ namespace Muzicki_festival.Mapiranje
             HasMany(x => x.Dogadjaji)
                 .KeyColumn("LOKACIJA_ID")
                 .Inverse()
-                .Cascade.All()
+                .Cascade.AllDeleteOrphan()
                 .LazyLoad();
             HasMany(x => x.DOSTUPNA_OPREMA)
                 .KeyColumn("LOKACIJA_ID")

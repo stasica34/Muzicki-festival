@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Muzicki_festival.FormeDodatne;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,35 +13,54 @@ namespace Muzicki_festival.Forme
 {
     public partial class GlavnaStranica : Form
     {
-        private Form parentForm;
-
-        public GlavnaStranica(Form caller)
+        public GlavnaStranica()
         {
             InitializeComponent();
-            parentForm = caller;
-        }
-        private void GlavnaStranica_Load(object sender, EventArgs e)
-        {
-         
         }
 
         private void cmd_Izvodjac_Click(object sender, EventArgs e)
         {
-            FormaIzvodjac formaIzvodjac = new FormaIzvodjac(this);
-            formaIzvodjac.Show();
-            this.Hide();
+
         }
 
         private void cmd_Dogadjaji_Click(object sender, EventArgs e)
         {
-            FormaDogadjaji formaDogadjaji = new FormaDogadjaji(this);
-            formaDogadjaji.Show();
+            FormaDogadjaji forma = new FormaDogadjaji(this);
             this.Hide();
+            forma.ShowDialog();
+            this.Show();
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        private void DugmeLokacije_Click(object sender, EventArgs e)
         {
+            FormaLokacijaDodaj forma = new FormaLokacijaDodaj();
+            this.Hide();
+            forma.ShowDialog();
+            this.Show();
+        }
 
+        private void Posetilac_Click(object sender, EventArgs e)
+        {
+            FormaPosetioci forma = new FormaPosetioci();
+            this.Hide();
+            forma.ShowDialog();
+            this.Show();
+        }
+
+        private void AgencijeOrganizatori_Click(object sender, EventArgs e)
+        {
+            FormaDodajAgencijuOrganizator forma = new FormaDodajAgencijuOrganizator();
+            this.Hide();
+            forma.ShowDialog();
+            this.Show();
+        }
+
+        private void MenadzerkseAgencije_Click(object sender, EventArgs e)
+        {
+            FormaMenadzerskaAgencijaDodavanje forma = new FormaMenadzerskaAgencijaDodavanje();
+            this.Hide();
+            forma.ShowDialog();
+            this.Show();
         }
     }
 }

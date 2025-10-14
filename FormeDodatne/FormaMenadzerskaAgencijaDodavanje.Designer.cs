@@ -46,6 +46,7 @@
             this.DugmeIzmeni = new System.Windows.Forms.Button();
             this.DugmeIzadji = new System.Windows.Forms.Button();
             this.DugmeDodaj = new System.Windows.Forms.Button();
+            this.ObrisiDugme = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -214,13 +215,15 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Controls.Add(this.DugmeIzmeni, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.DugmeIzadji, 2, 0);
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
             this.tableLayoutPanel3.Controls.Add(this.DugmeDodaj, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.DugmeIzadji, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.DugmeIzmeni, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.ObrisiDugme, 2, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(59, 151);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -233,10 +236,11 @@
             this.DugmeIzmeni.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DugmeIzmeni.Location = new System.Drawing.Point(245, 20);
+            this.DugmeIzmeni.Enabled = false;
+            this.DugmeIzmeni.Location = new System.Drawing.Point(194, 20);
             this.DugmeIzmeni.Margin = new System.Windows.Forms.Padding(40, 20, 40, 20);
             this.DugmeIzmeni.Name = "DugmeIzmeni";
-            this.DugmeIzmeni.Size = new System.Drawing.Size(125, 28);
+            this.DugmeIzmeni.Size = new System.Drawing.Size(74, 28);
             this.DugmeIzmeni.TabIndex = 1;
             this.DugmeIzmeni.Text = "Izmeni";
             this.DugmeIzmeni.UseVisualStyleBackColor = true;
@@ -247,10 +251,10 @@
             this.DugmeIzadji.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DugmeIzadji.Location = new System.Drawing.Point(450, 20);
+            this.DugmeIzadji.Location = new System.Drawing.Point(502, 20);
             this.DugmeIzadji.Margin = new System.Windows.Forms.Padding(40, 20, 40, 20);
             this.DugmeIzadji.Name = "DugmeIzadji";
-            this.DugmeIzadji.Size = new System.Drawing.Size(126, 28);
+            this.DugmeIzadji.Size = new System.Drawing.Size(74, 28);
             this.DugmeIzadji.TabIndex = 2;
             this.DugmeIzadji.Text = "Izadji";
             this.DugmeIzadji.UseVisualStyleBackColor = true;
@@ -264,11 +268,23 @@
             this.DugmeDodaj.Location = new System.Drawing.Point(40, 20);
             this.DugmeDodaj.Margin = new System.Windows.Forms.Padding(40, 20, 40, 20);
             this.DugmeDodaj.Name = "DugmeDodaj";
-            this.DugmeDodaj.Size = new System.Drawing.Size(125, 28);
+            this.DugmeDodaj.Size = new System.Drawing.Size(74, 28);
             this.DugmeDodaj.TabIndex = 0;
             this.DugmeDodaj.Text = "Dodaj";
             this.DugmeDodaj.UseVisualStyleBackColor = true;
             this.DugmeDodaj.Click += new System.EventHandler(this.DugmeDodaj_Click);
+            // 
+            // ObrisiDugme
+            // 
+            this.ObrisiDugme.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ObrisiDugme.Enabled = false;
+            this.ObrisiDugme.Location = new System.Drawing.Point(348, 20);
+            this.ObrisiDugme.Name = "ObrisiDugme";
+            this.ObrisiDugme.Size = new System.Drawing.Size(74, 28);
+            this.ObrisiDugme.TabIndex = 3;
+            this.ObrisiDugme.Text = "Obrisi";
+            this.ObrisiDugme.UseVisualStyleBackColor = true;
+            this.ObrisiDugme.Click += new System.EventHandler(this.ObrisiDugme_Click);
             // 
             // FormaMenadzerskaAgencijaDodavanje
             // 
@@ -317,5 +333,6 @@
         private System.Windows.Forms.Button DugmeIzmeni;
         private System.Windows.Forms.Button DugmeIzadji;
         private System.Windows.Forms.Button DugmeDodaj;
+        private System.Windows.Forms.Button ObrisiDugme;
     }
 }

@@ -29,63 +29,134 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.cmd_Izvodjac = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cmd_Dogadjaji = new System.Windows.Forms.Button();
+            this.cmd_Izvodjac = new System.Windows.Forms.Button();
+            this.DugmeLokacije = new System.Windows.Forms.Button();
+            this.Posetilac = new System.Windows.Forms.Button();
+            this.AgencijeOrganizatori = new System.Windows.Forms.Button();
+            this.MenadzerkseAgencije = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.cmd_Dogadjaji);
-            this.splitContainer1.Panel1.Controls.Add(this.cmd_Izvodjac);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 266;
+            this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Size = new System.Drawing.Size(533, 358);
+            this.splitContainer1.SplitterDistance = 177;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
-            // cmd_Izvodjac
+            // tableLayoutPanel1
             // 
-            this.cmd_Izvodjac.Location = new System.Drawing.Point(27, 234);
-            this.cmd_Izvodjac.Name = "cmd_Izvodjac";
-            this.cmd_Izvodjac.Size = new System.Drawing.Size(216, 73);
-            this.cmd_Izvodjac.TabIndex = 13;
-            this.cmd_Izvodjac.Text = "Izvodjac";
-            this.cmd_Izvodjac.UseVisualStyleBackColor = true;
-            this.cmd_Izvodjac.Click += new System.EventHandler(this.cmd_Izvodjac_Click);
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.MenadzerkseAgencije, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.cmd_Dogadjaji, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmd_Izvodjac, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.DugmeLokacije, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.Posetilac, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.AgencijeOrganizatori, 0, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 12);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66733F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66733F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66733F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66567F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66567F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 268);
+            this.tableLayoutPanel1.TabIndex = 28;
             // 
             // cmd_Dogadjaji
             // 
-            this.cmd_Dogadjaji.Location = new System.Drawing.Point(27, 119);
+            this.cmd_Dogadjaji.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmd_Dogadjaji.Location = new System.Drawing.Point(2, 2);
+            this.cmd_Dogadjaji.Margin = new System.Windows.Forms.Padding(2);
             this.cmd_Dogadjaji.Name = "cmd_Dogadjaji";
-            this.cmd_Dogadjaji.Size = new System.Drawing.Size(216, 73);
+            this.cmd_Dogadjaji.Size = new System.Drawing.Size(140, 40);
             this.cmd_Dogadjaji.TabIndex = 27;
             this.cmd_Dogadjaji.Text = "Dogadjaji";
             this.cmd_Dogadjaji.UseVisualStyleBackColor = true;
             this.cmd_Dogadjaji.Click += new System.EventHandler(this.cmd_Dogadjaji_Click);
             // 
+            // cmd_Izvodjac
+            // 
+            this.cmd_Izvodjac.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmd_Izvodjac.Location = new System.Drawing.Point(2, 46);
+            this.cmd_Izvodjac.Margin = new System.Windows.Forms.Padding(2);
+            this.cmd_Izvodjac.Name = "cmd_Izvodjac";
+            this.cmd_Izvodjac.Size = new System.Drawing.Size(140, 40);
+            this.cmd_Izvodjac.TabIndex = 13;
+            this.cmd_Izvodjac.Text = "Izvodjac";
+            this.cmd_Izvodjac.UseVisualStyleBackColor = true;
+            this.cmd_Izvodjac.Click += new System.EventHandler(this.cmd_Izvodjac_Click);
+            // 
+            // DugmeLokacije
+            // 
+            this.DugmeLokacije.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DugmeLokacije.Location = new System.Drawing.Point(3, 91);
+            this.DugmeLokacije.Name = "DugmeLokacije";
+            this.DugmeLokacije.Size = new System.Drawing.Size(138, 38);
+            this.DugmeLokacije.TabIndex = 28;
+            this.DugmeLokacije.Text = "Lokacija";
+            this.DugmeLokacije.UseVisualStyleBackColor = true;
+            this.DugmeLokacije.Click += new System.EventHandler(this.DugmeLokacije_Click);
+            // 
+            // Posetilac
+            // 
+            this.Posetilac.Location = new System.Drawing.Point(3, 135);
+            this.Posetilac.Name = "Posetilac";
+            this.Posetilac.Size = new System.Drawing.Size(138, 38);
+            this.Posetilac.TabIndex = 29;
+            this.Posetilac.Text = "Posetilac";
+            this.Posetilac.UseVisualStyleBackColor = true;
+            this.Posetilac.Click += new System.EventHandler(this.Posetilac_Click);
+            // 
+            // AgencijeOrganizatori
+            // 
+            this.AgencijeOrganizatori.Location = new System.Drawing.Point(3, 179);
+            this.AgencijeOrganizatori.Name = "AgencijeOrganizatori";
+            this.AgencijeOrganizatori.Size = new System.Drawing.Size(138, 38);
+            this.AgencijeOrganizatori.TabIndex = 30;
+            this.AgencijeOrganizatori.Text = "AgencijeOrganizatori";
+            this.AgencijeOrganizatori.UseVisualStyleBackColor = true;
+            this.AgencijeOrganizatori.Click += new System.EventHandler(this.AgencijeOrganizatori_Click);
+            // 
+            // MenadzerkseAgencije
+            // 
+            this.MenadzerkseAgencije.Location = new System.Drawing.Point(3, 223);
+            this.MenadzerkseAgencije.Name = "MenadzerkseAgencije";
+            this.MenadzerkseAgencije.Size = new System.Drawing.Size(138, 38);
+            this.MenadzerkseAgencije.TabIndex = 31;
+            this.MenadzerkseAgencije.Text = "Menadzerske";
+            this.MenadzerkseAgencije.UseVisualStyleBackColor = true;
+            this.MenadzerkseAgencije.Click += new System.EventHandler(this.MenadzerkseAgencije_Click);
+            // 
             // GlavnaStranica
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(533, 358);
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GlavnaStranica";
             this.Text = "GlavnaStranica";
-            this.Load += new System.EventHandler(this.GlavnaStranica_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -95,5 +166,10 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button cmd_Izvodjac;
         private System.Windows.Forms.Button cmd_Dogadjaji;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button DugmeLokacije;
+        private System.Windows.Forms.Button Posetilac;
+        private System.Windows.Forms.Button AgencijeOrganizatori;
+        private System.Windows.Forms.Button MenadzerkseAgencije;
     }
 }

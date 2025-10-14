@@ -18,11 +18,16 @@ namespace Muzicki_festival.FormeDodatne
         private Form parentform;
         DogadjajBasic db;
         public UlaznicaBasic UlaznicaBasicIzlaz;
+        private int selektovanRedVisednevnaDani = -1;
+        private int selektovanRedPogodnosti = -1;
         public FormaUlazniceDodaj(Form caller, DogadjajBasic db)
         {
             InitializeComponent();
             parentform = caller;
             this.db = db;
+
+            InitTabeluDani();
+            InitTabeluPogodnosti();
         }
 
         private void FormaUlazniceDodaj_Load(object sender, EventArgs e)
@@ -48,6 +53,60 @@ namespace Muzicki_festival.FormeDodatne
             InputVisednevna.Visible = false;
             InputVIP.Visible = false;
             InputAkreditacija.Visible = false;
+        }
+
+        private void InitTabeluDani()
+        {
+            TabelaDaniVisednevna.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            TabelaDaniVisednevna.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TabelaDaniVisednevna.ReadOnly = true;
+            TabelaDaniVisednevna.AllowUserToAddRows = false;
+            TabelaDaniVisednevna.RowHeadersVisible = false;
+            TabelaDaniVisednevna.BorderStyle = BorderStyle.None;
+            TabelaDaniVisednevna.BackgroundColor = Color.WhiteSmoke;
+            TabelaDaniVisednevna.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TabelaDaniVisednevna.GridColor = Color.LightGray;
+
+            TabelaDaniVisednevna.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+
+            TabelaDaniVisednevna.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            TabelaDaniVisednevna.DefaultCellStyle.SelectionForeColor = Color.White;
+            TabelaDaniVisednevna.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            TabelaDaniVisednevna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            TabelaDaniVisednevna.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
+            TabelaDaniVisednevna.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
+            TabelaDaniVisednevna.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            TabelaDaniVisednevna.EnableHeadersVisualStyles = false;
+
+            TabelaDaniVisednevna.Columns.Add("DAN", "DAN");
+        }
+
+        private void InitTabeluPogodnosti()
+        {
+            TabelaPogodnosti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            TabelaPogodnosti.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TabelaPogodnosti.ReadOnly = true;
+            TabelaPogodnosti.AllowUserToAddRows = false;
+            TabelaPogodnosti.RowHeadersVisible = false;
+            TabelaPogodnosti.BorderStyle = BorderStyle.None;
+            TabelaPogodnosti.BackgroundColor = Color.WhiteSmoke;
+            TabelaPogodnosti.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TabelaPogodnosti.GridColor = Color.LightGray;
+
+            TabelaPogodnosti.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+
+            TabelaPogodnosti.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            TabelaPogodnosti.DefaultCellStyle.SelectionForeColor = Color.White;
+            TabelaPogodnosti.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            TabelaPogodnosti.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            TabelaPogodnosti.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
+            TabelaPogodnosti.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 90, 150);
+            TabelaPogodnosti.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            TabelaPogodnosti.EnableHeadersVisualStyles = false;
+
+            TabelaPogodnosti.Columns.Add("POGODNOST", "POGODNOST");
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
@@ -90,9 +149,10 @@ namespace Muzicki_festival.FormeDodatne
                     }
 
                     List<DateTime> list = new List<DateTime>();
-                    foreach (var r in TabelaDaniVisednevna.Rows)
+                    for (int i = 0; i < TabelaDaniVisednevna.Rows.Count; i++)
                     {
-                        list.Add((DateTime)r);
+                        DateTime r = (DateTime)TabelaDaniVisednevna.Rows[i].Cells["DAN"].Value;
+                        list.Add(r);
                     }
 
                     UlaznicaBasicIzlaz = new ViseDnevnaBasic(0, (float)txtCena.Value, placanje, dtpDatum.Value, db, list);
@@ -149,18 +209,6 @@ namespace Muzicki_festival.FormeDodatne
             this.Close();
         }
 
-        private void btnDodaj_Click(object sender, EventArgs e)
-        {
-            FormaPosetilac formaPosetilac = new FormaPosetilac(this);
-            formaPosetilac.Show();
-            this.Show();
-            UcitajPosetioce();
-        }
-        private void UcitajPosetioce()
-        {
-           
-        }
-
         private void cmbTip_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cmbTip.SelectedItem)
@@ -192,39 +240,63 @@ namespace Muzicki_festival.FormeDodatne
             }
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void DugmeDodajDanVisednevna_Click(object sender, EventArgs e)
         {
-
+            TabelaDaniVisednevna.Rows.Add(DanVisednevna.Value);
         }
 
         private void DugmeObrisiDanVisednevna_Click(object sender, EventArgs e)
         {
+            if (selektovanRedVisednevnaDani == -1)
+            {
+                MessageBox.Show("Izaberite dan za brisanje!");
+                return;
+            }
 
+            TabelaDaniVisednevna.Rows.RemoveAt(selektovanRedVisednevnaDani);
+            TabelaDaniVisednevna.Refresh();
+            selektovanRedVisednevnaDani = -1;
         }
 
         private void DugmeDodajPogodnost_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtPogodnost.Text))
+            {
+                MessageBox.Show("Unesite pogodnost u tekst polje!");
+                return;
+            }
 
+            TabelaPogodnosti.Rows.Add(txtPogodnost.Text);
+            txtPogodnost.Text = "";
         }
 
         private void DugmeObrisiPogodnost_Click(object sender, EventArgs e)
         {
+            if (selektovanRedPogodnosti == -1)
+            {
+                MessageBox.Show("Izaberite dan za brisanje!");
+                return;
+            }
 
+            TabelaPogodnosti.Rows.RemoveAt(selektovanRedPogodnosti);
+            TabelaPogodnosti.Refresh();
+            selektovanRedPogodnosti = -1;
         }
 
         private void TabelaDaniVisednevna_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0 && e.RowIndex < TabelaDaniVisednevna.Rows.Count)
+            {
+                selektovanRedVisednevnaDani = e.RowIndex;
+            }
         }
 
         private void TabelaPogodnosti_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0 && e.RowIndex < TabelaPogodnosti.Rows.Count)
+            {
+                selektovanRedPogodnosti = e.RowIndex;
+            }
         }
     }
 }

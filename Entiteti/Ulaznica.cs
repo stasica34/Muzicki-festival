@@ -27,6 +27,7 @@ namespace Muzicki_festival.Entiteti
         public virtual Dogadjaj Dogadjaj { get; set; }
         public Ulaznica()
         {
+
         }
     }
 }

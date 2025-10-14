@@ -18,10 +18,10 @@ namespace Muzicki_festival.Mapiranje
             Id(x => x.ID_GRUPE, "ID_GRUPE").GeneratedBy.Identity();
             Map(x => x.NAZIV, "NAZIV");
             //mapiranje  1:N sa AgencijaOrganizator
-            References(x => x.AgencijaID, "AGENCIJA_ORGANIZATOR_ID").LazyLoad().Cascade.All();
+            References(x => x.AgencijaID, "AGENCIJA_ORGANIZATOR_ID").LazyLoad().Cascade.None();
 
             //mapiranje
-            HasMany(x=> x.Clanovi).KeyColumn("GRUPA_ID").LazyLoad().Cascade.All();
+            HasMany(x=> x.Clanovi).KeyColumn("GRUPA_ID").LazyLoad().Cascade.None();
         }
     }
 }

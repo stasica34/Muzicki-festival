@@ -67,7 +67,7 @@ namespace Muzicki_festival.FormeDodatne
         }
         private void PopuniTabeluGrupe()
         {
-            TabelaClanovi.Rows.Clear();
+            TabelaGrupe.Rows.Clear();
             foreach (var g in grupaViews)
                 TabelaGrupe.Rows.Add(g.Id, g.Naziv, g.NazivAgencije);
         }
@@ -174,6 +174,7 @@ namespace Muzicki_festival.FormeDodatne
             if (dr == DialogResult.OK)
             {
                 ulaznica = forma.UlaznicaBasicIzlaz;
+                labelaUlaznica.Text = ulaznica.TipUlaznice.ToString();
             }
             else if (dr == DialogResult.No)
             {
@@ -197,6 +198,8 @@ namespace Muzicki_festival.FormeDodatne
             FormaDodajGrupu formaDodajGrupu = new FormaDodajGrupu();
             this.Hide();
             formaDodajGrupu.ShowDialog();
+            grupaViews = DTOManager.VratiSveGrupe();
+            PopuniTabeluGrupe();
             this.Show();
         }
 

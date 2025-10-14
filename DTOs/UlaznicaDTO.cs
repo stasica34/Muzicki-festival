@@ -40,9 +40,9 @@ namespace Muzicki_festival.DTOs
 
     public class ViseDnevnaBasic : UlaznicaBasic
     {
-        public List<DateTime> DatumiVazenja;
+        public IList<DateTime> DatumiVazenja;
 
-        public ViseDnevnaBasic(int id, float osnovnaCena, string nacinPlacanja, DateTime datumKupovine, DogadjajBasic dogadjaj, List<DateTime> datumiVazenja)
+        public ViseDnevnaBasic(int id, float osnovnaCena, string nacinPlacanja, DateTime datumKupovine, DogadjajBasic dogadjaj, IList<DateTime> datumiVazenja)
             : base(id, osnovnaCena, nacinPlacanja, datumKupovine, TipUlaznice.VISEDNEVNA, dogadjaj)
         {
             DatumiVazenja = datumiVazenja;
@@ -51,9 +51,9 @@ namespace Muzicki_festival.DTOs
 
     public class VIPBasic : UlaznicaBasic
     {
-        public List<string> Pogodnosti;
+        public IList<string> Pogodnosti;
 
-        public VIPBasic(int id, float osnovnaCena, string nacinPlacanja, DateTime datumKupovine, DogadjajBasic dogadjaj, List<string> pogodnosti)
+        public VIPBasic(int id, float osnovnaCena, string nacinPlacanja, DateTime datumKupovine, DogadjajBasic dogadjaj, IList<string> pogodnosti)
             : base(id, osnovnaCena, nacinPlacanja, datumKupovine, TipUlaznice.VIP, dogadjaj)
         {
             Pogodnosti = pogodnosti;

@@ -53,6 +53,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.IzmeniLokaciju = new System.Windows.Forms.Button();
             this.DodatnaOpremaGroup = new System.Windows.Forms.GroupBox();
+            this.DugmeObrisi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxKapacitet)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -274,7 +275,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(573, 224);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // dataGridView2
             // 
@@ -286,6 +286,7 @@
             // 
             // IzmeniLokaciju
             // 
+            this.IzmeniLokaciju.Enabled = false;
             this.IzmeniLokaciju.Location = new System.Drawing.Point(12, 505);
             this.IzmeniLokaciju.Name = "IzmeniLokaciju";
             this.IzmeniLokaciju.Size = new System.Drawing.Size(81, 33);
@@ -304,11 +305,23 @@
             this.DodatnaOpremaGroup.TabStop = false;
             this.DodatnaOpremaGroup.Text = "Dodatna oprema";
             // 
-            // LokacijeTest
+            // DugmeObrisi
+            // 
+            this.DugmeObrisi.Enabled = false;
+            this.DugmeObrisi.Location = new System.Drawing.Point(99, 505);
+            this.DugmeObrisi.Name = "DugmeObrisi";
+            this.DugmeObrisi.Size = new System.Drawing.Size(81, 33);
+            this.DugmeObrisi.TabIndex = 9;
+            this.DugmeObrisi.Text = "Obrisi";
+            this.DugmeObrisi.UseVisualStyleBackColor = true;
+            this.DugmeObrisi.Click += new System.EventHandler(this.DugmeObrisi_Click);
+            // 
+            // FormaLokacijaDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 550);
+            this.Controls.Add(this.DugmeObrisi);
             this.Controls.Add(this.DodatnaOpremaGroup);
             this.Controls.Add(this.IzmeniLokaciju);
             this.Controls.Add(this.dataGridView1);
@@ -316,7 +329,7 @@
             this.Controls.Add(this.DodatniPodaci);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "LokacijeTest";
+            this.Name = "FormaLokacijaDodaj";
             this.Text = "LokacijeTest";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -359,5 +372,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button IzmeniLokaciju;
         private System.Windows.Forms.GroupBox DodatnaOpremaGroup;
+        private System.Windows.Forms.Button DugmeObrisi;
     }
 }
