@@ -15,6 +15,7 @@ namespace Muzicki_festival.Mapiranje
         public IzvodjacMapiranje()
         {
             Table("IZVODJAC");
+            Schema("S19184");
             Id(x => x.ID, "ID").GeneratedBy.SequenceIdentity("IZVODJAC_PK");
             Map(x => x.IME, "IME").Not.Nullable();
             Map(x => x.DRZAVA_POREKLA, "DRZAVA_POREKLA").Not.Nullable();
@@ -40,7 +41,6 @@ namespace Muzicki_festival.Mapiranje
                .KeyColumn(("IZVODJAC_ID"))
                .Element("ZAHTEV")
                .Cascade.All();
-
         }
 
         public class SoloUmetnikMapiranje : SubclassMap<Muzicki_festival.Entiteti.Solo_Umetnik>

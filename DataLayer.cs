@@ -16,20 +16,20 @@ namespace Muzicki_festival
     {
         private static ISessionFactory factory = null;
         private static object objLock = new object();
-       //trebamo da kreiramo dva interfejsa
-       //Isesstion - sesija - ono sto kreiramo u toj niti ostaje u toj niti, ne moze u drugim nitima, za krairanje sesija
-       //ISessionFactory - kreira se samo 1
+        //trebamo da kreiramo dva interfejsa
+        //Isesstion - sesija - ono sto kreiramo u toj niti ostaje u toj niti, ne moze u drugim nitima, za krairanje sesija
+        //ISessionFactory - kreira se samo 1
 
         //funkcija na zahtev otvara sesiju
         public static ISession GetSession()
         {
             //singlator obrazac - ukoliko ne postoji objekat  kreirati ga
             //ukoliko session facotry nije kreiran 
-            if(factory==null)
+            if (factory == null)
             {
-                lock(objLock)
+                lock (objLock)
                 {
-                    if(factory==null)
+                    if (factory == null)
                     {
                         factory = CreateSessionFactory();
                     }
@@ -42,7 +42,6 @@ namespace Muzicki_festival
         {
             try
             {
-                #region KonfiguracijaStanimirovic
                 var cfg = OracleManagedDataClientConfiguration.Oracle10.ConnectionString
                     (c => c.Is("DATA SOURCE = gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;PERSIST SECURITY INFO = True; User ID=S19184; Password = StasaKostic1#"));
                 return Fluently.Configure()
@@ -52,7 +51,8 @@ namespace Muzicki_festival
                     //nema potrebe da pisemo vise mapiranja, jer jedno mapiranje
                     //sa addfromassemblyof kaze da trazi sva mapiranja u toj biblioteci
                     .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Mapiranje.DogadjajMapiranje>()).BuildSessionFactory();
-                #endregion
+
+                //#endregion
 
                 //var cfg = MsSqlConfiguration.MsSql2012.ConnectionString(c => c.Is(@"Data Source=(localdb)\MSSQLLocalDB;
                 //            Initial Catalog=MojaLokalnaBaza;
@@ -70,9 +70,8 @@ namespace Muzicki_festival
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(
-                     "Greška pri kreiranju SessionFactory:\n\n" + ex.Message +
-                     "\n\nInner exception:\n" + ex.InnerException?.Message); return null;
+                System.Windows.Forms.MessageBox.Show("Greška pri kreiranju SessionFactory:\n\n" + ex.ToString());
+                return null;
             }
         }
     }
