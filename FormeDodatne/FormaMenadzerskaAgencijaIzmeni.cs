@@ -143,7 +143,11 @@ namespace Muzicki_festival.FormeDodatne
 
             MenadzerskaAgencijaKontaktBasic noviKontakt = new MenadzerskaAgencijaKontaktBasic(0, tip, VrednostKontakt.Text, mb);
             MenadzerskaAgencijaKontaktView dodat = DTOManager.DodajKontaktMenadzerskeAgencije(noviKontakt);
-        
+            if (dodat == null)
+            {
+                MessageBox.Show("Greška prilikom dodavanja kontakta. Vrednost nije vraćena iz baze.");
+                return;
+            }
             MessageBox.Show($"Uspešno dodat kontakt {dodat.ID} {dodat.TIP_KONTAKTA} {dodat.Vrednost}");
             kontaktPodaci.Add(dodat);
             PopuniTabeluKontaki();

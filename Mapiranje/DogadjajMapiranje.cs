@@ -15,7 +15,7 @@ namespace Muzicki_festival.Mapiranje
 
             Table("DOGADJAJ");
 
-            Id(x => x.ID, "ID").GeneratedBy.Identity();
+            Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
 
             Map(x => x.NAZIV, "NAZIV").Not.Nullable();
             Map(x => x.TIP, "TIP").Not.Nullable();

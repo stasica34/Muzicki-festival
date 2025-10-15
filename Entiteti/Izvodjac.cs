@@ -5,13 +5,13 @@ namespace Muzicki_festival.Entiteti
 {
     public enum IzvodjacTip
     {
-        SOLO_UMETNIK,
-        BEND
+        SOLO_UMETNIK ,
+        BEND 
     }
 
     public class Izvodjac
     {
-        public virtual int ID { get; protected set; }
+        public virtual int ID { get; set; }
         public virtual string IME { get; set; }
         public virtual string DRZAVA_POREKLA { get; set; }
 

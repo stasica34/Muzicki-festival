@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Muzicki_festival.Mapiranje
 {
-    public class IzvodjacMapiranje:ClassMap<Muzicki_festival.Entiteti.Izvodjac>
+    public class IzvodjacMapiranje : ClassMap<Muzicki_festival.Entiteti.Izvodjac>
     {
         public IzvodjacMapiranje()
         {
             Table("IZVODJAC");
-            Id(x => x.ID, "ID").GeneratedBy.Identity();
+            Id(x => x.ID, "ID").GeneratedBy.SequenceIdentity("IZVODJAC_PK");
             Map(x => x.IME, "IME").Not.Nullable();
             Map(x => x.DRZAVA_POREKLA, "DRZAVA_POREKLA").Not.Nullable();
             Map(x => x.EMAIL, "EMAIL").Not.Nullable();
@@ -28,7 +28,7 @@ namespace Muzicki_festival.Mapiranje
               .Table("NASTUPA")
               .ParentKeyColumn("IZVODJAC_ID")
               .ChildKeyColumn("DOGADJAJ_ID")
-              .Cascade.None();
+              .Cascade.All();
 
             //svuda gde mi je nasladjivanje da uradim i sa discriminator sa tipom
             //visevrednosni atribut

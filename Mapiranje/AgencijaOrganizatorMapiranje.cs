@@ -1,10 +1,11 @@
-﻿using System;
+﻿using FluentNHibernate.Conventions.Inspections;
+using FluentNHibernate.Mapping;
+using Muzicki_festival.Entiteti;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
-using Muzicki_festival.Entiteti;
 
 namespace Muzicki_festival.Mapiranje
 {
@@ -13,7 +14,7 @@ namespace Muzicki_festival.Mapiranje
         public AgencijaOrganizatorMapiranje()
         {
             Table("AGENCIJA_ORGANIZATOR");
-            Id(x => x.ID, "ID").GeneratedBy.Identity();
+            Id(x => x.ID, "ID").GeneratedBy.TriggerIdentity();
             Map(x => x.NAZIV, "NAZIV").Not.Nullable();
             Map(x => x.ADRESA, "ADRESA").Not.Nullable();
             HasMany(x => x.Grupe)

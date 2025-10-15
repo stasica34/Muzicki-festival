@@ -44,8 +44,41 @@ namespace Muzicki_festival
                             break;
                     }
                 }
+                foreach (Izvodjac i in izvodjaci)
+                {
+                if (i.TIP_IZVODJACA == IzvodjacTip.SOLO_UMETNIK)
+                {
+                    Solo_Umetnik u = i as Solo_Umetnik;
+                        izvodjaciView.Add(new Solo_umetnikView(
+                            u.ID,
+                            u.IME,
+                            u.DRZAVA_POREKLA,
+                            u.EMAIL,
+                            u.KONTAKT_OSOBA,
+                            u.TELEFON,
+                            u.Zanr,
+                            u.SVIRA_INSTRUMENT,
+                            u.TIP_INSTRUMENTA
+                        ));
+                    }
+                else if (i.TIP_IZVODJACA == IzvodjacTip.BEND)
+                    {
+                        Bend b = i as Bend;
+                        izvodjaciView.Add(new BendView(
+                            b.ID,
+                            b.IME,
+                            b.DRZAVA_POREKLA,
+                            b.EMAIL,
+                            b.KONTAKT_OSOBA,
+                            b.TELEFON,
+                            b.Zanr,
+                            b.BROJ_CLANOVA
+                        ));
+                    }
+            }
 
-                s.Close();
+
+            s.Close();
 
                 return izvodjaciView;
             }
@@ -140,8 +173,6 @@ namespace Muzicki_festival
                         };
 
                         id = (int)s.Save(bend);
-                        s.Flush();
-
                         ma.Izvodjaci.Add(bend);
                         s.Flush();
 
@@ -333,7 +364,7 @@ namespace Muzicki_festival
                         su.TELEFON = sbasic.Telefon;
                         su.KONTAKT_OSOBA = sbasic.Kontakt_osoba;
                         su.SVIRA_INSTRUMENT = sbasic.Svira_instrument;
-                        su.TIP_INSTRUMENTA = sbasic.Svira_instrument;
+                        su.TIP_INSTRUMENTA = sbasic.Tip_instrumenta;
 
                         s.Update(su);
                         s.Flush();
@@ -392,7 +423,6 @@ namespace Muzicki_festival
                 }
 
                 i.Lista_tehnickih_zahteva.Add(zahtev);
-                s.Update(i);
                 s.Flush();
                 s.Close();
 
@@ -619,8 +649,7 @@ namespace Muzicki_festival
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-
+                MessageBox.Show("Greška u DodajLokaciju:\n" + ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -1054,7 +1083,7 @@ namespace Muzicki_festival
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show("Greška prilikom dodavanja kontakta: " + ex.Message);
                 return null;
             }
         }

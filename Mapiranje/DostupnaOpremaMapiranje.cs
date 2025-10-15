@@ -12,7 +12,7 @@ namespace Muzicki_festival.Mapiranje
         public DostupnaOpremaMapiranje()
         {
             Table("DOSTUPNA_OPREMA");
-            Id(x => x.ID).GeneratedBy.Identity();
+            Id(x => x.ID).GeneratedBy.TriggerIdentity();
             Map(x => x.NAZIV, "NAZIV").Not.Nullable();
             References(x => x.Lokacija)
                 .Column("LOKACIJA_ID")
