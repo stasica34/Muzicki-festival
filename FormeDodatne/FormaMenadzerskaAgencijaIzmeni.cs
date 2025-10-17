@@ -126,11 +126,18 @@ namespace Muzicki_festival.FormeDodatne
 
         private void DodajKontakt_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(VrednostKontakt.Text))
+            string vrednost = VrednostKontakt.Text.Trim();
+            if (string.IsNullOrWhiteSpace(vrednost))
             {
                 MessageBox.Show("Niste uneli vrednost kontakta.");
+                return;
             }
 
+            if (TipKontakt.SelectedItem == null)
+            {
+                MessageBox.Show("Molimo izaberite tip kontakta.");
+                return;
+            }
             string tipString = TipKontakt.SelectedItem.ToString();
 
             TipKontakta tip;
@@ -140,8 +147,13 @@ namespace Muzicki_festival.FormeDodatne
                 tip = TipKontakta.TELEFON;
 
             MenadzerskaAgencijaBasic mb = new MenadzerskaAgencijaBasic(IdAgencije, agencija.Naziv, agencija.Adresa, agencija.KontaktOsoba, null);
-
-            MenadzerskaAgencijaKontaktBasic noviKontakt = new MenadzerskaAgencijaKontaktBasic(0, tip, VrednostKontakt.Text, mb);
+            bool postoji = kontaktPodaci.Any(kp => kp.TIP_KONTAKTA == tip && kp.Vrednost.Equals(vrednost, StringComparison.OrdinalIgnoreCase));
+            if (postoji)
+            {
+                MessageBox.Show("Kontakt sa istim tipom i vrednošću već postoji za ovu agenciju.");
+                return;
+            }
+            MenadzerskaAgencijaKontaktBasic noviKontakt = new MenadzerskaAgencijaKontaktBasic(0, tip, vrednost, mb);
             MenadzerskaAgencijaKontaktView dodat = DTOManager.DodajKontaktMenadzerskeAgencije(noviKontakt);
             if (dodat == null)
             {
@@ -151,6 +163,8 @@ namespace Muzicki_festival.FormeDodatne
             MessageBox.Show($"Uspešno dodat kontakt {dodat.ID} {dodat.TIP_KONTAKTA} {dodat.Vrednost}");
             kontaktPodaci.Add(dodat);
             PopuniTabeluKontaki();
+            VrednostKontakt.Clear();
+            TipKontakt.SelectedItem = null;
         }
 
         private void ObrisiKontakt_Click(object sender, EventArgs e)
@@ -180,6 +194,8 @@ namespace Muzicki_festival.FormeDodatne
                 kontaktPodaci.Remove(obrisan);
 
                 PopuniTabeluKontaki();
+                selektovanKontaktId = -1;
+                ObrisiKontakt.Enabled = false; 
             }
             else
             {

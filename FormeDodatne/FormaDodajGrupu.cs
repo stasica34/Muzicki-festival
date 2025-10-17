@@ -30,14 +30,13 @@ namespace Muzicki_festival.FormeDodatne
             grupaViews = DTOManager.VratiSveGrupe();
             InitTabeluGrupe();
             PopuniTabeluGrupe();
+
             InitTabeluClanovi();
+            ResetujFormu();
 
-
-            labelaAgencija = new Label();
             labelaAgencija.Enabled = false;
-            cmbAgencijeIzmena = new ComboBox();
             cmbAgencijeIzmena.Enabled = false;
-        
+
             labelaAgencija.Anchor = AnchorStyles.None;
             cmbAgencijeIzmena.Anchor = AnchorStyles.None;
         }
@@ -140,7 +139,8 @@ namespace Muzicki_festival.FormeDodatne
 
         private void DugmeDodaj_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNaziv.Text))
+            var naziv = txtNaziv.Text.Trim();
+            if (string.IsNullOrWhiteSpace(naziv))
             {
                 MessageBox.Show("Unesite naziv!");
                 return;
@@ -154,15 +154,19 @@ namespace Muzicki_festival.FormeDodatne
 
             AgencijaOrganizatorView av = cmbAgencije.SelectedItem as AgencijaOrganizatorView;
             AgencijaOrganizatorBasic ab = new AgencijaOrganizatorBasic(av.Id, av.Naziv, av.Adresa, null);
-            GrupaBasic gb = new GrupaBasic(0, txtNaziv.Text, ab, null);
+            GrupaBasic gb = new GrupaBasic(0, naziv, ab, null);
 
             GrupaView nova = DTOManager.DodajGrupu(gb);
 
             if (nova != null)
             {
                 MessageBox.Show("Uspesno dodata grupa!");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                grupaViews = DTOManager.VratiSveGrupe();
+                PopuniTabeluGrupe();
+                TabelaGrupe.ClearSelection();
+                TabelaClanovi.Rows.Clear();
+                txtNaziv.Clear();
+                cmbAgencije.SelectedIndex = -1;
             }
         }
 
@@ -187,10 +191,7 @@ namespace Muzicki_festival.FormeDodatne
             GrupaView gb = grupaViews.Where(g => g.Id == selektovanaGrupaId).FirstOrDefault();
 
             txtNazivIzmena.Text = gb.Naziv;
-            TableLayoutAgencija.Controls.Add(labelaAgencija, 0, 0);
-            labelaAgencija.Enabled = true;
-            labelaAgencija.Text = gb.NazivAgencije;
-            DugmePromeniAgenciju.Enabled = true;
+            PrikaziStaruAgenciju(gb.NazivAgencije);
         }
 
         private void DugmeObrisi_Click(object sender, EventArgs e)
@@ -208,8 +209,10 @@ namespace Muzicki_festival.FormeDodatne
                 var obrisana = grupaViews.Where(g => g.Id == selektovanaGrupaId).FirstOrDefault();
                 grupaViews.Remove(obrisana);
                 PopuniTabeluGrupe();
-                selektovanaGrupaId = -1;
+                ResetujFormu();
+
                 PopuniTabeluClanovi();
+                selektovanaGrupaId = -1;
 
                 DugmeObrisi.Enabled = false;
                 IzmeniDugme.Enabled = false;
@@ -227,6 +230,9 @@ namespace Muzicki_festival.FormeDodatne
 
                 DugmeObrisi.Enabled = true;
                 IzmeniDugme.Enabled = true;
+                TabelaGrupe.ClearSelection();
+                TabelaGrupe.Rows[e.RowIndex].Selected = true;
+
             }
         }
 
@@ -235,38 +241,39 @@ namespace Muzicki_festival.FormeDodatne
             DugmePromeniAgenciju.Enabled = false;
             TableLayoutAgencija.Controls.Remove(labelaAgencija);
             labelaAgencija.Enabled = false;
-
-            cmbAgencije.Items.Clear();
-            foreach (var a in agencijaOrganizatorViews)
-                cmbAgencijeIzmena.Items.Add(a);
-
-            TableLayoutAgencija.Controls.Add(cmbAgencijeIzmena, 0, 0);
-            cmbAgencijeIzmena.Enabled = true;
+            OmoguciPromenuAgencije();
         }
 
         private void PotvrdiIzmeneDugme_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNazivIzmena.Text))
+            var naziv = txtNaziv.Text.Trim();
+            if (string.IsNullOrWhiteSpace(naziv))
             {
                 MessageBox.Show("Unesite naziv!");
                 return;
             }
 
-            if (DugmePromeniAgenciju.Enabled == false && cmbAgencijeIzmena.SelectedItem == null)
+            if (cmbAgencijeIzmena.Enabled && cmbAgencijeIzmena.SelectedItem == null)
             {
-                MessageBox.Show($"Izaberite agenciju! {cmbAgencijeIzmena.SelectedItem}");
+                MessageBox.Show("Izaberite agenciju!");
                 return;
             }
 
-
             AgencijaOrganizatorBasic ab = null;
-            if (cmbAgencijeIzmena.Enabled)
+            if (cmbAgencijeIzmena.Enabled && cmbAgencijeIzmena.SelectedItem != null)
             {
                 var av = cmbAgencijeIzmena.SelectedItem as AgencijaOrganizatorView;
                 ab = new AgencijaOrganizatorBasic(av.Id, av.Naziv, av.Adresa, null);
             }
+            else
+            {
+                var staraGrupa = grupaViews.FirstOrDefault(g => g.Id == selektovanaGrupaId);
+                var staraAgencija = agencijaOrganizatorViews.FirstOrDefault(a => a.Naziv == staraGrupa.NazivAgencije);
+                if (staraAgencija != null)
+                    ab = new AgencijaOrganizatorBasic(staraAgencija.Id, staraAgencija.Naziv, staraAgencija.Adresa, null);
+            }
 
-            GrupaBasic gb = new GrupaBasic(selektovanaGrupaId, txtNazivIzmena.Text, ab, null);
+            GrupaBasic gb = new GrupaBasic(selektovanaGrupaId, naziv, ab, null);
 
             if (DTOManager.IzmeniGrupu(gb))
             {
@@ -275,27 +282,56 @@ namespace Muzicki_festival.FormeDodatne
 
                 grupaViews = DTOManager.VratiSveGrupe();
                 PopuniTabeluGrupe();
-                selektovanaGrupaId = -1;
                 PopuniTabeluClanovi();
                 txtNazivIzmena.Text = "";
 
                 TableLayoutAgencija.Controls.Remove(cmbAgencijeIzmena);
                 TableLayoutAgencija.Controls.Remove(labelaAgencija);
-                GrupaIzmena.Enabled = false;
-                GrupaNova.Enabled = true;
-                Tabele.Enabled = true;
+                ResetujFormu();
             }
         }
 
         private void OtkaziIzmene_Click(object sender, EventArgs e)
         {
-            TableLayoutAgencija.Controls.Remove(cmbAgencijeIzmena);
-            TableLayoutAgencija.Controls.Remove(labelaAgencija);
+
+            ResetujFormu();
+        }
+        private void ResetujFormu()
+        {
+            selektovanaGrupaId = -1;
+            DugmeObrisi.Enabled = false;
+            IzmeniDugme.Enabled = false;
+            TabelaGrupe.ClearSelection();
+            TabelaClanovi.Rows.Clear();
+            txtNazivIzmena.Text = "";
+            TableLayoutAgencija.Controls.Clear();
             GrupaIzmena.Enabled = false;
             GrupaNova.Enabled = true;
             Tabele.Enabled = true;
-
-            txtNazivIzmena.Text = "";
         }
+        private void PrikaziStaruAgenciju(string naziv)
+        {
+            TableLayoutAgencija.Controls.Clear();
+            labelaAgencija.Text = naziv;
+            labelaAgencija.Enabled = true;
+            TableLayoutAgencija.Controls.Add(labelaAgencija, 0, 0);
+            DugmePromeniAgenciju.Enabled = true;
+        }
+
+        private void OmoguciPromenuAgencije()
+        {
+            TableLayoutAgencija.Controls.Clear();
+            cmbAgencijeIzmena.Items.Clear();
+            foreach (var a in agencijaOrganizatorViews)
+                cmbAgencijeIzmena.Items.Add(a);
+
+            cmbAgencijeIzmena.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbAgencijeIzmena.SelectedIndex = -1;
+            cmbAgencijeIzmena.BackColor = Color.White;
+            cmbAgencijeIzmena.Enabled = true;
+            TableLayoutAgencija.Controls.Add(cmbAgencijeIzmena, 0, 0);
+        }
+
+
     }
 }

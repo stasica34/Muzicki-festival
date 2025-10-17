@@ -26,13 +26,13 @@ namespace Muzicki_festival.Forme
 
         private void FormaDogadjajIzmeni_Load(object sender, EventArgs e)
         {
-            /*
+            
             try
             {
                 using (ISession s = DataLayer.GetSession())
                 {
-                    var sveLokacije = s.QueryOver<Lokacija>().List();
-                    foreach (var lokacija in sveLokacije)
+                    var svelokacije = s.QueryOver<Lokacija>().List();
+                    foreach (var lokacija in svelokacije)
                     {
                         cmbLokacija.Items.Add(lokacija); 
                     }
@@ -54,7 +54,7 @@ namespace Muzicki_festival.Forme
 
                 foreach (Lokacija lok in cmbLokacija.Items)
                 {
-                    if (lok.Lokacija_ID.Equals(dogadjajzaIzmenu.Lokacija.Lokacija_ID))
+                    if (lok.ID.Equals(dogadjajzaIzmenu.Lokacija.ID))
                     {
                         cmbLokacija.SelectedItem = lok;
                         break;
@@ -64,9 +64,8 @@ namespace Muzicki_festival.Forme
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greška prilikom učitavanja forme za izmenu: " + ex.Message);
+                MessageBox.Show("greška prilikom učitavanja forme za izmenu: " + ex.Message);
             }
-            */
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)

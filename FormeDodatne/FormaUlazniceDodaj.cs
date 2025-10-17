@@ -298,5 +298,6 @@ namespace Muzicki_festival.FormeDodatne
                 selektovanRedPogodnosti = e.RowIndex;
             }
         }
+
     }
 }

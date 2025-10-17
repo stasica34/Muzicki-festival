@@ -293,8 +293,8 @@ namespace Muzicki_festival.FormeDodatne
                 }
                 else
                 {
-                    this.DialogResult = DialogResult.No;
-                    this.Close();
+                    MessageBox.Show("Došlo je do greške prilikom dodavanja izvođača. Proverite unete podatke i pokušajte ponovo.");
+                    return;
                 }
             }
         }

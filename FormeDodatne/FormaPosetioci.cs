@@ -173,7 +173,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void PotvrdiIzmeneDugme_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtIme.Text) || string.IsNullOrEmpty(txtPrezime.Text) || string.IsNullOrEmpty(txtEmail.Text))
+            if (string.IsNullOrWhiteSpace(txtIme.Text) || string.IsNullOrWhiteSpace(txtPrezime.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 MessageBox.Show("Niste uneli sve neophodne podatke!");
                 return;
@@ -214,41 +214,33 @@ namespace Muzicki_festival.FormeDodatne
                 idSelektovan = (int)row.Cells["ID"].Value;
 
                 UlaznicaBasic u = DTOManager.VratiUlaznicuPosetioca(idSelektovan);
-
                 if (u != null)
                 {
                     LabelaCena.Text = u.OsnovnaCena.ToString();
-                    LabelaDatumKupovine.Text = u.DatumKupovine.ToString();
+                    LabelaDatumKupovine.Text = u.DatumKupovine.ToString("dd.MM.yyyy");
                     LabelaNacin.Text = u.NacinPlacanja;
                     LabelaTip.Text = u.TipUlaznice.ToString();
                 }
                 else
                 {
-                    MessageBox.Show("Greska");
-                }
-
-                if (IzmenaUToku == true)
-                {
-                    IzmenaUToku = false;
-                    txtEmail.Text = "";
-                    txtIme.Text = "";
-                    txtPrezime.Text = "";
-                    txtTelefon.Text = "";
-                    GrupaPodaci.Enabled = false;
+                    LabelaCena.Text = "";
+                    LabelaDatumKupovine.Text = "";
+                    LabelaNacin.Text = "";
+                    LabelaTip.Text = "";
                 }
 
                 GrupaView grupa = DTOManager.VratiGrupuPosetioca(idSelektovan);
-
                 if (grupa != null)
                 {
                     grupaViews.Clear();
                     grupaViews.Add(grupa);
                     PopuniTabeluGrupe();
 
-                    DugmeUclani.Enabled = false;
-                    DugmeNapustiGrupu.Enabled = true;
                     selektovanaGrupaId = grupa.Id;
                     PopuniTabeluClanovi();
+
+                    DugmeUclani.Enabled = false;
+                    DugmeNapustiGrupu.Enabled = true;
                 }
                 else
                 {
@@ -257,11 +249,12 @@ namespace Muzicki_festival.FormeDodatne
 
                     selektovanaGrupaId = -1;
                     PopuniTabeluClanovi();
-                    
-                    DugmeUclani.Enabled = true;
+
+                    DugmeUclani.Enabled = false; 
                     DugmeNapustiGrupu.Enabled = false;
                 }
-
+                IzmenaUToku = false;
+                GrupaPodaci.Enabled = false;
                 ObrisiDugme.Enabled = true;
             }
         }
@@ -288,26 +281,22 @@ namespace Muzicki_festival.FormeDodatne
 
             if (DTOManager.DodajClanaGrupi(selektovanaGrupaId, idSelektovan))
             {
-                MessageBox.Show("Uspesno učlanjen");
+                MessageBox.Show("Uspesno učlanjen!");
 
                 GrupaView grupa = grupaViews.Where(g => g.Id == selektovanaGrupaId).FirstOrDefault();
-                grupaViews.Clear();
-                grupaViews.Add(grupa);
+                if (grupa != null)
+                {
+                    PosetilacView view = posetilacViews.Where(p => p.Id == idSelektovan).FirstOrDefault();
+                    grupa.Clanovi.Add(view.Ime);
+                    PopuniTabeluClanovi();
 
-                PopuniTabeluGrupe();
-
-                PosetilacView view = posetilacViews.Where(p => p.Id == idSelektovan).FirstOrDefault();
-
-                grupa.Clanovi.Add(view.Ime);
-                PopuniTabeluClanovi();
-
-                DugmeNapustiGrupu.Enabled = true;
-                DugmeNapustiGrupu.Enabled = false;
+                    DugmeUclani.Enabled = false;
+                    DugmeNapustiGrupu.Enabled = true;
+                }
             }
             else
             {
                 MessageBox.Show("Greška pri učlanivanju!");
-                return;
             }
         }
 
@@ -357,12 +346,19 @@ namespace Muzicki_festival.FormeDodatne
                 PosetilacView obrisan = posetilacViews.Where(p => p.Id == idSelektovan).FirstOrDefault();
                 posetilacViews.Remove(obrisan);
                 PopuniTabeluPosetioci();
-
                 LabelaCena.Text = "";
                 LabelaDatumKupovine.Text = "";
                 LabelaNacin.Text = "";
                 LabelaTip.Text = "";
+                grupaViews = DTOManager.VratiSveGrupe();
+                PopuniTabeluGrupe();
+                selektovanaGrupaId = -1;
+                PopuniTabeluClanovi();
+                DugmeUclani.Enabled = true;
+                DugmeNapustiGrupu.Enabled = false;
+
             }
         }
+
     }
 }

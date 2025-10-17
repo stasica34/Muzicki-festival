@@ -18,7 +18,7 @@ namespace Muzicki_festival.Mapiranje
                 .Column("LOKACIJA_ID")
                 .LazyLoad()
                 .Not.Nullable()
-                .Cascade.None();
+                .Cascade.All();
         }
     }
 }

@@ -54,23 +54,17 @@ namespace Muzicki_festival.Forme
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtGps.Text))
-            {
-                MessageBox.Show("Unesite GPS koordinate");
-                return;
-            }
-
             if (cmbTip.SelectedIndex == -1)
             {
                 MessageBox.Show("Odaberite tip događaja.");
                 return;
             }
-
-            if (string.IsNullOrWhiteSpace(txtOpis.Text))
-            {
-                MessageBox.Show("Unesite opis događaja.");
-                return;
-            }
+            //null je
+            //if (string.IsNullOrWhiteSpace(txtOpis.Text))
+            //{
+            //    MessageBox.Show("Unesite opis događaja.");
+            //    return;
+            //}
 
             if (dtpKraj.Value < dtpPocetak.Value)
             {

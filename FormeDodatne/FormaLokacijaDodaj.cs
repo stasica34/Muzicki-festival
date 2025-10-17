@@ -136,7 +136,7 @@ namespace Muzicki_festival.Forme
 
         private void DodajDugme_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Opis.Text) || string.IsNullOrEmpty(Naziv.Text) || string.IsNullOrEmpty(GPS.Text))
+            if (string.IsNullOrEmpty(Naziv.Text) || string.IsNullOrEmpty(GPS.Text))
             {
                 MessageBox.Show("Popunite sve obavezne podatke.");
                 return;

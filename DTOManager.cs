@@ -33,14 +33,49 @@ namespace Muzicki_festival
                 {
                     switch (i.TIP_IZVODJACA)
                     {
+                        //puca ako je prazna tabela
+                        //    case IzvodjacTip.SOLO_UMETNIK:
+                        //        Solo_Umetnik u = i as Solo_Umetnik;
+                        //        izvodjaciView.Add(new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.Zanr, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA));
+                        //        break;
+
+                        //    case IzvodjacTip.BEND:
+                        //        Bend b = i as Bend;
+                        //        izvodjaciView.Add(new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.Zanr, b.BROJ_CLANOVA));
+                        //        break;
                         case IzvodjacTip.SOLO_UMETNIK:
                             Solo_Umetnik u = i as Solo_Umetnik;
-                            izvodjaciView.Add(new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.Zanr, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA));
+                            if (u != null)
+                            {
+                                izvodjaciView.Add(new Solo_umetnikView(
+                                    u.ID,
+                                    u.IME ?? "",
+                                    u.DRZAVA_POREKLA ?? "",
+                                    u.EMAIL ?? "",
+                                    u.KONTAKT_OSOBA ?? "",
+                                    u.TELEFON ?? "",
+                                    u.Zanr ?? "",
+                                    u.SVIRA_INSTRUMENT ?? "",
+                                    u.TIP_INSTRUMENTA ?? ""
+                                ));
+                            }
                             break;
 
                         case IzvodjacTip.BEND:
                             Bend b = i as Bend;
-                            izvodjaciView.Add(new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.Zanr, b.BROJ_CLANOVA));
+                            if (b != null)
+                            {
+                                izvodjaciView.Add(new BendView(
+                                    b.ID,
+                                    b.IME ?? "",
+                                    b.DRZAVA_POREKLA ?? "",
+                                    b.EMAIL ?? "",
+                                    b.KONTAKT_OSOBA ?? "",
+                                    b.TELEFON ?? "",
+                                    b.Zanr ?? "",
+                                    b.BROJ_CLANOVA
+                                ));
+                            }
                             break;
                     }
                 }
@@ -148,6 +183,91 @@ namespace Muzicki_festival
 
                 return null;
             }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CHK_IZVODJAC_IME"))
+                    {
+                        MessageBox.Show("Ime izvođača sadrži nedozvoljene znakove! Dozvoljena su samo slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_TELEFON"))
+                    {
+                        MessageBox.Show("Telefon izvođača mora sadržati tačno 10 cifara.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_ZANR"))
+                    {
+                        MessageBox.Show("Zanr prihvata samo slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_DRZAVA"))
+                    {
+                        MessageBox.Show("Država izvođača sadrži nedozvoljene znakove! Dozvoljena su samo slova i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_KONTAKT_OSOBA"))
+                    {
+                        MessageBox.Show("Kontakt osoba sadrži nedozvoljene znakove! Dozvoljena su samo slova, razmaci i crtica.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email mora da bude bude u adekvatnom formatu, da sadrzi slova, brojeve, @.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_IZVODJAC_TIP"))
+                    {
+                        MessageBox.Show("Tip izvođača nije ispravno izabran! (dozvoljeno: BEND ili SOLO UMETNIK)",
+                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_IZVODJAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email izvođača već postoji! Unesite jedinstvenu email adresu.",
+                                        "Duplikat emaila", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_IZVODJAC_TELEFON"))
+                    {
+                        MessageBox.Show("Telefon izvođača već postoji! Unesite jedinstven broj telefona.",
+                                        "Duplikat telefona", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_IZVODJAC_IME_DRZAVA_TIP"))
+                    {
+                        MessageBox.Show("Izvođač sa istim imenom, državom porekla i tipom već postoji u bazi!",
+                                        "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_SOLO_TIP_INSTRUMENTA\r\n"))
+                    {
+                        MessageBox.Show("Za solo umetnika morate da unesete instrument koji svira, ali u formi slova!",
+                                        "Nepoznati unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_SOLO_SVIRA_INSTRUMENT"))
+                    {
+                        MessageBox.Show("Za solo umetnika morate da izaberte da li svira instrument.",
+                                        "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_ZAHTEV"))
+                    {
+                        MessageBox.Show("Zahtev izvodjaca mora biti ispisan u adekvatnom formatu.",
+                                        "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Greška prilikom dodavanja izvođača:\n" + poruka,
+                                        "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return null;
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -159,22 +279,26 @@ namespace Muzicki_festival
         {
             try
             {
-                ISession s = DataLayer.GetSession();
-                Izvodjac i = s.Get<Izvodjac>(id);
-                
-                if (i==null)
-                    return false;
-                
-                s.Delete(i);
-                s.Flush();
-                
-                s.Close();
+                using (ISession s = DataLayer.GetSession())
+                {
+                    Console.WriteLine($"Tražim izvođača sa ID: {id}");
+                    Izvodjac i = s.Get<Izvodjac>(id);
 
-                return true;
+                    if (i == null)
+                    {
+                        Console.WriteLine("Izvođač nije pronađen!");
+                        return false;
+                    }
+
+                    Console.WriteLine($"Brisanje izvođača: {i.IME}");
+                    s.Delete(i);
+                    s.Flush();
+                    return true;
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"Greška prilikom brisanja: {ex.Message}");
                 return false;
             }
         }
@@ -231,6 +355,35 @@ namespace Muzicki_festival
                 s.Close();
                 
                 return new ClanBendaView(c.ID, c.IME, c.INSTRUMENT, c.ULOGA);
+            }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CHK_CLAN_INSTRUMENT"))
+                    {
+                        MessageBox.Show("Nazim instumenta je u formatu slova",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_CLAN_ULOGA"))
+                    {
+                        MessageBox.Show("Uloga clana je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_CLAN_IME"))
+                    {
+                        MessageBox.Show("Ime clana je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return null;
             }
             catch (Exception ex)
             {
@@ -301,7 +454,7 @@ namespace Muzicki_festival
                     s.Update(izv);
 
                     s.Flush();
-                }    
+                }
 
                 switch (izv.TIP_IZVODJACA)
                 {
@@ -314,6 +467,7 @@ namespace Muzicki_festival
                         b.EMAIL = basic.Email;
                         b.TELEFON = basic.Telefon;
                         b.KONTAKT_OSOBA = basic.Kontakt_osoba;
+                        b.Zanr = basic.Zanr;
 
                         s.Update(b);
                         s.Flush();
@@ -326,17 +480,93 @@ namespace Muzicki_festival
 
                         su.DRZAVA_POREKLA = i.Drzava_porekla;
                         su.IME = sbasic.Ime;
-                        su.EMAIL = sbasic.Email; 
+                        su.EMAIL = sbasic.Email;
                         su.TELEFON = sbasic.Telefon;
                         su.KONTAKT_OSOBA = sbasic.Kontakt_osoba;
                         su.SVIRA_INSTRUMENT = sbasic.Svira_instrument;
                         su.TIP_INSTRUMENTA = sbasic.Tip_instrumenta;
+                        su.Zanr = sbasic.Zanr;
 
                         s.Update(su);
                         s.Flush();
                         s.Close();
 
                         return true;
+                }
+
+                return false;
+            }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CHK_IZVODJAC_IME"))
+                    {
+                        MessageBox.Show("Ime izvođača sadrži nedozvoljene znakove! Dozvoljena su samo slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_ZANR"))
+                    {
+                        MessageBox.Show("Zanr prihvata samo slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_DRZAVA"))
+                    {
+                        MessageBox.Show("Država izvođača sadrži nedozvoljene znakove! Dozvoljena su samo slova i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_KONTAKT_OSOBA"))
+                    {
+                        MessageBox.Show("Kontakt osoba sadrži nedozvoljene znakove! Dozvoljena su samo slova, razmaci i crtica.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email mora da bude bude u adekvatnom formatu, da sadrzi slova, brojeve, @.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_IZVODJAC_TIP"))
+                    {
+                        MessageBox.Show("Tip izvođača nije ispravno izabran! (dozvoljeno: BEND ili SOLO UMETNIK)",
+                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_IZVODJAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email izvođača već postoji! Unesite jedinstvenu email adresu.",
+                                        "Duplikat emaila", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_IZVODJAC_TELEFON"))
+                    {
+                        MessageBox.Show("Telefon izvođača već postoji! Unesite jedinstven broj telefona.",
+                                        "Duplikat telefona", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_IZVODJAC_IME_DRZAVA_TIP"))
+                    {
+                        MessageBox.Show("Izvođač sa istim imenom, državom porekla i tipom već postoji u bazi!",
+                                        "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_SOLO_TIP_INSTRUMENTA\r\n"))
+                    {
+                        MessageBox.Show("Za solo umetnika morate da unesete instrument koji svira, ali u formi slova!",
+                                        "Nepoznati unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_SOLO_SVIRA_INSTRUMENT"))
+                    {
+                        MessageBox.Show("Za solo umetnika morate da izaberte da li svira instrument.",
+                                        "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_IZVODJAC_ZAHTEV"))
+                    {
+                        MessageBox.Show("Zahtev izvodjaca mora biti ispisan u adekvatnom formatu.",
+                                        "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 return false;
@@ -613,6 +843,50 @@ namespace Muzicki_festival
 
                 return ret;
             }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+                    if (poruka.Contains("CHK_LOKACIJA_MAX_KAPACITET"))
+                    {
+                        MessageBox.Show("Max kapacitet mora da bude veci od 0!",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_LOKACIJA_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv lokacija je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_DOSTUPNOST_OPREME_NAZIV"))
+                    {
+                        MessageBox.Show("Dostupna oprema lokacija je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_LOKACIJA_OPIS"))
+                    {
+                        MessageBox.Show("Opis lokacija je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    }
+                    else if (poruka.Contains("CHK_LOKACIJA_TIP"))
+                    {
+                        MessageBox.Show("Izaberite adekvatan tip lokacije.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_LOKACIJA_NAZIV_GPS"))
+                    {
+                        MessageBox.Show("Naziv i gps koordinatne su jedinsvteni parametri.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return null;
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Greška u DodajLokaciju:\n" + ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -705,6 +979,50 @@ namespace Muzicki_festival
                 s.Close();
 
                 return ret;
+            }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+                    if (poruka.Contains("CHK_LOKACIJA_MAX_KAPACITET"))
+                    {
+                        MessageBox.Show("Max kapacitet mora da bude veci od 0!",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_LOKACIJA_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv lokacija je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_DOSTUPNOST_OPREME_NAZIV"))
+                    {
+                        MessageBox.Show("Dostupna oprema lokacija je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_LOKACIJA_OPIS"))
+                    {
+                        MessageBox.Show("Opis lokacija je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    }
+                    else if (poruka.Contains("CHK_LOKACIJA_TIP"))
+                    {
+                        MessageBox.Show("Izaberite adekvatan tip lokacije.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_LOKACIJA_NAZIV_GPS"))
+                    {
+                        MessageBox.Show("Naziv i gps koordinatne su jedinsvteni parametri.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return false;
             }
             catch (Exception ex)
             {
@@ -891,9 +1209,43 @@ namespace Muzicki_festival
                 s.Close();
                 return new MenadzerskaAgencijaView(id, nova.NAZIV, nova.ADRESA, nova.KONTAKT_OSOBA);
             }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CK_MENADZERSKA_AGENCIJA_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv menadzerske agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_KONTAKT_OSOBA"))
+                    {
+                        MessageBox.Show("Kontkat osoba sa istim imenom već postoji u okviru ove agencije. Unesite jedinstveno ime.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_MENADZESKA_AGENCIJA_ADRESA"))
+                    {
+                        MessageBox.Show("Adresa menadzerske agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova,brojevi i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_M_AGENCIJA_KONTAKT_OSOBA"))
+                    {
+                        MessageBox.Show("Kontakt osoba menadzerske agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return null;
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);  
+                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -935,6 +1287,40 @@ namespace Muzicki_festival
                 s.Close();
                 
                 return true;
+            }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CK_MENADZERSKA_AGENCIJA_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv menadzerske agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_KONTAKT_OSOBA"))
+                    {
+                        MessageBox.Show("Kontkat osoba sa istim imenom već postoji u okviru ove agencije. Unesite jedinstveno ime.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_MENADZESKA_AGENCIJA_ADRESA"))
+                    {
+                        MessageBox.Show("Aresa menadzerske agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova,brojevi i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_M_AGENCIJA_KONTAKT_OSOBA"))
+                    {
+                        MessageBox.Show("Kontakt osoba menadzerske agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return false;
             }
             catch (Exception ex)
             {
@@ -1047,6 +1433,35 @@ namespace Muzicki_festival
 
                 return new MenadzerskaAgencijaKontaktView(novi.ID, novi.TIP_KONTAKTA, novi.VREDNOST);
             }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CK_TIP_KONTAKTA"))
+                    {
+                        MessageBox.Show("Unesite dobar format za tip kontakta/ email/ telefon.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_MENADZERSKA_KONTAKT"))
+                    {
+                        MessageBox.Show("Kontakt podaic moraju da budu jedinstveni, ne smete da unese duplikate.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_TELEFON_EMAIL"))
+                    {
+                        MessageBox.Show("Vrednost mora da bude lepo napisana",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return null;
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Greška prilikom dodavanja kontakta: " + ex.Message);
@@ -1137,6 +1552,35 @@ namespace Muzicki_festival
                 s.Close();
 
                 return new DogadjajView(id, db.Naziv, db.Tip, db.Opis, db.DatumPocetka, db.DatumKraja, db.Lokacija.Naziv);
+            }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CHK_DOGADJAJ_DATUMI"))
+                    {
+                        MessageBox.Show("Datum zavrstka dogadjaja mora da bude veci od datuma pocetka",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_DOGADJAJ_TIP"))
+                    {
+                        MessageBox.Show("Tip dogadjaja mora biti adekvatno izabran.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_DOGADJAJ_NAZIV_LOKACIJA"))
+                    {
+                        MessageBox.Show("Dogadjaj mora da bude vezan za lokaciju i naziv, ne mogu da se poklapaju, lokacija, naziv i datum pocetka dogadajaj.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return null;
             }
             catch (Exception e)
             {
@@ -1365,6 +1809,80 @@ namespace Muzicki_festival
 
                 return new PosetilacView(p.ID, pb.Ime, pb.Prezime, pb.Email, pb.Telefon);
             }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("UK_POSETILAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email mora da bude jedinstven.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_POSETILAC_TELEFON"))
+                    {
+                        MessageBox.Show("Telefon mora da bude jedinstven.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_TELEFON"))
+                    {
+                        MessageBox.Show("Broj telefona mora da bude bude u adekvatnom formatu, da sadrzi brojeve i 10 cifara.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email mora da bude bude u adekvatnom formatu, da sadrzi slova, brojeve, @.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_PREZIME"))
+                    {
+                        MessageBox.Show("Prezime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_IME"))
+                    {
+                        MessageBox.Show("Ime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_POSETILAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email mora da bude jedinstven.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_POSETILAC_TELEFON"))
+                    {
+                        MessageBox.Show("Telefon mora da bude jedinstven.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_TELEFON"))
+                    {
+                        MessageBox.Show("Broj telefona mora da bude bude u adekvatnom formatu, da sadrzi brojeve i 10 cifara.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email mora da bude bude u adekvatnom formatu, da sadrzi slova, brojeve, @.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_PREZIME"))
+                    {
+                        MessageBox.Show("Prezime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_IME"))
+                    {
+                        MessageBox.Show("Ime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return null;
+            }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
@@ -1392,6 +1910,50 @@ namespace Muzicki_festival
                 s.Close();
 
                 return new PosetilacView(p.ID, p.IME, p.PREZIME, p.EMAIL, p.Telefon);
+            }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("UK_POSETILAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email mora da bude jedinstven.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_POSETILAC_TELEFON"))
+                    {
+                        MessageBox.Show("Telefon mora da bude jedinstven.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_TELEFON"))
+                    {
+                        MessageBox.Show("Broj telefona mora da bude bude u adekvatnom formatu, da sadrzi brojeve i 10 cifara.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_EMAIL"))
+                    {
+                        MessageBox.Show("Email mora da bude bude u adekvatnom formatu, da sadrzi slova, brojeve, @.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_PREZIME"))
+                    {
+                        MessageBox.Show("Prezime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_POSETILAC_IME"))
+                    {
+                        MessageBox.Show("Ime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return null;
             }
             catch (Exception e)
             {
@@ -1537,7 +2099,7 @@ namespace Muzicki_festival
             {
                 ISession s = DataLayer.GetSession();
 
-                IList<AgencijaOrganizator> agencije = s.Query<AgencijaOrganizator>().OrderBy(a=>a.ID).ToList();
+                IList<AgencijaOrganizator> agencije = s.Query<AgencijaOrganizator>().ToList();
 
                 List<AgencijaOrganizatorView> views = new List<AgencijaOrganizatorView>();
 
@@ -1715,7 +2277,6 @@ namespace Muzicki_festival
             {
                 ISession s = DataLayer.GetSession();
                 IList<Grupa> grupe = s.Query<Grupa>().ToList();
-
                 List<GrupaView> views = new List<GrupaView>();
                 foreach (var g in grupe)
                 {
@@ -1762,6 +2323,36 @@ namespace Muzicki_festival
                 s.Close();
 
                 return new GrupaView(nova.ID_GRUPE, nova.NAZIV, nova.AgencijaID.NAZIV, new List<string>());
+            }
+            //greske za unique 
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CHK_GRUPA_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv grupe sadrži nedozvoljene znakove! Dozvoljena su samo slova, brojevi i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_GRUPA_NAZIV_AGENCIJA"))
+                    {
+                        MessageBox.Show("Grupa sa istim nazivom već postoji u okviru ove agencije. Unesite jedinstven naziv.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("FK_GRUPA_AGENCIJA_ORGANIZATOR"))
+                    {
+                        MessageBox.Show("Izabrana agencija ne postoji ili je obrisana. Proverite unos agencije.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return null;
             }
             catch (Exception e)
             {
@@ -1839,6 +2430,35 @@ namespace Muzicki_festival
                 s.Close();
                 return true;
             }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CHK_GRUPA_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv grupe sadrži nedozvoljene znakove! Dozvoljena su samo slova, brojevi i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_GRUPA_NAZIV_AGENCIJA"))
+                    {
+                        MessageBox.Show("Grupa sa istim nazivom već postoji u okviru ove agencije. Unesite jedinstven naziv.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("FK_GRUPA_AGENCIJA_ORGANIZATOR"))
+                    {
+                        MessageBox.Show("Izabrana agencija ne postoji ili je obrisana. Proverite unos agencije.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return false;
+            }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
@@ -1871,8 +2491,6 @@ namespace Muzicki_festival
         #endregion
 
         #region Ulaznice
-
-        // malo krsi pravila jer vraca basic ali sta da se radi, zurba
         public static IList<UlaznicaBasic> VratiSveUlaznice()
         {
             try
@@ -1970,6 +2588,51 @@ namespace Muzicki_festival
                 s.Close();
 
                 return true;
+            }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CK_TIP_ULAZNICE"))
+                    {
+                        MessageBox.Show("Morate da izaberete adekvatan tip ulaznice.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_ULAZNICA_CENA"))
+                    {
+                        MessageBox.Show("Ulaznica ne sme da bude 0!",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UK_ULAZNICA_POS_KOMBINACIJA"))
+                    {
+                        MessageBox.Show("Ne moze da postoji posetioc sa istom ulaznicom na istom dogadjaju.",
+                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_ULAZNICA_NACIN_PLACANJA"))
+                    {
+                        MessageBox.Show("Morate da izaberete adektvan nacin placanja.",
+                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_AKREDITACIJA_TIP"))
+                    {
+                        MessageBox.Show("Morate da izaberete adektvan tip akreditacije.",
+                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Greška prilikom dodavanja agencije:\n" + poruka,
+                                        "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return false;
             }
             catch (Exception e)
             {

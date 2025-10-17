@@ -148,14 +148,18 @@ namespace Muzicki_festival.FormeDodatne
 
         private void DugmeDodaj_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNaziv.Text) || string.IsNullOrEmpty(txtAdresa.Text) ||
-                string.IsNullOrEmpty(txtKontaktOsoba.Text))
+            var naziv = txtNaziv.Text.Trim();
+            var adresa = txtAdresa.Text.Trim();
+            var kontaktOsoba = txtKontaktOsoba.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(naziv) || string.IsNullOrWhiteSpace(adresa) ||
+                string.IsNullOrWhiteSpace(kontaktOsoba))
             {
                 MessageBox.Show("Molimo popunite sva polja ispravno.");
                 return;
             }
 
-            MenadzerskaAgencijaBasic novi = new MenadzerskaAgencijaBasic(-1, txtNaziv.Text, txtAdresa.Text, txtKontaktOsoba.Text, null);
+            MenadzerskaAgencijaBasic novi = new MenadzerskaAgencijaBasic(-1, naziv, adresa,kontaktOsoba, null);
             
             MenadzerskaAgencijaView dodata = DTOManager.DodajMenadzerskuAgenciju(novi);
             if (dodata != null)
@@ -163,9 +167,10 @@ namespace Muzicki_festival.FormeDodatne
                 agencije.Add(dodata);
                 PopuniTabeluAgencije();
                 MessageBox.Show("Uspešno dodata menadžerska agencija.");
-                txtAdresa.Text = "";
-                txtNaziv.Text = "";
-                txtKontaktOsoba.Text = "";
+                txtNaziv.Clear();
+                txtAdresa.Clear();
+                txtKontaktOsoba.Clear();
+
             }
             else
             {
@@ -184,6 +189,8 @@ namespace Muzicki_festival.FormeDodatne
             FormaMenadzerskaAgencijaIzmeni formaMenadzerskaAgencijaIzmeni = new FormaMenadzerskaAgencijaIzmeni(idSelektovan);
             this.Hide();
             formaMenadzerskaAgencijaIzmeni.ShowDialog();
+            agencije = DTOManager.VratiSveMenadzerskeAgencije();
+            PopuniTabeluAgencije();
             this.Show();
         }
 
@@ -227,6 +234,10 @@ namespace Muzicki_festival.FormeDodatne
                     kontaktPodaci.Clear();
                     PopuniTabeluKontaktPodaci();
                 }
+                idSelektovan = -1;
+                DugmeIzmeni.Enabled = false;
+                ObrisiDugme.Enabled = false;
+
             }
         }
 
@@ -237,21 +248,24 @@ namespace Muzicki_festival.FormeDodatne
                 MessageBox.Show("Izaberite menadžersku agenciju iz tabele.");
                 return;
             }
+            var potvrda = MessageBox.Show("Da li ste sigurni da želite da obrišete agenciju?", "Potvrda", MessageBoxButtons.YesNo);
+            if (potvrda != DialogResult.Yes) return;
 
             if (DTOManager.ObrisiMenadzerskuAgenciju(idSelektovan))
             {
-                MessageBox.Show("Uspesno obrisana agencija!");
-                var obrisana = agencije.Where(a => a.ID == idSelektovan).FirstOrDefault();
-                agencije.Remove(obrisana);
+                MessageBox.Show("Uspešno obrisana agencija!");
+                var obrisana = agencije.FirstOrDefault(a => a.ID == idSelektovan);
+                if (obrisana != null) agencije.Remove(obrisana);
+
                 idSelektovan = -1;
                 DugmeIzmeni.Enabled = false;
                 ObrisiDugme.Enabled = false;
                 PopuniTabeluAgencije();
 
-                izvodjaci.Clear();
-                kontaktPodaci.Clear();
-                PopuniTabeluKontaktPodaci();
+                if (izvodjaci != null) izvodjaci.Clear();
+                if (kontaktPodaci != null) kontaktPodaci.Clear();
                 PopuniTabeluIzvodjaci();
+                PopuniTabeluKontaktPodaci();
             }
         }
     }

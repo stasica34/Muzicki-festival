@@ -111,20 +111,24 @@ namespace Muzicki_festival.FormeDodatne
                 }
             }
         }
-
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtIme.Text))
+            string ime = txtIme.Text.Trim();
+            string prezime = txtPrezime.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string telefon = txtTelefon.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(ime))
             {
                 MessageBox.Show("Unesite ime posetioca.");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtPrezime.Text))
+            if (string.IsNullOrWhiteSpace(prezime))
             {
                 MessageBox.Show("Unesite prezime posetioca.");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            if (string.IsNullOrWhiteSpace(email))
             {
                 MessageBox.Show("Unesite email posetioca.");
                 return;
@@ -144,17 +148,22 @@ namespace Muzicki_festival.FormeDodatne
                     gb = new GrupaBasic(gr.Id, gr.Naziv, null, null);
                 }
             }
-            PosetilacBasic pb = new PosetilacBasic(0, txtIme.Text, txtPrezime.Text, txtEmail.Text, txtTelefon.Text, ulaznica, gb);
-            
-            if (DTOManager.DodajPosetioca(pb) != null)
+            PosetilacBasic pb = new PosetilacBasic(0, ime, prezime, email, telefon, ulaznica, gb);
+            try
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                string poruka;
+                var rezultat = DTOManager.DodajPosetioca(pb);
+
+                if (rezultat != null)
+                {
+                    MessageBox.Show("Posetilac uspešno dodat!", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                this.DialogResult = DialogResult.No;
-                this.Close();
+                MessageBox.Show(ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

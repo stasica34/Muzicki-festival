@@ -170,6 +170,7 @@ namespace Muzicki_festival.Forme
             {
                 dogadjajViews.Add(FormaDogadjajDodaj.novDogadjaj);
                 MessageBox.Show("Uspesno dodat dogadjaj!");
+                dogadjajViews = DTOManager.VratiSveDogadjaje();
                 PopuniTabeluDogadjaj();
             }
             else if(dr == DialogResult.Cancel)
@@ -241,7 +242,13 @@ namespace Muzicki_festival.Forme
                     MessageBox.Show("Događaj uspešno obrisan.");
 
                     // Osvetži tabelu
-                    cmdUcitavanjeDogadjaja_Click(null, null);
+                    dogadjajViews = DTOManager.VratiSveDogadjaje();
+                    PopuniTabeluDogadjaj();
+
+                    TabelaIzvodjaci.Rows.Clear();
+                    TabelaPosetioci.Rows.Clear();
+                    DugmiciGrupaDogadjaj.Enabled = false;
+                    selektovanDogadjaj = -1;
                 }
                 catch (Exception ex)
                 {
@@ -275,7 +282,12 @@ namespace Muzicki_festival.Forme
                     this.Hide();
                     forma.ShowDialog();
                     this.Show();
-                    cmdUcitavanjeDogadjaja_Click(null, null);
+                    dogadjajViews = DTOManager.VratiSveDogadjaje();
+                    PopuniTabeluDogadjaj();
+                    TabelaIzvodjaci.Rows.Clear();
+                    TabelaPosetioci.Rows.Clear();
+                    DugmiciGrupaDogadjaj.Enabled = false;
+                    selektovanDogadjaj = -1;
                 }
                 else
                 {
@@ -307,6 +319,10 @@ namespace Muzicki_festival.Forme
             if (dr == DialogResult.OK)
             {
                 MessageBox.Show("Uspesno dodat izvodjac");
+                izvodjacViews = DTOManager.VratiSveIzvodjaceDogadjaja(Id);
+                posetilacViews = DTOManager.VratiPosetioceDogadjaja(Id);
+                PopuniTabeluIzvodjaci();
+                PopuniTabeluPosetioci();
                 return;
             }
             else if (dr == DialogResult.No)
@@ -342,6 +358,8 @@ namespace Muzicki_festival.Forme
             if (dr == DialogResult.OK)
             {
                 MessageBox.Show("Uspesno dodat posetilac!");
+                posetilacViews = DTOManager.VratiPosetioceDogadjaja(Id);
+                PopuniTabeluPosetioci();
             }
             else if (dr == DialogResult.No)
             {

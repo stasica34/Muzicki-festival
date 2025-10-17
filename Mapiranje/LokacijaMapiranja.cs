@@ -15,7 +15,7 @@ namespace Muzicki_festival.Mapiranje
         {
             Table("LOKACIJA");
             Id(x => x.ID).GeneratedBy.SequenceIdentity("LOKACIJA_PK");
-            Map(x => x.OPIS, "OPIS").Not.Nullable();
+            Map(x => x.OPIS, "OPIS").Nullable();
             Map(x => x.MAX_KAPACITET, "MAX_KAPACITET").Nullable();
             Map(x => x.NAZIV, "NAZIV").Not.Nullable();
             Map(x => x.GPS_KOORDINATE, "GPS_KOORDINATE").Not.Nullable();

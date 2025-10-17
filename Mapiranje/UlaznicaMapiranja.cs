@@ -15,13 +15,14 @@ namespace Muzicki_festival.Mapiranje
         {
             Table("ULAZNICA");
             Id(x => x.ID_ULAZNICE, "ID_ULAZNICE").GeneratedBy.SequenceIdentity("ULAZNICA_PK"); //mora ovako
-            Map(x => x.OSNOVNA_CENA, "OSNOVNA_CENA").Not.Nullable();
-            Map(x => x.NACIN_PLACANJA, "NACIN_PLACANJA").Not.Nullable();
+            Map(x => x.OSNOVNA_CENA, "OSNOVNA_CENA").Not.Nullable().Check("OSNOVNA_CENA >= 0");
+            Map(x => x.NACIN_PLACANJA, "NACIN_PLACANJA").Not.Nullable().Check("NACIN_PLACANJA IN ('Gotovina', 'Kartica', 'Online')");
             Map(x => x.DATUM_KUPOVINE, "DATUM_KUPOVINE").Not.Nullable();
-            Map(x => x.TIP_ULAZNICE, "TIP_ULAZNICE").CustomType<EnumStringType<TipUlaznice>>().Not.Nullable();
+            Map(x => x.TIP_ULAZNICE, "TIP_ULAZNICE").CustomType<EnumStringType<TipUlaznice>>().Not.Nullable().Check("TIP_ULAZNICE IN ('JEDNODNEVNA', 'VISEDNEVNA', 'VIP', 'AKREDITACIJA')");
 
             References(x => x.KUPAC_ID)
                     .Column("KUPAC_ID")
+                     .UniqueKey("UK_ULAZNICA_POSETIOC")
                     .Not.Nullable()
                     .Cascade.All()
                     .LazyLoad();
