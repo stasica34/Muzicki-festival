@@ -282,6 +282,7 @@ namespace Muzicki_festival.FormeDodatne
             if (selektovanaUlaznicaId == -1)
             {
                 MessageBox.Show("Izberite ulaznicu!");
+                return;
             }
 
             if (DTOManager.ObrisiUlaznicu(selektovanaUlaznicaId))
@@ -383,8 +384,11 @@ namespace Muzicki_festival.FormeDodatne
                     List<DateTime> list = new List<DateTime>();
                     for (int i = 0; i < TabelaDaniVisednevna.Rows.Count; i++)
                     {
-                        DateTime r = (DateTime)TabelaDaniVisednevna.Rows[i].Cells["DAN"].Value;
-                        list.Add(r);
+                        if (TabelaDaniVisednevna.Rows[i].Cells["DAN"].Value != null)
+                        {
+                            DateTime r = Convert.ToDateTime(TabelaDaniVisednevna.Rows[i].Cells["DAN"].Value);
+                            list.Add(r);
+                        }
                     }
 
                     izmena = new ViseDnevnaBasic(u.Id, (float)txtCena.Value, placanje, dtpDatum.Value, null, list);
@@ -410,9 +414,9 @@ namespace Muzicki_festival.FormeDodatne
                     }
 
                     List<string> pogodnosti = new List<string>();
-                    foreach (var r in TabelaPogodnosti.Rows)
+                    foreach (DataGridViewRow r in TabelaPogodnosti.Rows)
                     {
-                        pogodnosti.Add(r as string);
+                        pogodnosti.Add(r.Cells["POGODNOST"].Value.ToString());
                     }
 
                     izmena = new VIPBasic(u.Id, (float)txtCena.Value, placanje, dtpDatum.Value, null, pogodnosti);

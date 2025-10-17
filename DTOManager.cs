@@ -1159,10 +1159,18 @@ namespace Muzicki_festival
                 List<PosetilacView> posetilacViews = new List<PosetilacView>();
                 foreach (var u in d.Ulaznica)
                 {
-                    var p = new PosetilacView(u.KUPAC_ID.ID, u.KUPAC_ID.IME, u.KUPAC_ID.PREZIME, u.KUPAC_ID.EMAIL, u.KUPAC_ID.Telefon);
-                    p.UlaznicaTip = u.TIP_ULAZNICE;
-                    posetilacViews.Add(p);
+                    if (u.KUPAC_ID != null)
+                    {
+                        var p = new PosetilacView(u.KUPAC_ID.ID, u.KUPAC_ID.IME, u.KUPAC_ID.PREZIME, u.KUPAC_ID.EMAIL, u.KUPAC_ID.Telefon);
+                        p.UlaznicaTip = u.TIP_ULAZNICE;
+                        posetilacViews.Add(p);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Ulaznica sa ID {u.ID_ULAZNICE} nema dodeljenog kupca!");
+                    }
                 }
+
 
                 return posetilacViews;
             }
@@ -1340,6 +1348,7 @@ namespace Muzicki_festival
                 };
 
                 u.KUPAC_ID = p;
+                p.Ulaznica = u;
                 
                 s.SaveOrUpdate(p);
                 s.Flush();
@@ -1528,7 +1537,7 @@ namespace Muzicki_festival
             {
                 ISession s = DataLayer.GetSession();
 
-                IList<AgencijaOrganizator> agencije = s.Query<AgencijaOrganizator>().ToList();
+                IList<AgencijaOrganizator> agencije = s.Query<AgencijaOrganizator>().OrderBy(a=>a.ID).ToList();
 
                 List<AgencijaOrganizatorView> views = new List<AgencijaOrganizatorView>();
 
@@ -1564,6 +1573,42 @@ namespace Muzicki_festival
                 s.Close();
 
                 return new AgencijaOrganizatorView(nova.ID, nova.NAZIV, nova.ADRESA);
+            }
+            //greske za unique 
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CK_AGENCIJA_NAZIV_FORMAT"))
+                    {
+                        MessageBox.Show("Naziv agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_AGENCIJA_ADRESA_FORMAT"))
+                    {
+                        MessageBox.Show("Adresa sadrži nedozvoljene znakove! Dozvoljena su slova, brojevi i . , - znakovi.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_AGENCIJA_NAZIV"))
+                    {
+                        MessageBox.Show("Agencija sa ovim nazivom već postoji!",
+                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Greška prilikom dodavanja agencije:\n" + poruka,
+                                        "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return null;
             }
             catch (Exception e)
             {
@@ -1616,6 +1661,42 @@ namespace Muzicki_festival
                 s.Close();
 
                 return true;
+            }
+            //greske za unique 
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CK_AGENCIJA_NAZIV_FORMAT"))
+                    {
+                        MessageBox.Show("Naziv agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova i razmaci.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CK_AGENCIJA_ADRESA_FORMAT"))
+                    {
+                        MessageBox.Show("Adresa sadrži nedozvoljene znakove! Dozvoljena su slova, brojevi i . , - znakovi.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("UQ_AGENCIJA_NAZIV"))
+                    {
+                        MessageBox.Show("Agencija sa ovim nazivom već postoji!",
+                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Greška prilikom dodavanja agencije:\n" + poruka,
+                                        "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return false;
             }
             catch (Exception e)
             {
@@ -1786,7 +1867,6 @@ namespace Muzicki_festival
                 return false;
             }
         }
-
 
         #endregion
 

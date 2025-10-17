@@ -61,7 +61,8 @@ namespace Muzicki_festival.FormeDodatne
         private void PopuniTabeluAgencije()
         {
             TabelaAgencije.Rows.Clear();
-            foreach (var a in agencijaOrganizatorViews)
+            var sortirane = agencijaOrganizatorViews.OrderBy(a => a.Id).ToList();
+            foreach (var a in sortirane)
             {
                 TabelaAgencije.Rows.Add(a.Id, a.Naziv, a.Adresa);
             }
@@ -130,6 +131,8 @@ namespace Muzicki_festival.FormeDodatne
                     var obrisana = agencijaOrganizatorViews.Where(a => a.Id == IdSelektovane).FirstOrDefault();
                     agencijaOrganizatorViews.Remove(obrisana);
                     PopuniTabeluAgencije();
+                    TabelaAgencije.ClearSelection();
+                    IdSelektovane = -1;
                 }
                 else 
                 {
@@ -170,7 +173,8 @@ namespace Muzicki_festival.FormeDodatne
                 selektovana.Adresa = txtIzmenaAdresa.Text;
                 selektovana.Naziv = txtIzmenaNaziv.Text;
                 PopuniTabeluAgencije();
-
+                TabelaAgencije.ClearSelection();
+                IdSelektovane = -1;
                 txtIzmenaAdresa.Text = "";
                 txtIzmenaNaziv.Text = "";
                 GrupaIzmena.Enabled = false;

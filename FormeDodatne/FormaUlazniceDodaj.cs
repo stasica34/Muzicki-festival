@@ -180,11 +180,11 @@ namespace Muzicki_festival.FormeDodatne
                     }
 
                     List<string> pogodnosti = new List<string>();
-                    foreach(var r in TabelaPogodnosti.Rows)
+                    foreach (DataGridViewRow row in TabelaPogodnosti.Rows)
                     {
-                        pogodnosti.Add(r as string);
+                        if (row.Cells["POGODNOST"].Value != null)
+                            pogodnosti.Add(row.Cells["POGODNOST"].Value.ToString());
                     }
-
                     UlaznicaBasicIzlaz = new VIPBasic(0, (float)txtCena.Value, placanje, dtpDatum.Value, db, pogodnosti);
 
                     break;

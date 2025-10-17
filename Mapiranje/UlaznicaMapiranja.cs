@@ -20,11 +20,12 @@ namespace Muzicki_festival.Mapiranje
             Map(x => x.DATUM_KUPOVINE, "DATUM_KUPOVINE").Not.Nullable();
             Map(x => x.TIP_ULAZNICE, "TIP_ULAZNICE").CustomType<EnumStringType<TipUlaznice>>().Not.Nullable();
 
-            HasOne(x => x.KUPAC_ID)
-                .PropertyRef("Ulaznica")
-                .Cascade.All()
-                .Constrained()
-                .LazyLoad();
+            References(x => x.KUPAC_ID)
+                    .Column("KUPAC_ID")
+                    .Not.Nullable()
+                    .Cascade.All()
+                    .LazyLoad();
+
 
             References(x => x.Dogadjaj, "DOGADJAJ_ID").Cascade.None().LazyLoad();
         }
