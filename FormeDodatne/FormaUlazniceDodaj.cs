@@ -53,6 +53,10 @@ namespace Muzicki_festival.FormeDodatne
             InputVisednevna.Visible = false;
             InputVIP.Visible = false;
             InputAkreditacija.Visible = false;
+            radioParter.Checked = false;
+            radioPress.Checked = false;
+            radioSponzor.Checked = false;
+
         }
 
         private void InitTabeluDani()
@@ -165,8 +169,13 @@ namespace Muzicki_festival.FormeDodatne
                         tipAkreditacije = TipAkreditacije.PARTNER;
                     else if (radioPress.Checked)
                         tipAkreditacije = TipAkreditacije.PRESS;
-                    else
+                    else if(radioSponzor.Checked)
                         tipAkreditacije = TipAkreditacije.SPONZOR;
+                    else
+                    {
+                        MessageBox.Show("Morate izabrati tip akreditacije (Partner, Press ili Sponzor)!");
+                        return;
+                    }
 
                     UlaznicaBasicIzlaz = new AkreditacijaBasic(0, (float)txtCena.Value, placanje, dtpDatum.Value, db, tipAkreditacije);
 

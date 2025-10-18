@@ -1551,7 +1551,7 @@ namespace Muzicki_festival
                 s.Flush();
                 s.Close();
 
-                return new DogadjajView(id, db.Naziv, db.Tip, db.Opis, db.DatumPocetka, db.DatumKraja, db.Lokacija.Naziv);
+                return new DogadjajView(id, db.Naziv, db.Tip, db.Opis, db.DatumPocetka, db.DatumKraja, l.NAZIV);
             }
             catch (NHibernate.Exceptions.GenericADOException ex)
             {
