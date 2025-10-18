@@ -1746,6 +1746,7 @@ namespace Muzicki_festival
                         };
                         break;
                     case TipUlaznice.VISEDNEVNA:
+                        var datumi = (pb.Ulaznica as ViseDnevnaBasic).DatumiVazenja;
                         u = new Visednevna
                         {
                             OSNOVNA_CENA = pb.Ulaznica.OsnovnaCena,
@@ -1753,7 +1754,9 @@ namespace Muzicki_festival
                             DATUM_KUPOVINE = pb.Ulaznica.DatumKupovine,
                             TIP_ULAZNICE = TipUlaznice.VISEDNEVNA,
                             Dogadjaj = d,
-                            Dani = (pb.Ulaznica as ViseDnevnaBasic).DatumiVazenja
+                            Dani = datumi,
+                            BROJ_DANA = datumi.Count
+                            
                         };
                         break;
                     case TipUlaznice.VIP:
