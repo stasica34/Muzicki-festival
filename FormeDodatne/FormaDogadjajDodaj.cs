@@ -123,7 +123,7 @@ namespace Muzicki_festival.Forme
 
         private void btnDodajLokacija_Click(object sender, EventArgs e)
         {
-            FormaLokacijaDodaj forma = new FormaLokacijaDodaj();
+            FormaLokacijaDodaj forma = new FormaLokacijaDodaj(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();

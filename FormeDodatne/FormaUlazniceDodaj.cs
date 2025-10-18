@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using NHibernate;
 using Muzicki_festival.Forme;
 using Muzicki_festival.DTOs;
+using System.Text.RegularExpressions;
+
 namespace Muzicki_festival.FormeDodatne
 {
     public partial class FormaUlazniceDodaj : Form
@@ -269,12 +271,20 @@ namespace Muzicki_festival.FormeDodatne
 
         private void DugmeDodajPogodnost_Click(object sender, EventArgs e)
         {
+            string pogodnost = txtPogodnost.Text.Trim();
             if (string.IsNullOrWhiteSpace(txtPogodnost.Text))
             {
                 MessageBox.Show("Unesite pogodnost u tekst polje!");
                 return;
             }
 
+            Regex regex = new Regex(@"^[A-Za-zŠšĐđČčĆćŽž ]+$");
+            if (!regex.IsMatch(pogodnost))
+            {
+                MessageBox.Show("Naziv VIP pogodnosti sme sadržati samo slova.",
+                                "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
             TabelaPogodnosti.Rows.Add(txtPogodnost.Text);
             txtPogodnost.Text = "";
         }

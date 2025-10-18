@@ -18,8 +18,9 @@ namespace Muzicki_festival.FormeDodatne
         private MenadzerskaAgencijaView agencija;
         private IList<MenadzerskaAgencijaKontaktView> kontaktPodaci;
         private int selektovanKontaktId = -1;
+        private Form parentform;
 
-        public FormaMenadzerskaAgencijaIzmeni(int idAgencije)
+        public FormaMenadzerskaAgencijaIzmeni(int idAgencije, Form parentform)
         {
             InitializeComponent();
             IdAgencije = idAgencije;
@@ -33,6 +34,7 @@ namespace Muzicki_festival.FormeDodatne
 
             TipKontakt.Items.Add("EMAIL");
             TipKontakt.Items.Add("TELEFON");
+            this.parentform = parentform;
         }
 
 

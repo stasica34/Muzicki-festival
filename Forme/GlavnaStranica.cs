@@ -20,7 +20,7 @@ namespace Muzicki_festival.Forme
 
         private void cmd_Izvodjac_Click(object sender, EventArgs e)
         {
-            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj();
+            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();
@@ -36,7 +36,7 @@ namespace Muzicki_festival.Forme
 
         private void DugmeLokacije_Click(object sender, EventArgs e)
         {
-            FormaLokacijaDodaj forma = new FormaLokacijaDodaj();
+            FormaLokacijaDodaj forma = new FormaLokacijaDodaj(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();
@@ -44,7 +44,7 @@ namespace Muzicki_festival.Forme
 
         private void Posetilac_Click(object sender, EventArgs e)
         {
-            FormaPosetioci forma = new FormaPosetioci();
+            FormaPosetioci forma = new FormaPosetioci(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();
@@ -52,7 +52,7 @@ namespace Muzicki_festival.Forme
 
         private void AgencijeOrganizatori_Click(object sender, EventArgs e)
         {
-            FormaDodajAgencijuOrganizator forma = new FormaDodajAgencijuOrganizator();
+            FormaDodajAgencijuOrganizator forma = new FormaDodajAgencijuOrganizator(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();
@@ -60,7 +60,7 @@ namespace Muzicki_festival.Forme
 
         private void MenadzerkseAgencije_Click(object sender, EventArgs e)
         {
-            FormaMenadzerskaAgencijaDodavanje forma = new FormaMenadzerskaAgencijaDodavanje();
+            FormaMenadzerskaAgencijaDodavanje forma = new FormaMenadzerskaAgencijaDodavanje(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();
@@ -68,7 +68,7 @@ namespace Muzicki_festival.Forme
 
         private void Grupe_Click(object sender, EventArgs e)
         {
-            FormaDodajGrupu forma = new FormaDodajGrupu();
+            FormaDodajGrupu forma = new FormaDodajGrupu(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();
@@ -76,7 +76,7 @@ namespace Muzicki_festival.Forme
 
         private void Ulaznice_Click(object sender, EventArgs e)
         {
-            FormaUlaznicePregled forma = new FormaUlaznicePregled();
+            FormaUlaznicePregled forma = new FormaUlaznicePregled(this);
             this.Hide(); 
             forma.ShowDialog(); 
             this.Show();

@@ -164,6 +164,12 @@
     <Compile Include="FormeDodatne\FormaIzvodjacIzmeni.Designer.cs">
       <DependentUpon>FormaIzvodjacIzmeni.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormeDodatne\FormaLokacijaDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaLokacijaDodaj.Designer.cs">
+      <DependentUpon>FormaLokacijaDodaj.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormeDodatne\FormaMenadzerskaAgencijaDodavanje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,23 +206,17 @@
     <Compile Include="FormeDodatne\FormaUlaznicePregled.Designer.cs">
       <DependentUpon>FormaUlaznicePregled.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormeDodatne\IzmenaLokacije.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\IzmenaLokacije.Designer.cs">
-      <DependentUpon>IzmenaLokacije.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaLokacijaDodaj.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaLokacijaDodaj.Designer.cs">
-      <DependentUpon>FormaLokacijaDodaj.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormeDodatne\FormaDogadjajDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormeDodatne\FormaDogadjajDodaj.Designer.cs">
       <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormeDodatne\IzmenaLokacije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\IzmenaLokacije.Designer.cs">
+      <DependentUpon>IzmenaLokacije.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\FormaDogadjaji.cs">
       <SubType>Form</SubType>
@@ -264,6 +264,9 @@
     <EmbeddedResource Include="FormeDodatne\FormaIzvodjacIzmeni.resx">
       <DependentUpon>FormaIzvodjacIzmeni.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaLokacijaDodaj.resx">
+      <DependentUpon>FormaLokacijaDodaj.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaMenadzerskaAgencijaDodavanje.resx">
       <DependentUpon>FormaMenadzerskaAgencijaDodavanje.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,14 +285,11 @@
     <EmbeddedResource Include="FormeDodatne\FormaUlaznicePregled.resx">
       <DependentUpon>FormaUlaznicePregled.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormeDodatne\IzmenaLokacije.resx">
-      <DependentUpon>IzmenaLokacije.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormeDodatne\FormaLokacijaDodaj.resx">
-      <DependentUpon>FormaLokacijaDodaj.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaDogadjajDodaj.resx">
       <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\IzmenaLokacije.resx">
+      <DependentUpon>IzmenaLokacije.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\FormaDogadjaji.resx">
       <DependentUpon>FormaDogadjaji.cs</DependentUpon>

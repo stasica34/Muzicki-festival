@@ -151,7 +151,6 @@ namespace Muzicki_festival.FormeDodatne
             PosetilacBasic pb = new PosetilacBasic(0, ime, prezime, email, telefon, ulaznica, gb);
             try
             {
-                string poruka;
                 var rezultat = DTOManager.DodajPosetioca(pb);
 
                 if (rezultat != null)
@@ -204,7 +203,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void DugmeDodajGrupu_Click(object sender, EventArgs e)
         {
-            FormaDodajGrupu formaDodajGrupu = new FormaDodajGrupu();
+            FormaDodajGrupu formaDodajGrupu = new FormaDodajGrupu(this);
             this.Hide();
             formaDodajGrupu.ShowDialog();
             grupaViews = DTOManager.VratiSveGrupe();

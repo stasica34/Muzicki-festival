@@ -26,7 +26,7 @@ namespace Muzicki_festival
             {
                 ISession s = DataLayer.GetSession();
 
-                IList<Izvodjac> izvodjaci = s.Query<Izvodjac>().ToList();
+                IList<Izvodjac> izvodjaci = s.Query<Izvodjac>().OrderBy(a=>a.IME).ToList();
                 IList<IzvodjacView> izvodjaciView = new List<IzvodjacView>();
 
                 foreach (Izvodjac i in izvodjaci)
@@ -249,11 +249,6 @@ namespace Muzicki_festival
                         MessageBox.Show("Za solo umetnika morate da izaberte da li svira instrument.",
                                         "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    else if (poruka.Contains("CHK_IZVODJAC_ZAHTEV"))
-                    {
-                        MessageBox.Show("Zahtev izvodjaca mora biti ispisan u adekvatnom formatu.",
-                                        "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                     else
                     {
                         MessageBox.Show("Greška prilikom dodavanja izvođača:\n" + poruka,
@@ -375,6 +370,11 @@ namespace Muzicki_festival
                     else if (poruka.Contains("CHK_CLAN_IME"))
                     {
                         MessageBox.Show("Ime clana je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_CLAN"))
+                    {
+                        MessageBox.Show("Clan benda koji svira isti instrument ne moze biti u vise bendova istovremeno",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
@@ -557,11 +557,6 @@ namespace Muzicki_festival
                         MessageBox.Show("Za solo umetnika morate da izaberte da li svira instrument.",
                                         "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    else if (poruka.Contains("CHK_IZVODJAC_ZAHTEV"))
-                    {
-                        MessageBox.Show("Zahtev izvodjaca mora biti ispisan u adekvatnom formatu.",
-                                        "Duplikat izvođača", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                 }
                 else
                 {
@@ -623,6 +618,31 @@ namespace Muzicki_festival
                 s.Close();
 
                 return true;
+            }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CHK_IZVODJAC_ZAHTEV"))
+                    {
+                        MessageBox.Show("Zahtev mora da bude u formi slova ili  brojeva.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Greška prilikom dodavanja izvođača:\n" + poruka,
+                                        "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return false;
             }
             catch (Exception e)
             {
@@ -706,6 +726,31 @@ namespace Muzicki_festival
                 return true;
 
             }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+
+                    if (poruka.Contains("CHK_VOKALNI_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv vokalnih sposobnosti mora da bude u formi slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Greška prilikom dodavanja izvođača:\n" + poruka,
+                                        "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return false;
+            }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
@@ -751,7 +796,7 @@ namespace Muzicki_festival
             {
 
                 ISession s = DataLayer.GetSession();
-                IList<Lokacija> lokacije = s.Query<Lokacija>().ToList();
+                IList<Lokacija> lokacije = s.Query<Lokacija>().OrderBy(a=>a.NAZIV).ToList();
 
                 foreach (Lokacija l in lokacije)
                 {
@@ -858,11 +903,6 @@ namespace Muzicki_festival
                         MessageBox.Show("Naziv lokacija je u formatu slova.",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    else if (poruka.Contains("CHK_DOSTUPNOST_OPREME_NAZIV"))
-                    {
-                        MessageBox.Show("Dostupna oprema lokacija je u formatu slova.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                     else if (poruka.Contains("CHK_LOKACIJA_OPIS"))
                     {
                         MessageBox.Show("Opis lokacija je u formatu slova.",
@@ -874,9 +914,19 @@ namespace Muzicki_festival
                         MessageBox.Show("Izaberite adekvatan tip lokacije.",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    else if (poruka.Contains("CHK_LOKACIJA_GPS_NOV"))
+                    {
+                        MessageBox.Show("GPS koordinatne moraju da budu u formatu brojeva.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                     else if (poruka.Contains("UQ_LOKACIJA_NAZIV_GPS"))
                     {
                         MessageBox.Show("Naziv i gps koordinatne su jedinsvteni parametri.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_DOSTUPNOST_OPREME_NAZIV"))
+                    {
+                        MessageBox.Show("Dostupna oprema lokacija je u formatu slova.",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
@@ -946,7 +996,6 @@ namespace Muzicki_festival
                             o.GPS_KOORDINATE = nova.Gps_koordinate;
                             o.MAX_KAPACITET = nova.Kapacitet;
                             o.OPIS = nova.Opis;
-                            s.Update(o);
                             ret = true;
                             break;
                         case TipLokacije.ZATVORENA:
@@ -958,7 +1007,6 @@ namespace Muzicki_festival
                             z.TIP_PROSTORA = (nova as ZatvorenaLokacijaBasic).Tip_prostora;
                             z.KLIMA = (nova as ZatvorenaLokacijaBasic).Klima;
                             z.DOSTUPNOST_SEDENJA = (nova as ZatvorenaLokacijaBasic).Dostupnost_sedenja;
-                            s.Update(z);
                             ret = true;
                             break;
                         case TipLokacije.KOMBINOVANA:
@@ -970,7 +1018,6 @@ namespace Muzicki_festival
                             k.TIP_PROSTORA = (nova as KombinovanaLokacijaBasic).Tip_prostora;
                             k.KLIMA = (nova as KombinovanaLokacijaBasic).Klima;
                             k.DOSTUPNOST_SEDENJA = (nova as KombinovanaLokacijaBasic).Dostupnost_sedenja;
-                            s.Update(k);
                             ret = true;
                             break;
                     }
@@ -993,11 +1040,6 @@ namespace Muzicki_festival
                     else if (poruka.Contains("CHK_LOKACIJA_NAZIV"))
                     {
                         MessageBox.Show("Naziv lokacija je u formatu slova.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (poruka.Contains("CHK_DOSTUPNOST_OPREME_NAZIV"))
-                    {
-                        MessageBox.Show("Dostupna oprema lokacija je u formatu slova.",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else if (poruka.Contains("CHK_LOKACIJA_OPIS"))
@@ -1066,6 +1108,7 @@ namespace Muzicki_festival
                 ISession s = DataLayer.GetSession();
                 IList<DostupnaOprema> oprema = s.Query<DostupnaOprema>()
                     .Where(d => d.Lokacija.ID == idLokacije)
+                    .OrderBy(a=>a.Lokacija.NAZIV)
                     .ToList();
 
                 foreach (DostupnaOprema o in oprema)
@@ -1098,14 +1141,37 @@ namespace Muzicki_festival
                         NAZIV = o.Naziv
                     };
 
-                    l.DOSTUPNA_OPREMA.Add(oprema); // dodaš u kolekciju
-                    oprema.Lokacija = l;           // obavezno postavi reference
+                    l.DOSTUPNA_OPREMA.Add(oprema); 
+                    oprema.Lokacija = l;         
 
-                    s.SaveOrUpdate(l);             // SaveOrUpdate samo lokaciju
+                    s.SaveOrUpdate(l);            
                     transaction.Commit();
 
                     return new DostupnaOpremaView(oprema.ID, oprema.NAZIV);
                 }
+            }
+            catch (NHibernate.Exceptions.GenericADOException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message != null)
+                {
+                    string poruka = ex.InnerException.Message;
+                    if (poruka.Contains("CHK_LOKACIJA_MAX_KAPACITET"))
+                    {
+                        MessageBox.Show("Max kapacitet mora da bude veci od 0!",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_DOSTUPNOST_OPREME_NAZIV"))
+                    {
+                        MessageBox.Show("Dostupna oprema lokacija je u formatu slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return null;
             }
             catch (Exception ex)
             {
@@ -1122,21 +1188,24 @@ namespace Muzicki_festival
 
                 using (var transaction = s.BeginTransaction())
                 {
-                    Lokacija l = s.Get<Lokacija>(o.Lokacija.Id);
-                    if (l == null) 
-                        return false;
-
                     DostupnaOprema oprema = s.Get<DostupnaOprema>(o.Id);
 
-                    if (oprema == null || oprema.Lokacija.ID != l.ID) 
+                    if (oprema == null)
                         return false;
 
-                    bool ret = l.DOSTUPNA_OPREMA.Remove(oprema); 
+                    if (oprema.Lokacija == null || oprema.Lokacija.ID != o.Lokacija.Id)
+                    {
+                        return false;
+                    }
+                    Lokacija l = s.Get<Lokacija>(oprema.Lokacija.ID);
+                    if (l == null)
+                        return false;
+                    l.DOSTUPNA_OPREMA.Remove(oprema);
                     s.Delete(oprema);
-                    s.SaveOrUpdate(l);             
+                    s.SaveOrUpdate(l);
                     transaction.Commit();
 
-                    return ret;
+                    return true;
                 }
             }
             catch (Exception ex)
@@ -1155,7 +1224,7 @@ namespace Muzicki_festival
             try
             {
                 ISession s = DataLayer.GetSession();
-                IList<MenadzerskaAgencija> agencije = s.Query<MenadzerskaAgencija>().ToList();
+                IList<MenadzerskaAgencija> agencije = s.Query<MenadzerskaAgencija>().OrderBy(a=>a.NAZIV).ToList();
                 IList<MenadzerskaAgencijaView> agencijeView = new List<MenadzerskaAgencijaView>();
                 foreach (MenadzerskaAgencija ma in agencije)
                 {
@@ -1366,13 +1435,47 @@ namespace Muzicki_festival
                     {
                         switch (i.TIP_IZVODJACA)
                         {
+                            //case IzvodjacTip.SOLO_UMETNIK:
+                            //    Solo_Umetnik u = i as Solo_Umetnik;
+                            //    izvodjaciView.Add(new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.Zanr, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA));
+                            //    break;
+                            //case IzvodjacTip.BEND:
+                            //    Bend b = i as Bend;
+                            //    izvodjaciView.Add(new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.Zanr, b.BROJ_CLANOVA));
+                            //    break;
                             case IzvodjacTip.SOLO_UMETNIK:
                                 Solo_Umetnik u = i as Solo_Umetnik;
-                                izvodjaciView.Add(new Solo_umetnikView(u.ID, u.IME, i.DRZAVA_POREKLA, u.EMAIL, u.KONTAKT_OSOBA, u.TELEFON, u.Zanr, u.SVIRA_INSTRUMENT, u.TIP_INSTRUMENTA));
+                                if (u != null)
+                                {
+                                    izvodjaciView.Add(new Solo_umetnikView(
+                                        u.ID,
+                                        u.IME ?? "",
+                                        u.DRZAVA_POREKLA ?? "",
+                                        u.EMAIL ?? "",
+                                        u.KONTAKT_OSOBA ?? "",
+                                        u.TELEFON ?? "",
+                                        u.Zanr ?? "",
+                                        u.SVIRA_INSTRUMENT ?? "",
+                                        u.TIP_INSTRUMENTA ?? ""
+                                    ));
+                                }
                                 break;
+
                             case IzvodjacTip.BEND:
                                 Bend b = i as Bend;
-                                izvodjaciView.Add(new BendView(b.ID, b.IME, b.DRZAVA_POREKLA, b.EMAIL, b.KONTAKT_OSOBA, b.TELEFON, b.Zanr, b.BROJ_CLANOVA));
+                                if (b != null)
+                                {
+                                    izvodjaciView.Add(new BendView(
+                                        b.ID,
+                                        b.IME ?? "",
+                                        b.DRZAVA_POREKLA ?? "",
+                                        b.EMAIL ?? "",
+                                        b.KONTAKT_OSOBA ?? "",
+                                        b.TELEFON ?? "",
+                                        b.Zanr ?? "",
+                                        b.BROJ_CLANOVA
+                                    ));
+                                }
                                 break;
                         }
                     }
@@ -1394,6 +1497,7 @@ namespace Muzicki_festival
                 ISession s = DataLayer.GetSession();
                 IList<KontaktPodaciMenadzerskeAgencije> kontaktPodaci = s.Query<KontaktPodaciMenadzerskeAgencije>()
                     .Where(k => k.MENADZERSKA_AGENCIJA.ID == menadzerksaAgencijaId)
+                    .OrderBy(a=>a.MENADZERSKA_AGENCIJA.NAZIV)
                     .ToList();
                 IList<MenadzerskaAgencijaKontaktView> kontaktPodaciView = new List<MenadzerskaAgencijaKontaktView>();
                 foreach (KontaktPodaciMenadzerskeAgencije k in kontaktPodaci)
@@ -1506,7 +1610,7 @@ namespace Muzicki_festival
             try
             {
                 ISession s = DataLayer.GetSession();
-                List<Dogadjaj> dogadjaji = s.Query<Dogadjaj>().ToList();
+                List<Dogadjaj> dogadjaji = s.Query<Dogadjaj>().OrderBy(a=>a.NAZIV).ToList();
 
                 List<DogadjajView> dogadjajViews = new List<DogadjajView>();
                 foreach(var d in dogadjaji)
@@ -1702,7 +1806,7 @@ namespace Muzicki_festival
             try
             {
                 ISession s = DataLayer.GetSession();
-                IList <Posetilac> lista = s.Query<Posetilac>().ToList();
+                IList <Posetilac> lista = s.Query<Posetilac>().OrderBy(a=>a.IME).ToList();
 
                 List<PosetilacView> views = new List<PosetilacView>();
                 foreach(Posetilac poset in lista)
@@ -1877,6 +1981,11 @@ namespace Muzicki_festival
                     {
                         MessageBox.Show("Ime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_VIP_POGODNOST_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv vip pogodnosti je u formatu slova.",
+                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
@@ -2102,7 +2211,7 @@ namespace Muzicki_festival
             {
                 ISession s = DataLayer.GetSession();
 
-                IList<AgencijaOrganizator> agencije = s.Query<AgencijaOrganizator>().ToList();
+                IList<AgencijaOrganizator> agencije = s.Query<AgencijaOrganizator>().OrderBy(a=>a.NAZIV).ToList();
 
                 List<AgencijaOrganizatorView> views = new List<AgencijaOrganizatorView>();
 
@@ -2279,7 +2388,7 @@ namespace Muzicki_festival
             try
             {
                 ISession s = DataLayer.GetSession();
-                IList<Grupa> grupe = s.Query<Grupa>().ToList();
+                IList<Grupa> grupe = s.Query<Grupa>().OrderBy(a=>a.NAZIV).ToList();
                 List<GrupaView> views = new List<GrupaView>();
                 foreach (var g in grupe)
                 {
@@ -2499,7 +2608,7 @@ namespace Muzicki_festival
             try
             {
                 ISession s = DataLayer.GetSession();
-                IList<Ulaznica> ulaznice = s.Query<Ulaznica>().ToList();
+                IList<Ulaznica> ulaznice = s.Query<Ulaznica>().OrderBy(a=>a.TIP_ULAZNICE).ToList();
 
                 IList<UlaznicaBasic> basics = new List<UlaznicaBasic>();
 
@@ -2621,6 +2730,11 @@ namespace Muzicki_festival
                     else if (poruka.Contains("CHK_AKREDITACIJA_TIP"))
                     {
                         MessageBox.Show("Morate da izaberete adektvan tip akreditacije.",
+                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_VIP_POGODNOST_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv vip pogodnosti je u formatu slova.",
                                         "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else

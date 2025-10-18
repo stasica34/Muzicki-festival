@@ -24,7 +24,7 @@ namespace Muzicki_festival.Entiteti
         public virtual IList<Dogadjaj> Dogadjaji { get; set; }
 
         // Ovo koriste samo kombinovana i otvorena ali mora da bude ovde jer u suprotnom ne radi mapiranje
-        public virtual IList<DostupnaOprema> DOSTUPNA_OPREMA { get; set; } 
+        public virtual IList<DostupnaOprema> DOSTUPNA_OPREMA { get; set; }
         public Lokacija()
         {
             Dogadjaji = new List<Dogadjaj>();

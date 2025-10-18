@@ -22,16 +22,18 @@ namespace Muzicki_festival.FormeDodatne
         private IList<string> vokalneSposobnosti;
         private IList<string> zahtevi;
         private int idSelektovan = -1;
+        private Form parentform;
 
         public IzvodjacView NoviIzvodjac = null;
 
-        public FormaIzvodjacDodaj()
+        public FormaIzvodjacDodaj(Form parentform)
         {
             InitializeComponent();
             izvodjacViews = DTOManager.VratiSveIzvodjace();
             menadzerskaAgencijaViews = DTOManager.VratiSveMenadzerskeAgencije();
             clanBendaViews = new List<ClanBendaView>();
-
+            vokalneSposobnosti = new List<string>();
+            zahtevi = new List<string>();
             InitTabeluIzvodjaci();
             PopuniTabeluIzvodjaci();
 
@@ -40,6 +42,7 @@ namespace Muzicki_festival.FormeDodatne
             InitTabeluZahtevi();
 
             PopuniIzborMenadzerske();
+            this.parentform = parentform;
         }
 
         private void InitTabeluIzvodjaci()
@@ -232,22 +235,18 @@ namespace Muzicki_festival.FormeDodatne
                 MessageBox.Show("Unesite email izvodjaca.");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtKontaktOsoba.Text))
-            {
-                MessageBox.Show("Unesite kontakt osobu izvodjaca.");
-                return;
-            }
             if (string.IsNullOrWhiteSpace(txtTelefon.Text))
             {
                 MessageBox.Show("Unesite telefon izvodjaca.");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(ZanrTxt.Text))
+            if (!BendRadio.Checked && !SoloUmetnikRadio.Checked)
             {
-                MessageBox.Show("Unesite zanr izvodjaca.");
+                MessageBox.Show("Molimo izaberite tip izvođača: Bend ili Solo Umetnik.");
                 return;
             }
-
+            string kontaktOsoba = string.IsNullOrWhiteSpace(txtKontaktOsoba.Text) ? null : txtKontaktOsoba.Text;
+            string zanr = string.IsNullOrWhiteSpace(ZanrTxt.Text) ? null : ZanrTxt.Text;
             if (izborMenadzerske.SelectedItem == null)
             {
                 MessageBox.Show("Izaberite menadzersku agenciju.");
@@ -274,7 +273,7 @@ namespace Muzicki_festival.FormeDodatne
             {
                 string svira = sviraCheckBox.Checked ? "DA" : "NE";
 
-                if (sviraCheckBox.Checked && string.IsNullOrEmpty(instrumentTxt.Text))
+                if (sviraCheckBox.Checked && string.IsNullOrWhiteSpace(instrumentTxt.Text))
                 {
                     MessageBox.Show("Unesite instrument");
                     return;
@@ -305,7 +304,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void btnDodajMenadzersku_Click(object sender, EventArgs e)
         {
-            FormaMenadzerskaAgencijaDodavanje forma = new FormaMenadzerskaAgencijaDodavanje();
+            FormaMenadzerskaAgencijaDodavanje forma = new FormaMenadzerskaAgencijaDodavanje(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();

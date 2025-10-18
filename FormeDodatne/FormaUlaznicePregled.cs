@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Muzicki_festival.FormeDodatne
 {
@@ -19,8 +20,9 @@ namespace Muzicki_festival.FormeDodatne
         private int selektovanaUlaznicaId = -1;
 
         private IList<UlaznicaBasic> ulaznice;
+        private Form parentform;
 
-        public FormaUlaznicePregled()
+        public FormaUlaznicePregled(Form parentform)
         {
             InitializeComponent();
 
@@ -37,6 +39,7 @@ namespace Muzicki_festival.FormeDodatne
                 "Kartica",
                 "Online"
             });
+            this.parentform = parentform;
         }
 
         private void InitTabeluDani()
@@ -174,12 +177,19 @@ namespace Muzicki_festival.FormeDodatne
 
         private void DugmeDodajPogodnost_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPogodnost.Text))
+            string pogodnost = txtPogodnost.Text.Trim();
+            if (string.IsNullOrWhiteSpace(pogodnost))
             {
                 MessageBox.Show("Unesite pogodnost u tekst polje!");
                 return;
             }
-
+            Regex regex = new Regex(@"^[A-Za-zŠšĐđČčĆćŽž ]+$");
+            if (!regex.IsMatch(pogodnost))
+            {
+                MessageBox.Show("Naziv VIP pogodnosti sme sadržati samo slova.",
+                                "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
             TabelaPogodnosti.Rows.Add(txtPogodnost.Text);
             txtPogodnost.Text = "";
         }

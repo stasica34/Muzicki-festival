@@ -52,13 +52,13 @@
             this.TabelaPosetioci = new System.Windows.Forms.DataGridView();
             this.IzmeniDugme = new System.Windows.Forms.Button();
             this.GrupaPodaci = new System.Windows.Forms.GroupBox();
-            this.PotvrdiIzmeneDugme = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.TabelaGrupe = new System.Windows.Forms.DataGridView();
             this.DugmeUclani = new System.Windows.Forms.Button();
             this.TabelaClanovi = new System.Windows.Forms.DataGridView();
             this.DugmeNapustiGrupu = new System.Windows.Forms.Button();
+            this.PotvrdiIzmeneDugme = new System.Windows.Forms.Button();
             this.ObrisiDugme = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -86,35 +86,32 @@
             this.tableLayoutPanel1.Controls.Add(this.txtEmail, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtTelefon, 1, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 18);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(758, 194);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1137, 298);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // txtPrezime
             // 
             this.txtPrezime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPrezime.Location = new System.Drawing.Point(452, 62);
-            this.txtPrezime.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPrezime.Location = new System.Drawing.Point(680, 98);
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(168, 20);
+            this.txtPrezime.Size = new System.Drawing.Size(250, 26);
             this.txtPrezime.TabIndex = 15;
             // 
             // lableIme
             // 
             this.lableIme.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lableIme.AutoSize = true;
-            this.lableIme.Location = new System.Drawing.Point(144, 17);
-            this.lableIme.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lableIme.Location = new System.Drawing.Point(216, 27);
             this.lableIme.Name = "lableIme";
-            this.lableIme.Size = new System.Drawing.Size(27, 13);
+            this.lableIme.Size = new System.Drawing.Size(40, 20);
             this.lableIme.TabIndex = 0;
             this.lableIme.Text = "Ime:";
             // 
@@ -122,10 +119,9 @@
             // 
             this.labelDrzava.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelDrzava.AutoSize = true;
-            this.labelDrzava.Location = new System.Drawing.Point(134, 65);
-            this.labelDrzava.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDrzava.Location = new System.Drawing.Point(201, 101);
             this.labelDrzava.Name = "labelDrzava";
-            this.labelDrzava.Size = new System.Drawing.Size(47, 13);
+            this.labelDrzava.Size = new System.Drawing.Size(70, 20);
             this.labelDrzava.TabIndex = 1;
             this.labelDrzava.Text = "Prezime:";
             // 
@@ -133,56 +129,57 @@
             // 
             this.labelEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(140, 113);
-            this.labelEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelEmail.Location = new System.Drawing.Point(210, 175);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(35, 13);
+            this.labelEmail.Size = new System.Drawing.Size(52, 20);
             this.labelEmail.TabIndex = 2;
             this.labelEmail.Text = "Email:";
             // 
             // txtIme
             // 
             this.txtIme.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtIme.Location = new System.Drawing.Point(452, 14);
-            this.txtIme.Margin = new System.Windows.Forms.Padding(2);
+            this.txtIme.Location = new System.Drawing.Point(680, 24);
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(168, 20);
+            this.txtIme.Size = new System.Drawing.Size(250, 26);
             this.txtIme.TabIndex = 7;
             // 
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmail.Location = new System.Drawing.Point(452, 110);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEmail.Location = new System.Drawing.Point(680, 172);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(168, 20);
+            this.txtEmail.Size = new System.Drawing.Size(250, 26);
             this.txtEmail.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(111, 162);
+            this.label1.Location = new System.Drawing.Point(168, 250);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.Size = new System.Drawing.Size(136, 20);
             this.label1.TabIndex = 16;
             this.label1.Text = "Telefon (opciono):";
             // 
             // txtTelefon
             // 
             this.txtTelefon.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTelefon.Location = new System.Drawing.Point(452, 159);
+            this.txtTelefon.Location = new System.Drawing.Point(680, 247);
+            this.txtTelefon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(168, 20);
+            this.txtTelefon.Size = new System.Drawing.Size(250, 26);
             this.txtTelefon.TabIndex = 17;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.TabelaPosetioci);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(18, 18);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(777, 219);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(1166, 337);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Posetioci";
@@ -190,9 +187,11 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel2);
-            this.groupBox2.Location = new System.Drawing.Point(398, 16);
+            this.groupBox2.Location = new System.Drawing.Point(597, 25);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(373, 197);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Size = new System.Drawing.Size(560, 303);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ulaznica";
@@ -211,7 +210,8 @@
             this.tableLayoutPanel2.Controls.Add(this.LabelaDatumKupovine, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.LabelaTip, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.DugmeUlaznicePredji, 0, 4);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 19);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 29);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 5;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -219,16 +219,17 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(361, 172);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(542, 265);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 10);
+            this.label2.Location = new System.Drawing.Point(112, 16);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.Size = new System.Drawing.Size(47, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Cena";
             // 
@@ -236,9 +237,10 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 44);
+            this.label3.Location = new System.Drawing.Point(77, 69);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.Size = new System.Drawing.Size(116, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Nacin placanja:";
             // 
@@ -246,9 +248,10 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(46, 78);
+            this.label4.Location = new System.Drawing.Point(71, 122);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Datum kupovine:";
             // 
@@ -256,9 +259,10 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(79, 112);
+            this.label5.Location = new System.Drawing.Point(120, 175);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(22, 13);
+            this.label5.Size = new System.Drawing.Size(30, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "Tip";
             // 
@@ -266,63 +270,72 @@
             // 
             this.LabelaCena.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelaCena.AutoSize = true;
-            this.LabelaCena.Location = new System.Drawing.Point(270, 10);
+            this.LabelaCena.Location = new System.Drawing.Point(406, 16);
+            this.LabelaCena.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelaCena.Name = "LabelaCena";
-            this.LabelaCena.Size = new System.Drawing.Size(0, 13);
+            this.LabelaCena.Size = new System.Drawing.Size(0, 20);
             this.LabelaCena.TabIndex = 4;
             // 
             // LabelaNacin
             // 
             this.LabelaNacin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelaNacin.AutoSize = true;
-            this.LabelaNacin.Location = new System.Drawing.Point(270, 44);
+            this.LabelaNacin.Location = new System.Drawing.Point(406, 69);
+            this.LabelaNacin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelaNacin.Name = "LabelaNacin";
-            this.LabelaNacin.Size = new System.Drawing.Size(0, 13);
+            this.LabelaNacin.Size = new System.Drawing.Size(0, 20);
             this.LabelaNacin.TabIndex = 5;
             // 
             // LabelaDatumKupovine
             // 
             this.LabelaDatumKupovine.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelaDatumKupovine.AutoSize = true;
-            this.LabelaDatumKupovine.Location = new System.Drawing.Point(270, 78);
+            this.LabelaDatumKupovine.Location = new System.Drawing.Point(406, 122);
+            this.LabelaDatumKupovine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelaDatumKupovine.Name = "LabelaDatumKupovine";
-            this.LabelaDatumKupovine.Size = new System.Drawing.Size(0, 13);
+            this.LabelaDatumKupovine.Size = new System.Drawing.Size(0, 20);
             this.LabelaDatumKupovine.TabIndex = 6;
             // 
             // LabelaTip
             // 
             this.LabelaTip.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LabelaTip.AutoSize = true;
-            this.LabelaTip.Location = new System.Drawing.Point(270, 112);
+            this.LabelaTip.Location = new System.Drawing.Point(406, 175);
+            this.LabelaTip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelaTip.Name = "LabelaTip";
-            this.LabelaTip.Size = new System.Drawing.Size(0, 13);
+            this.LabelaTip.Size = new System.Drawing.Size(0, 20);
             this.LabelaTip.TabIndex = 7;
             // 
             // DugmeUlaznicePredji
             // 
             this.DugmeUlaznicePredji.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel2.SetColumnSpan(this.DugmeUlaznicePredji, 2);
-            this.DugmeUlaznicePredji.Location = new System.Drawing.Point(84, 142);
+            this.DugmeUlaznicePredji.Location = new System.Drawing.Point(127, 221);
+            this.DugmeUlaznicePredji.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DugmeUlaznicePredji.Name = "DugmeUlaznicePredji";
-            this.DugmeUlaznicePredji.Size = new System.Drawing.Size(192, 23);
+            this.DugmeUlaznicePredji.Size = new System.Drawing.Size(288, 35);
             this.DugmeUlaznicePredji.TabIndex = 8;
             this.DugmeUlaznicePredji.Text = "Predji na rad sa ulaznicama";
             this.DugmeUlaznicePredji.UseVisualStyleBackColor = true;
+            this.DugmeUlaznicePredji.Click += new System.EventHandler(this.DugmeUlaznicePredji_Click);
             // 
             // TabelaPosetioci
             // 
             this.TabelaPosetioci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TabelaPosetioci.Location = new System.Drawing.Point(3, 16);
+            this.TabelaPosetioci.Location = new System.Drawing.Point(4, 25);
+            this.TabelaPosetioci.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TabelaPosetioci.Name = "TabelaPosetioci";
-            this.TabelaPosetioci.Size = new System.Drawing.Size(389, 197);
+            this.TabelaPosetioci.RowHeadersWidth = 62;
+            this.TabelaPosetioci.Size = new System.Drawing.Size(584, 303);
             this.TabelaPosetioci.TabIndex = 0;
             this.TabelaPosetioci.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaPosetioci_CellClick);
             // 
             // IzmeniDugme
             // 
-            this.IzmeniDugme.Location = new System.Drawing.Point(692, 237);
+            this.IzmeniDugme.Location = new System.Drawing.Point(1038, 365);
+            this.IzmeniDugme.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.IzmeniDugme.Name = "IzmeniDugme";
-            this.IzmeniDugme.Size = new System.Drawing.Size(91, 32);
+            this.IzmeniDugme.Size = new System.Drawing.Size(136, 49);
             this.IzmeniDugme.TabIndex = 7;
             this.IzmeniDugme.Text = "Izmeni";
             this.IzmeniDugme.UseVisualStyleBackColor = true;
@@ -334,29 +347,23 @@
             this.GrupaPodaci.Controls.Add(this.PotvrdiIzmeneDugme);
             this.GrupaPodaci.Controls.Add(this.tableLayoutPanel1);
             this.GrupaPodaci.Enabled = false;
-            this.GrupaPodaci.Location = new System.Drawing.Point(15, 275);
+            this.GrupaPodaci.Location = new System.Drawing.Point(22, 423);
+            this.GrupaPodaci.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GrupaPodaci.Name = "GrupaPodaci";
-            this.GrupaPodaci.Size = new System.Drawing.Size(768, 355);
+            this.GrupaPodaci.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.GrupaPodaci.Size = new System.Drawing.Size(1152, 546);
             this.GrupaPodaci.TabIndex = 8;
             this.GrupaPodaci.TabStop = false;
             this.GrupaPodaci.Text = "Podaci";
             // 
-            // PotvrdiIzmeneDugme
-            // 
-            this.PotvrdiIzmeneDugme.Location = new System.Drawing.Point(671, 217);
-            this.PotvrdiIzmeneDugme.Name = "PotvrdiIzmeneDugme";
-            this.PotvrdiIzmeneDugme.Size = new System.Drawing.Size(91, 33);
-            this.PotvrdiIzmeneDugme.TabIndex = 6;
-            this.PotvrdiIzmeneDugme.Text = "Potvrdi";
-            this.PotvrdiIzmeneDugme.UseVisualStyleBackColor = true;
-            this.PotvrdiIzmeneDugme.Click += new System.EventHandler(this.PotvrdiIzmeneDugme_Click);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tableLayoutPanel4);
-            this.groupBox3.Location = new System.Drawing.Point(9, 217);
+            this.groupBox3.Location = new System.Drawing.Point(14, 334);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(455, 132);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox3.Size = new System.Drawing.Size(682, 203);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Grupa (opciono)";
@@ -371,30 +378,34 @@
             this.tableLayoutPanel4.Controls.Add(this.DugmeUclani, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.TabelaClanovi, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.DugmeNapustiGrupu, 0, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 19);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(9, 29);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(439, 100);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(658, 154);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
             // TabelaGrupe
             // 
             this.TabelaGrupe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TabelaGrupe.Location = new System.Drawing.Point(112, 3);
+            this.TabelaGrupe.Location = new System.Drawing.Point(168, 5);
+            this.TabelaGrupe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TabelaGrupe.Name = "TabelaGrupe";
+            this.TabelaGrupe.RowHeadersWidth = 62;
             this.tableLayoutPanel4.SetRowSpan(this.TabelaGrupe, 2);
-            this.TabelaGrupe.Size = new System.Drawing.Size(213, 94);
+            this.TabelaGrupe.Size = new System.Drawing.Size(320, 144);
             this.TabelaGrupe.TabIndex = 0;
             this.TabelaGrupe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaGrupe_CellClick);
             // 
             // DugmeUclani
             // 
             this.DugmeUclani.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DugmeUclani.Location = new System.Drawing.Point(11, 10);
+            this.DugmeUclani.Location = new System.Drawing.Point(17, 15);
+            this.DugmeUclani.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DugmeUclani.Name = "DugmeUclani";
-            this.DugmeUclani.Size = new System.Drawing.Size(87, 30);
+            this.DugmeUclani.Size = new System.Drawing.Size(130, 46);
             this.DugmeUclani.TabIndex = 1;
             this.DugmeUclani.Text = "Učlani se";
             this.DugmeUclani.UseVisualStyleBackColor = true;
@@ -403,31 +414,46 @@
             // TabelaClanovi
             // 
             this.TabelaClanovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TabelaClanovi.Location = new System.Drawing.Point(331, 3);
+            this.TabelaClanovi.Location = new System.Drawing.Point(497, 5);
+            this.TabelaClanovi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TabelaClanovi.Name = "TabelaClanovi";
+            this.TabelaClanovi.RowHeadersWidth = 62;
             this.tableLayoutPanel4.SetRowSpan(this.TabelaClanovi, 2);
-            this.TabelaClanovi.Size = new System.Drawing.Size(105, 94);
+            this.TabelaClanovi.Size = new System.Drawing.Size(157, 144);
             this.TabelaClanovi.TabIndex = 2;
             // 
             // DugmeNapustiGrupu
             // 
             this.DugmeNapustiGrupu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DugmeNapustiGrupu.Enabled = false;
-            this.DugmeNapustiGrupu.Location = new System.Drawing.Point(11, 60);
+            this.DugmeNapustiGrupu.Location = new System.Drawing.Point(17, 92);
+            this.DugmeNapustiGrupu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DugmeNapustiGrupu.Name = "DugmeNapustiGrupu";
-            this.DugmeNapustiGrupu.Size = new System.Drawing.Size(87, 30);
+            this.DugmeNapustiGrupu.Size = new System.Drawing.Size(130, 46);
             this.DugmeNapustiGrupu.TabIndex = 3;
             this.DugmeNapustiGrupu.Text = "Napusti grupu";
             this.DugmeNapustiGrupu.UseVisualStyleBackColor = true;
             this.DugmeNapustiGrupu.Click += new System.EventHandler(this.DugmeNapustiGrupu_Click);
             // 
+            // PotvrdiIzmeneDugme
+            // 
+            this.PotvrdiIzmeneDugme.Location = new System.Drawing.Point(1006, 334);
+            this.PotvrdiIzmeneDugme.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PotvrdiIzmeneDugme.Name = "PotvrdiIzmeneDugme";
+            this.PotvrdiIzmeneDugme.Size = new System.Drawing.Size(136, 51);
+            this.PotvrdiIzmeneDugme.TabIndex = 6;
+            this.PotvrdiIzmeneDugme.Text = "Potvrdi";
+            this.PotvrdiIzmeneDugme.UseVisualStyleBackColor = true;
+            this.PotvrdiIzmeneDugme.Click += new System.EventHandler(this.PotvrdiIzmeneDugme_Click);
+            // 
             // ObrisiDugme
             // 
             this.ObrisiDugme.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ObrisiDugme.Enabled = false;
-            this.ObrisiDugme.Location = new System.Drawing.Point(595, 237);
+            this.ObrisiDugme.Location = new System.Drawing.Point(892, 365);
+            this.ObrisiDugme.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ObrisiDugme.Name = "ObrisiDugme";
-            this.ObrisiDugme.Size = new System.Drawing.Size(91, 32);
+            this.ObrisiDugme.Size = new System.Drawing.Size(136, 49);
             this.ObrisiDugme.TabIndex = 9;
             this.ObrisiDugme.Text = "Obrisi";
             this.ObrisiDugme.UseVisualStyleBackColor = true;
@@ -435,13 +461,14 @@
             // 
             // FormaPosetioci
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 642);
+            this.ClientSize = new System.Drawing.Size(1200, 988);
             this.Controls.Add(this.ObrisiDugme);
             this.Controls.Add(this.GrupaPodaci);
             this.Controls.Add(this.IzmeniDugme);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormaPosetioci";
             this.Text = "FormaPosetioci";
             this.tableLayoutPanel1.ResumeLayout(false);

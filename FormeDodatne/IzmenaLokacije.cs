@@ -19,7 +19,8 @@ namespace Muzicki_festival.FormeDodatne
         private LokacijaView lokacija;
         private readonly int idLokacije;
         private int idSelektovanaOprema = -1;
-        public IzmenaLokacije(int idLokacije)
+        private Form parentForm;
+        public IzmenaLokacije(int idLokacije, Form parentForm)
         {
             InitializeComponent();
             this.idLokacije = idLokacije;
@@ -42,6 +43,8 @@ namespace Muzicki_festival.FormeDodatne
                     InitKombinovana();
                     break;
             }
+
+            this.parentForm = parentForm;
         }
 
         private void InitOtvorena()
@@ -74,6 +77,7 @@ namespace Muzicki_festival.FormeDodatne
             dataGridView1.MultiSelect = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.Columns["IDKolona"].Visible = false;
         }
 
         private void PopuniTabeluOprema()
@@ -83,6 +87,8 @@ namespace Muzicki_festival.FormeDodatne
             {
                 dataGridView1.Rows.Add(o.Id, o.Naziv);
             }
+            dataGridView1.ClearSelection();
+            idSelektovanaOprema = -1;
         }
 
         private void PopuniDodatne()
@@ -107,7 +113,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void PotvrdiDugme_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Opis.Text) || string.IsNullOrEmpty(Naziv.Text) || string.IsNullOrEmpty(GPS.Text))
+            if (string.IsNullOrEmpty(Naziv.Text) || string.IsNullOrEmpty(GPS.Text))
             {
                 MessageBox.Show("Niste uneli sve obavezne podatke.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -162,37 +168,45 @@ namespace Muzicki_festival.FormeDodatne
 
         private void DodajOpremu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(NazivOpreme.Text))
+            string nazivNoveOpreme = NazivOpreme.Text.Trim();
+            if (string.IsNullOrEmpty(nazivNoveOpreme))
             {
                 MessageBox.Show("Niste uneli naziv opreme.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             DostupnaOpremaBasic d;
-            DostupnaOpremaView dv;
-            switch (lokacija.TipLokacije)
+            DostupnaOpremaView dv = null;
+            LokacijaBasic lokacijaBasic;
+
+            try
             {
-                case TipLokacije.OTVORENA:
-                    OtvorenaLokacijaBasic o = new OtvorenaLokacijaBasic(lokacija.Id, lokacija.Opis, lokacija.Naziv, lokacija.Gps_koordinate, lokacija.Kapacitet);
-                    d = new DostupnaOpremaBasic(0, NazivOpreme.Text, o);
+                switch (lokacija.TipLokacije)
+                {
+                    case TipLokacije.OTVORENA:
+                        lokacijaBasic = new OtvorenaLokacijaBasic(lokacija.Id, lokacija.Opis, lokacija.Naziv, lokacija.Gps_koordinate, lokacija.Kapacitet);
+                        break;
+                    case TipLokacije.KOMBINOVANA:
+                        KombinovanaLokacijaView kView = (KombinovanaLokacijaView)lokacija;
+                        lokacijaBasic = new KombinovanaLokacijaBasic(lokacija.Id, lokacija.Opis, lokacija.Naziv, lokacija.Gps_koordinate, lokacija.Kapacitet, kView.Tip_prostora, kView.Klima, kView.Dostupnost_sedenja);
+                        break;
+                    default:
+                        return;
+                }
+                d = new DostupnaOpremaBasic(0, nazivNoveOpreme, lokacijaBasic);
 
-                    dv = DTOManager.DodajDostupnuOpremu(d);
+                dv = DTOManager.DodajDostupnuOpremu(d);
+                if (dv != null)
+                {
                     oprema.Add(dv);
-                    MessageBox.Show($"Dodato {dv.Id} {dv.Naziv}");
                     PopuniTabeluOprema();
-                    break;
-                case TipLokacije.KOMBINOVANA:
-                   KombinovanaLokacijaBasic k = new KombinovanaLokacijaBasic(lokacija.Id, lokacija.Opis, lokacija.Naziv, lokacija.Gps_koordinate, lokacija.Kapacitet, ((KombinovanaLokacijaView)lokacija).Tip_prostora, ((KombinovanaLokacijaView)lokacija).Klima, ((KombinovanaLokacijaView)lokacija).Dostupnost_sedenja);
-                    d = new DostupnaOpremaBasic(0, NazivOpreme.Text, k);
-
-                    dv = DTOManager.DodajDostupnuOpremu(d);
-                    oprema.Add(dv); 
-                    MessageBox.Show($"Dodato {dv.Id} {dv.Naziv}");
-                    PopuniTabeluOprema();
-                    break;
-                default:
-                    return;
+                    NazivOpreme.Clear(); 
+                    MessageBox.Show($"Uspešno dodata oprema: {dv.Naziv}", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri dodavanju opreme. Detalji: {ex.Message}", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ObrisiOpremu_Click(object sender, EventArgs e)

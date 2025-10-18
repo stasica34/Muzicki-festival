@@ -18,8 +18,9 @@ namespace Muzicki_festival.Forme
         private IList<LokacijaView> lokacije;
         private IList<DostupnaOpremaView> oprema;
         private int idSelektovan = -1;
+        private Form parentform;
 
-        public FormaLokacijaDodaj()
+        public FormaLokacijaDodaj(Form parentform)
         {
             InitializeComponent();
 
@@ -29,6 +30,7 @@ namespace Muzicki_festival.Forme
             PopuniTabeluLokacije();
 
             InitTabeluOprema();
+            this.parentform = parentform;
         }
 
         private void InitTabeluLokacije()
@@ -66,9 +68,12 @@ namespace Muzicki_festival.Forme
         private void PopuniTabeluOprema()
         {
             dataGridView2.Rows.Clear();
-            foreach (var o in oprema)
+            if (oprema != null) 
             {
-                dataGridView2.Rows.Add(o.Id, o.Naziv);
+                foreach (var o in oprema)
+                {
+                    dataGridView2.Rows.Add(o.Id, o.Naziv);
+                }
             }
             dataGridView2.Refresh();
         }
@@ -136,66 +141,75 @@ namespace Muzicki_festival.Forme
 
         private void DodajDugme_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Naziv.Text) || string.IsNullOrEmpty(GPS.Text))
+            string naziv = Naziv.Text.Trim();
+            string gps = GPS.Text.Trim();
+            string opis = Opis.Text.Trim(); 
+            int kapacitet = (int)MaxKapacitet.Value;
+
+            if (string.IsNullOrEmpty(naziv) || string.IsNullOrEmpty(gps))
             {
-                MessageBox.Show("Popunite sve obavezne podatke.");
+                MessageBox.Show("Popunite sve obavezne podatke (Naziv, GPS).");
                 return;
             }
 
+            LokacijaView l = null;
+
             if (radioOtvorena.Checked)
             {
-                OtvorenaLokacijaBasic o = new OtvorenaLokacijaBasic(0, Opis.Text, Naziv.Text, GPS.Text, (int)MaxKapacitet.Value);
+                OtvorenaLokacijaBasic o = new OtvorenaLokacijaBasic(0, opis, naziv, gps, kapacitet);
 
-                LokacijaView l = DTOManager.DodajLokaciju(o);
+                l = DTOManager.DodajLokaciju(o);
                 if (l != null)
                 {
                     lokacije.Add(l);
                     PopuniTabeluLokacije();
-                }
-                else
-                {
-                    MessageBox.Show("Greska", "Doslo je do greske pri dodavanju otverene lokacije", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Uspesno dodata lokacija.");
+                    OcistiPolja();
                 }
             }
             else if (radioZatvorena.Checked)
             {
-                if (string.IsNullOrEmpty(TipProstora.Text) || string.IsNullOrEmpty(Klima.Text) || string.IsNullOrEmpty(DostupnostSedenja.Text))
+                string tipProstora = TipProstora.Text.Trim();
+                string klima = Klima.Text.Trim();
+                string dostupnostSedenja = DostupnostSedenja.Text.Trim();
+
+                if (string.IsNullOrEmpty(tipProstora) || string.IsNullOrEmpty(klima) || string.IsNullOrEmpty(dostupnostSedenja))
                 {
-                    MessageBox.Show("Popunite sve obavezne podatke.");
+                    MessageBox.Show("Popunite sve obavezne podatke za Zatvorenu lokaciju (Tip Prostora, Klima, Dostupnost Sedenja).");
                     return;
                 }
 
-                ZatvorenaLokacijaBasic z = new ZatvorenaLokacijaBasic(0, Opis.Text, Naziv.Text, GPS.Text, (int)MaxKapacitet.Value, TipProstora.Text, Klima.Text, DostupnostSedenja.Text);
-                LokacijaView l = DTOManager.DodajLokaciju(z);
+                ZatvorenaLokacijaBasic z = new ZatvorenaLokacijaBasic(0, opis, naziv, gps, kapacitet, tipProstora, klima, dostupnostSedenja);
+                l = DTOManager.DodajLokaciju(z);
                 if (l != null)
                 {
                     lokacije.Add(l);
                     PopuniTabeluLokacije();
-                }
-                else
-                {
-                    MessageBox.Show("Greska", "Doslo je do greske pri dodavanju zatvorene lokacije", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Uspesno dodata lokacija.");
+                    OcistiPolja();
                 }
             }
             else if (radioKombinovana.Checked)
             {
-                if (string.IsNullOrEmpty(TipProstora.Text) || string.IsNullOrEmpty(Klima.Text) || string.IsNullOrEmpty(DostupnostSedenja.Text))
+                string tipProstora = TipProstora.Text.Trim();
+                string klima = Klima.Text.Trim();
+                string dostupnostSedenja = DostupnostSedenja.Text.Trim();
+
+                if (string.IsNullOrEmpty(tipProstora) || string.IsNullOrEmpty(klima) || string.IsNullOrEmpty(dostupnostSedenja))
                 {
-                    MessageBox.Show("Popunite sve obavezne podatke.");
+                    MessageBox.Show("Popunite sve obavezne podatke za Kombinovanu lokaciju (Tip Prostora, Klima, Dostupnost Sedenja).");
                     return;
                 }
 
-                KombinovanaLokacijaBasic k = new KombinovanaLokacijaBasic(0, Opis.Text, Naziv.Text, GPS.Text, (int)MaxKapacitet.Value, TipProstora.Text, Klima.Text, DostupnostSedenja.Text);
+                KombinovanaLokacijaBasic k = new KombinovanaLokacijaBasic(0, opis, naziv, gps, kapacitet, tipProstora, klima, dostupnostSedenja);
 
-                LokacijaView l = DTOManager.DodajLokaciju(k);
+                l = DTOManager.DodajLokaciju(k);
                 if (l != null)
                 {
                     lokacije.Add(l);
                     PopuniTabeluLokacije();
-                }
-                else
-                {
-                    MessageBox.Show("Greska", "Doslo je do greske pri dodavanju kombinovane lokacije", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Uspesno dodata lokacija.");
+                    OcistiPolja();
                 }
             }
             else
@@ -203,8 +217,6 @@ namespace Muzicki_festival.Forme
                 MessageBox.Show("Izaberite tip lokacije.");
                 return;
             }
-
-            MessageBox.Show("Uspesno dodata lokacija.");
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -246,14 +258,14 @@ namespace Muzicki_festival.Forme
                 return;
             }
 
-            IzmenaLokacije izmena = new IzmenaLokacije(idSelektovan);
+            IzmenaLokacije izmena = new IzmenaLokacije(idSelektovan,this);
             this.Hide();
             izmena.ShowDialog();
             this.Show();
 
             lokacije = DTOManager.VratiSveLokacije();
             PopuniTabeluLokacije();
-            oprema.Clear();
+            if (oprema != null) oprema.Clear(); 
             PopuniTabeluOprema();
             idSelektovan = -1;
             DugmeObrisi.Enabled = false;
@@ -279,15 +291,32 @@ namespace Muzicki_festival.Forme
             if (DTOManager.ObrisiLokaciju(idSelektovan))
             {
                 MessageBox.Show("Uspesno obrisana lokacija");
-                LokacijaView obrisana = lokacije.Where(l => l.Id ==  idSelektovan).FirstOrDefault();
+                LokacijaView obrisana = lokacije.Where(l => l.Id == idSelektovan).FirstOrDefault();
                 lokacije.Remove(obrisana);
                 PopuniTabeluLokacije();
-                oprema.Clear();
+                if (oprema != null) oprema.Clear(); 
                 PopuniTabeluOprema();
                 idSelektovan = -1;
                 DugmeObrisi.Enabled = false;
                 IzmeniLokaciju.Enabled = false;
             }
+        }
+        private void OcistiPolja()
+        {
+            Opis.Text = string.Empty;
+            Naziv.Text = string.Empty;
+            GPS.Text = string.Empty;
+            MaxKapacitet.Value = 0; 
+            TipProstora.Text = string.Empty;
+            Klima.Text = string.Empty;
+            DostupnostSedenja.Text = string.Empty;
+            radioOtvorena.Checked = true;
+            idSelektovan = -1;
+            DugmeObrisi.Enabled = false;
+            IzmeniLokaciju.Enabled = false;
+            if (oprema != null) oprema.Clear();
+            PopuniTabeluOprema();
+            Naziv.Focus();
         }
     }
 }

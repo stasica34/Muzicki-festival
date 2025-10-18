@@ -16,8 +16,9 @@ namespace Muzicki_festival.FormeDodatne
     {
         public IList<AgencijaOrganizatorView> agencijaOrganizatorViews;
         private int IdSelektovane = -1;
+        private Form parentform;
 
-        public FormaDodajAgencijuOrganizator()
+        public FormaDodajAgencijuOrganizator(Form parentform)
         {
             InitializeComponent();
 
@@ -25,6 +26,7 @@ namespace Muzicki_festival.FormeDodatne
 
             InitTabeluAgencije();
             PopuniTabeluAgencije();
+            this.parentform = parentform;
         }
 
 

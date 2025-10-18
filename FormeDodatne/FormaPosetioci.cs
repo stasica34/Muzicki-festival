@@ -18,8 +18,9 @@ namespace Muzicki_festival.FormeDodatne
         private IList<GrupaView> grupaViews = new List<GrupaView>();
         private int selektovanaGrupaId = -1;
         private bool IzmenaUToku = false;
+        private Form parentform;
 
-        public FormaPosetioci()
+        public FormaPosetioci(Form parentform)
         {
             InitializeComponent();
             posetilacViews = DTOManager.VratiSvePosetioce();
@@ -32,6 +33,7 @@ namespace Muzicki_festival.FormeDodatne
 
             MessageBox.Show("Ovde je moguc pregled, izmena i brisanje posetioca. Dodavnje se vrsi preko forme za dogadjaje",
                 "Napoemena", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            this.parentform = parentform;
         }
 
         private void InitTabeluPosetioci()
@@ -360,5 +362,11 @@ namespace Muzicki_festival.FormeDodatne
             }
         }
 
+        private void DugmeUlaznicePredji_Click(object sender, EventArgs e)
+        {
+            FormaUlaznicePregled formaUlaznicePregled = new FormaUlaznicePregled(this);
+            formaUlaznicePregled.ShowDialog();
+            this.Hide();
+        }
     }
 }

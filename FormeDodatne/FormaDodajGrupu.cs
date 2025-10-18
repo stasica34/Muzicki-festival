@@ -16,11 +16,12 @@ namespace Muzicki_festival.FormeDodatne
         private IList<AgencijaOrganizatorView> agencijaOrganizatorViews;
         private IList<GrupaView> grupaViews = new List<GrupaView>();
         private int selektovanaGrupaId = -1;
+        private Form parentform;
 
         Label labelaAgencija = new Label();
         ComboBox cmbAgencijeIzmena = new ComboBox();
 
-        public FormaDodajGrupu()
+        public FormaDodajGrupu(Form parentform)
         {
             InitializeComponent();
 
@@ -39,6 +40,7 @@ namespace Muzicki_festival.FormeDodatne
 
             labelaAgencija.Anchor = AnchorStyles.None;
             cmbAgencijeIzmena.Anchor = AnchorStyles.None;
+            this.parentform = parentform;
         }
 
         private void InitTabeluGrupe()
@@ -128,7 +130,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void DugmeDodajAgenciju_Click(object sender, EventArgs e)
         {
-            FormaDodajAgencijuOrganizator forma = new FormaDodajAgencijuOrganizator();
+            FormaDodajAgencijuOrganizator forma = new FormaDodajAgencijuOrganizator(this);
             this.Hide();
             forma.ShowDialog();
             this.Show();

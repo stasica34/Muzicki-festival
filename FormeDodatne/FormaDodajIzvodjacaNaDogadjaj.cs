@@ -22,8 +22,9 @@ namespace Muzicki_festival.FormeDodatne
         private IList<string> zahtevi;
         private IList<IzvodjacView> izvodjacViews;
         private int idSelektovan = -1;
+        private Form parentform;
 
-        public FormaDodajIzvodjacaNaDogadjaj(DogadjajBasic dogadjaj)
+        public FormaDodajIzvodjacaNaDogadjaj(DogadjajBasic dogadjaj, Form parentform)
         {
             InitializeComponent();
             dogadjajBasic = dogadjaj;
@@ -39,6 +40,7 @@ namespace Muzicki_festival.FormeDodatne
             InitTabeluZahtevi();
 
             LabelaNazivDogadjaj.Text = dogadjaj.Naziv;
+            this.parentform = parentform;
         }
 
         private void TabelaIzvodjaci_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -260,7 +262,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void RadSaIzvodjacimaDugme_Click(object sender, EventArgs e)
         {
-            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj();
+            FormaIzvodjacDodaj forma = new FormaIzvodjacDodaj(this);
             this.Hide();
             forma.ShowDialog();
             izvodjacViews = DTOManager.VratiSveIzvodjace();

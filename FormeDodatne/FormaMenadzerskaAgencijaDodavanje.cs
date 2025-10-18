@@ -20,8 +20,9 @@ namespace Muzicki_festival.FormeDodatne
         private IList<IzvodjacView> izvodjaci;
         private IList<MenadzerskaAgencijaKontaktView> kontaktPodaci;
         private int idSelektovan = -1;
+        private Form parentform;
 
-        public FormaMenadzerskaAgencijaDodavanje()
+        public FormaMenadzerskaAgencijaDodavanje(Form parentform)
         {
             InitializeComponent();
      
@@ -31,6 +32,7 @@ namespace Muzicki_festival.FormeDodatne
 
             InitTabeluIzvodjaci();
             InitTabeluKontaktPodaci();
+            this.parentform = parentform;
         }
 
         private void InitTabeluAgencije()
@@ -186,7 +188,7 @@ namespace Muzicki_festival.FormeDodatne
                 return;
             }
             
-            FormaMenadzerskaAgencijaIzmeni formaMenadzerskaAgencijaIzmeni = new FormaMenadzerskaAgencijaIzmeni(idSelektovan);
+            FormaMenadzerskaAgencijaIzmeni formaMenadzerskaAgencijaIzmeni = new FormaMenadzerskaAgencijaIzmeni(idSelektovan,this);
             this.Hide();
             formaMenadzerskaAgencijaIzmeni.ShowDialog();
             agencije = DTOManager.VratiSveMenadzerskeAgencije();
