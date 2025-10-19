@@ -80,8 +80,8 @@ namespace Muzicki_festival.Forme
 
         private void PopuniTabeluLokacije()
         {
-
             dataGridView1.Rows.Clear();
+
             foreach (var l in lokacije)
             {
                 switch (l.TipLokacije)
@@ -306,7 +306,7 @@ namespace Muzicki_festival.Forme
             Opis.Text = string.Empty;
             Naziv.Text = string.Empty;
             GPS.Text = string.Empty;
-            MaxKapacitet.Value = 0; 
+            MaxKapacitet.Value = 0;
             TipProstora.Text = string.Empty;
             Klima.Text = string.Empty;
             DostupnostSedenja.Text = string.Empty;
@@ -318,5 +318,6 @@ namespace Muzicki_festival.Forme
             PopuniTabeluOprema();
             Naziv.Focus();
         }
+
     }
 }

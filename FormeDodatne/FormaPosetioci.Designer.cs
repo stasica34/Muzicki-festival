@@ -96,6 +96,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1137, 298);
             this.tableLayoutPanel1.TabIndex = 5;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // txtPrezime
             // 
@@ -104,6 +105,7 @@
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(250, 26);
             this.txtPrezime.TabIndex = 15;
+            this.txtPrezime.TextChanged += new System.EventHandler(this.txtPrezime_TextChanged);
             // 
             // lableIme
             // 
@@ -114,6 +116,7 @@
             this.lableIme.Size = new System.Drawing.Size(40, 20);
             this.lableIme.TabIndex = 0;
             this.lableIme.Text = "Ime:";
+            this.lableIme.Click += new System.EventHandler(this.lableIme_Click);
             // 
             // labelDrzava
             // 
@@ -124,6 +127,7 @@
             this.labelDrzava.Size = new System.Drawing.Size(70, 20);
             this.labelDrzava.TabIndex = 1;
             this.labelDrzava.Text = "Prezime:";
+            this.labelDrzava.Click += new System.EventHandler(this.labelDrzava_Click);
             // 
             // labelEmail
             // 
@@ -134,6 +138,7 @@
             this.labelEmail.Size = new System.Drawing.Size(52, 20);
             this.labelEmail.TabIndex = 2;
             this.labelEmail.Text = "Email:";
+            this.labelEmail.Click += new System.EventHandler(this.labelEmail_Click);
             // 
             // txtIme
             // 
@@ -142,6 +147,7 @@
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(250, 26);
             this.txtIme.TabIndex = 7;
+            this.txtIme.TextChanged += new System.EventHandler(this.txtIme_TextChanged);
             // 
             // txtEmail
             // 
@@ -150,6 +156,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(250, 26);
             this.txtEmail.TabIndex = 8;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // label1
             // 
@@ -161,6 +168,7 @@
             this.label1.Size = new System.Drawing.Size(136, 20);
             this.label1.TabIndex = 16;
             this.label1.Text = "Telefon (opciono):";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtTelefon
             // 
@@ -170,6 +178,7 @@
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(250, 26);
             this.txtTelefon.TabIndex = 17;
+            this.txtTelefon.TextChanged += new System.EventHandler(this.txtTelefon_TextChanged);
             // 
             // groupBox1
             // 
@@ -183,6 +192,7 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Posetioci";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
             // 
@@ -195,6 +205,7 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ulaznica";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // tableLayoutPanel2
             // 
@@ -221,6 +232,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(542, 265);
             this.tableLayoutPanel2.TabIndex = 1;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // label2
             // 
@@ -232,6 +244,7 @@
             this.label2.Size = new System.Drawing.Size(47, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Cena";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -243,6 +256,7 @@
             this.label3.Size = new System.Drawing.Size(116, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Nacin placanja:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -254,6 +268,7 @@
             this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Datum kupovine:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -265,6 +280,7 @@
             this.label5.Size = new System.Drawing.Size(30, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "Tip";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // LabelaCena
             // 
@@ -275,6 +291,7 @@
             this.LabelaCena.Name = "LabelaCena";
             this.LabelaCena.Size = new System.Drawing.Size(0, 20);
             this.LabelaCena.TabIndex = 4;
+            this.LabelaCena.Click += new System.EventHandler(this.LabelaCena_Click);
             // 
             // LabelaNacin
             // 
@@ -285,6 +302,7 @@
             this.LabelaNacin.Name = "LabelaNacin";
             this.LabelaNacin.Size = new System.Drawing.Size(0, 20);
             this.LabelaNacin.TabIndex = 5;
+            this.LabelaNacin.Click += new System.EventHandler(this.LabelaNacin_Click);
             // 
             // LabelaDatumKupovine
             // 
@@ -295,6 +313,7 @@
             this.LabelaDatumKupovine.Name = "LabelaDatumKupovine";
             this.LabelaDatumKupovine.Size = new System.Drawing.Size(0, 20);
             this.LabelaDatumKupovine.TabIndex = 6;
+            this.LabelaDatumKupovine.Click += new System.EventHandler(this.LabelaDatumKupovine_Click);
             // 
             // LabelaTip
             // 
@@ -305,6 +324,7 @@
             this.LabelaTip.Name = "LabelaTip";
             this.LabelaTip.Size = new System.Drawing.Size(0, 20);
             this.LabelaTip.TabIndex = 7;
+            this.LabelaTip.Click += new System.EventHandler(this.LabelaTip_Click);
             // 
             // DugmeUlaznicePredji
             // 
@@ -329,6 +349,7 @@
             this.TabelaPosetioci.Size = new System.Drawing.Size(584, 303);
             this.TabelaPosetioci.TabIndex = 0;
             this.TabelaPosetioci.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaPosetioci_CellClick);
+            this.TabelaPosetioci.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaPosetioci_CellContentClick);
             // 
             // IzmeniDugme
             // 
@@ -355,6 +376,7 @@
             this.GrupaPodaci.TabIndex = 8;
             this.GrupaPodaci.TabStop = false;
             this.GrupaPodaci.Text = "Podaci";
+            this.GrupaPodaci.Enter += new System.EventHandler(this.GrupaPodaci_Enter);
             // 
             // groupBox3
             // 
@@ -367,6 +389,7 @@
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Grupa (opciono)";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // tableLayoutPanel4
             // 
@@ -386,6 +409,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(658, 154);
             this.tableLayoutPanel4.TabIndex = 7;
+            this.tableLayoutPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel4_Paint);
             // 
             // TabelaGrupe
             // 
@@ -398,6 +422,7 @@
             this.TabelaGrupe.Size = new System.Drawing.Size(320, 144);
             this.TabelaGrupe.TabIndex = 0;
             this.TabelaGrupe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaGrupe_CellClick);
+            this.TabelaGrupe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaGrupe_CellContentClick);
             // 
             // DugmeUclani
             // 
@@ -421,6 +446,7 @@
             this.tableLayoutPanel4.SetRowSpan(this.TabelaClanovi, 2);
             this.TabelaClanovi.Size = new System.Drawing.Size(157, 144);
             this.TabelaClanovi.TabIndex = 2;
+            this.TabelaClanovi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TabelaClanovi_CellContentClick);
             // 
             // DugmeNapustiGrupu
             // 
@@ -448,7 +474,7 @@
             // 
             // ObrisiDugme
             // 
-            this.ObrisiDugme.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ObrisiDugme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ObrisiDugme.Enabled = false;
             this.ObrisiDugme.Location = new System.Drawing.Point(892, 365);
             this.ObrisiDugme.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

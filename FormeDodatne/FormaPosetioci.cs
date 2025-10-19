@@ -292,8 +292,8 @@ namespace Muzicki_festival.FormeDodatne
                     grupa.Clanovi.Add(view.Ime);
                     PopuniTabeluClanovi();
 
-                    DugmeUclani.Enabled = false;
-                    DugmeNapustiGrupu.Enabled = true;
+                    DugmeUclani.Enabled = true;
+                    DugmeNapustiGrupu.Enabled = false;
                 }
             }
             else
@@ -367,6 +367,136 @@ namespace Muzicki_festival.FormeDodatne
             FormaUlaznicePregled formaUlaznicePregled = new FormaUlaznicePregled(this);
             formaUlaznicePregled.ShowDialog();
             this.Hide();
+        }
+
+        private void txtPrezime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lableIme_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelDrzava_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelEmail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIme_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelefon_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LabelaCena_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LabelaNacin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LabelaDatumKupovine_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LabelaTip_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TabelaPosetioci_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void GrupaPodaci_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TabelaGrupe_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TabelaClanovi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

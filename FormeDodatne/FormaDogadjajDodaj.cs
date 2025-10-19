@@ -54,12 +54,6 @@ namespace Muzicki_festival.Forme
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtGps.Text))
-            {
-                MessageBox.Show("Unesite GPS koordinate");
-                return;
-            }
-
             if (cmbTip.SelectedIndex == -1)
             {
                 MessageBox.Show("Odaberite tip događaja.");
@@ -110,14 +104,14 @@ namespace Muzicki_festival.Forme
 
             if (novi != null)
             {
+                MessageBox.Show("Uspešno dodat događaj.");
                 this.DialogResult = DialogResult.OK;
                 novDogadjaj = novi;
                 this.Close();
             }
             else
             {
-                this.DialogResult = DialogResult.No;
-                this.Close();
+                MessageBox.Show("Greška pri dodavanju događaja. Pokušajte ponovo.");
             }
         }
 

@@ -520,6 +520,11 @@ namespace Muzicki_festival
                         MessageBox.Show("Zanr prihvata samo slova.",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    else if (poruka.Contains("CHK_IZVODJAC_TELEFON"))
+                    {
+                        MessageBox.Show("Telefon izvođača mora sadržati tačno 10 cifara.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                     else if (poruka.Contains("CHK_IZVODJAC_DRZAVA"))
                     {
                         MessageBox.Show("Država izvođača sadrži nedozvoljene znakove! Dozvoljena su samo slova i razmaci.",
@@ -804,7 +809,7 @@ namespace Muzicki_festival
             {
 
                 ISession s = DataLayer.GetSession();
-                IList<Lokacija> lokacije = s.Query<Lokacija>().OrderBy(a=>a.NAZIV).ToList();
+                IList<Lokacija> lokacije = s.Query<Lokacija>().ToList();
 
                 foreach (Lokacija l in lokacije)
                 {
@@ -1679,6 +1684,11 @@ namespace Muzicki_festival
                     else if (poruka.Contains("CHK_DOGADJAJ_TIP"))
                     {
                         MessageBox.Show("Tip dogadjaja mora biti adekvatno izabran.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (poruka.Contains("CHK_DOGADJAJ_OPIS"))
+                    {
+                        MessageBox.Show("Opis dogadjaja mora da bude u formi slova.",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else if (poruka.Contains("UQ_DOGADJAJ_NAZIV_LOKACIJA"))

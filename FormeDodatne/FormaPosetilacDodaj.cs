@@ -220,7 +220,7 @@ namespace Muzicki_festival.FormeDodatne
             }
 
             UclanioSe = true;
-            DugmeUclani.Enabled = false;
+            DugmeUclani.Enabled = true;
             TabelaClanovi.Enabled = false;
             TabelaGrupe.Enabled = false;
             DugmeNapustiGrupu.Enabled = true;
@@ -229,10 +229,10 @@ namespace Muzicki_festival.FormeDodatne
         private void DugmeNapustiGrupu_Click(object sender, EventArgs e)
         {
             UclanioSe = false;
-            DugmeUclani.Enabled = true;
+            DugmeUclani.Enabled = false;
             TabelaGrupe.Enabled = true;
             TabelaGrupe.Enabled = true;
-            DugmeNapustiGrupu.Enabled = false;
+            DugmeNapustiGrupu.Enabled = true;
         }
     }
 }
