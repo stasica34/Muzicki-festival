@@ -227,8 +227,7 @@ namespace Muzicki_festival.FormeDodatne
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtIme.Text) || string.IsNullOrEmpty(txtEmail.Text)
-                || string.IsNullOrEmpty(txtDrzavaPorekla.Text) || string.IsNullOrEmpty(txtKontaktOsoba.Text)
-                || string.IsNullOrEmpty(txtTelefon.Text))
+                || string.IsNullOrEmpty(txtDrzavaPorekla.Text))
             {
                 MessageBox.Show("Molim vas unesite sve podatke!");
             }
@@ -278,8 +277,7 @@ namespace Muzicki_festival.FormeDodatne
             }
             else
             {
-                BendBasic bend = new BendBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtZanr.Text, txtTelefon.Text, mb, null);
-
+                BendBasic bend = new BendBasic(izvodjacView.Id, txtIme.Text, txtDrzavaPorekla.Text, txtEmail.Text, txtKontaktOsoba.Text, txtTelefon.Text, txtZanr.Text, mb, null);
                 if (DTOManager.IzmeniIzvodjaca(bend))
                 {
                     MessageBox.Show("Uspesno izmenjen izvodjac!");
@@ -338,7 +336,7 @@ namespace Muzicki_festival.FormeDodatne
             if (novi != null)
             {
                 MessageBox.Show("Uspesno dodat clan!");
-                clanoviBenda.Add(novi);
+                clanoviBenda = DTOManager.VratiClanoveBenda(izvodjacView.Id);
                 PopuniTabeluClanovi();
 
                 return;
@@ -371,6 +369,7 @@ namespace Muzicki_festival.FormeDodatne
             {
                 clanoviBenda.Remove(cv);
                 MessageBox.Show("Izbrisan clan!");
+                clanoviBenda = DTOManager.VratiClanoveBenda(izvodjacView.Id);
                 PopuniTabeluClanovi();
             }
             else
@@ -430,7 +429,7 @@ namespace Muzicki_festival.FormeDodatne
             if (DTOManager.DodajTehnickiZahtev(idIzvodjac, txtZahtev.Text))
             {
                 MessageBox.Show("Uspesno dodat zahtev " + txtZahtev.Text);
-                zahtevi.Add(txtZahtev.Text);
+                zahtevi = DTOManager.VratiTehnickeZahteve(idIzvodjac);
                 PopuniTabeluZahtevi();
             }
             else
@@ -452,7 +451,7 @@ namespace Muzicki_festival.FormeDodatne
             if (DTOManager.ObrisiTehnickiZahtev(idIzvodjac, zahtev))
             {
                 MessageBox.Show("Uspesno obrisan zahtev " + zahtev);
-                zahtevi.Remove(zahtev);
+                zahtevi = DTOManager.VratiTehnickeZahteve(idIzvodjac);
                 PopuniTabeluZahtevi();
             }
             else
@@ -472,7 +471,7 @@ namespace Muzicki_festival.FormeDodatne
             if (DTOManager.DodajVokalnuSposobnost(idIzvodjac, txtSposobnost.Text))
             {
                 MessageBox.Show("Dodata sposobnost " +  txtSposobnost.Text);
-                sposobnosti.Add(txtSposobnost.Text);
+                sposobnosti = DTOManager.VratiVokalneSposobnosti(idIzvodjac);
                 PopuniTabeluSposobnosti();
             }
         }

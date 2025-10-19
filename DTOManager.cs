@@ -402,11 +402,18 @@ namespace Muzicki_festival
                     return false;
 
                 Clan c = s.Get<Clan>(cb.Id);
+                if (c == null)
+                {
+                    MessageBox.Show("Clan ne postoji u bazi.");
+                    return false;
+                }
 
-                bool ret = bend.Clanovi.Remove(c);
-                if (ret)
-                    bend.BROJ_CLANOVA -= 1;
-                
+                if (c.BEND != null)
+                {
+                    c.BEND.BROJ_CLANOVA -= 1;
+                    s.Update(c.BEND);
+                }
+
                 s.Update(bend);
                 s.Flush();
 
@@ -418,7 +425,7 @@ namespace Muzicki_festival
 
                 s.Close();
 
-                return ret;
+                return true;
             }
             catch (Exception ex)
             {
@@ -462,11 +469,12 @@ namespace Muzicki_festival
                         Bend b = izv as Bend;
                         BendBasic basic = i as BendBasic;
 
+
                         b.DRZAVA_POREKLA = basic.Drzava_porekla;
                         b.IME = basic.Ime;
                         b.EMAIL = basic.Email;
-                        b.TELEFON = basic.Telefon;
-                        b.KONTAKT_OSOBA = basic.Kontakt_osoba;
+                        b.TELEFON = string.IsNullOrWhiteSpace(basic.Telefon) ? null : basic.Telefon;
+                        b.KONTAKT_OSOBA = string.IsNullOrWhiteSpace(basic.Kontakt_osoba) ? null : basic.Kontakt_osoba;
                         b.Zanr = basic.Zanr;
 
                         s.Update(b);
@@ -481,8 +489,8 @@ namespace Muzicki_festival
                         su.DRZAVA_POREKLA = i.Drzava_porekla;
                         su.IME = sbasic.Ime;
                         su.EMAIL = sbasic.Email;
-                        su.TELEFON = sbasic.Telefon;
-                        su.KONTAKT_OSOBA = sbasic.Kontakt_osoba;
+                        su.TELEFON = string.IsNullOrWhiteSpace(sbasic.Telefon) ? null : sbasic.Telefon;
+                        su.KONTAKT_OSOBA = string.IsNullOrWhiteSpace(sbasic.Kontakt_osoba) ? null : sbasic.Kontakt_osoba;
                         su.SVIRA_INSTRUMENT = sbasic.Svira_instrument;
                         su.TIP_INSTRUMENTA = sbasic.Tip_instrumenta;
                         su.Zanr = sbasic.Zanr;
@@ -1155,12 +1163,7 @@ namespace Muzicki_festival
                 if (ex.InnerException != null && ex.InnerException.Message != null)
                 {
                     string poruka = ex.InnerException.Message;
-                    if (poruka.Contains("CHK_LOKACIJA_MAX_KAPACITET"))
-                    {
-                        MessageBox.Show("Max kapacitet mora da bude veci od 0!",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (poruka.Contains("CHK_DOSTUPNOST_OPREME_NAZIV"))
+                    if (poruka.Contains("CHK_DOSTUPNOST_OPREME_NAZIV"))
                     {
                         MessageBox.Show("Dostupna oprema lokacija je u formatu slova.",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1668,6 +1671,11 @@ namespace Muzicki_festival
                         MessageBox.Show("Datum zavrstka dogadjaja mora da bude veci od datuma pocetka",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    else if (poruka.Contains("CHK_DOGADJAJ_NAZIV"))
+                    {
+                        MessageBox.Show("Naziv dogadjaja je u formi slova.",
+                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                     else if (poruka.Contains("CHK_DOGADJAJ_TIP"))
                     {
                         MessageBox.Show("Tip dogadjaja mora biti adekvatno izabran.",
@@ -1924,77 +1932,39 @@ namespace Muzicki_festival
 
                     if (poruka.Contains("UK_POSETILAC_EMAIL"))
                     {
-                        MessageBox.Show("Email mora da bude jedinstven.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        throw new Exception("Email mora da bude jedinstven.");
                     }
                     else if (poruka.Contains("UK_POSETILAC_TELEFON"))
                     {
-                        MessageBox.Show("Telefon mora da bude jedinstven.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        throw new Exception("Telefon mora da bude jedinstven.");
                     }
                     else if (poruka.Contains("CHK_POSETILAC_TELEFON"))
                     {
-                        MessageBox.Show("Broj telefona mora da bude bude u adekvatnom formatu, da sadrzi brojeve i 10 cifara.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        throw new Exception("Broj telefona mora biti u ispravnom formatu.");
                     }
                     else if (poruka.Contains("CHK_POSETILAC_EMAIL"))
                     {
-                        MessageBox.Show("Email mora da bude bude u adekvatnom formatu, da sadrzi slova, brojeve, @.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        throw new Exception("Email nije u ispravnom formatu.");
                     }
                     else if (poruka.Contains("CHK_POSETILAC_PREZIME"))
                     {
-                        MessageBox.Show("Prezime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        throw new Exception("Prezime nije u ispravnom formatu.");
                     }
                     else if (poruka.Contains("CHK_POSETILAC_IME"))
                     {
-                        MessageBox.Show("Ime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        throw new Exception("Ime nije u ispravnom formatu.");
                     }
-                    else if (poruka.Contains("UK_POSETILAC_EMAIL"))
+                    else
                     {
-                        MessageBox.Show("Email mora da bude jedinstven.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (poruka.Contains("UK_POSETILAC_TELEFON"))
-                    {
-                        MessageBox.Show("Telefon mora da bude jedinstven.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (poruka.Contains("CHK_POSETILAC_TELEFON"))
-                    {
-                        MessageBox.Show("Broj telefona mora da bude bude u adekvatnom formatu, da sadrzi brojeve i 10 cifara.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (poruka.Contains("CHK_POSETILAC_EMAIL"))
-                    {
-                        MessageBox.Show("Email mora da bude bude u adekvatnom formatu, da sadrzi slova, brojeve, @.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (poruka.Contains("CHK_POSETILAC_PREZIME"))
-                    {
-                        MessageBox.Show("Prezime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (poruka.Contains("CHK_POSETILAC_IME"))
-                    {
-                        MessageBox.Show("Ime mora da bude bude u adekvatnom formatu, da sadrzi slova.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (poruka.Contains("CHK_VIP_POGODNOST_NAZIV"))
-                    {
-                        MessageBox.Show("Naziv vip pogodnosti je u formatu slova.",
-                                        "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        throw new Exception("Greška prilikom dodavanja posetioca.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Došlo je do greške u komunikaciji sa bazom.",
-                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw new Exception("Nepoznata greška u komunikaciji sa bazom.");
                 }
-                return null;
             }
+
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);

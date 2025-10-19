@@ -248,7 +248,7 @@ namespace Muzicki_festival.FormeDodatne
 
         private void PotvrdiIzmeneDugme_Click(object sender, EventArgs e)
         {
-            var naziv = txtNaziv.Text.Trim();
+            var naziv = txtNazivIzmena.Text.Trim();
             if (string.IsNullOrWhiteSpace(naziv))
             {
                 MessageBox.Show("Unesite naziv!");

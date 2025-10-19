@@ -152,6 +152,12 @@
     <Compile Include="FormeDodatne\FormaDodajIzvodjacaNaDogadjaj.Designer.cs">
       <DependentUpon>FormaDodajIzvodjacaNaDogadjaj.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormeDodatne\FormaDogadjajDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormeDodatne\FormaDogadjajDodaj.Designer.cs">
+      <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormeDodatne\FormaIzvodjacDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,12 +212,6 @@
     <Compile Include="FormeDodatne\FormaUlaznicePregled.Designer.cs">
       <DependentUpon>FormaUlaznicePregled.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormeDodatne\FormaDogadjajDodaj.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormeDodatne\FormaDogadjajDodaj.Designer.cs">
-      <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormeDodatne\IzmenaLokacije.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +258,9 @@
     <EmbeddedResource Include="FormeDodatne\FormaDodajIzvodjacaNaDogadjaj.resx">
       <DependentUpon>FormaDodajIzvodjacaNaDogadjaj.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormeDodatne\FormaDogadjajDodaj.resx">
+      <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaIzvodjacDodaj.resx">
       <DependentUpon>FormaIzvodjacDodaj.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,9 +287,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\FormaUlaznicePregled.resx">
       <DependentUpon>FormaUlaznicePregled.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormeDodatne\FormaDogadjajDodaj.resx">
-      <DependentUpon>FormaDogadjajDodaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormeDodatne\IzmenaLokacije.resx">
       <DependentUpon>IzmenaLokacije.cs</DependentUpon>

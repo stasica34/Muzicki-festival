@@ -70,23 +70,29 @@ namespace Muzicki_festival.Forme
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNaziv.Text) || cmbTip.SelectedItem == null ||
-                string.IsNullOrWhiteSpace(txtOpis.Text) || cmbLokacija.SelectedItem == null ||
+            string naziv = txtNaziv.Text.Trim();
+            string opis = txtOpis.Text.Trim();
+            if (string.IsNullOrWhiteSpace(naziv) || cmbTip.SelectedItem == null ||
+                  cmbLokacija.SelectedItem == null ||
                 dtpKraj.Value <= dtpPocetak.Value)
             {
                 MessageBox.Show("Molimo popunite sva polja ispravno.");
                 return;
             }
-
+            if (dtpKraj.Value <= dtpPocetak.Value)
+            {
+                MessageBox.Show("Datum kraja mora biti strogo posle datuma početka.", "Greška u datumima", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 using (ISession s = DataLayer.GetSession())
                 {
                     Dogadjaj d = s.Get<Dogadjaj>(dogadjajzaIzmenu.ID);
 
-                    d.NAZIV = txtNaziv.Text.Trim();
+                    d.NAZIV = naziv;
                     d.TIP = cmbTip.SelectedItem.ToString();
-                    d.OPIS = txtOpis.Text.Trim();
+                    d.OPIS = string.IsNullOrEmpty(opis) ? null : opis;
                     d.DATUM_VREME_POCETKA = dtpPocetak.Value;
                     d.DATUM_VREME_KRAJA = dtpKraj.Value;
                     d.Lokacija = cmbLokacija.SelectedItem as Lokacija;
@@ -101,7 +107,7 @@ namespace Muzicki_festival.Forme
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greška: " + ex.Message);
+                MessageBox.Show("Izmena događaja nije uspelo. Proverite podatke.", "Neuspeh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
