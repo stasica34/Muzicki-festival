@@ -29,7 +29,12 @@ namespace Muzicki_festival.FormeDodatne
             Naziv.Text = lokacija.Naziv;
             Opis.Text = lokacija.Opis;
             GPS.Text = lokacija.Gps_koordinate;
+            if (lokacija.Kapacitet > MaxKapacitet.Maximum)
+            {
+                MaxKapacitet.Maximum = lokacija.Kapacitet;
+            }
             MaxKapacitet.Value = lokacija.Kapacitet;
+
 
             switch (lokacija.TipLokacije)
             {

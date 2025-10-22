@@ -48,15 +48,18 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(533, 445);
-            this.splitContainer1.SplitterDistance = 177;
-            this.splitContainer1.SplitterWidth = 3;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackgroundImage = global::Muzicki_festival.Properties.Resources.summer_music_festivals_1;
+            this.splitContainer1.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 685);
+            this.splitContainer1.SplitterDistance = 265;
             this.splitContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -71,7 +74,8 @@
             this.tableLayoutPanel1.Controls.Add(this.Posetilac, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.AgencijeOrganizatori, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.Ulaznice, 0, 7);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(27, 18);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49967F));
@@ -82,14 +86,15 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49918F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.50167F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.50328F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 421);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(216, 648);
             this.tableLayoutPanel1.TabIndex = 28;
             // 
             // Grupe
             // 
-            this.Grupe.Location = new System.Drawing.Point(3, 315);
+            this.Grupe.Location = new System.Drawing.Point(4, 485);
+            this.Grupe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Grupe.Name = "Grupe";
-            this.Grupe.Size = new System.Drawing.Size(138, 38);
+            this.Grupe.Size = new System.Drawing.Size(207, 58);
             this.Grupe.TabIndex = 32;
             this.Grupe.Text = "Grupe";
             this.Grupe.UseVisualStyleBackColor = true;
@@ -97,9 +102,10 @@
             // 
             // MenadzerkseAgencije
             // 
-            this.MenadzerkseAgencije.Location = new System.Drawing.Point(3, 263);
+            this.MenadzerkseAgencije.Location = new System.Drawing.Point(4, 405);
+            this.MenadzerkseAgencije.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MenadzerkseAgencije.Name = "MenadzerkseAgencije";
-            this.MenadzerkseAgencije.Size = new System.Drawing.Size(138, 38);
+            this.MenadzerkseAgencije.Size = new System.Drawing.Size(207, 58);
             this.MenadzerkseAgencije.TabIndex = 31;
             this.MenadzerkseAgencije.Text = "Menadzerske";
             this.MenadzerkseAgencije.UseVisualStyleBackColor = true;
@@ -108,10 +114,9 @@
             // cmd_Dogadjaji
             // 
             this.cmd_Dogadjaji.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmd_Dogadjaji.Location = new System.Drawing.Point(2, 6);
-            this.cmd_Dogadjaji.Margin = new System.Windows.Forms.Padding(2);
+            this.cmd_Dogadjaji.Location = new System.Drawing.Point(3, 9);
             this.cmd_Dogadjaji.Name = "cmd_Dogadjaji";
-            this.cmd_Dogadjaji.Size = new System.Drawing.Size(140, 40);
+            this.cmd_Dogadjaji.Size = new System.Drawing.Size(210, 62);
             this.cmd_Dogadjaji.TabIndex = 27;
             this.cmd_Dogadjaji.Text = "Dogadjaji";
             this.cmd_Dogadjaji.UseVisualStyleBackColor = true;
@@ -120,10 +125,9 @@
             // cmd_Izvodjac
             // 
             this.cmd_Izvodjac.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmd_Izvodjac.Location = new System.Drawing.Point(2, 58);
-            this.cmd_Izvodjac.Margin = new System.Windows.Forms.Padding(2);
+            this.cmd_Izvodjac.Location = new System.Drawing.Point(3, 89);
             this.cmd_Izvodjac.Name = "cmd_Izvodjac";
-            this.cmd_Izvodjac.Size = new System.Drawing.Size(140, 40);
+            this.cmd_Izvodjac.Size = new System.Drawing.Size(210, 62);
             this.cmd_Izvodjac.TabIndex = 13;
             this.cmd_Izvodjac.Text = "Izvodjac";
             this.cmd_Izvodjac.UseVisualStyleBackColor = true;
@@ -132,9 +136,10 @@
             // DugmeLokacije
             // 
             this.DugmeLokacije.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DugmeLokacije.Location = new System.Drawing.Point(3, 111);
+            this.DugmeLokacije.Location = new System.Drawing.Point(4, 171);
+            this.DugmeLokacije.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DugmeLokacije.Name = "DugmeLokacije";
-            this.DugmeLokacije.Size = new System.Drawing.Size(138, 38);
+            this.DugmeLokacije.Size = new System.Drawing.Size(207, 58);
             this.DugmeLokacije.TabIndex = 28;
             this.DugmeLokacije.Text = "Lokacija";
             this.DugmeLokacije.UseVisualStyleBackColor = true;
@@ -142,9 +147,10 @@
             // 
             // Posetilac
             // 
-            this.Posetilac.Location = new System.Drawing.Point(3, 159);
+            this.Posetilac.Location = new System.Drawing.Point(4, 245);
+            this.Posetilac.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Posetilac.Name = "Posetilac";
-            this.Posetilac.Size = new System.Drawing.Size(138, 38);
+            this.Posetilac.Size = new System.Drawing.Size(207, 58);
             this.Posetilac.TabIndex = 29;
             this.Posetilac.Text = "Posetilac";
             this.Posetilac.UseVisualStyleBackColor = true;
@@ -152,9 +158,10 @@
             // 
             // AgencijeOrganizatori
             // 
-            this.AgencijeOrganizatori.Location = new System.Drawing.Point(3, 211);
+            this.AgencijeOrganizatori.Location = new System.Drawing.Point(4, 325);
+            this.AgencijeOrganizatori.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AgencijeOrganizatori.Name = "AgencijeOrganizatori";
-            this.AgencijeOrganizatori.Size = new System.Drawing.Size(138, 38);
+            this.AgencijeOrganizatori.Size = new System.Drawing.Size(207, 58);
             this.AgencijeOrganizatori.TabIndex = 30;
             this.AgencijeOrganizatori.Text = "AgencijeOrganizatori";
             this.AgencijeOrganizatori.UseVisualStyleBackColor = true;
@@ -163,9 +170,10 @@
             // Ulaznice
             // 
             this.Ulaznice.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Ulaznice.Location = new System.Drawing.Point(3, 373);
+            this.Ulaznice.Location = new System.Drawing.Point(4, 575);
+            this.Ulaznice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Ulaznice.Name = "Ulaznice";
-            this.Ulaznice.Size = new System.Drawing.Size(138, 38);
+            this.Ulaznice.Size = new System.Drawing.Size(207, 58);
             this.Ulaznice.TabIndex = 33;
             this.Ulaznice.Text = "Ulaznice";
             this.Ulaznice.UseVisualStyleBackColor = true;
@@ -173,11 +181,10 @@
             // 
             // GlavnaStranica
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 445);
+            this.ClientSize = new System.Drawing.Size(800, 685);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GlavnaStranica";
             this.Text = "GlavnaStranica";
             this.splitContainer1.Panel1.ResumeLayout(false);

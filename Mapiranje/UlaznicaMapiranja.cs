@@ -69,7 +69,7 @@ namespace Muzicki_festival.Mapiranje
                 Table("VISEDNEVNA_DANI")
                 .KeyColumn(("ID_ULAZNICE"))
                 .Element("DAN_VAZENJA")
-                .Cascade.AllDeleteOrphan();
+                .Cascade.All();
         }
     }
 

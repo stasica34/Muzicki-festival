@@ -235,11 +235,6 @@ namespace Muzicki_festival.FormeDodatne
                 MessageBox.Show("Unesite email izvodjaca.");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtTelefon.Text))
-            {
-                MessageBox.Show("Unesite telefon izvodjaca.");
-                return;
-            }
             if (!BendRadio.Checked && !SoloUmetnikRadio.Checked)
             {
                 MessageBox.Show("Molimo izaberite tip izvođača: Bend ili Solo Umetnik.");

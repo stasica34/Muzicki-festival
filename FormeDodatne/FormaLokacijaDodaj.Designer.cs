@@ -73,9 +73,11 @@
             this.groupBox1.Controls.Add(this.MaxKapacitet);
             this.groupBox1.Controls.Add(this.Naziv);
             this.groupBox1.Controls.Add(this.Opis);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(18, 18);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(236, 169);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(354, 260);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osnovni Podaci";
@@ -83,9 +85,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 61);
+            this.label2.Location = new System.Drawing.Point(39, 94);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.Size = new System.Drawing.Size(41, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Opis";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -93,18 +96,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 96);
+            this.label3.Location = new System.Drawing.Point(39, 148);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.Size = new System.Drawing.Size(43, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "GPS";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 26);
+            this.label1.Location = new System.Drawing.Point(39, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(47, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Naziv";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -112,38 +117,48 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 129);
+            this.label4.Location = new System.Drawing.Point(39, 198);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.Size = new System.Drawing.Size(109, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "Max Kapacitet";
             // 
             // GPS
             // 
-            this.GPS.Location = new System.Drawing.Point(107, 93);
+            this.GPS.Location = new System.Drawing.Point(160, 143);
+            this.GPS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GPS.Name = "GPS";
-            this.GPS.Size = new System.Drawing.Size(120, 20);
+            this.GPS.Size = new System.Drawing.Size(178, 26);
             this.GPS.TabIndex = 4;
             // 
             // MaxKapacitet
             // 
-            this.MaxKapacitet.Location = new System.Drawing.Point(107, 129);
+            this.MaxKapacitet.Location = new System.Drawing.Point(160, 198);
+            this.MaxKapacitet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaxKapacitet.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.MaxKapacitet.Name = "MaxKapacitet";
-            this.MaxKapacitet.Size = new System.Drawing.Size(120, 20);
+            this.MaxKapacitet.Size = new System.Drawing.Size(180, 26);
             this.MaxKapacitet.TabIndex = 3;
             // 
             // Naziv
             // 
-            this.Naziv.Location = new System.Drawing.Point(107, 26);
+            this.Naziv.Location = new System.Drawing.Point(160, 40);
+            this.Naziv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Naziv.Name = "Naziv";
-            this.Naziv.Size = new System.Drawing.Size(120, 20);
+            this.Naziv.Size = new System.Drawing.Size(178, 26);
             this.Naziv.TabIndex = 1;
             // 
             // Opis
             // 
-            this.Opis.Location = new System.Drawing.Point(107, 58);
+            this.Opis.Location = new System.Drawing.Point(160, 89);
+            this.Opis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Opis.Name = "Opis";
-            this.Opis.Size = new System.Drawing.Size(120, 20);
+            this.Opis.Size = new System.Drawing.Size(178, 26);
             this.Opis.TabIndex = 0;
             // 
             // groupBox2
@@ -151,9 +166,11 @@
             this.groupBox2.Controls.Add(this.radioKombinovana);
             this.groupBox2.Controls.Add(this.radioZatvorena);
             this.groupBox2.Controls.Add(this.radioOtvorena);
-            this.groupBox2.Location = new System.Drawing.Point(286, 12);
+            this.groupBox2.Location = new System.Drawing.Point(429, 18);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(258, 169);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Size = new System.Drawing.Size(387, 260);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tip lokacije";
@@ -161,9 +178,10 @@
             // radioKombinovana
             // 
             this.radioKombinovana.AutoSize = true;
-            this.radioKombinovana.Location = new System.Drawing.Point(86, 111);
+            this.radioKombinovana.Location = new System.Drawing.Point(129, 171);
+            this.radioKombinovana.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioKombinovana.Name = "radioKombinovana";
-            this.radioKombinovana.Size = new System.Drawing.Size(90, 17);
+            this.radioKombinovana.Size = new System.Drawing.Size(130, 24);
             this.radioKombinovana.TabIndex = 2;
             this.radioKombinovana.TabStop = true;
             this.radioKombinovana.Text = "Kombinovana";
@@ -173,9 +191,10 @@
             // radioZatvorena
             // 
             this.radioZatvorena.AutoSize = true;
-            this.radioZatvorena.Location = new System.Drawing.Point(86, 74);
+            this.radioZatvorena.Location = new System.Drawing.Point(129, 114);
+            this.radioZatvorena.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioZatvorena.Name = "radioZatvorena";
-            this.radioZatvorena.Size = new System.Drawing.Size(74, 17);
+            this.radioZatvorena.Size = new System.Drawing.Size(106, 24);
             this.radioZatvorena.TabIndex = 1;
             this.radioZatvorena.TabStop = true;
             this.radioZatvorena.Text = "Zatvorena";
@@ -185,9 +204,10 @@
             // radioOtvorena
             // 
             this.radioOtvorena.AutoSize = true;
-            this.radioOtvorena.Location = new System.Drawing.Point(86, 38);
+            this.radioOtvorena.Location = new System.Drawing.Point(129, 58);
+            this.radioOtvorena.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioOtvorena.Name = "radioOtvorena";
-            this.radioOtvorena.Size = new System.Drawing.Size(69, 17);
+            this.radioOtvorena.Size = new System.Drawing.Size(99, 24);
             this.radioOtvorena.TabIndex = 0;
             this.radioOtvorena.TabStop = true;
             this.radioOtvorena.Text = "Otvorena";
@@ -202,9 +222,11 @@
             this.DodatniPodaci.Controls.Add(this.DostupnostSedenja);
             this.DodatniPodaci.Controls.Add(this.Klima);
             this.DodatniPodaci.Controls.Add(this.TipProstora);
-            this.DodatniPodaci.Location = new System.Drawing.Point(586, 12);
+            this.DodatniPodaci.Location = new System.Drawing.Point(879, 18);
+            this.DodatniPodaci.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DodatniPodaci.Name = "DodatniPodaci";
-            this.DodatniPodaci.Size = new System.Drawing.Size(251, 169);
+            this.DodatniPodaci.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DodatniPodaci.Size = new System.Drawing.Size(376, 260);
             this.DodatniPodaci.TabIndex = 1;
             this.DodatniPodaci.TabStop = false;
             this.DodatniPodaci.Text = "Dodatni Podaci";
@@ -212,56 +234,63 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 125);
+            this.label7.Location = new System.Drawing.Point(9, 192);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 13);
+            this.label7.Size = new System.Drawing.Size(152, 20);
             this.label7.TabIndex = 5;
             this.label7.Text = "Dostupnost sedenja";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(36, 81);
+            this.label6.Location = new System.Drawing.Point(54, 125);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.Size = new System.Drawing.Size(47, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "Klima";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 29);
+            this.label5.Location = new System.Drawing.Point(39, 45);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.Size = new System.Drawing.Size(94, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "Tip Prostora";
             // 
             // DostupnostSedenja
             // 
-            this.DostupnostSedenja.Location = new System.Drawing.Point(121, 122);
+            this.DostupnostSedenja.Location = new System.Drawing.Point(182, 188);
+            this.DostupnostSedenja.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DostupnostSedenja.Name = "DostupnostSedenja";
-            this.DostupnostSedenja.Size = new System.Drawing.Size(100, 20);
+            this.DostupnostSedenja.Size = new System.Drawing.Size(148, 26);
             this.DostupnostSedenja.TabIndex = 2;
             // 
             // Klima
             // 
-            this.Klima.Location = new System.Drawing.Point(121, 74);
+            this.Klima.Location = new System.Drawing.Point(182, 114);
+            this.Klima.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Klima.Name = "Klima";
-            this.Klima.Size = new System.Drawing.Size(100, 20);
+            this.Klima.Size = new System.Drawing.Size(148, 26);
             this.Klima.TabIndex = 1;
             // 
             // TipProstora
             // 
-            this.TipProstora.Location = new System.Drawing.Point(121, 26);
+            this.TipProstora.Location = new System.Drawing.Point(182, 40);
+            this.TipProstora.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TipProstora.Name = "TipProstora";
-            this.TipProstora.Size = new System.Drawing.Size(100, 20);
+            this.TipProstora.Size = new System.Drawing.Size(148, 26);
             this.TipProstora.TabIndex = 0;
             // 
             // DodajDugme
             // 
-            this.DodajDugme.Location = new System.Drawing.Point(12, 198);
+            this.DodajDugme.Location = new System.Drawing.Point(18, 305);
+            this.DodajDugme.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DodajDugme.Name = "DodajDugme";
-            this.DodajDugme.Size = new System.Drawing.Size(101, 42);
+            this.DodajDugme.Size = new System.Drawing.Size(152, 65);
             this.DodajDugme.TabIndex = 3;
             this.DodajDugme.Text = "Dodaj";
             this.DodajDugme.UseVisualStyleBackColor = true;
@@ -270,26 +299,31 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 263);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 405);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(573, 224);
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(860, 345);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(9, 22);
+            this.dataGridView2.Location = new System.Drawing.Point(14, 34);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(264, 224);
+            this.dataGridView2.RowHeadersWidth = 62;
+            this.dataGridView2.Size = new System.Drawing.Size(396, 345);
             this.dataGridView2.TabIndex = 6;
             // 
             // IzmeniLokaciju
             // 
             this.IzmeniLokaciju.Enabled = false;
-            this.IzmeniLokaciju.Location = new System.Drawing.Point(12, 505);
+            this.IzmeniLokaciju.Location = new System.Drawing.Point(18, 777);
+            this.IzmeniLokaciju.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.IzmeniLokaciju.Name = "IzmeniLokaciju";
-            this.IzmeniLokaciju.Size = new System.Drawing.Size(81, 33);
+            this.IzmeniLokaciju.Size = new System.Drawing.Size(122, 51);
             this.IzmeniLokaciju.TabIndex = 7;
             this.IzmeniLokaciju.Text = "Izmeni";
             this.IzmeniLokaciju.UseVisualStyleBackColor = true;
@@ -298,9 +332,11 @@
             // DodatnaOpremaGroup
             // 
             this.DodatnaOpremaGroup.Controls.Add(this.dataGridView2);
-            this.DodatnaOpremaGroup.Location = new System.Drawing.Point(586, 240);
+            this.DodatnaOpremaGroup.Location = new System.Drawing.Point(879, 369);
+            this.DodatnaOpremaGroup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DodatnaOpremaGroup.Name = "DodatnaOpremaGroup";
-            this.DodatnaOpremaGroup.Size = new System.Drawing.Size(278, 258);
+            this.DodatnaOpremaGroup.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DodatnaOpremaGroup.Size = new System.Drawing.Size(417, 397);
             this.DodatnaOpremaGroup.TabIndex = 8;
             this.DodatnaOpremaGroup.TabStop = false;
             this.DodatnaOpremaGroup.Text = "Dodatna oprema";
@@ -308,9 +344,10 @@
             // DugmeObrisi
             // 
             this.DugmeObrisi.Enabled = false;
-            this.DugmeObrisi.Location = new System.Drawing.Point(99, 505);
+            this.DugmeObrisi.Location = new System.Drawing.Point(148, 777);
+            this.DugmeObrisi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DugmeObrisi.Name = "DugmeObrisi";
-            this.DugmeObrisi.Size = new System.Drawing.Size(81, 33);
+            this.DugmeObrisi.Size = new System.Drawing.Size(122, 51);
             this.DugmeObrisi.TabIndex = 9;
             this.DugmeObrisi.Text = "Obrisi";
             this.DugmeObrisi.UseVisualStyleBackColor = true;
@@ -318,9 +355,9 @@
             // 
             // FormaLokacijaDodaj
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 550);
+            this.ClientSize = new System.Drawing.Size(1314, 846);
             this.Controls.Add(this.DugmeObrisi);
             this.Controls.Add(this.DodatnaOpremaGroup);
             this.Controls.Add(this.IzmeniLokaciju);
@@ -329,6 +366,7 @@
             this.Controls.Add(this.DodatniPodaci);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormaLokacijaDodaj";
             this.Text = "LokacijeTest";
             this.groupBox1.ResumeLayout(false);

@@ -1304,8 +1304,9 @@ namespace Muzicki_festival
                     }
                     else if (poruka.Contains("CK_MENADZESKA_AGENCIJA_ADRESA"))
                     {
-                        MessageBox.Show("Adresa menadzerske agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova,brojevi i razmaci.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Adresa sadrži nedozvoljene znakove! Dozvoljena su slova, brojevi i . , - znakovi. Adresa fora da bude u formatu" +
+                           "velikih slova [Ime] [Ime] [Broj], [Grad]",
+                                       "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else if (poruka.Contains("CK_M_AGENCIJA_KONTAKT_OSOBA"))
                     {
@@ -1383,8 +1384,9 @@ namespace Muzicki_festival
                     }
                     else if (poruka.Contains("CK_MENADZESKA_AGENCIJA_ADRESA"))
                     {
-                        MessageBox.Show("Aresa menadzerske agencije sadrži nedozvoljene znakove! Dozvoljena su samo slova,brojevi i razmaci.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Adresa sadrži nedozvoljene znakove! Dozvoljena su slova, brojevi i . , - znakovi. Adresa fora da bude u formatu" +
+                           "velikih slova [Ime] [Ime] [Broj], [Grad]",
+                                       "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else if (poruka.Contains("CK_M_AGENCIJA_KONTAKT_OSOBA"))
                     {
@@ -1563,7 +1565,7 @@ namespace Muzicki_festival
                     }
                     else if (poruka.Contains("CHK_TELEFON_EMAIL"))
                     {
-                        MessageBox.Show("Vrednost mora da bude lepo napisana",
+                        MessageBox.Show("Vrednost mora da bude lepo napisana, mora da sadrzi znak @ ukoliko unosite email, i mora da ima tacno 10 cifara ukoliko unosite broj telefona",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
@@ -2242,7 +2244,8 @@ namespace Muzicki_festival
                     }
                     else if (poruka.Contains("CK_AGENCIJA_ADRESA_FORMAT"))
                     {
-                        MessageBox.Show("Adresa sadrži nedozvoljene znakove! Dozvoljena su slova, brojevi i . , - znakovi.",
+                        MessageBox.Show("Adresa sadrži nedozvoljene znakove! Dozvoljena su slova, brojevi i . , - znakovi. Adresa fora da bude u formatu" +
+                            "velikih slova [Ime] [Ime] [Broj], [Grad]",
                                         "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else if (poruka.Contains("UQ_AGENCIJA_NAZIV"))
@@ -2330,8 +2333,9 @@ namespace Muzicki_festival
                     }
                     else if (poruka.Contains("CK_AGENCIJA_ADRESA_FORMAT"))
                     {
-                        MessageBox.Show("Adresa sadrži nedozvoljene znakove! Dozvoljena su slova, brojevi i . , - znakovi.",
-                                        "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Adresa sadrži nedozvoljene znakove! Dozvoljena su slova, brojevi i . , - znakovi. Adresa fora da bude u formatu" +
+                           "velikih slova [Ime] [Ime] [Broj], [Grad]",
+                                       "Neispravan unos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else if (poruka.Contains("UQ_AGENCIJA_NAZIV"))
                     {

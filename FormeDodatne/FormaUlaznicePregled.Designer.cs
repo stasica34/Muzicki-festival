@@ -577,7 +577,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1251, 1098);
+            this.ClientSize = new System.Drawing.Size(1488, 835);
             this.Controls.Add(this.GrupaUlaznice);
             this.Controls.Add(this.DugmeObrisi);
             this.Controls.Add(this.DugmeIzmeni);

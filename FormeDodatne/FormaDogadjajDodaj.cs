@@ -60,12 +60,6 @@ namespace Muzicki_festival.Forme
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtOpis.Text))
-            {
-                MessageBox.Show("Unesite opis događaja.");
-                return;
-            }
-
             if (dtpKraj.Value < dtpPocetak.Value)
             {
                 MessageBox.Show("Datum kraja mora biti posle datuma početka.");
